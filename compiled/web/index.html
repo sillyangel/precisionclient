@@ -1,63 +1,95 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>eagler</title>
-<meta charset="UTF-8" />
-<script type="text/javascript" src="eagswebrtc.js"></script>
-<!--script type="text/javascript" src="music.js"></script-->
-<script type="text/javascript" src="classes.js"></script>
-<script type="text/javascript">
-if(document.location.href.startsWith("file:")) {
-alert("You're not supposed to 'open' this file in your browser. Please upload this folder to your HTTP(s) server and access it via the internet. This is not a bug, please read the documentation");
-}else {
-window.addEventListener("load", async function(){
-/*
-let wardUrl = "";
-try {
-  wardUrl = (await (await fetch("https://pipedapi.tokhmi.xyz/streams/5VuDwU4bW8Q")).json()).audioStreams[0].url;
-} catch (e) {}
-*/
-const relayId = Math.floor(Math.random() * 3);
-window.eaglercraftOpts = {
-container: "game_frame", assetsURI: "assets.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "TEST",
-assetOverrides: {
-    // "title/no-pano-blur.flag": "",
-	"records/wait.mp3": "wait.mp3",
-	"records/mellohi.mp3": "https://stream.nightride.fm/chillsynth.m4a",
-	"records/far.mp3": "https://stream.nightride.fm/nightride.m4a",
-	"records/cat.mp3": "http://usa9.fastcast4u.com/proxy/jamz?mp=/1",
-	"records/ward.mp3": "http://fr4.1mix.co.uk:8000/192h",
-	"records/strad.mp3": "http://listen.011fm.com:8028/stream15",
-	"records/blocks.mp3": "https://www.ophanim.net:8444/s/9780",
-	"records/13.mp3": "https://s2.radio.co/s2b2b68744/listen"
-	// "sounds/gta.mp3": "https://invidious.zapashcanon.fr/latest_version?itag=251&id=YRlIl6K6S88"
-	// "records/ward.mp3": wardUrl
-	// "sounds/gta.mp3": ""
-},
-servers: [
-	{ serverName: "Local Test Server", serverAddress: "localhost:25565", hideAddress: false }
-],
-relays: [
-	{ addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: relayId == 0 },
-	{ addr: "wss://relay.lax1dude.net/", name: "lax1dude relay #2", primary: relayId == 1 },
-	{ addr: "wss://relay.shhnowisnottheti.me/", name: "ayunami relay #1", primary: relayId == 2 }
-],
-mainMenu: { splashes: [
-"Darviglet!", "eaglerenophile!", "You Eagler!", "Yeeeeeee!", "yeee",
-"EEEEEEEEE!", "You Darvig!", "You Vigg!", ":>", "|>", "You Yumpster!"
-], eaglerLogo: false }};
-(function(){
-var q = window.location.search;
-if(typeof q === 'string' && q.startsWith("?")) {
-	q = new URLSearchParams(q);
-	var s = q.get("server");
-	if(s) window.eaglercraftOpts.joinServer = s;
-}
-})();
-main();
-});}
-</script>
+	<title>Precision Client (1.5.2-beta_0.2)</title>
+	<meta charset="UTF-8" />
+	<meta content="An eaglercraft PvP client with QOL features, custom texture packs, and more." name="description" />
+	<meta content="//precisionclient.vercel.app" name="url" />
+	<meta content="EtcherFX" name="author" />
+	<meta content="Precision Client" property="og:title" />
+	<meta content="en-US" property="og:locale" />
+	<meta content="website" property="og:type" />
+	<meta content="//precisionclient.vercel.app" property="og:url" />
+	<!--meta content="IMAGE" property="og:image"/>-->
+	<meta content="An eaglercraft PvP client with QOL features, custom texture packs, and more"
+		property="og:description" />
+	<script type="text/javascript" src="eagswebrtc.js"></script>
+	<script type="text/javascript" src="classes.js"></script>
+	<style>
+		@font-face {
+			font-family: "Product Sans";
+			src: url(ProductSans.ttf);
+		}
+	</style>
 </head>
-<body style="margin:0px;width:100vw;height:100vh;" id="game_frame">
+
+<body style="margin: 0; width: 100vw; height: 100vh;
+background-image: url(bg.png); background-repeat: no-repeat; font-family:
+'Product Sans'" id="game_frame">
+	<div id="Selection" style="display: inline-block; position: absolute; top:
+		50%; left: 50%; transform: translate(-50%, -50%)">
+		<h1>Precision Client Launcher</h1>
+		<h3>Select a pack:</h3>
+		<select id="Packs">
+			<option>--Choose one--</option>
+			<option value="1.5">Default 1.5</option>
+			<option value="1.17">Default 1.17</option>
+			<option value="Bombies">Bombies 180k</option>
+			<option value="Bones">Bare Bones</option>
+			<option value="M1.17">Modified 1.17</option>
+			<option value="Miami">Miami Private</option>
+			<option value="Nebula">Nebula</option>
+			<option value="Rice">Ricefault</option>
+			<option value="Tight">Tightfault</option>
+			<option value="Wali">Walifault</option>
+		</select>
+		<br /><br />
+		<input type="button" value="Launch" onclick="Start();" />
+	</div>
+	<script type="text/javascript">
+		if (document.location.href.startsWith("file:")) {
+			alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation");
+		} else {
+			var PackSelect = document.getElementById("Packs");
+			function Start() {
+				if (PackSelect.selectedIndex !== 0) {
+					var Selected = PackSelect.options[PackSelect.selectedIndex].value;
+					document.getElementById("Selection").style.display = "none";
+					localStorage.LastPack = Selected;
+					const relayId = Math.floor(Math.random() * 3);
+					window.eaglercraftOpts = {
+						container: "game_frame", assetsURI: "packs/${Selected}.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "MAIN",
+						servers: [],
+						relays: [
+							{ addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: relayId == 0 },
+							{ addr: "wss://relay.lax1dude.net/", name: "lax1dude relay #2", primary: relayId == 1 },
+							{ addr: "wss://relay.shhnowisnottheti.me/", name: "ayunami relay #1", primary: relayId == 2 }
+						],
+						mainMenu: {
+							splashes: [], eaglerLogo: false
+						}
+					};
+					(function () {
+						var q = window.location.search;
+						if (typeof q === 'string' && q.startsWith("?")) {
+							q = new URLSearchParams(q);
+							var s = q.get("server");
+							if (s) window.minecraftOpts.push(s);
+						}
+					})();
+					main();
+				} else
+					alert("You need to select a pack");
+			}
+		}
+		if (localStorage.LastPack)
+			for (Pack of PackSelect.children)
+				if (Pack.value === localStorage.LastPack) {
+					Pack.selected = "selected";
+					break;
+				}
+	</script>
 </body>
+
 </html>

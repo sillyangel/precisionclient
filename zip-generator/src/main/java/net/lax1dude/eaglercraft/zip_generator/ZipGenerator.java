@@ -51,22 +51,31 @@ public class ZipGenerator {
 		System.out.println("Loading 'compiled/web/classes_server.js'");
 		String classesServerJs = FileUtils.readFileToString(new File("compiled/web/classes_server.js"), "UTF-8").replaceFirst("\\/\\/# sourceMappingURL=.*(\\r\\n|\\r|\\n)*", "").trim();
 		
-		System.out.println("Loading 'compiled/web/assets.epk'");
-		String assetsEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/assets.epk")));
+		System.out.println("Loading texture packs");
+		String one_5Epk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/1.5.epk")));
+		String one_17Epk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/1.17.epk")));
+		String bombiesEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Bombies.epk")));
+		String bonesEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Bones.epk")));
+		String m_One_17Epk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/M1.17.epk")));
+		String miamiEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Miami.epk")));
+		String nebulaEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Nebula.epk")));
+		String riceEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Rice.epk")));
+		String tightEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Tight.epk")));
+		String waliEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Wali.epk")));
 
 		System.out.println("Loading 'compiled/web/eagswebrtc.js'");
 		String classesWebRTCJs = FileUtils.readFileToString(new File("compiled/web/eagswebrtc.js"), "UTF-8").replaceFirst("[\\'\\\"]use strict[\\'\\\"]\\;(\\r\\n|\\r|\\n)*", "").trim();
 
-		System.out.println("Loading 'zip-generator/Offline_Download_Version_Template.html'");
-		String offlineTemplate = FileUtils.readFileToString(new File("zip-generator/Offline_Download_Version_Template.html"), "UTF-8");
+		System.out.println("Loading 'zip-generator/precisionclientofflinetemp.html'");
+		String offlineTemplate = FileUtils.readFileToString(new File("zip-generator/precisionclientofflinetemp.html"), "UTF-8");
 		
-		System.out.println("Writing 'compiled/offline/Offline_Download_Version.html'");
+		System.out.println("Writing 'compiled/precisionclientoffline.html'");
 		
-		offlineTemplate = offlineTemplate.replace("${date}", date).replace("${assets_epk_base64}", assetsEpk).replace("${classes_js}",
+		offlineTemplate = offlineTemplate.replace("${date}", date).replace("${assets_epk_base64}", one_5Epk).replace("${classes_js}",
 				classesJs.replaceFirst("\\/\\/# sourceMappingURL=.*(\\r\\n|\\r|\\n)*", "").trim());
 		offlineTemplate = offlineTemplate.replace("${eagswebrtc_js}", classesWebRTCJs).replace("${classes_server_js}", classesServerJs);
 		
-		FileUtils.writeStringToFile(new File("compiled/offline/Offline_Download_Version.html"), offlineTemplate, "UTF-8");
+		FileUtils.writeStringToFile(new File("compiled/precisionclientoffline.html"), offlineTemplate, "UTF-8");
 		
 		System.out.println("Writing 'compiled/web/classes.js'");
 		FileUtils.writeStringToFile(new File("compiled/web/classes.js"), classesJs, "UTF-8");

@@ -1,6 +1,4 @@
 @echo off
 title epkcompiler
-echo compiling, please wait...
-java -jar CompilePackage.jar "../lwjgl-rundir/resources" "../javascript/assets.epk"
-echo finished compiling epk
+java -jar CompilePackage.jar {"../lwjgl-rundir/packs/1.5" "../compiled/web/packs/1.5.epk"} {java -jar CompilePackage.jar "../lwjgl-rundir/packs/1.5" "../compiled/web/packs/1.5.epk"}
 pause
