@@ -27,29 +27,29 @@
 <body style="margin: 0; width: 100vw; height: 100vh;
 background-image: url(bg.png); background-repeat: no-repeat; font-family:
 'Product Sans'" id="game_frame">
-	<div id="Selection" style="display: inline-block; position: absolute; top:
-		50%; left: 50%; transform: translate(-50%, -50%)">
-		<h1>Precision Client Launcher</h1>
-		<h3>Select a pack:</h3>
+	<div id="Selection"
+		style="display: inline-block; position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%)">
+		<h1>Precision Client</h1>
+		<h3>Select a texture pack:</h3>
 		<select id="Packs">
-			<option>--Choose one--</option>
-			<option value="1.5">Default 1.5</option>
-			<option value="1.17">Default 1.17</option>
-			<option value="Bombies">Bombies 180k</option>
-			<option value="Bones">Bare Bones</option>
-			<option value="M1.17">Modified 1.17</option>
-			<option value="Miami">Miami Private</option>
-			<option value="Nebula">Nebula</option>
-			<option value="Rice">Ricefault</option>
-			<option value="Tight">Tightfault</option>
-			<option value="Wali">Walifault</option>
+			<option>-- Choose one --</option>
+			<option value="defaultold">Default Old</option>
+			<option value="defaultnew">Default 1.17+</option>
+			<option value="bombies">Bombies 180k</option>
+			<option value="bones">Bare Bones</option>
+			<option value="modifiednew">Modified 1.17+</option>
+			<option value="miamiprivate">Miami Private</option>
+			<option value="nebula">Nebula</option>
+			<option value="ricefault">Ricefault</option>
+			<option value="tightfault">Tightfault</option>
+			<option value="walifault">Walifault</option>
 		</select>
 		<br /><br />
 		<input type="button" value="Launch" onclick="Start();" />
 	</div>
 	<script type="text/javascript">
 		if (document.location.href.startsWith("file:")) {
-			alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation");
+			alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation.");
 		} else {
 			var PackSelect = document.getElementById("Packs");
 			function Start() {
@@ -59,7 +59,10 @@ background-image: url(bg.png); background-repeat: no-repeat; font-family:
 					localStorage.LastPack = Selected;
 					const relayId = Math.floor(Math.random() * 3);
 					window.eaglercraftOpts = {
-						container: "game_frame", assetsURI: "packs/${Selected}.epk", serverWorkerURI: "worker_bootstrap.js", worldsFolder: "MAIN",
+						container: "game_frame",
+						assetsURI: `packs/${Selected}.epk`,
+						serverWorkerURI: "worker_bootstrap.js",
+						worldsFolder: "MAIN",
 						servers: [],
 						relays: [
 							{ addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: relayId == 0 },
