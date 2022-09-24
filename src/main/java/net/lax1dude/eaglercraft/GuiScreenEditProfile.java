@@ -1,12 +1,7 @@
 package net.lax1dude.eaglercraft;
 
 import net.lax1dude.eaglercraft.EaglerProfile.EaglerProfileSkin;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiTextField;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.StringTranslate;
+import net.minecraft.src.*;
 
 public class GuiScreenEditProfile extends GuiScreen {
 	

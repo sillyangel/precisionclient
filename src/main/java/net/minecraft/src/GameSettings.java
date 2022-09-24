@@ -29,8 +29,8 @@ public class GameSettings {
 	/** Advanced OpenGL */
 	public boolean advancedOpengl = false;
 	public int limitFramerate = 0;
-	public boolean fancyGraphics = false;
-	public boolean enableFog = true;
+	public boolean fancyGraphics = true;
+	public boolean enableFog = false;
 
 	/** Smooth Lighting */
 	public int ambientOcclusion = 0;
@@ -49,7 +49,7 @@ public class GameSettings {
 	public boolean snooperEnabled = false;
 	public boolean fullScreen = false;
 	public boolean enableVsync = true;
-	public boolean hideServerAddress = false;
+	public boolean hideServerAddress = true;
 
 	/**
 	 * Whether to show advanced information on item tooltips, toggled by F3+H
@@ -164,7 +164,7 @@ public class GameSettings {
 		this.debugCamRate = 1.0F;
 		this.fovSetting = 0.0F;
 		this.gammaSetting = 1.0F;
-		this.guiScale = 3;
+		this.guiScale = 2;
 		this.particleSetting = 0;
 		this.language = "en_US";
 		this.mc = par1Minecraft;
@@ -271,7 +271,7 @@ public class GameSettings {
 		if (par1EnumOptions == EnumOptions.RENDER_DISTANCE) {
 			this.renderDistance = this.renderDistance + par2 & 3;
 			if(this.mc.isSingleplayerOrLAN()) {
-				Minecraft.getMinecraft().displayEaglercraftText("changing render distance in singleplayer may take a few seconds, this is not a glitch plz don't report");
+				Minecraft.getMinecraft().displayEaglercraftText("Changing render distance in singleplayer may take a few seconds");
 			}
 		}
 

@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
-import java.io.IOException;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglerProfile;
 import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.RateLimit;
 import net.minecraft.client.Minecraft;
+
+import java.io.IOException;
 
 public class GuiConnecting extends GuiScreen {
 	/** A reference to the NetClientHandler. */

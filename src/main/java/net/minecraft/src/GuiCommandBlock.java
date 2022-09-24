@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class GuiCommandBlock extends GuiScreen {
 	/** Text field containing the command block's command. */

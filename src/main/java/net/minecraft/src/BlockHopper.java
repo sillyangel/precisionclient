@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.List;
 
 public class BlockHopper extends BlockContainer {
 	private final EaglercraftRandom field_94457_a = new EaglercraftRandom();

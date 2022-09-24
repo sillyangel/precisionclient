@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.List;
 
 public class BlockPistonExtension extends Block {
 	/** The texture for the 'head' of the piston. Sticky or normal. */

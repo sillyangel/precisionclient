@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class GuiChat extends GuiScreen {
 	private String field_73898_b = "";

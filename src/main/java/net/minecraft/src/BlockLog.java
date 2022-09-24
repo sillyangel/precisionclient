@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.List;
 
 public class BlockLog extends Block {
 	/** The type of tree this log came from. */

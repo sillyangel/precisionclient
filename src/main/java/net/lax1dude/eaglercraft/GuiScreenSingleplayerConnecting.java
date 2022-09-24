@@ -1,15 +1,9 @@
 package net.lax1dude.eaglercraft;
 
-import java.io.IOException;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiDisconnected;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet250CustomPayload;
-import net.minecraft.src.Packet2ClientProtocol;
-import net.minecraft.src.WorldClient;
+import net.minecraft.src.*;
+
+import java.io.IOException;
 
 public class GuiScreenSingleplayerConnecting extends GuiScreen {
 

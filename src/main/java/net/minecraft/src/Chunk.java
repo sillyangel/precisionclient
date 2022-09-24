@@ -1,13 +1,8 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.*;
 
 public class Chunk {
 	/**

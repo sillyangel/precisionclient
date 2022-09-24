@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.util.Iterator;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.ConfigConstants;
 import net.lax1dude.eaglercraft.EaglerAdapter;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class GuiDisconnected extends GuiScreen {
 	/** The error message. */

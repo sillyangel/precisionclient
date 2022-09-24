@@ -1,17 +1,12 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.*;
+import net.lax1dude.eaglercraft.adapter.Tessellator;
+import net.minecraft.client.Minecraft;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.EaglercraftRandom;
-import net.lax1dude.eaglercraft.EnumBrowser;
-import net.lax1dude.eaglercraft.IntegratedServer;
-import net.lax1dude.eaglercraft.TextureLocation;
-import net.lax1dude.eaglercraft.adapter.Tessellator;
-import net.lax1dude.eaglercraft.glemu.EffectPipeline;
-import net.minecraft.client.Minecraft;
 
 public class GuiIngame extends Gui {
 	private static RenderItem itemRenderer = null;

@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.nio.FloatBuffer;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
+
+import java.nio.FloatBuffer;
 
 
 public class ActiveRenderInfo {

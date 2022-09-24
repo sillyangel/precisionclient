@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class ItemMap extends ItemMapBase {
 	protected ItemMap(int par1) {

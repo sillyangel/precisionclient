@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 import net.lax1dude.eaglercraft.IntegratedServer;
+
+import java.util.List;
 
 public class GuiCreateWorld extends GuiScreen {
 	private GuiScreen parentGuiScreen;

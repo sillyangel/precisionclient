@@ -1,12 +1,8 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.minecraft.client.Minecraft;
+
+import java.util.*;
 
 public class TexturePackList {
 	/**

@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.minecraft.client.Minecraft;
+
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import net.minecraft.client.Minecraft;
 
 
 

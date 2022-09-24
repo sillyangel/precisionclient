@@ -1,17 +1,16 @@
 package net.lax1dude.eaglercraft;
 
+import com.jcraft.jzlib.CRC32;
+import com.jcraft.jzlib.GZIPInputStream;
+import com.jcraft.jzlib.InflaterInputStream;
+import org.json.JSONObject;
+
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.HashMap;
-
-import com.jcraft.jzlib.CRC32;
-import com.jcraft.jzlib.GZIPInputStream;
-import com.jcraft.jzlib.InflaterInputStream;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class AssetRepository {
 	

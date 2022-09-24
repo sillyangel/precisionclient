@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+import net.lax1dude.eaglercraft.TextureLocation;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiContainerCreative extends InventoryEffectRenderer {
 	private static InventoryBasic inventory = new InventoryBasic("tmp", true, 45);

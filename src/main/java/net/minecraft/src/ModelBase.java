@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public abstract class ModelBase {
 	public float onGround;

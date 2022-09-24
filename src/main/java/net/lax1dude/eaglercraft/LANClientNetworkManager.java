@@ -1,24 +1,13 @@
 package net.lax1dude.eaglercraft;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket00Handshake;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket01ICEServers;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket03ICECandidate;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket04Description;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket05ClientSuccess;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket06ClientFailure;
-import net.lax1dude.eaglercraft.sp.relay.pkt.IPacketFFErrorCode;
+import net.lax1dude.eaglercraft.sp.relay.pkt.*;
 import net.minecraft.src.INetworkManager;
 import net.minecraft.src.NetHandler;
 import net.minecraft.src.Packet;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LANClientNetworkManager implements INetworkManager {
 

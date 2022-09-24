@@ -1,12 +1,12 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EffectRenderer {
 	/** Reference to the World object. */

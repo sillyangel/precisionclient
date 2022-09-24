@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+import net.lax1dude.eaglercraft.TextureLocation;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.Iterator;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiBeacon extends GuiContainer {
 	private TileEntityBeacon beacon;

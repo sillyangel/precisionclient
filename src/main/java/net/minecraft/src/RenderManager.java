@@ -1,13 +1,9 @@
 package net.minecraft.src;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
+
+import java.util.*;
 
 public class RenderManager {
 	/** A map of entity classes and the associated renderer. */

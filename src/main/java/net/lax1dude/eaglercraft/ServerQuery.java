@@ -1,8 +1,7 @@
 package net.lax1dude.eaglercraft;
 
-import org.json.JSONObject;
-
 import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.RateLimit;
+import org.json.JSONObject;
 
 public interface ServerQuery {
 	

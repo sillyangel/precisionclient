@@ -1,14 +1,14 @@
 package net.lax1dude.eaglercraft.glemu;
 
-import static net.lax1dude.eaglercraft.EaglerAdapter.*;
-import static net.lax1dude.eaglercraft.glemu.EaglerAdapterGL30._wglBindVertexArray0;
+import net.lax1dude.eaglercraft.EaglerAdapter;
+import net.minecraft.client.Minecraft;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.minecraft.client.Minecraft;
+import static net.lax1dude.eaglercraft.EaglerAdapter.*;
+import static net.lax1dude.eaglercraft.glemu.EaglerAdapterGL30._wglBindVertexArray0;
 
 public class EffectPipelineFXAA {
 	

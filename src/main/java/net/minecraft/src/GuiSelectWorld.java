@@ -1,17 +1,12 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.*;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.GuiScreenBackupWorld;
-import net.lax1dude.eaglercraft.GuiScreenCreateWorldSelection;
-import net.lax1dude.eaglercraft.GuiScreenLANConnect;
-import net.lax1dude.eaglercraft.GuiScreenSingleplayerLoading;
-import net.lax1dude.eaglercraft.IntegratedServer;
 
 public class GuiSelectWorld extends GuiScreen {
 	/** simple date formater */

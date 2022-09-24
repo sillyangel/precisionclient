@@ -1,12 +1,7 @@
 package net.lax1dude.eaglercraft;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.Gui;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiScreenConfirmation;
-import net.minecraft.src.StringTranslate;
+import net.minecraft.src.*;
 
 public class GuiScreenRelay extends GuiScreen {
 	

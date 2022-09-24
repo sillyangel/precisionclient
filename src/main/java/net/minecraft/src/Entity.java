@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.List;
 
 
 

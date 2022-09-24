@@ -1,15 +1,10 @@
 package net.lax1dude.eaglercraft;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.src.*;
+
 import java.util.List;
 import java.util.Set;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.EnumChatFormatting;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiSlider2;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.StringTranslate;
 
 public class GuiVoiceMenu extends GuiScreen  {
 	

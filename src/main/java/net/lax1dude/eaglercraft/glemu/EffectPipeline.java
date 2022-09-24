@@ -1,19 +1,17 @@
 package net.lax1dude.eaglercraft.glemu;
 
-import static net.lax1dude.eaglercraft.EaglerAdapter.*;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.IntBuffer;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.GLAllocation;
-import net.minecraft.src.Gui;
 import net.minecraft.src.MathHelper;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
+
+import static net.lax1dude.eaglercraft.EaglerAdapter.*;
 
 public class EffectPipeline {
 

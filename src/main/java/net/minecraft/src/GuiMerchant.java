@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 public class GuiMerchant extends GuiContainer {
 	/** Instance of IMerchant interface. */

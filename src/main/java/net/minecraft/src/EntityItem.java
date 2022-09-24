@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.Iterator;
-
 import net.minecraft.client.Minecraft;
+
+import java.util.Iterator;
 
 
 

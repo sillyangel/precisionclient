@@ -1,11 +1,6 @@
 package net.minecraft.src;
 
-import net.lax1dude.eaglercraft.DefaultSkinRenderer;
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.EaglerProfile;
-import net.lax1dude.eaglercraft.HighPolySkin;
-import net.lax1dude.eaglercraft.ModelBipedNewSkins;
-import net.lax1dude.eaglercraft.TextureLocation;
+import net.lax1dude.eaglercraft.*;
 import net.lax1dude.eaglercraft.glemu.vector.Matrix4f;
 import net.minecraft.client.Minecraft;
 
@@ -549,8 +544,6 @@ public class RenderPlayer extends RenderLiving {
 			}
 		}
 	}
-	
-	private static final TextureLocation lax1dude_cape = new TextureLocation("/misc/laxcape.png");
 
 	/**
 	 * Method for adding special render rules

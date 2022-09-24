@@ -1,11 +1,6 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ItemPotion extends Item {
 	/** maps potion damage values to lists of effect names */

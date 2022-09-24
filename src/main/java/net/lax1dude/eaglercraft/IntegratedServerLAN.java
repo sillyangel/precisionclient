@@ -1,14 +1,10 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
-
 import net.lax1dude.eaglercraft.sp.ipc.IPCPacket0CPlayerChannel;
 import net.lax1dude.eaglercraft.sp.relay.pkt.*;
+
+import java.util.*;
+import java.util.function.Consumer;
 
 public class IntegratedServerLAN {
 	

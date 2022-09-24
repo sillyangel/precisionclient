@@ -1,11 +1,11 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagByteArray;
 import net.minecraft.src.NBTTagCompound;
+
+import java.util.ArrayList;
 
 public class EaglerProfile {
 	

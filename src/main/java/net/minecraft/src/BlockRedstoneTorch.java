@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class BlockRedstoneTorch extends BlockTorch {
 	/** Whether the redstone torch is currently active or not. */

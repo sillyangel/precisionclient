@@ -1,13 +1,6 @@
 package net.minecraft.src;
 
-import net.lax1dude.eaglercraft.AbortedException;
-import net.lax1dude.eaglercraft.ConfigConstants;
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.GuiScreenNoRelays;
-import net.lax1dude.eaglercraft.GuiScreenSkinCapeSettings;
-import net.lax1dude.eaglercraft.GuiVoiceMenu;
-import net.lax1dude.eaglercraft.IntegratedServer;
-import net.lax1dude.eaglercraft.IntegratedServerLAN;
+import net.lax1dude.eaglercraft.*;
 import net.minecraft.client.Minecraft;
 
 public class GuiIngameMenu extends GuiScreen {

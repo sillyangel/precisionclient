@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerInflater;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerInflater;
 
 public class Packet56MapChunks extends Packet {
 	private int[] chunkPostX;

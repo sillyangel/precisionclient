@@ -1,8 +1,5 @@
 package net.lax1dude.eaglercraft.adapter.teavm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.teavm.jso.JSBody;
 import org.teavm.jso.JSFunctor;
 import org.teavm.jso.JSObject;
@@ -14,6 +11,9 @@ import org.teavm.jso.dom.html.HTMLDocument;
 import org.teavm.jso.dom.html.HTMLIFrameElement;
 import org.teavm.jso.dom.xml.Element;
 import org.teavm.jso.dom.xml.NodeList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SelfDefence {
 	

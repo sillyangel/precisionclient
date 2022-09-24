@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 import net.minecraft.client.Minecraft;
+
+import java.util.List;
 
 public abstract class GuiSlot {
 	protected final Minecraft mc;

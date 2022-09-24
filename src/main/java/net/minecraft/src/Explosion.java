@@ -1,13 +1,8 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.*;
 
 public class Explosion {
 	/** whether or not the explosion sets fire to blocks around it */

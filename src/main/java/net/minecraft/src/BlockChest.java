@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.Iterator;
-
 import net.lax1dude.eaglercraft.EaglercraftRandom;
+
+import java.util.Iterator;
 
 public class BlockChest extends BlockContainer {
 	private final EaglercraftRandom random = new EaglercraftRandom();

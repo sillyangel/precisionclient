@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.io.IOException;
 import java.io.InputStream;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class TexturePackDefault extends TexturePackImplementation {
 	public TexturePackDefault() {

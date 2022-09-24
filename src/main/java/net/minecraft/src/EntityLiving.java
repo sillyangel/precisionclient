@@ -1,14 +1,14 @@
 package net.minecraft.src;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.DefaultSkinRenderer;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 import net.lax1dude.eaglercraft.HighPolySkin;
 import net.minecraft.client.Minecraft;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 
 

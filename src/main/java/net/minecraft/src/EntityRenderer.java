@@ -1,8 +1,5 @@
 package net.minecraft.src;
 
-import java.nio.FloatBuffer;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglerImage;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
@@ -12,6 +9,9 @@ import net.lax1dude.eaglercraft.glemu.EffectPipeline;
 import net.lax1dude.eaglercraft.glemu.EffectPipelineFXAA;
 import net.lax1dude.eaglercraft.glemu.vector.Matrix4f;
 import net.minecraft.client.Minecraft;
+
+import java.nio.FloatBuffer;
+import java.util.List;
 
 public class EntityRenderer {
 	public static boolean anaglyphEnable = false;

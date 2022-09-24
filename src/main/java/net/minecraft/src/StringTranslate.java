@@ -1,13 +1,11 @@
 package net.minecraft.src;
 
-import java.io.BufferedReader;
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.IllegalFormatException;
 import java.util.Properties;
 import java.util.TreeMap;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class StringTranslate {
 	/** Is the private singleton instance of StringTranslate. */

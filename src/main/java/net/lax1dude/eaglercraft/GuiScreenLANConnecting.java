@@ -1,14 +1,8 @@
 package net.lax1dude.eaglercraft;
 
-import java.io.IOException;
+import net.minecraft.src.*;
 
-import net.minecraft.src.GuiDisconnected;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.LoadingScreenRenderer;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet250CustomPayload;
-import net.minecraft.src.Packet2ClientProtocol;
-import net.minecraft.src.StringTranslate;
+import java.io.IOException;
 
 public class GuiScreenLANConnecting extends GuiScreen {
 

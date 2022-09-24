@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
+
+import java.util.Collection;
+import java.util.Iterator;
 
 public abstract class InventoryEffectRenderer extends GuiContainer {
 	private boolean field_74222_o;

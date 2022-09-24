@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.adapter.Tessellator;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeMap;
-
-import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 class GuiSlotLanguage extends GuiSlot {
 	private ArrayList field_77251_g;

@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class ChatAllowedCharacters {
 	/**

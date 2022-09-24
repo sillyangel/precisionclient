@@ -1,6 +1,7 @@
 package net.lax1dude.eaglercraft.glemu;
 
-import static net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.*;
+import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.*;
+import net.minecraft.src.GLAllocation;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -10,9 +11,7 @@ import java.nio.IntBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
-import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.BufferArrayGL;
-import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.BufferGL;
-import net.minecraft.src.GLAllocation;
+import static net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.*;
 
 public class HighPolyMesh {
 	

@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
-import java.util.Iterator;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglerImage;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
+
+import java.util.Iterator;
 
 public class MapItemRenderer {
 	private int[] intArray = new int[16384];

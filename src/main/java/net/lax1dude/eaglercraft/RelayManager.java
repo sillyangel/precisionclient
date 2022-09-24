@@ -1,17 +1,17 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Consumer;
-
 import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket;
 import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket00Handshake;
 import net.lax1dude.eaglercraft.sp.relay.pkt.IPacketFFErrorCode;
 import net.minecraft.src.NBTBase;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class RelayManager {
 	

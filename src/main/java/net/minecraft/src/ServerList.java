@@ -1,22 +1,16 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.*;
+import net.lax1dude.eaglercraft.ServerQuery.QueryResponse;
+import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.RateLimit;
+import net.minecraft.client.Minecraft;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import net.lax1dude.eaglercraft.ServerQuery.QueryResponse;
-import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.RateLimit;
-import net.lax1dude.eaglercraft.Base64;
-import net.lax1dude.eaglercraft.ConfigConstants;
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.LocalStorageManager;
-import net.lax1dude.eaglercraft.RelayEntry;
-import net.lax1dude.eaglercraft.EaglercraftRandom;
-import net.minecraft.client.Minecraft;
 
 public class ServerList {
 	/** The Minecraft instance. */

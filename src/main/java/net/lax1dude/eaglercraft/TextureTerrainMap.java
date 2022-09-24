@@ -1,18 +1,14 @@
 package net.lax1dude.eaglercraft;
 
+import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.FramebufferGL;
+import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.TextureGL;
+import net.minecraft.client.Minecraft;
+import net.minecraft.src.*;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
-
-import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.FramebufferGL;
-import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.TextureGL;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.GLAllocation;
-import net.minecraft.src.Icon;
-import net.minecraft.src.IconRegister;
-import net.minecraft.src.RenderManager;
 
 //supports only 16x16 textures, mipmap is four levels deep
 public class TextureTerrainMap implements IconRegister {

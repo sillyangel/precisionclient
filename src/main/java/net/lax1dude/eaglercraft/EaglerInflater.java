@@ -1,11 +1,11 @@
 package net.lax1dude.eaglercraft;
 
+import com.jcraft.jzlib.InflaterInputStream;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import com.jcraft.jzlib.InflaterInputStream;
 
 public class EaglerInflater {
 	

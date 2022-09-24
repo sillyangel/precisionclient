@@ -1,13 +1,13 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.Gui;
 import net.minecraft.src.GuiChat;
 import net.minecraft.src.GuiIngameMenu;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class GuiVoiceOverlay extends Gui {
 	

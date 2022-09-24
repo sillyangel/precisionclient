@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class EntityVillager extends EntityAgeable implements INpc, IMerchant {
 	private int randomTickDivider;

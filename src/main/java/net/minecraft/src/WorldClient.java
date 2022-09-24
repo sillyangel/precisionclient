@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+import net.minecraft.client.Minecraft;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
-import net.minecraft.client.Minecraft;
 
 public class WorldClient extends World {
 	/** The packets that need to be sent to the server. */

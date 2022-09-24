@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerInflater;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
-import net.lax1dude.eaglercraft.EaglerInflater;
 
 public class Packet51MapChunk extends Packet {
 	/** The x-position of the transmitted chunk, in chunk coordinates. */

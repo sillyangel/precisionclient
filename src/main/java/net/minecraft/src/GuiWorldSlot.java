@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.Date;
-
 import net.lax1dude.eaglercraft.adapter.Tessellator;
+
+import java.util.Date;
 
 class GuiWorldSlot extends GuiSlot {
 	final GuiSelectWorld parentWorldGui;

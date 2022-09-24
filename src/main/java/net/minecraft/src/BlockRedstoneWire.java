@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class BlockRedstoneWire extends Block {
 	/**

@@ -1,9 +1,9 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.RenderEngine;
+
+import java.util.ArrayList;
 
 public class TextureLocation {
 

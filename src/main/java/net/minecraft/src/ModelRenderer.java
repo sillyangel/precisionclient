@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModelRenderer {
 	/** The size of the texture file's width in pixels. */

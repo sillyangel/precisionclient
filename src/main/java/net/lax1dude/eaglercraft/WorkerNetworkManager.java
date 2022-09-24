@@ -1,14 +1,10 @@
 package net.lax1dude.eaglercraft;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import net.minecraft.src.INetworkManager;
 import net.minecraft.src.NetHandler;
 import net.minecraft.src.Packet;
+
+import java.io.*;
 
 public class WorkerNetworkManager implements INetworkManager {
 	

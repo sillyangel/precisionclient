@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+
 import java.util.Iterator;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class BlockTripWire extends Block {
 	public BlockTripWire(int par1) {

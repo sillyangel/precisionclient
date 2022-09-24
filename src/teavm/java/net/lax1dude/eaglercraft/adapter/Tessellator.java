@@ -1,10 +1,9 @@
 package net.lax1dude.eaglercraft.adapter;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
 import org.teavm.jso.typedarrays.ArrayBuffer;
 import org.teavm.jso.typedarrays.Float32Array;
 import org.teavm.jso.typedarrays.Int32Array;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 
 public class Tessellator {

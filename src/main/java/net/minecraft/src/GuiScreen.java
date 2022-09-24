@@ -1,12 +1,12 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 import net.minecraft.client.Minecraft;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiScreen extends Gui {
 	public static final boolean isMacOs = Minecraft.getOs() == EnumOS.MACOS;

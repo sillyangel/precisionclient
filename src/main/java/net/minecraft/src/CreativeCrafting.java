@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
+
+import java.util.List;
 
 public class CreativeCrafting implements ICrafting {
 	private final Minecraft mc;

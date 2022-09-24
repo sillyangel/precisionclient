@@ -1,16 +1,7 @@
 package net.minecraft.src;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import net.lax1dude.eaglercraft.ConfigConstants;
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.GuiNetworkSettingsButton;
-import net.lax1dude.eaglercraft.GuiScreenConnectOption;
-import net.lax1dude.eaglercraft.GuiScreenLANConnecting;
-import net.lax1dude.eaglercraft.LANServerList;
+import net.lax1dude.eaglercraft.*;
 import net.lax1dude.eaglercraft.LANServerList.LanServer;
-import net.lax1dude.eaglercraft.RelayServer;
 
 public class GuiMultiplayer extends GuiScreen {
 	/** Number of outstanding ThreadPollServers threads */

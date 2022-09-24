@@ -1,14 +1,7 @@
 package net.lax1dude.eaglercraft;
 
 import net.lax1dude.eaglercraft.sp.ipc.IPCPacket05RequestData;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiCreateWorld;
-import net.minecraft.src.GuiRenameWorld;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiYesNo;
-import net.minecraft.src.NBTTagCompound;
-import net.minecraft.src.StringTranslate;
-import net.minecraft.src.WorldInfo;
+import net.minecraft.src.*;
 
 public class GuiScreenBackupWorld extends GuiScreen {
 

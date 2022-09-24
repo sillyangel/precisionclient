@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
-import java.util.Calendar;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
+
+import java.util.Calendar;
 
 public class TileEntityChestRenderer extends TileEntitySpecialRenderer {
 	/** The normal small chest model. */

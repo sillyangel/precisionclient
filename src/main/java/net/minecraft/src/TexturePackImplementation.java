@@ -1,13 +1,13 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+import net.lax1dude.eaglercraft.EaglerImage;
+import net.lax1dude.eaglercraft.TextureLocation;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.EaglerImage;
-import net.lax1dude.eaglercraft.TextureLocation;
 
 public abstract class TexturePackImplementation implements ITexturePack {
 	/**

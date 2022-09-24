@@ -1,14 +1,10 @@
 package net.minecraft.src;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.minecraft.client.Minecraft;
+
+import java.util.*;
 
 public abstract class GuiContainer extends GuiScreen {
 	/** Stacks renderer. Icons, stack size, health, etc... */

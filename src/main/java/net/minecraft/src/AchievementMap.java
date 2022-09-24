@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class AchievementMap {
 	/** Holds the singleton instance of AchievementMap. */

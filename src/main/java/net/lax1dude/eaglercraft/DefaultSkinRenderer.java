@@ -1,24 +1,12 @@
 package net.lax1dude.eaglercraft;
 
+import net.lax1dude.eaglercraft.EaglerProfile.EaglerProfileCape;
+import net.minecraft.client.Minecraft;
+import net.minecraft.src.*;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
-
-import net.lax1dude.eaglercraft.EaglerProfile.EaglerProfileCape;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.EntityClientPlayerMP;
-import net.minecraft.src.EntityOtherPlayerMP;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ModelBiped;
-import net.minecraft.src.ModelBlaze;
-import net.minecraft.src.ModelEnderman;
-import net.minecraft.src.ModelSkeleton;
-import net.minecraft.src.ModelVillager;
-import net.minecraft.src.ModelZombie;
-import net.minecraft.src.OpenGlHelper;
-import net.minecraft.src.Packet250CustomPayload;
-import net.minecraft.src.RenderEnderman;
-import net.minecraft.src.RenderHelper;
 
 public class DefaultSkinRenderer {
 	

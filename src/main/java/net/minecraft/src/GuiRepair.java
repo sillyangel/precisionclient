@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.minecraft.client.Minecraft;
+
+import java.util.List;
 
 public class GuiRepair extends GuiContainer implements ICrafting {
 	private ContainerRepair repairContainer;

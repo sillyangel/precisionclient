@@ -1,12 +1,8 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
+
+import java.util.*;
 
 public class GuiFlatPresets extends GuiScreen {
 	/** RenderItem instance used to render preset icons. */

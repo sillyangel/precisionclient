@@ -1,14 +1,14 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.function.BiConsumer;
-import java.util.function.BooleanSupplier;
-
 import net.lax1dude.eaglercraft.sp.ipc.IPCPacket15ThrowException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiMainMenu;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.StringTranslate;
+
+import java.util.function.BiConsumer;
+import java.util.function.BooleanSupplier;
 
 public class GuiScreenSingleplayerLoading extends GuiScreen {
 

@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglerAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class TextureStitched implements Icon {
 	private final String textureName;

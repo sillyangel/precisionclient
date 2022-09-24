@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.nio.IntBuffer;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
+
+import java.nio.IntBuffer;
 
 public class RenderList {
 	private int field_78429_a;

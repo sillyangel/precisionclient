@@ -1,10 +1,10 @@
 package net.lax1dude.eaglercraft;
 
-import java.util.List;
-
 import net.lax1dude.eaglercraft.RelayQuery.VersionMismatch;
 import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2.RateLimit;
 import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket07LocalWorlds.LocalWorld;
+
+import java.util.List;
 
 public interface RelayWorldsQuery {
 

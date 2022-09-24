@@ -1,15 +1,10 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglerImage;
 import net.minecraft.client.Minecraft;
+
+import java.util.*;
 
 public class TextureMap implements IconRegister {
 	/** 0 = terrain.png, 1 = items.png */

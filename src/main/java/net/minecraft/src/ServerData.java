@@ -1,16 +1,15 @@
 package net.minecraft.src;
 
-import java.nio.IntBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.ServerQuery;
 import net.lax1dude.eaglercraft.ServerQuery.QueryResponse;
 import net.minecraft.client.Minecraft;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServerData {
 	public String serverName;

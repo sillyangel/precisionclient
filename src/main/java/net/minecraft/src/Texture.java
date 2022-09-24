@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglerImage;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class Texture {
 	private int glTextureId;

@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.EaglercraftRandom;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public final class ItemStack {
 	/** Size of the stack. */

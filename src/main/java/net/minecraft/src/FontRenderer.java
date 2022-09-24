@@ -1,14 +1,14 @@
 package net.minecraft.src;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
 import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.EaglerImage;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class FontRenderer {
 	/** Array of width of all the characters in default.png */
