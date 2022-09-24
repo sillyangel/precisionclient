@@ -12,8 +12,7 @@ sp-server/.settings
 sp-server/build
 sp-server/bin
 lwjgl-rundir/_eagstorage*
-lwjgl-rundir/resources
-lwjgl-rundir/packs
+textures/
 *.bak
 sp-relay/out
 sp-relay/test
