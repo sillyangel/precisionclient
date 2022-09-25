@@ -1,47 +1,44 @@
 package net.minecraft.src;
 
+import net.lax1dude.eaglercraft.*;
+import net.lax1dude.eaglercraft.adapter.Tessellator;
+import net.minecraft.client.Minecraft;
+import prc.etcherfx.precision.*;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import net.lax1dude.eaglercraft.AssetRepository;
-import net.lax1dude.eaglercraft.ConfigConstants;
-import net.lax1dude.eaglercraft.EaglerAdapter;
-import net.lax1dude.eaglercraft.EaglercraftRandom;
-import net.lax1dude.eaglercraft.GuiScreenEditProfile;
-import net.lax1dude.eaglercraft.GuiScreenSingleplayerLoading;
-import net.lax1dude.eaglercraft.IntegratedServer;
-import net.lax1dude.eaglercraft.LocalStorageManager;
-import net.lax1dude.eaglercraft.TextureLocation;
-import net.lax1dude.eaglercraft.adapter.Tessellator;
-import net.minecraft.client.Minecraft;
-
 public class GuiMainMenu extends GuiScreen {
 
-	/** The RNG used by the Main Menu Screen. */
+	/**
+	 * The RNG used by the Main Menu Screen.
+	 */
 	private static final EaglercraftRandom rand = new EaglercraftRandom();
 
-	/** The splash message. */
+	/**
+	 * The splash message.
+	 */
 	public String splashText = null;
 	private GuiButton buttonResetDemo;
-	
+
 	private static boolean showingEndian = true;
 	private static final int showRandomItem;
-	
+
 	static {
-		if(ConfigConstants.mainMenuItemLink != null) {
+		if (ConfigConstants.mainMenuItemLink != null) {
 			EaglercraftRandom rand = new EaglercraftRandom();
 			int itm = 0;
 			do {
 				itm = rand.nextInt(256) + 256;
-			}while(Item.itemsList[itm] == null);
+			} while (Item.itemsList[itm] == null);
 			showRandomItem = itm;
-		}else {
+		} else {
 			showRandomItem = -1;
 		}
 	}
-	
+
 	private long start;
 
 	/**
@@ -56,8 +53,13 @@ public class GuiMainMenu extends GuiScreen {
 	private String field_92025_p;
 	private String field_104024_v;
 
-	/** An array of all the paths to the panorama pictures. */
-	private static final TextureLocation[] titlePanoramaPaths = new TextureLocation[] { new TextureLocation("/title/bg/panorama0.png"), new TextureLocation("/title/bg/panorama1.png"), new TextureLocation("/title/bg/panorama2.png"), new TextureLocation("/title/bg/panorama3.png"), new TextureLocation("/title/bg/panorama4.png"), new TextureLocation("/title/bg/panorama5.png") };
+	/**
+	 * An array of all the paths to the panorama pictures.
+	 */
+	private static final TextureLocation[] titlePanoramaPaths = new TextureLocation[] {
+			new TextureLocation("/title/bg/panorama0.png"), new TextureLocation("/title/bg/panorama1.png"),
+			new TextureLocation("/title/bg/panorama2.png"), new TextureLocation("/title/bg/panorama3.png"),
+			new TextureLocation("/title/bg/panorama4.png"), new TextureLocation("/title/bg/panorama5.png") };
 	public static final String field_96138_a = "";
 	private int field_92024_r;
 	private int field_92023_s;
@@ -71,27 +73,28 @@ public class GuiMainMenu extends GuiScreen {
 
 	private int dragstart = -1;
 	private int dragstartI = -1;
-	
+
 	private ArrayList<String> ackLines;
-	
+
 	public boolean showAck = false;
+
+	public boolean prc = true;
 
 	public GuiMainMenu() {
 		List<String> lst = ConfigConstants.splashTexts;
 		if (lst != null) {
-			if(lst.size() > 0) {
+			if (lst.size() > 0) {
 				EaglercraftRandom rand = new EaglercraftRandom();
 				this.splashText = lst.get(rand.nextInt(lst.size()));
-			}else {
+			} else {
 				this.splashText = "missingno";
 			}
 		}
-		this.field_92025_p = EaglerAdapter._wisWebGL() ? ("eaglercraft javascript runtime") : ("eaglercraft desktop runtime");
 		this.start = System.currentTimeMillis();
 		this.start += this.start % 10000l;
 		this.ackLines = new ArrayList();
-		
-		if(!LocalStorageManager.gameSettingsStorage.getBoolean("seenAcknowledgements")) {
+
+		if (!LocalStorageManager.gameSettingsStorage.getBoolean("seenAcknowledgements")) {
 			this.showAck = true;
 		}
 	}
@@ -106,12 +109,12 @@ public class GuiMainMenu extends GuiScreen {
 
 	public void handleMouseInput() {
 		super.handleMouseInput();
-		if(showAck) {
+		if (showAck) {
 			int var1 = EaglerAdapter.mouseGetEventDWheel();
-			if(var1 < 0) {
+			if (var1 < 0) {
 				scrollPosition += 3;
 			}
-			if(var1 > 0) {
+			if (var1 > 0) {
 				scrollPosition -= 3;
 			}
 		}
@@ -122,13 +125,13 @@ public class GuiMainMenu extends GuiScreen {
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
 	protected void keyTyped(char par1, int par2) {
-		if(par2 == 1) {
+		if (par2 == 1) {
 			hideAck();
 		}
 	}
-	
+
 	private void hideAck() {
-		if(!LocalStorageManager.gameSettingsStorage.getBoolean("seenAcknowledgements")) {
+		if (!LocalStorageManager.gameSettingsStorage.getBoolean("seenAcknowledgements")) {
 			LocalStorageManager.gameSettingsStorage.setBoolean("seenAcknowledgements", true);
 			LocalStorageManager.saveStorageG();
 		}
@@ -139,26 +142,42 @@ public class GuiMainMenu extends GuiScreen {
 	 * Adds the buttons (and other controls) to the screen in question.
 	 */
 	public void initGui() {
-		if(viewportTexture == -1) viewportTexture = this.mc.renderEngine.makeViewportTexture(256, 256);
+		if (viewportTexture == -1)
+			viewportTexture = this.mc.renderEngine.makeViewportTexture(256, 256);
 		Calendar var1 = Calendar.getInstance();
 		var1.setTime(new Date());
 
 		StringTranslate var2 = StringTranslate.getInstance();
 		int var4 = this.height / 4 + 48;
+		int var12 = this.height - 30;
 
-		if(EaglerAdapter.isIntegratedServerAvailable()) {
-			this.buttonList.add(new GuiButton(1, this.width / 2 - 100, var4, var2.translateKey("menu.singleplayer")));
-			this.buttonList.add(new GuiButton(2, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.multiplayer")));
-			this.buttonList.add(new GuiButton(3, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.forkme")));
-		}else {
-			this.buttonList.add(new GuiButton(2, this.width / 2 - 100, var4, var2.translateKey("menu.multiplayer")));
-			this.buttonList.add(new GuiButton(3, this.width / 2 - 100, var4 + 24, var2.translateKey("menu.forkme")));
+		if (EaglerAdapter.isIntegratedServerAvailable()) {
+			this.buttonList.add(
+					new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.singleplayer")));
+			this.buttonList.add(
+					new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
+			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3,
+					var2.translateKey("menu.githubrepo")));
+			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3,
+					var2.translateKey("menu.discordserver")));
+		} else {
+			GuiButton single;
+			this.buttonList.add(single = new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1,
+					var2.translateKey("menu.singleplayer")));
+			this.buttonList.add(
+					new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
+			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3,
+					var2.translateKey("menu.githubrepo")));
+			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3,
+					var2.translateKey("menu.discordserver")));
+			single.enabled = false;
 		}
 
-		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options")));
-		this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.editprofile")));
-
-		this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, var4 + 72 + 12));
+		this.buttonList.add(new GuiButtonLanguage(4, this.width / 2 - 60, var12));
+		this.buttonList.add(new GuiButtonPrcOptions(5, this.width / 2 - 35, var12));
+		this.buttonList.add(new GuiButtonOptions(6, this.width / 2 - 10, var12));
+		this.buttonList.add(new GuiButtonProfile(7, this.width / 2 + 15, var12));
+		this.buttonList.add(new GuiButtonReadme(8, this.width / 2 + 40, var12));
 		Object var5 = this.field_104025_t;
 
 		synchronized (this.field_104025_t) {
@@ -171,29 +190,29 @@ public class GuiMainMenu extends GuiScreen {
 			this.field_92019_w = this.field_92021_u + 12;
 		}
 
-		ConfigConstants.panoramaBlur = AssetRepository.getResource("/title/no-pano-blur.flag") == null;
-		
-		if(this.ackLines.isEmpty()) {
+		ConfigConstants.panoramaBlur = AssetRepository.getResource("/title/pano-blur.flag") == null;
+
+		if (this.ackLines.isEmpty()) {
 			int width = 315;
 			String file = EaglerAdapter.fileContents("/credits.txt");
-			if(file == null) {
-				for(int i = 0; i < 30; ++i) {
-					this.ackLines.add(" -- file not found -- ");
+			if (file == null) {
+				for (int i = 0; i < 30; ++i) {
+					this.ackLines.add(" -- The file 'credits.txt' does not exist -- ");
 				}
-			}else {
+			} else {
 				String[] lines = file.split("\n");
-				for(String s : lines) {
+				for (String s : lines) {
 					String s2 = s.trim();
-					if(s2.isEmpty()) {
+					if (s2.isEmpty()) {
 						this.ackLines.add("");
-					}else {
+					} else {
 						String[] words = s2.split(" ");
 						String currentLine = "   ";
-						for(String s3 : words) {
+						for (String s3 : words) {
 							String cCurrentLine = currentLine + s3 + " ";
-							if(this.mc.fontRenderer.getStringWidth(cCurrentLine) < width) {
+							if (this.mc.fontRenderer.getStringWidth(cCurrentLine) < width) {
 								currentLine = cCurrentLine;
-							}else {
+							} else {
 								this.ackLines.add(currentLine);
 								currentLine = s3 + " ";
 							}
@@ -202,63 +221,54 @@ public class GuiMainMenu extends GuiScreen {
 					}
 				}
 			}
-			
+
 		}
-		
+
 	}
 
 	protected void mouseClicked(int par1, int par2, int par3) {
-		if(!showAck) {
+		if (!showAck) {
 			super.mouseClicked(par1, par2, par3);
 			if (par3 == 0) {
-				int w = this.fontRenderer.getStringWidth("eaglercraft readme.txt") * 3 / 4;
-				if(par1 >= (this.width - w - 4) && par1 <= this.width && par2 >= 0 && par2 <= 9) {
-					showAck = true;
-					return;
-				}
-				w = this.fontRenderer.getStringWidth("debug console") * 3 / 4;
-				if(par1 >= 0 && par1 <= (w + 4) && par2 >= 0 && par2 <= 9) {
-					/*
-					EaglerAdapter.openConsole();
-					*/
-				}
-				if(ConfigConstants.mainMenuItemLink != null) {
-					//drawRect((this.width - w - 4), 0, this.width, 9, 0x55200000);
-
+				if (ConfigConstants.mainMenuItemLink != null) {
 					int posX = this.width / 2 - 170 - this.width / 10;
 					int posY = this.height / 4 + 70;
 					int ww = 66;
 					int hh = 46;
-					int ln0w = ConfigConstants.mainMenuItemLine0 == null ? 0 : fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine0);
+					int ln0w = ConfigConstants.mainMenuItemLine0 == null ? 0
+							: fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine0);
 					ww = ww < ln0w ? ln0w : ww;
 					hh = hh < ln0w ? hh + 12 : hh;
-					int ln1w = ConfigConstants.mainMenuItemLine1 == null ? 0 : fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine1);
+					int ln1w = ConfigConstants.mainMenuItemLine1 == null ? 0
+							: fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine1);
 					ww = ww < ln1w ? ln1w : ww;
 					hh = hh < ln1w ? hh + 12 : hh;
-					int ln2w = ConfigConstants.mainMenuItemLine2 == null ? 0 : fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine2);
+					int ln2w = ConfigConstants.mainMenuItemLine2 == null ? 0
+							: fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine2);
 					ww = ww < ln2w ? ln2w : ww;
 					hh = hh < ln2w ? hh + 12 : hh;
-					
+
 					ww += 20;
 					hh += 20;
-					
-					if(par1 > posX && par1 < posX + (ww / 4 * 3) && par2 > posY && par2 < posY + (hh / 4 * 3)) {
+
+					if (par1 > posX && par1 < posX + (ww / 4 * 3) && par2 > posY && par2 < posY + (hh / 4 * 3)) {
 						EaglerAdapter.openLink(ConfigConstants.mainMenuItemLink);
 						return;
 					}
 				}
 			}
-		}else {
-			if(par3 == 0) {
+		} else {
+			if (par3 == 0) {
 				int x = (this.width - 345) / 2;
 				int y = (this.height - 230) / 2;
-				if(par1 >= (x + 323) && par1 <= (x + 323 + 13) && par2 >= (y + 7) && par2 <= (y + 7 + 13)) {
+				if (par1 >= (x + 323) && par1 <= (x + 323 + 13) && par2 >= (y + 7) && par2 <= (y + 7 + 13)) {
 					this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 					hideAck();
 				}
 				int trackHeight = 193;
 				int offset = trackHeight * scrollPosition / this.ackLines.size();
-				if(par1 >= (x + 326) && par1 <= (x + 334) && par2 >= (y + 27 + offset) && par2 <= (y + 27 + offset + (visibleLines * trackHeight / this.ackLines.size()) + 1)) {
+				if (par1 >= (x + 326) && par1 <= (x + 334) && par2 >= (y + 27 + offset)
+						&& par2 <= (y + 27 + offset + (visibleLines * trackHeight / this.ackLines.size()) + 1)) {
 					dragstart = par2;
 					dragstartI = scrollPosition;
 				}
@@ -272,24 +282,19 @@ public class GuiMainMenu extends GuiScreen {
 	 */
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if (par1GuiButton.id == 0) {
-			showingEndian = false;
-			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+			EaglerAdapter.openLink(ConfigConstants.discordServer);
 		}
-		
+
 		if (par1GuiButton.id == 1) {
-			if(EaglerAdapter.isIntegratedServerAvailable()) {
-				if(!IntegratedServer.isAlive()) {
+			if (EaglerAdapter.isIntegratedServerAvailable()) {
+				if (!IntegratedServer.isAlive()) {
 					IntegratedServer.begin();
-					this.mc.displayGuiScreen(new GuiScreenSingleplayerLoading(new GuiSelectWorld(this), "starting up integrated server", () -> IntegratedServer.isReady()));
-				}else {
+					this.mc.displayGuiScreen(new GuiScreenSingleplayerLoading(new GuiSelectWorld(this),
+							"Starting up integrated server", () -> IntegratedServer.isReady()));
+				} else {
 					this.mc.displayGuiScreen(new GuiSelectWorld(this));
 				}
 			}
-		}
-
-		if (par1GuiButton.id == 5) {
-			showingEndian = false;
-			this.mc.displayGuiScreen(new GuiLanguage(this, this.mc.gameSettings));
 		}
 
 		if (par1GuiButton.id == 2) {
@@ -298,13 +303,27 @@ public class GuiMainMenu extends GuiScreen {
 		}
 
 		if (par1GuiButton.id == 3) {
-			//this.mc.displayGuiScreen(new GuiScreenVoiceChannel(this));
-			EaglerAdapter.openLink(ConfigConstants.forkMe);
+			EaglerAdapter.openLink(ConfigConstants.githubRepo);
 		}
 
 		if (par1GuiButton.id == 4) {
 			showingEndian = false;
+			this.mc.displayGuiScreen(new GuiLanguage(this, this.mc.gameSettings));
+		}
+
+		if (par1GuiButton.id == 6) {
+			showingEndian = false;
+			this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+		}
+
+		if (par1GuiButton.id == 7) {
+			showingEndian = false;
 			this.mc.displayGuiScreen(new GuiScreenEditProfile(this));
+		}
+
+		if (par1GuiButton.id == 8) {
+			showingEndian = false;
+			this.showAck = true;
 		}
 	}
 
@@ -319,7 +338,8 @@ public class GuiMainMenu extends GuiScreen {
 		if (ConfigConstants.panoramaBlur) {
 			EaglerAdapter.gluPerspective(120.0F, 1.0F, 0.05F, 10.0F);
 		} else {
-			EaglerAdapter.gluPerspective(120.0F, (float)this.mc.displayWidth / (float)this.mc.displayHeight, 0.05F, 10.0F);
+			EaglerAdapter.gluPerspective(120.0F, (float) this.mc.displayWidth / (float) this.mc.displayHeight, 0.05F,
+					10.0F);
 		}
 		EaglerAdapter.glMatrixMode(EaglerAdapter.GL_MODELVIEW);
 		EaglerAdapter.glPushMatrix();
@@ -331,7 +351,7 @@ public class GuiMainMenu extends GuiScreen {
 		EaglerAdapter.glDisable(EaglerAdapter.GL_CULL_FACE);
 		EaglerAdapter.glDepthMask(false);
 		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
-		byte var5 = ConfigConstants.panoramaBlur ? (byte)8 : (byte)1;
+		byte var5 = ConfigConstants.panoramaBlur ? (byte) 8 : (byte) 1;
 
 		for (int var6 = 0; var6 < var5 * var5; ++var6) {
 			if (ConfigConstants.panoramaBlur) {
@@ -340,8 +360,8 @@ public class GuiMainMenu extends GuiScreen {
 				float var8 = ((float) (var6 / var5) / (float) var5 - 0.5F) / 64.0F;
 				float var9 = 0.0F;
 				EaglerAdapter.glTranslatef(var7, var8, var9);
-				
-				float panTimer = (float)(System.currentTimeMillis() - start) * 0.03f;
+
+				float panTimer = (float) (System.currentTimeMillis() - start) * 0.03f;
 				EaglerAdapter.glRotatef(MathHelper.sin(panTimer / 400.0F) * 25.0F + 20.0F, 1.0F, 0.0F, 0.0F);
 				EaglerAdapter.glRotatef(-(panTimer) * 0.1F, 0.0F, 1.0F, 0.0F);
 			}
@@ -456,14 +476,19 @@ public class GuiMainMenu extends GuiScreen {
 			float var5 = this.width > this.height ? 120.0F / (float) this.width : 120.0F / (float) this.height;
 			float var6 = (float) this.height * var5 / 256.0F;
 			float var7 = (float) this.width * var5 / 256.0F;
-			EaglerAdapter.glTexParameteri(EaglerAdapter.GL_TEXTURE_2D, EaglerAdapter.GL_TEXTURE_MIN_FILTER, EaglerAdapter.GL_LINEAR);
-			EaglerAdapter.glTexParameteri(EaglerAdapter.GL_TEXTURE_2D, EaglerAdapter.GL_TEXTURE_MAG_FILTER, EaglerAdapter.GL_LINEAR);
+			EaglerAdapter.glTexParameteri(EaglerAdapter.GL_TEXTURE_2D, EaglerAdapter.GL_TEXTURE_MIN_FILTER,
+					EaglerAdapter.GL_LINEAR);
+			EaglerAdapter.glTexParameteri(EaglerAdapter.GL_TEXTURE_2D, EaglerAdapter.GL_TEXTURE_MAG_FILTER,
+					EaglerAdapter.GL_LINEAR);
 			var4.setColorRGBA_F(1.0F, 1.0F, 1.0F, 1.0F);
 			int var8 = this.width;
 			int var9 = this.height;
-			var4.addVertexWithUV(0.0D, (double) var9, (double) this.zLevel, (double) (0.5F - var6), (double) (0.5F + var7));
-			var4.addVertexWithUV((double) var8, (double) var9, (double) this.zLevel, (double) (0.5F - var6), (double) (0.5F - var7));
-			var4.addVertexWithUV((double) var8, 0.0D, (double) this.zLevel, (double) (0.5F + var6), (double) (0.5F - var7));
+			var4.addVertexWithUV(0.0D, (double) var9, (double) this.zLevel, (double) (0.5F - var6),
+					(double) (0.5F + var7));
+			var4.addVertexWithUV((double) var8, (double) var9, (double) this.zLevel, (double) (0.5F - var6),
+					(double) (0.5F - var7));
+			var4.addVertexWithUV((double) var8, 0.0D, (double) this.zLevel, (double) (0.5F + var6),
+					(double) (0.5F - var7));
 			var4.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, (double) (0.5F + var6), (double) (0.5F + var7));
 			var4.draw();
 		} else {
@@ -473,6 +498,7 @@ public class GuiMainMenu extends GuiScreen {
 	}
 
 	private static final TextureLocation mclogo = new TextureLocation("/title/mclogo.png");
+	private static final TextureLocation prcLogo = new TextureLocation("/precision/logo.png");
 	private static final TextureLocation eag = new TextureLocation("/title/eag.png");
 	private static final TextureLocation ackbk = new TextureLocation("/gui/demo_bg.png");
 	private static final TextureLocation beaconx = new TextureLocation("/gui/beacon.png");
@@ -489,36 +515,33 @@ public class GuiMainMenu extends GuiScreen {
 		short var5 = 274;
 		int var6 = this.width / 2 - var5 / 2;
 		byte var7 = 30;
-		if (ConfigConstants.panoramaBlur) {
-			this.drawGradientRect(0, 0, this.width, this.height, -2130706433, 16777215);
-			this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
+
+		if (!prc) {
+			if (ConfigConstants.eaglercraftTitleLogo) {
+				eag.bindTexture();
+			} else {
+				mclogo.bindTexture();
+			}
+			this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 155, 44);
+			this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);
+		} else {
+			prcLogo.bindTexture();
+			this.drawTexturedModalRect(var6 + 9, 0 + 0, 0, 0, 256, 256);
 		}
-		
-		if(ConfigConstants.eaglercraftTitleLogo) {
-			eag.bindTexture();
-		}else {
-			mclogo.bindTexture();
-		}
 
-		this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 155, 44);
-		this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);
+		this.drawString(this.fontRenderer, ConfigConstants.mainMenuString, 7, this.height - 15, 11184810);
 
-		this.drawString(this.fontRenderer, "minecraft 1.5.2", 2, this.height - 20, 16777215);
-		this.drawString(this.fontRenderer, ConfigConstants.mainMenuString + EnumChatFormatting.GRAY + " (cracked)", 2, this.height - 10, 16777215);
+		String var10 = "Copyright Mojang Studios";
+		this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 7,
+				this.height - 15, 11184810);
 
-		//String var10 = "Copyright " + Calendar.getInstance().get(Calendar.YEAR) + " Mojang AB.";
-		String var10 = "copyright 2013 Mojang AB";
-		this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
-
-		var10 = "site resources are";
-		this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 20, 16777215);
-		
-		if(showingEndian && EaglerAdapter.isBigEndian()) {
+		if (showingEndian && EaglerAdapter.isBigEndian()) {
 			this.drawCenteredString(fontRenderer, "(BIG Endian)", this.width / 2, this.height - 10, 0xFFFFBBBB);
 		}
-		
+
 		if (this.field_92025_p != null && this.field_92025_p.length() > 0) {
-			drawRect(this.field_92022_t - 2, this.field_92021_u - 2, this.field_92020_v + 2, this.field_92019_w - 1, 1428160512);
+			drawRect(this.field_92022_t - 2, this.field_92021_u - 2, this.field_92020_v + 2, this.field_92019_w - 1,
+					1428160512);
 			this.drawString(this.fontRenderer, this.field_92025_p, this.field_92022_t, this.field_92021_u, 16777215);
 			// this.drawString(this.fontRenderer, field_96138_a, (this.width -
 			// this.field_92024_r) / 2, ((GuiButton)this.buttonList.get(0)).yPosition - 12,
@@ -529,139 +552,121 @@ public class GuiMainMenu extends GuiScreen {
 			EaglerAdapter.glPushMatrix();
 			EaglerAdapter.glTranslatef((float) (this.width / 2 + 90), 70.0F, 0.0F);
 			EaglerAdapter.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
-			float var8 = 1.8F - MathHelper.abs(MathHelper.sin((float) (Minecraft.getSystemTime() % 1000L) / 1000.0F * (float) Math.PI * 2.0F) * 0.1F);
+			float var8 = 1.8F - MathHelper
+					.abs(MathHelper.sin((float) (Minecraft.getSystemTime() % 1000L) / 1000.0F * (float) Math.PI * 2.0F)
+							* 0.1F);
 			var8 = var8 * 100.0F / (float) (this.fontRenderer.getStringWidth(this.splashText) + 32);
 			EaglerAdapter.glScalef(var8, var8, var8);
 			this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
 			EaglerAdapter.glPopMatrix();
 		}
 		/*
-		String lid = "(login is disabled, this copy violates Mojang's terms of service)";
-		int sl = this.fontRenderer.getStringWidth(lid);
+		 * String lid =
+		 * "(login is disabled, this copy violates Mojang's terms of service)"; int sl =
+		 * this.fontRenderer.getStringWidth(lid);
+		 *
+		 * EaglerAdapter.glPushMatrix(); float k = ((this.width - sl) * 3 / 4) < 80 ?
+		 * 0.5f : 0.75f; EaglerAdapter.glScalef(k, k, k);
+		 * EaglerAdapter.glEnable(EaglerAdapter.GL_BLEND);
+		 * EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA,
+		 * EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA); this.drawString(fontRenderer, lid,
+		 * (int)(this.width / k - sl) / 2, (int)((this.height - 19) / k), 0x88999999);
+		 * EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND); EaglerAdapter.glPopMatrix();
+		 */
 
-		EaglerAdapter.glPushMatrix();
-		float k = ((this.width - sl) * 3 / 4) < 80 ? 0.5f : 0.75f;
-		EaglerAdapter.glScalef(k, k, k);
-		EaglerAdapter.glEnable(EaglerAdapter.GL_BLEND);
-		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
-		this.drawString(fontRenderer, lid, (int)(this.width / k - sl) / 2, (int)((this.height - 19) / k), 0x88999999);
-		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
-		EaglerAdapter.glPopMatrix();
-		*/
-		var10 = "eaglercraft readme.txt";
-		int w = this.fontRenderer.getStringWidth(var10) * 3 / 4;
-		if(!showAck && par1 >= (this.width - w - 4) && par1 <= this.width && par2 >= 0 && par2 <= 9) {
-			drawRect((this.width - w - 4), 0, this.width, 9, 0x55000099);
-		}else {
-			drawRect((this.width - w - 4), 0, this.width, 9, 0x55200000);
-		}
-		EaglerAdapter.glPushMatrix();
-		EaglerAdapter.glTranslatef((this.width - w - 2), 1.0f, 0.0f);
-		EaglerAdapter.glScalef(0.75f, 0.75f, 0.75f);
-		this.drawString(this.fontRenderer, var10, 0, 0, 16777215);
-		EaglerAdapter.glPopMatrix();
-		
-		/*
-		var10 = "debug console";
-		w = this.fontRenderer.getStringWidth(var10) * 3 / 4;
-		if(!showAck && par1 >= 0 && par1 <= (w + 4) && par2 >= 0 && par2 <= 9) {
-			drawRect(0, 0, w + 4, 9, 0x55000099);
-		}else {
-			drawRect(0, 0, w + 4, 9, 0x55200000);
-		}
-		EaglerAdapter.glPushMatrix();
-		EaglerAdapter.glTranslatef(2.0f, 1.0f, 0.0f);
-		EaglerAdapter.glScalef(0.75f, 0.75f, 0.75f);
-		this.drawString(this.fontRenderer, var10, 0, 0, 16777215);
-		EaglerAdapter.glPopMatrix();
-		*/
-		
-		if(ConfigConstants.mainMenuItemLink != null) {
-			//drawRect((this.width - w - 4), 0, this.width, 9, 0x55200000);
+		if (ConfigConstants.mainMenuItemLink != null) {
+			// drawRect((this.width - w - 4), 0, this.width, 9, 0x55200000);
 
 			int posX = this.width / 2 - 170 - this.width / 10;
 			int posY = this.height / 4 + 70;
 			int ww = 66;
 			int hh = 46;
-			int ln0w = ConfigConstants.mainMenuItemLine0 == null ? 0 : fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine0);
+			int ln0w = ConfigConstants.mainMenuItemLine0 == null ? 0
+					: fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine0);
 			ww = ww < ln0w ? ln0w : ww;
 			hh = ln0w > 0 ? hh + 12 : hh;
-			int ln1w = ConfigConstants.mainMenuItemLine1 == null ? 0 : fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine1);
+			int ln1w = ConfigConstants.mainMenuItemLine1 == null ? 0
+					: fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine1);
 			ww = ww < ln1w ? ln1w : ww;
 			hh = ln1w > 0 ? hh + 12 : hh;
-			int ln2w = ConfigConstants.mainMenuItemLine2 == null ? 0 : fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine2);
+			int ln2w = ConfigConstants.mainMenuItemLine2 == null ? 0
+					: fontRenderer.getStringWidth(ConfigConstants.mainMenuItemLine2);
 			ww = ww < ln2w ? ln2w : ww;
 			hh = ln2w > 0 ? hh + 12 : hh;
-			
+
 			ww += 20;
 			hh += 20;
-			
+
 			boolean over = par1 > posX && par1 < posX + (ww / 4 * 3) && par2 > posY && par2 < posY + (hh / 4 * 3);
-			
+
 			int iconSize = 45;
-			
-			if(over) {
+
+			if (over) {
 				EaglerAdapter.glPushMatrix();
 				EaglerAdapter.glTranslatef(posX, posY, 0.0f);
 				EaglerAdapter.glScalef(0.75f, 0.75f, 0.75f);
 
 				drawRect(0, 0, ww, hh, 0x44000022);
-				
+
 				drawRect(3, 3, ww - 3, 4, 0x99999999);
 				drawRect(3, hh - 4, ww - 3, hh - 3, 0x99999999);
 				drawRect(3, 4, 4, hh - 4, 0x99999999);
 				drawRect(ww - 4, 4, ww - 3, hh - 4, 0x99999999);
-				
+
 				int i = 10;
-				
-				if(ln0w > 0) {
+
+				if (ln0w > 0) {
 					this.drawString(this.fontRenderer, ConfigConstants.mainMenuItemLine0, (ww - ln0w) / 2, i, 0xFFFF99);
 					i += 12;
 				}
-				
+
 				items.bindTexture();
-				
+
 				EaglerAdapter.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-				this.drawTexturedModelRectFromIcon((ww - iconSize) / 2, i, Item.itemsList[showRandomItem].getIconFromDamage(0), iconSize, iconSize);
-				
+				this.drawTexturedModelRectFromIcon((ww - iconSize) / 2, i,
+						Item.itemsList[showRandomItem].getIconFromDamage(0), iconSize, iconSize);
+
 				i += iconSize + 5;
-				
-				if(ln1w > 0) {
+
+				if (ln1w > 0) {
 					this.drawString(this.fontRenderer, ConfigConstants.mainMenuItemLine1, (ww - ln1w) / 2, i, 0xFFFF99);
 					i += 12;
 				}
-				
-				if(ln2w > 0) {
+
+				if (ln2w > 0) {
 					this.drawString(this.fontRenderer, ConfigConstants.mainMenuItemLine2, (ww - ln2w) / 2, i, 0xDDDDDD);
 				}
-				
+
 				int ww75 = (ww * 4 / 3);
 				int hh75 = (hh * 4 / 3);
-				
-				//this.drawString(this.fontRenderer, var10, this.width - this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
-				
+
+				// this.drawString(this.fontRenderer, var10, this.width -
+				// this.fontRenderer.getStringWidth(var10) - 2, this.height - 10, 16777215);
+
 				EaglerAdapter.glPopMatrix();
-				
-			}else {
+
+			} else {
 				EaglerAdapter.glEnable(EaglerAdapter.GL_BLEND);
 				EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
-				EaglerAdapter.glColor4f(0.9f, 0.9f, 0.9f, MathHelper.sin((float)(System.currentTimeMillis() % 1000000l) / 300f) * 0.17f + 0.5f);
-				
+				EaglerAdapter.glColor4f(0.9f, 0.9f, 0.9f,
+						MathHelper.sin((float) (System.currentTimeMillis() % 1000000l) / 300f) * 0.17f + 0.5f);
+
 				items.bindTexture();
-				
+
 				EaglerAdapter.glPushMatrix();
 				EaglerAdapter.glTranslatef(posX, posY, 0.0f);
 				EaglerAdapter.glScalef(0.75f, 0.75f, 0.75f);
-				this.drawTexturedModelRectFromIcon((ww - iconSize) / 2, ln0w > 0 ? 22 : 10, Item.itemsList[showRandomItem].getIconFromDamage(0), iconSize, iconSize);
+				this.drawTexturedModelRectFromIcon((ww - iconSize) / 2, ln0w > 0 ? 22 : 10,
+						Item.itemsList[showRandomItem].getIconFromDamage(0), iconSize, iconSize);
 				EaglerAdapter.glPopMatrix();
-				
+
 				EaglerAdapter.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 				EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
 			}
-			
+
 		}
-		
-		if(showAck) {
+
+		if (showAck) {
 			super.drawScreen(0, 0, par3);
 			this.drawGradientRect(0, 0, this.width, this.height, -1072689136, -804253680);
 			int x = (this.width - 345) / 2;
@@ -675,32 +680,38 @@ public class GuiMainMenu extends GuiScreen {
 			beaconx.bindTexture();
 			this.drawTexturedModalRect(x + 323, y + 7, 114, 223, 13, 13);
 			int lines = this.ackLines.size();
-			if(scrollPosition < 0) scrollPosition = 0;
-			if(scrollPosition + visibleLines > lines) scrollPosition = lines - visibleLines;
-			for(int i = 0; i < visibleLines; ++i) {
-				this.fontRenderer.drawString(this.ackLines.get(scrollPosition + i), x + 10, y + 10 + (i * 10), 0x404060);
+			if (scrollPosition < 0)
+				scrollPosition = 0;
+			if (scrollPosition + visibleLines > lines)
+				scrollPosition = lines - visibleLines;
+			for (int i = 0; i < visibleLines; ++i) {
+				this.fontRenderer.drawString(this.ackLines.get(scrollPosition + i), x + 10, y + 10 + (i * 10),
+						0x404060);
 			}
 			int trackHeight = 193;
 			int offset = trackHeight * scrollPosition / lines;
 			drawRect(x + 326, y + 27, x + 334, y + 220, 0x33000020);
-			drawRect(x + 326, y + 27 + offset, x + 334, y + 27 + (visibleLines * trackHeight / lines) + offset + 1, 0x66000000);
-		}else {
+			drawRect(x + 326, y + 27 + offset, x + 334, y + 27 + (visibleLines * trackHeight / lines) + offset + 1,
+					0x66000000);
+		} else {
 			super.drawScreen(par1, par2, par3);
 		}
 	}
 
 	private int mousex = 0;
 	private int mousey = 0;
-	
+
 	public void updateScreen() {
-		if(EaglerAdapter.mouseIsButtonDown(0) && dragstart > 0) {
+		if (EaglerAdapter.mouseIsButtonDown(0) && dragstart > 0) {
 			int trackHeight = 193;
 			scrollPosition = (mousey - dragstart) * this.ackLines.size() / trackHeight + dragstartI;
-			if(scrollPosition < 0) scrollPosition = 0;
-			if(scrollPosition + visibleLines > this.ackLines.size()) scrollPosition = this.ackLines.size() - visibleLines;
-		}else {
+			if (scrollPosition < 0)
+				scrollPosition = 0;
+			if (scrollPosition + visibleLines > this.ackLines.size())
+				scrollPosition = this.ackLines.size() - visibleLines;
+		} else {
 			dragstart = -1;
 		}
 	}
-	
+
 }

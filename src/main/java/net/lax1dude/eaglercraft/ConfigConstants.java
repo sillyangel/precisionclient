@@ -6,13 +6,14 @@ public class ConfigConstants {
 	
 	public static boolean profanity = false;
 
-	public static final String version = "22w36a";
-	public static final String mainMenuString = "eaglercraft " + version;
-	
-	public static final String forkMe = "https://github.com/lax1dude/eaglercraft";
+	public static final String version = "1.5.2 (beta_0.2)";
+	public static final String mainMenuString = "Precision Client " + version;
+
+	public static final String githubRepo = "https://github.com/etcherfx/precisionclient";
+	public static final String discordServer = "https://discord.gg/agFak6frsj";
 
 	public static final boolean html5build = true;
-	
+
 	public static String ayonullTitle = null;
 	public static String ayonullLink = null;
 
@@ -22,11 +23,11 @@ public class ConfigConstants {
 	public static String mainMenuItemLink = null;
 
 	public static List<String> splashTexts = null;
-	
+
 	public static List<RelayEntry> relays = null;
 
 	public static boolean eaglercraftTitleLogo = false;
 
 	public static boolean panoramaBlur = true;
-	
+
 }
