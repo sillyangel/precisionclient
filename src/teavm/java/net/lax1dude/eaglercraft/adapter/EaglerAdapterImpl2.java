@@ -31,17 +31,37 @@ import org.teavm.jso.websocket.CloseEvent;
 import org.teavm.jso.websocket.WebSocket;
 import org.teavm.jso.workers.Worker;
 
-import java.io.*;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.charset.Charset;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-
-import static net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext.*;
+import net.lax1dude.eaglercraft.AssetRepository;
+import net.lax1dude.eaglercraft.Base64;
+import net.lax1dude.eaglercraft.Client;
+import net.lax1dude.eaglercraft.EaglerAdapter;
+import net.lax1dude.eaglercraft.EaglerImage;
+import net.lax1dude.eaglercraft.EaglerProfile;
+import net.lax1dude.eaglercraft.EarlyLoadScreen;
+import net.lax1dude.eaglercraft.ExpiringSet;
+import net.lax1dude.eaglercraft.IntegratedServer;
+import net.lax1dude.eaglercraft.LANPeerEvent;
+import net.lax1dude.eaglercraft.LocalStorageManager;
+import net.lax1dude.eaglercraft.PKT;
+import net.lax1dude.eaglercraft.RelayQuery;
+import net.lax1dude.eaglercraft.RelayServerSocket;
+import net.lax1dude.eaglercraft.RelayWorldsQuery;
+import net.lax1dude.eaglercraft.ServerQuery;
+import net.lax1dude.eaglercraft.Voice;
+import net.lax1dude.eaglercraft.adapter.teavm.EaglercraftLANClient;
+import net.lax1dude.eaglercraft.adapter.teavm.EaglercraftLANServer;
+import net.lax1dude.eaglercraft.adapter.teavm.EaglercraftVoiceClient;
+import net.lax1dude.eaglercraft.adapter.teavm.SelfDefence;
+import net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext;
+import net.lax1dude.eaglercraft.adapter.teavm.WebGLQuery;
+import net.lax1dude.eaglercraft.adapter.teavm.WebGLVertexArray;
+import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket;
+import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket00Handshake;
+import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket07LocalWorlds;
+import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket07LocalWorlds.LocalWorld;
+import net.lax1dude.eaglercraft.sp.relay.pkt.IPacket69Pong;
+import net.lax1dude.eaglercraft.sp.relay.pkt.IPacketFFErrorCode;
+import net.minecraft.src.MathHelper;
 
 public class EaglerAdapterImpl2 {
 
@@ -207,14 +227,21 @@ public class EaglerAdapterImpl2 {
 		canvasStyle.setProperty("image-rendering", "pixelated");
 		canvas.setWidth(sw);
 		canvas.setHeight(sh);
-		SelfDefence.init(canvas);
 		rootElement.appendChild(canvas);
+		try {
+			doc.exitPointerLock();
+		}catch(Throwable t) {
+			Client.showIncompatibleScreen("Mouse cursor lock is not available on this device!");
+			throw new RuntimeException("Mouse cursor lock is not available on this device!");
+		}
+		SelfDefence.init(canvas);
 		renderingCanvas = (HTMLCanvasElement)doc.createElement("canvas");
 		renderingCanvas.setWidth(sw);
 		renderingCanvas.setHeight(sh);
 		frameBuffer = (CanvasRenderingContext2D) canvas.getContext("2d");
 		webgl = (WebGL2RenderingContext) renderingCanvas.getContext("webgl2", youEagler());
 		if(webgl == null) {
+			Client.showIncompatibleScreen("WebGL 2.0 is not supported on this device!");
 			throw new RuntimeException("WebGL 2.0 is not supported in your browser ("+getNavString("userAgent")+")");
 		}
 		
@@ -409,21 +436,27 @@ public class EaglerAdapterImpl2 {
 	}
 	
 	public static final void removeEventHandlers() {
-		win.removeEventListener("contextmenu", contextmenu);
-		win.removeEventListener("mousedown", mousedown);
-		win.removeEventListener("mouseup", mouseup);
-		win.removeEventListener("mousemove", mousemove);
-		win.removeEventListener("keydown", keydown);
-		win.removeEventListener("keyup", keyup);
-		win.removeEventListener("keypress", keypress);
-		win.removeEventListener("wheel", wheel);
-		String screenImg = canvas.toDataURL("image/png");
-		canvas.delete();
-		HTMLImageElement newImage = (HTMLImageElement) doc.createElement("img");
-		newImage.setSrc(screenImg);
-		newImage.setWidth(parent.getClientWidth());
-		newImage.setHeight(parent.getClientHeight());
-		parent.appendChild(newImage);
+		try {
+			win.removeEventListener("contextmenu", contextmenu);
+			win.removeEventListener("mousedown", mousedown);
+			win.removeEventListener("mouseup", mouseup);
+			win.removeEventListener("mousemove", mousemove);
+			win.removeEventListener("keydown", keydown);
+			win.removeEventListener("keyup", keyup);
+			win.removeEventListener("keypress", keypress);
+			win.removeEventListener("wheel", wheel);
+		}catch(Throwable t) {
+		}
+		try {
+			String screenImg = canvas.toDataURL("image/png");
+			canvas.delete();
+			HTMLImageElement newImage = (HTMLImageElement) doc.createElement("img");
+			newImage.setSrc(screenImg);
+			newImage.setWidth(parent.getClientWidth());
+			newImage.setHeight(parent.getClientHeight());
+			parent.appendChild(newImage);
+		}catch(Throwable t) {
+		}
 	}
 
 	private static LinkedList<MouseEvent> mouseEvents = new LinkedList();

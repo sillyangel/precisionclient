@@ -11,7 +11,11 @@ import org.teavm.jso.webgl.WebGLProgram;
 import org.teavm.jso.webgl.WebGLShader;
 import org.teavm.jso.webgl.WebGLTexture;
 
-import static net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext.*;
+import net.lax1dude.eaglercraft.Client;
+import net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext;
+import net.lax1dude.eaglercraft.adapter.teavm.WebGLVertexArray;
+
+import org.teavm.jso.webgl.*;
 
 public class DetectAnisotropicGlitch {
 
@@ -24,8 +28,8 @@ public class DetectAnisotropicGlitch {
 		WebGL2RenderingContext ctx = (WebGL2RenderingContext) cvs.getContext("webgl2");
 		
 		if(ctx == null) {
-			Window.alert("WebGL 2 is not supported in this browser! Eaglercraft cannot start.");
-			throw new UnsupportedOperationException("WebGL 2 is not supported in this browser!");
+			Client.showIncompatibleScreen("WebGL 2.0 is not supported on this device!");
+			throw new UnsupportedOperationException("WebGL 2 is not supported on this device!");
 		}
 		
 		if(ctx.getExtension("EXT_texture_filter_anisotropic") != null) {
