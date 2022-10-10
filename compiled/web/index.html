@@ -24,14 +24,35 @@
 	</style>
 </head>
 
-<body style="margin: 0; width: 100vw; height: 100vh;
-background-image: url(bg.png); background-repeat: no-repeat; font-family:
-'Product Sans'" id="game_frame">
+<body style="margin: 0; width: 100vw; height: 100vh; font-family:
+'Product Sans'" id="game_frame" class="gameframe">
 	<div id="Selection"
 		style="display: inline-block; position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%)">
+		<style>
+			html {
+				color: #fff;
+			}
+			.starter {
+				border-radius : 5px;
+				border: 1px solid #fff;
+				background-color: #0d0c0c;
+				color : #fff;
+			}
+			.dropdown {
+				position: relative;
+				display: inline-block;
+				border-radius: 5px;
+				border: 1px solid #fff;
+				background-color: #0d0c0c;
+				color : #fff;
+			}
+			.gameframe {
+				background-color: #0d0c0c;
+			}
+		</style>
 		<h1>Precision Client</h1>
 		<h3>Select a texture pack:</h3>
-		<select id="Packs">
+		<select id="Packs" class="dropdown">
 			<option>-- Choose one --</option>
 			<option value="defaultold">Default Old</option>
 			<option value="defaultnew">Default 1.17+</option>
@@ -45,7 +66,7 @@ background-image: url(bg.png); background-repeat: no-repeat; font-family:
 			<option value="walifault">Walifault</option>
 		</select>
 		<br /><br />
-		<input type="button" value="Launch" onclick="Start();" />
+		<input class="starter" type="button" value="Launch" onclick="Start();" />
 	</div>
 	<script type="text/javascript">
 		if (document.location.href.startsWith("file:")) {
