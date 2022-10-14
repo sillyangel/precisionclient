@@ -8,7 +8,7 @@
 
 ### Note: we will be transitioning away from Eaglercraft being standalone 'free browser minecraft' to Eaglercraft being a bukkit/bungee plugin for servers to allow 'online access' to players who register with a command as their real online-mode Minecraft account on the server. Server owners can still elect to set `online-mode=false` in their server.properties to allow free login but now that's their legal screw up instead of mine
 
-![eaglercraft](https://cdn.discordapp.com/attachments/378764518081429506/964047481849643018/new_github_screenshot.png)
+![eaglercraft](https://g.deev.is/eaglercraft/cover.png)
 
 ### Official Demo URL: [https://g.deev.is/eaglercraft/](https://g.deev.is/eaglercraft/)
 
@@ -24,13 +24,9 @@
 
 Eaglercraft is real Minecraft 1.5.2 that you can play in any regular web browser. That includes school chromebooks, it works on all chromebooks. It supports both singleplayer and multiplayer.
 
-### Ayonull's server list: [https://eagler.nully.tech/servers](https://eagler.nully.tech/servers)
-
-### Ayonull's FAQ site: [https://eagler.nully.tech/](https://eagler.nully.tech/)
-
 ## Singleplayer?
 
-### Eaglercraft now fully supports singleplayer!
+### Eaglercraft now fully supports singleplayer
 
 ### Simply press the 'Singleplayer' button on the main menu and you can create a regular vanilla minecraft and play it any time.
 
@@ -267,11 +263,7 @@ Edit the `relayConfig.ini` file generated on first launch to change the port and
 
 To compile for the web, run the gradle 'teavm' compile target to generate the classes.js file.
 
-To complile to regular desktop Java for quick debugging, using native OpenGL for rendering instead of WebGL:
-- Create a new empty eclipse project
-- Link the src/main/java and src/lwjgl/java as source folders and add the jars in lwjgl-rundir as dependencies
-- Create a run configuration and add a jvm argument pointing to the lwjgl natives folder (lwjgl-rundir/natives) like this: `-Djava.library.path=natives`, and make sure the working directory for the run configuration is the lwjgl-rundir folder.
-
+The LWJGL runtime is no longer supported it is only included for reference
 
 **To modify the game's resource pack (javascript/assets.epk), view the readme in the [/epkcompiler](https://github.com/lax1dude/eaglercraft/tree/main/epkcompiler) directory**
 
