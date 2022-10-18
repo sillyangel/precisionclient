@@ -25,19 +25,7 @@
 
 §f========================================
 
-§fMIT License
-
-§fCopyright (c) 2017 baislsl.
-
-§fPermission is hereby granted, free of charge, to any §fperson obtaining a copy of this software and associated §fdocumentation files (the "Software"), to deal in the Software §fwithout restriction, including without limitation the rights to §fuse, copy, modify, merge, publish, distribute, sublicense, §fand/or sell copies of the Software, and to permit persons to §fwhom the Software is furnished to do so, subject to the §ffollowing conditions:
-
-§fThe above copyright notice and this permission notice §fshall be included in all copies or substantial portions of the §fSoftware.
-
-§fTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF §fANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO §fTHE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A §fPARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT §fSHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR §fANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN §fACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT §fOF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR §fOTHER DEALINGS IN THE SOFTWARE.
-
-§f========================================
-
-§fCopyright 2016 Alexey Andreev.
+§fTeaVM Copyright 2016 Alexey Andreev.
 
 §fLicensed under the Apache License, Version 2.0 (the §f"License"); you may not use this file except in compliance §fwith the License. You may obtain a copy of the License at
 
@@ -55,7 +43,7 @@
 
 §f========================================
 
-§fCopyright (c) 2000-2011 ymnk, JCraft,Inc. All rights §freserved.
+§fJZlib Copyright (c) 2000-2011 ymnk, JCraft,Inc. All §frights reserved.
 
 §fRedistribution and use in source and binary forms, with or §fwithout modification, are permitted provided that the following §fconditions are met:
 
