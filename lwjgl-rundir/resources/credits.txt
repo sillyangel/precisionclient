@@ -4,12 +4,7 @@
 
 §4Ingame §4voice §4chat §4service §4created §4by §4ayunami2000§r
 
-§9Visit §9the §9github §9page §9for §9more §9information: 
-§9https://github.com/etcherfx/precisionclient
-
-§2Contributors: ReadingFear, 959, oMistify
-
-§fIf you have any questions, click the Discord button on the §fmain menu to join the Discord server
+§9Click §9the §9Github §9or §9Discord §9button §9on §9the §9main §9menu §9for §9more §9information
 
 §fScroll down for the detailed license statements
 
