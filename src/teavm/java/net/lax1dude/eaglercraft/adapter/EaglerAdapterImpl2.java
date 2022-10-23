@@ -438,13 +438,13 @@ public class EaglerAdapterImpl2 {
 	public static final void removeEventHandlers() {
 		try {
 			win.removeEventListener("contextmenu", contextmenu);
-			win.removeEventListener("mousedown", mousedown);
-			win.removeEventListener("mouseup", mouseup);
-			win.removeEventListener("mousemove", mousemove);
+			canvas.removeEventListener("mousedown", mousedown);
+			canvas.removeEventListener("mouseup", mouseup);
+			canvas.removeEventListener("mousemove", mousemove);
 			win.removeEventListener("keydown", keydown);
 			win.removeEventListener("keyup", keyup);
 			win.removeEventListener("keypress", keypress);
-			win.removeEventListener("wheel", wheel);
+			canvas.removeEventListener("wheel", wheel);
 		}catch(Throwable t) {
 		}
 		try {
@@ -1029,7 +1029,7 @@ public class EaglerAdapterImpl2 {
 				int[] pixels = new int[totalPixels];
 				for(int i = 0, j; i < pixels.length; ++i) {
 					j = dv.getUint32(i << 2, false);
-					pixels[i] = (j >> 8) | ((j & 0xFF) << 24);
+					pixels[i] = ((j >> 8) & 0xFFFFFF) | ((j & 0xFF) << 24);
 				}
 				ret.complete(new EaglerImage(pixels, pxlsDat.getWidth(), pxlsDat.getHeight(), true));
 			}
