@@ -17,9 +17,9 @@ To correctly download this file on google drive, press the download button at th
 
 Visit this link to check for newer versions of this file:
 
-https://github.com/LAX1DUDE/eaglercraft/blob/main/stable-download/Offline_Download_Version.html
+https://github.com/etcherfx/precisionclient/releases
 
-This version of eaglercraft you are using right now is from ${date}
+This version of Precision Client you are using right now is from ${date}
 
 -->
 
@@ -135,25 +135,52 @@ This version of eaglercraft you are using right now is from ${date}
 <body style="margin: 0; width: 100vw; height: 100vh;
 background-image: url(bg.png); background-repeat: no-repeat; font-family:
 'Product Sans'" id="game_frame">
-	<div id="Selection" style="display: inline-block; position: absolute; top:
-		50%; left: 50%; transform: translate(-50%, -50%)">
-		<h1>Precision Client Launcher</h1>
-		<h3>Select a pack:</h3>
-		<select id="Packs">
+	<div id="Selection"
+		style="display: inline-block; position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%)">
+		<style>
+			html {
+				color: #fff;
+			}
+
+			.starter {
+				border-radius: 5px;
+				border: 1px solid #fff;
+				background-color: #0d0c0c;
+				color: #fff;
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+				border-radius: 5px;
+				border: 1px solid #fff;
+				background-color: #0d0c0c;
+				color: #fff;
+			}
+
+			.gameframe {
+				background-image: url("bg.png");
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+		</style>
+		<h1>Precision Client</h1>
+		<h3>Select a texture pack:</h3>
+		<select id="Packs" class="dropdown">
 			<option>--Choose one--</option>
-			<option value="${1.5_epk_base64}">Default 1.5</option>
-			<option value="${1.17_epk_base64}">Default 1.17</option>
-			<option value="${Bombies_epk_base64}">Bombies 180k</option>
-			<option value="${Bones_epk_base64}">Bare Bones</option>
-			<option value="${M1.17_epk_base64}">Modified 1.17</option>
-			<option value="${Miami_epk_base64}">Miami Private</option>
-			<option value="${Nebula_epk_base64}">Nebula</option>
-			<option value="${Rice_epk_base64}">Ricefault</option>
-			<option value="${Tight_epk_base64}">Tightfault</option>
-			<option value="${Wali_epk_base64}">Walifault</option>
+			<option value="${defaultold_epk_base64}">Default Old</option>
+			<option value="${defaultnew_epk_base64}">Default 1.17+</option>
+			<option value="${bombies_epk_base64}">Bombies 180k</option>
+			<option value="${barebones_epk_base64}">Bare Bones</option>
+			<option value="${modifiednew_epk_base64}">Modified 1.17+</option>
+			<option value="${miami_epk_base64}">Miami Private</option>
+			<option value="${nebula_epk_base64}">Nebula</option>
+			<option value="${ricefault_epk_base64}">Ricefault</option>
+			<option value="${tightfault_epk_base64}">Tightfault</option>
+			<option value="${walifault_epk_base64}">Walifault</option>
 		</select>
 		<br /><br />
-		<input type="button" value="Launch" onclick="Start();" />
+		<input class="starter" type="button" value="Launch" onclick="Start();" />
 	</div>
 	<script type="text/javascript">
 		var PackSelect = document.getElementById("Packs");

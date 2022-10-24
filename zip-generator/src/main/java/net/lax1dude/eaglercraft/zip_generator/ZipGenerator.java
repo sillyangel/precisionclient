@@ -52,16 +52,16 @@ public class ZipGenerator {
         String classesServerJs = FileUtils.readFileToString(new File("compiled/web/classes_server.js"), "UTF-8").replaceFirst("\\/\\/# sourceMappingURL=.*(\\r\\n|\\r|\\n)*", "").trim();
 
         System.out.println("Loading texture packs");
-        String one_5Epk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/1.5.epk")));
-        String one_17Epk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/1.17.epk")));
-        String bombiesEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Bombies.epk")));
-        String bonesEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Bones.epk")));
-        String m_One_17Epk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/M1.17.epk")));
-        String miamiEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Miami.epk")));
-        String nebulaEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Nebula.epk")));
-        String riceEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Rice.epk")));
-        String tightEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Tight.epk")));
-        String waliEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/Wali.epk")));
+        String defaultoldEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/defaultold.epk")));
+        String defaultnewEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/defaultnew.epk")));
+        String bombiesEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/bombies.epk")));
+        String bonesEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/bones.epk")));
+        String modifiednewEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/modifiednew.epk")));
+        String miamiprivateEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/miamiprivate.epk")));
+        String nebulaEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/nebula.epk")));
+        String ricefaultEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/ricefault.epk")));
+        String tightfaultEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/tightfault.epk")));
+        String walifaultEpk = Base64.encodeBase64String(FileUtils.readFileToByteArray(new File("compiled/web/packs/walifault.epk")));
 
         System.out.println("Loading 'compiled/web/eagswebrtc.js'");
         String classesWebRTCJs = FileUtils.readFileToString(new File("compiled/web/eagswebrtc.js"), "UTF-8").replaceFirst("[\\'\\\"]use strict[\\'\\\"]\\;(\\r\\n|\\r|\\n)*", "").trim();
@@ -71,7 +71,7 @@ public class ZipGenerator {
 
         System.out.println("Writing 'compiled/offline/precisionclientoffline.html'");
 
-        offlineTemplate = offlineTemplate.replace("${date}", date).replace("${1.5_epk_base64}", one_5Epk).replace("${1.17_epk_base64}", one_17Epk).replace("${Bombies_epk_base64}", bombiesEpk).replace("${Bones_epk_base64}", bonesEpk).replace("${M1.17_epk_base64}", m_One_17Epk).replace("${Miami_epk_base64}", miamiEpk).replace("${Nebula_epk_base64}", nebulaEpk).replace("${Rice_epk_base64}", riceEpk).replace("${Tight_epk_base64}", tightEpk).replace("${Wali_epk_base64}", waliEpk).replace("${classes_js}",
+        offlineTemplate = offlineTemplate.replace("${date}", date).replace("${defaultold_epk_base64}", defaultoldEpk).replace("${defaultnew_epk_base64}", defaultnewEpk).replace("${bombies_epk_base64}", bombiesEpk).replace("${barebones_epk_base64}", bonesEpk).replace("${modifiednew_epk_base64}", modifiednewEpk).replace("${miamiprivate_epk_base64}", miamiprivateEpk).replace("${nebula_epk_base64}", nebulaEpk).replace("${ricefault_epk_base64}", ricefaultEpk).replace("${tightfault_epk_base64}", tightfaultEpk).replace("${walifault_epk_base64}", walifaultEpk).replace("${classes_js}",
                 classesJs.replaceFirst("\\/\\/# sourceMappingURL=.*(\\r\\n|\\r|\\n)*", "").trim());
         offlineTemplate = offlineTemplate.replace("${eagswebrtc_js}", classesWebRTCJs).replace("${classes_server_js}", classesServerJs);
 
