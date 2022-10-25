@@ -1,10 +1,10 @@
-§fPrecision Client is an eaglercraft PvP client with QOL §ffeatures, custom texture packs, and more.
+§fPrecision Client is a custom eaglercraft client with QOL §ffeatures, custom texture packs, and more.§r
 
-§9This §9was §9created §9by §9LAX1DUDE §9and §9forked §9by §9EtcherFX
+§9This was created by LAX1DUDE and forked by EtcherFX§r
 
-§4Ingame §4voice §4chat §4service §4created §4by §4ayunami2000§r
+§4Ingame voice chat service created by ayunami2000§r
 
-§9Click §9the §9Github §9or §9Discord §9button §9on §9the §9main §9menu §9for §9more §9information
+§2Click the Github or Discord button on the main menu for §2more information§r
 
 §fScroll down for the detailed license statements
 
@@ -38,7 +38,7 @@
 
 §f========================================
 
-§fJZlib Copyright (c) 2000-2011 ymnk, JCraft,Inc. All §frights reserved.
+§fJZlib Copyright (c) 2000-2011 ymnk, JCraft,Inc. All rights §freserved.
 
 §fRedistribution and use in source and binary forms, with or §fwithout modification, are permitted provided that the following §fconditions are met:
 
