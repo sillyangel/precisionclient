@@ -69,7 +69,7 @@ teavm {
    transformers = null;
    
    /** Where to save the result */
-   targetDirectory = file("../javascript");
+   targetDirectory = file("../compiled/web");
    
    /** The directory to monitor to decide if compile is up-to-date or not */
    sourceDirectory = file("src");

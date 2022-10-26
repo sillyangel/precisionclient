@@ -86,8 +86,6 @@ public class GuiMainMenu extends GuiScreen {
 			if (lst.size() > 0) {
 				EaglercraftRandom rand = new EaglercraftRandom();
 				this.splashText = lst.get(rand.nextInt(lst.size()));
-			} else {
-				this.splashText = "missingno";
 			}
 		}
 		this.start = System.currentTimeMillis();
@@ -152,24 +150,16 @@ public class GuiMainMenu extends GuiScreen {
 		int var12 = this.height - 30;
 
 		if (EaglerAdapter.isIntegratedServerAvailable()) {
-			this.buttonList.add(
-					new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.singleplayer")));
-			this.buttonList.add(
-					new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
-			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3,
-					var2.translateKey("menu.githubrepo")));
-			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3,
-					var2.translateKey("menu.discordserver")));
+			this.buttonList.add(new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.singleplayer")));
+			this.buttonList.add(new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
+			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3, var2.translateKey("menu.githubrepo")));
+			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3, var2.translateKey("menu.discordserver")));
 		} else {
 			GuiButton single;
-			this.buttonList.add(single = new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1,
-					var2.translateKey("menu.singleplayer")));
-			this.buttonList.add(
-					new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
-			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3,
-					var2.translateKey("menu.githubrepo")));
-			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3,
-					var2.translateKey("menu.discordserver")));
+			this.buttonList.add(single = new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.singleplayer")));
+			this.buttonList.add(new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
+			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3, var2.translateKey("menu.githubrepo")));
+			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3, var2.translateKey("menu.discordserver")));
 			single.enabled = false;
 		}
 

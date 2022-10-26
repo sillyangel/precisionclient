@@ -1,15 +1,11 @@
 package net.lax1dude.eaglercraft.adapter;
 
-import net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext;
-import net.lax1dude.eaglercraft.adapter.teavm.WebGLVertexArray;
+import static net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext.*;
+
 import org.teavm.jso.browser.Window;
 import org.teavm.jso.dom.html.HTMLCanvasElement;
 import org.teavm.jso.typedarrays.Float32Array;
 import org.teavm.jso.typedarrays.Uint8Array;
-import org.teavm.jso.webgl.WebGLBuffer;
-import org.teavm.jso.webgl.WebGLProgram;
-import org.teavm.jso.webgl.WebGLShader;
-import org.teavm.jso.webgl.WebGLTexture;
 
 import net.lax1dude.eaglercraft.Client;
 import net.lax1dude.eaglercraft.adapter.teavm.WebGL2RenderingContext;
