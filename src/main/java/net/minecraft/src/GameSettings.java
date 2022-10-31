@@ -147,6 +147,10 @@ public class GameSettings {
 	
 	public boolean adderall = false;
 
+	/** Precision Client settings */
+	public boolean dynamicFOV = true;
+	public boolean fullBright = true;
+
 	public GameSettings(Minecraft par1Minecraft) {
 		this.keyBindings = new KeyBinding[] { this.keyBindAttack, this.keyBindUseItem, this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory,
 				this.keyBindChat, this.keyBindPlayerList, this.keyBindPickBlock, this.keyBindSprint, this.keyBindZoom, this.keyBindFunction };
@@ -366,6 +370,15 @@ public class GameSettings {
 			this.adderall = !this.adderall;
 			this.mc.sndManager.stopAllSounds();
 		}
+		
+		/* Precision Client settings */
+        if (par1EnumOptions == EnumOptions.DYNAMIC_FOV) {
+            this.dynamicFOV = !this.dynamicFOV;
+        }
+
+        if (par1EnumOptions == EnumOptions.FULLBRIGHT) {
+            this.fullBright = !this.fullBright;
+        }
 
 		this.saveOptions();
 	}
@@ -428,6 +441,12 @@ public class GameSettings {
 			
 		case 17:
 			return this.adderall;
+
+        case 50:
+            return this.dynamicFOV;
+
+		case 51:
+            return this.fullBright;
 
 		default:
 			return false;
@@ -545,6 +564,9 @@ public class GameSettings {
 			if(yee.hasKey("hideJoinCode")) hideJoinCode = yee.getBoolean("hideJoinCode");
 			if(yee.hasKey("relayTimeout")) relayTimeout = yee.getByte("relayTimeout");
 			if(yee.hasKey("adderall")) adderall = yee.getBoolean("adderall");
+			/* Precision Client settings */
+			if (yee.hasKey("dynamicFOV")) dynamicFOV= yee.getBoolean("dynamicFOV");
+			if (yee.hasKey("fullBright")) fullBright= yee.getBoolean("fullBright");
 			
 			if(voiceListenRadius < 5) voiceListenRadius = 5;
 			else if(voiceListenRadius > 22) voiceListenRadius = 22;
@@ -626,6 +648,9 @@ public class GameSettings {
 		yee.setBoolean("hideJoinCode", hideJoinCode);
 		yee.setByte("relayTimeout", (byte)relayTimeout);
 		yee.setBoolean("adderall", adderall);
+		/* Precision Client settings */
+		yee.setBoolean("dynamicFOV", dynamicFOV);
+		yee.setBoolean("fullBright", fullBright);
 		
 		for (int var4 = 0; var4 < this.keyBindings.length; ++var4) {
 			yee.setInteger(keyBindings[var4].keyDescription, keyBindings[var4].keyCode);

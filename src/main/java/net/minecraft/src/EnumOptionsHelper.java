@@ -93,5 +93,16 @@ class EnumOptionsHelper {
 		} catch (NoSuchFieldError var10) {
 			;
 		}
+		/* Precision Client settings */
+		try {
+			enumOptionsMappingHelperArray[EnumOptions.DYNAMIC_FOV.ordinal()] = 50;
+		} catch (NoSuchFieldError var10) {
+			;
+		}
+		try {
+			enumOptionsMappingHelperArray[EnumOptions.FULLBRIGHT.ordinal()] = 51;
+		} catch (NoSuchFieldError var10) {
+			;
+		}
 	}
 }

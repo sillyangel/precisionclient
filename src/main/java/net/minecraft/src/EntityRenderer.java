@@ -791,7 +791,12 @@ public class EntityRenderer {
 					var15 = 1.0F;
 				}
 
-				var16 = this.mc.gameSettings.gammaSetting + this.torchFlickerX * i * 0.4f;
+				if (this.mc.gameSettings.fullBright) {
+					var16 = 20.0f;
+				} else {
+					var16 = this.mc.gameSettings.gammaSetting + this.torchFlickerX * i * 0.4f;
+				}
+
 				var17 = 1.0F - var13;
 				float var18 = 1.0F - var14;
 				float var19 = 1.0F - var15;

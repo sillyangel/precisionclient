@@ -203,27 +203,29 @@ public class EntityPlayerSP extends EntityPlayer {
 	 * Gets the player's field of view multiplier. (ex. when flying)
 	 */
 	public float getFOVMultiplier() {
-		float var1 = 1.0F;
-
-		if (this.capabilities.isFlying) {
-			var1 *= 1.1F;
-		}
-
-		var1 *= (this.landMovementFactor * this.getSpeedModifier() / this.speedOnGround + 1.0F) / 2.0F;
-
-		if (this.isUsingItem() && this.getItemInUse().itemID == Item.bow.itemID) {
-			int var2 = this.getItemInUseDuration();
-			float var3 = (float) var2 / 20.0F;
-
-			if (var3 > 1.0F) {
-				var3 = 1.0F;
-			} else {
-				var3 *= var3;
+        float var1 = 0.99F;
+        if (this.mc.gameSettings.dynamicFOV) {
+        	float var0 = 1.0F;
+        	var1 = var0;
+			if (this.capabilities.isFlying) {
+				var1 *= 1.1F;
 			}
 
-			var1 *= 1.0F - var3 * 0.15F;
-		}
+			var1 *= (this.landMovementFactor * this.getSpeedModifier() / this.speedOnGround + 1.0F) / 2.0F;
 
+			if (this.isUsingItem() && this.getItemInUse().itemID == Item.bow.itemID) {
+				int var2 = this.getItemInUseDuration();
+				float var3 = (float) var2 / 20.0F;
+
+				if (var3 > 1.0F) {
+					var3 = 1.0F;
+				} else {
+					var3 *= var3;
+				}
+
+				var1 *= 1.0F - var3 * 0.15F;
+			}
+		}	
 		return var1;
 	}
 
