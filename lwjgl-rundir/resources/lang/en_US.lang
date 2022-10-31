@@ -1477,6 +1477,8 @@ prcmenu.mods=Mods
 prcmenu.options=Options
 prcmenu.options.title=Precision Options
 prcmenu.mods.title=Precision Mods
+prcmenu.mods.keyStrokesOptions.title=Keystrokes Options
+prcmenu.mods.fullBrightOptions.title=Fullbright Options
 
 prcmenu.options.dynamicFOV=Dynamic FOV
 prcmenu.options.vignette=Vignette

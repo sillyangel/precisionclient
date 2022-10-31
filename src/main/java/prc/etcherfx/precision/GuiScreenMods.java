@@ -1,13 +1,11 @@
 package prc.etcherfx.precision;
 
-import net.minecraft.src.GameSettings;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.StringTranslate;
-import net.minecraft.src.GuiSmallButton;
+import net.minecraft.src.*;
+import prc.etcherfx.precision.mods.*;
 
-public class GuiScreenPrcMenu extends GuiScreen {
+import java.util.Objects;
 
+public class GuiScreenMods extends GuiScreen {
     /**
      * A reference to the screen object that created this. Used for navigating
      * between screens.
@@ -16,35 +14,39 @@ public class GuiScreenPrcMenu extends GuiScreen {
     /**
      * The title string that is displayed in the top-center of the screen.
      */
-    protected String screenTitle = "Precision Menu";
+    protected String screenTitle = "Mods";
 
-    public GuiScreenPrcMenu(GuiScreen par1GuiScreen) {
-        parentScreen = par1GuiScreen;
+    public GuiScreenMods(GuiScreen par1GuiScreen) {
+        this.parentScreen = par1GuiScreen;
     }
-
 
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */
     public void initGui() {
         StringTranslate var1 = StringTranslate.getInstance();
-        screenTitle = var1.translateKey("prcmenu.title");
-        byte var2 = -16;
-        this.buttonList.add(new GuiButton(101, this.width / 2 - 50, this.height / 4 + 48 + var2, 98, 20, var1.translateKey("prcmenu.mods")));
-        this.buttonList.add(new GuiButton(102, this.width / 2 - 50, this.height / 4 + 72 + var2, 98, 20, var1.translateKey("prcmenu.options")));
+        int var2 = 0;
+        screenTitle = var1.translateKey("prcmenu.mods.title");
+        this.buttonList.add(new GuiButton(101, width / 2 - 152, height / 6 - 12, 98, 20, var1.translateKey("prcmenu.mods.keyStrokes")));
+        this.buttonList.add(new GuiButton(102, width / 2 - 50, height / 6 - 12, 98, 20, var1.translateKey("prcmenu.mods.fullBright")));
+        //this.buttonList.add(new GuiButton(103, width / 2 + 52, height / 6 - 12, 98, 20, var1.translateKey("prcmenu.mods.zoom")));
         this.buttonList.add(new GuiSmallButton(200, this.width / 2 - 75, this.height / 4 + 120, var1.translateKey("gui.done")));
     }
 
+    /**
+     * Fired when a control is clicked. This is the equivalent of
+     * ActionListener.actionPerformed(ActionEvent e).
+     */
     protected void actionPerformed(GuiButton par1GuiButton) {
         if (par1GuiButton.enabled) {
             if (par1GuiButton.id == 101) {
-                mc.displayGuiScreen(new GuiScreenMods(this));
+                this.mc.displayGuiScreen(new GuiScreenKeystrokesOptions(this, this.mc.gameSettings));
             }
             if (par1GuiButton.id == 102) {
-               mc.displayGuiScreen(new GuiScreenOptions(this, mc.gameSettings));
+                this.mc.displayGuiScreen(new GuiScreenFullbrightOptions(this, this.mc.gameSettings));
             }
             if (par1GuiButton.id == 200) {
-                mc.displayGuiScreen(parentScreen);
+                this.mc.displayGuiScreen(parentScreen);
             }
         }
     }
