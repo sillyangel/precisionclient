@@ -1472,8 +1472,13 @@ advMode.allPlayers=Use "@a" to target all players
 advMode.notEnabled=Command blocks are not enabled on this server
 advMode.notAllowed=Must be an opped player in creative mode
 
-prcm
+prcmenu.title=Precision Menu
+prcmenu.mods=Mods
+prcmenu.options=Options
+prcmenu.options.title=Precision Options
+prcmenu.mods.title=Precision Mods
+
 prcmenu.options.dynamicFOV=Dynamic FOV
+prcmenu.options.vignette=Vignette
 prcmenu.mods.fullBright=Fullbright
 prcmenu.mods.keyStrokes=Keystrokes
-prcmenu.options.vignette=Vignette
