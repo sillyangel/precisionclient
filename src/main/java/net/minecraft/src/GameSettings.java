@@ -152,6 +152,7 @@ public class GameSettings {
 	public boolean fullBright = true;
 	public boolean keyStrokes = true;
 	public boolean vignette = true;
+	public boolean rain = true;
 
 	public GameSettings(Minecraft par1Minecraft) {
 		this.keyBindings = new KeyBinding[] { this.keyBindAttack, this.keyBindUseItem, this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory,
@@ -390,6 +391,10 @@ public class GameSettings {
             this.vignette = !this.vignette;
         }
 
+        if (par1EnumOptions == EnumOptions.RAIN) {
+            this.rain = !this.rain;
+        }
+
 		this.saveOptions();
 	}
 
@@ -465,6 +470,9 @@ public class GameSettings {
 
 		case 53:
             return this.vignette;
+
+		case 54:
+            return this.rain;
 
 		default:
 			return false;
@@ -585,8 +593,9 @@ public class GameSettings {
 			/* Precision Client settings */
 			if (yee.hasKey("dynamicFOV")) dynamicFOV= yee.getBoolean("dynamicFOV");
 			if (yee.hasKey("fullBright")) fullBright= yee.getBoolean("fullBright");
-			if (yee.hasKey("keyStrokes")) fullBright= yee.getBoolean("keyStrokes");
-			if (yee.hasKey("vignette")) fullBright= yee.getBoolean("vignette");
+			if (yee.hasKey("keyStrokes")) keyStrokes= yee.getBoolean("keyStrokes");
+			if (yee.hasKey("vignette")) vignette= yee.getBoolean("vignette");
+			if (yee.hasKey("rain")) rain= yee.getBoolean("rain");
 			
 			if(voiceListenRadius < 5) voiceListenRadius = 5;
 			else if(voiceListenRadius > 22) voiceListenRadius = 22;
@@ -673,6 +682,7 @@ public class GameSettings {
 		yee.setBoolean("fullBright", fullBright);
 		yee.setBoolean("keyStrokes", keyStrokes);
 		yee.setBoolean("vignette", vignette);
+		yee.setBoolean("rain", rain);
 		
 		for (int var4 = 0; var4 < this.keyBindings.length; ++var4) {
 			yee.setInteger(keyBindings[var4].keyDescription, keyBindings[var4].keyCode);

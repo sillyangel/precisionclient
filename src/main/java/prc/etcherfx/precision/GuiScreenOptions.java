@@ -8,7 +8,7 @@ public class GuiScreenOptions extends GuiScreen {
     /**
      * An array of options that can be changed directly from the options GUI.
      */
-    private static final EnumOptions[] Options = new EnumOptions[]{EnumOptions.DYNAMIC_FOV, EnumOptions.VIGNETTE/* , EnumOptions.renderVignette, EnumOptions.showRain*/};
+    private static final EnumOptions[] Options = new EnumOptions[]{EnumOptions.DYNAMIC_FOV, EnumOptions.VIGNETTE, EnumOptions.RAIN};
 
     /**
      * A reference to the screen object that created this. Used for navigating

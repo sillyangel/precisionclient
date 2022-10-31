@@ -1440,6 +1440,7 @@ public class EntityRenderer {
 	 * Render rain and snow
 	 */
 	protected void renderRainSnow(float par1) {
+		if (this.mc.gameSettings.rain) {
 		float var2 = this.mc.theWorld.getRainStrength(par1) * 0.5f;
 
 		if (var2 > 0.0F) {
@@ -1591,6 +1592,7 @@ public class EntityRenderer {
 			EaglerAdapter.glAlphaFunc(EaglerAdapter.GL_GREATER, 0.1F);
 			this.disableLightmap((double) par1);
 		}
+	}
 	}
 
 	/**
