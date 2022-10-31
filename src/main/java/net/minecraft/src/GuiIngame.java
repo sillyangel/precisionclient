@@ -1,8 +1,10 @@
 package net.minecraft.src;
 
 import net.lax1dude.eaglercraft.*;
+import net.lax1dude.eaglercraft.adapter.EaglerAdapterImpl2;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 import net.minecraft.client.Minecraft;
+import prc.etcherfx.precision.*;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -474,14 +476,76 @@ public class GuiIngame extends Gui {
 			this.mc.mcProfiler.endSection();
 		}else {
 			EaglerAdapter.glPushMatrix();
-			EaglerAdapter.glScalef(0.75f, 0.75f, 0.75f);
-			var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), 2, 2, 16777215);
+			EaglerAdapter.glScalef(0.8f, 0.8f, 0.8f);
 
+			if (this.mc.gameSettings.keyStrokes) {
+				//this.drawGradientRect(xPosLeft, yPosTop, xPosRight, yPosBot, -1072689136, -804253680);
+				this.drawGradientRect(50, 20, 80, 50, -1072689136, -804253680);
+				this.drawGradientRect(50, 53, 80, 83, -1072689136, -804253680);
+				this.drawGradientRect(17, 53, 47, 83, -1072689136, -804253680);
+				this.drawGradientRect(83, 53, 113, 83, -1072689136, -804253680);
+				this.drawGradientRect(17, 86, 64, 116, -1072689136, -804253680);
+				this.drawGradientRect(66, 86, 113, 116, -1072689136, -804253680);
+				this.drawGradientRect(17, 119, 113, 139, -1072689136, -804253680);
+				this.drawGradientRect(17, 142, 113, 162, -1072689136, -804253680);
+				this.drawGradientRect(17, 165, 113, 190, -1072689136, -804253680);
+				if (mc.gameSettings.keyBindForward.pressed) {
+					this.drawGradientRect(50, 20, 80, 50, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindLeft.pressed) {
+					this.drawGradientRect(17, 53, 47, 83, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindBack.pressed) {
+					this.drawGradientRect(50, 53, 80, 83, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindRight.pressed) {
+					this.drawGradientRect(83, 53, 113, 83, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindJump.pressed) {
+					this.drawGradientRect(17, 119, 113, 139, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindSneak.pressed) {
+					this.drawGradientRect(17, 142, 113, 162, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindAttack.pressed) {
+					this.drawGradientRect(17, 86, 64, 116, 0x88FFFFFF, 0x88FFFFFF);
+				} if (mc.gameSettings.keyBindUseItem.pressed) {
+					this.drawGradientRect(66, 86, 113, 116, 0x88FFFFFF, 0x88FFFFFF);
+				}
+				EaglerAdapter.glPopMatrix();
+				EaglerAdapter.glPushMatrix();
+				var8.drawStringWithShadow("W", (int) 49.5, 24, 0xFFFFFF);
+				var8.drawStringWithShadow("A", 23, 51, 0xFFFFFF);
+				var8.drawStringWithShadow("S", (int) 49.5, 51, 0xFFFFFF);
+				var8.drawStringWithShadow("D", 76, 51, 0xFFFFFF);
+				var8.drawStringWithShadow("LMB", 24, 78, 0xFFFFFF);
+				var8.drawStringWithShadow("RMB", 64, 78, 0xFFFFFF);
+				/* 
+				var8.drawStringWithShadow("LMB", 24, 74, 0xFFFFFF);
+				var8.drawStringWithShadow("RMB", 64, 74, 0xFFFFFF);
+				*/
+				var8.drawStringWithShadow("\u00A7m----", (int) 40, 98, 0xFFFFFF);
+				var8.drawStringWithShadow("Sneak", 37, 118, 0xFFFFFF);
+				EaglerAdapter.glScalef(0.6f, 0.6f, 0.6f);
+				/* 
+				var8.drawStringWithShadow("0 CPS", 40, 140, 0xFFFFFF);
+				var8.drawStringWithShadow("0 CPS", 107, 140, 0xFFFFFF);
+				*/
+				EaglerAdapter.glPopMatrix();
+				EaglerAdapter.glPushMatrix();
+				if (this.mc.renderGlobal.getDebugInfoShort().length() > 6) {
+					var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), 33, 138, 0xFFFFFF);
+				} else {
+					var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), 35, 138, 0xFFFFFF);
+				}					
+			}
+			
 			if(mc.gameSettings.showCoordinates) {
-				var8.drawStringWithShadow("x: "+MathHelper.floor_double(this.mc.thePlayer.posX)+", y: "+MathHelper.floor_double(this.mc.thePlayer.posY)+", z: "+MathHelper.floor_double(this.mc.thePlayer.posZ), 2, 12, 16777215);
+				EaglerAdapter.glPopMatrix();
+				EaglerAdapter.glPushMatrix();
+				var8.drawStringWithShadow("[X: "+MathHelper.floor_double(this.mc.thePlayer.posX)+"]", 5, var7 - 32, 16777215);
+				var8.drawStringWithShadow("[Y: "+MathHelper.floor_double(this.mc.thePlayer.posY)+"]", 5, var7 - 22, 16777215);
+				var8.drawStringWithShadow("[Z: "+MathHelper.floor_double(this.mc.thePlayer.posZ)+"]", 5, var7 - 12, 16777215);
 			}
 			
 			if(IntegratedServer.isWorldRunning()) {
+				EaglerAdapter.glPopMatrix();
+				EaglerAdapter.glPushMatrix();
+				EaglerAdapter.glScalef(0.75f, 0.75f, 0.75f);
 				String strr = "Playing Singleplayer";
 				var8.drawStringWithShadow(strr, (int)(var6 / 0.75f) - var8.getStringWidth(strr) - 2, 2, 0xFFFFAA);
 				List<String> info = IntegratedServer.getTPS();
@@ -728,29 +792,31 @@ public class GuiIngame extends Gui {
 	 * Renders the vignette. Args: vignetteBrightness, width, height
 	 */
 	private void renderVignette(float par1, int par2, int par3) {
-		par1 = 1.0F - par1 * 0.5f;
+		if (mc.gameSettings.vignette) {
+			par1 = 1.0F - par1 * 0.5f;
 
-		if (par1 < 0.0F) {
-			par1 = 0.0F;
+			if (par1 < 0.0F) {
+				par1 = 0.0F;
+			}
+
+			if (par1 > 1.0F) {
+				par1 = 1.0F;
+			}
+
+			this.prevVignetteBrightness = (float) ((double) this.prevVignetteBrightness + (double) (par1 - this.prevVignetteBrightness) * 0.01D);
+			EaglerAdapter.glDisable(EaglerAdapter.GL_DEPTH_TEST);
+			EaglerAdapter.glDepthMask(false);
+			EaglerAdapter.glBlendFunc(EaglerAdapter.GL_ZERO, EaglerAdapter.GL_ONE_MINUS_SRC_COLOR);
+			EaglerAdapter.glColor4f(this.prevVignetteBrightness, this.prevVignetteBrightness, this.prevVignetteBrightness, 1.0F);
+			tex_vigg.bindTexture();
+			Tessellator var4 = Tessellator.instance;
+			var4.startDrawingQuads();
+			var4.addVertexWithUV(0.0D, (double) par3, -90.0D, 0.0D, 1.0D);
+			var4.addVertexWithUV((double) par2, (double) par3, -90.0D, 1.0D, 1.0D);
+			var4.addVertexWithUV((double) par2, 0.0D, -90.0D, 1.0D, 0.0D);
+			var4.addVertexWithUV(0.0D, 0.0D, -90.0D, 0.0D, 0.0D);
+			var4.draw();
 		}
-
-		if (par1 > 1.0F) {
-			par1 = 1.0F;
-		}
-
-		this.prevVignetteBrightness = (float) ((double) this.prevVignetteBrightness + (double) (par1 - this.prevVignetteBrightness) * 0.01D);
-		EaglerAdapter.glDisable(EaglerAdapter.GL_DEPTH_TEST);
-		EaglerAdapter.glDepthMask(false);
-		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_ZERO, EaglerAdapter.GL_ONE_MINUS_SRC_COLOR);
-		EaglerAdapter.glColor4f(this.prevVignetteBrightness, this.prevVignetteBrightness, this.prevVignetteBrightness, 1.0F);
-		tex_vigg.bindTexture();
-		Tessellator var4 = Tessellator.instance;
-		var4.startDrawingQuads();
-		var4.addVertexWithUV(0.0D, (double) par3, -90.0D, 0.0D, 1.0D);
-		var4.addVertexWithUV((double) par2, (double) par3, -90.0D, 1.0D, 1.0D);
-		var4.addVertexWithUV((double) par2, 0.0D, -90.0D, 1.0D, 0.0D);
-		var4.addVertexWithUV(0.0D, 0.0D, -90.0D, 0.0D, 0.0D);
-		var4.draw();
 		EaglerAdapter.glDepthMask(true);
 		EaglerAdapter.glEnable(EaglerAdapter.GL_DEPTH_TEST);
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

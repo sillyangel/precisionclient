@@ -104,5 +104,15 @@ class EnumOptionsHelper {
 		} catch (NoSuchFieldError var10) {
 			;
 		}
+		try {
+			enumOptionsMappingHelperArray[EnumOptions.KEYSTROKES.ordinal()] = 52;
+		} catch (NoSuchFieldError var10) {
+			;
+		}
+		try {
+			enumOptionsMappingHelperArray[EnumOptions.VIGNETTE.ordinal()] = 53;
+		} catch (NoSuchFieldError var10) {
+			;
+		}
 	}
 }

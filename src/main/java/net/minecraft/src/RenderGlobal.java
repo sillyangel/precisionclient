@@ -410,8 +410,7 @@ public class RenderGlobal implements IWorldAccess {
 	}
 	
 	public String getDebugInfoShort() {
-		return "" + Minecraft.debugFPS + "fps | C: " + this.renderersBeingRendered + "/" + this.renderersLoaded + ", E: " + this.countEntitiesRendered + "+" + tileEntities.size() +
-				", U: " + Minecraft.debugChunkGeometryUpdates + "/" + Minecraft.debugChunkUpdates;
+		return "" + Minecraft.debugFPS + " FPS";
 	}
 
 	/**

@@ -34,8 +34,9 @@ menu.simulating=Simulating the world for a bit
 menu.respawning=Respawning
 menu.shareToLan=Open to LAN
 menu.closeLan=Close LAN
+menu.prcMenu=Prc Menu
 
-menu.skinCapeSettings=Skins/Capes Settings
+menu.skinCapeSettings=Skins/Capes
 menu.skinCapeSettingsNote0=I put the button up here so
 menu.skinCapeSettingsNote1=lazy people can find it
 menu.skinCapeSettings.skinCustomization=Skin Customization
@@ -1471,5 +1472,8 @@ advMode.allPlayers=Use "@a" to target all players
 advMode.notEnabled=Command blocks are not enabled on this server
 advMode.notAllowed=Must be an opped player in creative mode
 
+prcm
 prcmenu.options.dynamicFOV=Dynamic FOV
 prcmenu.mods.fullBright=Fullbright
+prcmenu.mods.keyStrokes=Keystrokes
+prcmenu.options.vignette=Vignette
