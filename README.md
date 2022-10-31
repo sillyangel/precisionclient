@@ -31,14 +31,6 @@
 - **Dynamic FOV toggle** - Choose whether to show FOV effects while sprinting, etc.
 - **Rain toggle** - Disable rain to increase FPS while raining
 - **Vignette toggle** - Choose to enable/disable vignette overlay
-
-  <li><b>Potion effect GUI</b> - Shows potion effect without needing to go into inventory (<a
-      href="https://github.com/etcherfx/precisionclient/issues/3">#3</a>)
-  </li>
-  <li><b>FPS and coordinates toggle</b> - Choose to show/hide fps and coordinates
-  </li>
-  <li><b>6 completed texture packs</b> - Default 1.17, Modified 1.17, Bombies 180k, Bare Bones, Miami Private,
-    Tightfault (allen bow edit)
-  </li>
-
-</details>
+- **Potion effect GUI** - Shows potion effect without needing to go into inventory
+- **FPS and coordinates toggle** - Choose to show/hide fps and coordinates
+- **Custom ported texture packs** - Texture packs suggested by users
