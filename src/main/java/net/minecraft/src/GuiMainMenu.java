@@ -164,7 +164,7 @@ public class GuiMainMenu extends GuiScreen {
 		}
 
 		this.buttonList.add(new GuiButtonLanguage(4, this.width / 2 - 60, var12));
-		this.buttonList.add(new GuiButtonPrcOptions(5, this.width / 2 - 35, var12));
+		this.buttonList.add(new GuiButtonPrcMenu(5, this.width / 2 - 35, var12));
 		this.buttonList.add(new GuiButtonOptions(6, this.width / 2 - 10, var12));
 		this.buttonList.add(new GuiButtonProfile(7, this.width / 2 + 15, var12));
 		this.buttonList.add(new GuiButtonReadme(8, this.width / 2 + 40, var12));
@@ -299,6 +299,11 @@ public class GuiMainMenu extends GuiScreen {
 		if (par1GuiButton.id == 4) {
 			showingEndian = false;
 			this.mc.displayGuiScreen(new GuiLanguage(this, this.mc.gameSettings));
+		}
+
+		if (par1GuiButton.id == 5) {
+			showingEndian = false;
+			this.mc.displayGuiScreen(new GuiScreenPrcMenu(this));
 		}
 
 		if (par1GuiButton.id == 6) {

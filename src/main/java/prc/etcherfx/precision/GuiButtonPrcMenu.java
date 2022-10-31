@@ -5,8 +5,8 @@ import net.lax1dude.eaglercraft.TextureLocation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.GuiButton;
 
-public class GuiButtonPrcOptions extends GuiButton {
-	public GuiButtonPrcOptions(int par1, int par2, int par3) {
+public class GuiButtonPrcMenu extends GuiButton {
+	public GuiButtonPrcMenu(int par1, int par2, int par3) {
 		super(par1, par2, par3, 18, 18, "");
 	}
 
