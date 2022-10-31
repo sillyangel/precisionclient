@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 import net.lax1dude.eaglercraft.*;
 import net.minecraft.client.Minecraft;
+import prc.etcherfx.precision.*;
 
 public class GuiIngameMenu extends GuiScreen {
 
@@ -26,10 +27,12 @@ public class GuiIngameMenu extends GuiScreen {
 		}
 
 		this.buttonList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + var1, StatCollector.translateToLocal("menu.returnToGame")));
+		this.buttonList.add(new GuiButton(8, this.width / 2 - 100, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("menu.skinCapeSettings")));
+		this.buttonList.add(new GuiButton(9, this.width / 2 + 2, this.height / 4 + 48 + var1, 98, 20, StatCollector.translateToLocal("menu.prcMenu")));
+		this.buttonList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 72 + var1, StatCollector.translateToLocal("menu.multiplayer")));
 		this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal("menu.options")));
 		this.buttonList.add(lanButton = new GuiButton(7, this.width / 2 + 2, this.height / 4 + 96 + var1, 98, 20, StatCollector.translateToLocal(IntegratedServerLAN.isLANOpen() ? "menu.closeLan" : "menu.shareToLan")));
 		lanButton.enabled = mc.isSingleplayer();
-		this.buttonList.add(new GuiButton(8, 3, 3, 120, 20, StatCollector.translateToLocal("menu.skinCapeSettings")));
 	}
 
 	/**
@@ -58,6 +61,10 @@ public class GuiIngameMenu extends GuiScreen {
 			this.mc.setIngameFocus();
 			this.mc.sndManager.resumeAllSounds();
 			break;
+		
+		case 5:
+			this.mc.displayGuiScreen(new GuiMultiplayer(this));
+			break;
 
 		case 7:
 			if (IntegratedServerLAN.isLANOpen()) {
@@ -74,6 +81,10 @@ public class GuiIngameMenu extends GuiScreen {
 			
 		case 8:
 			this.mc.displayGuiScreen(new GuiScreenSkinCapeSettings(this));
+			break;
+
+		case 9:
+			this.mc.displayGuiScreen(new GuiScreenPrcMenu(this));
 			break;
 		}
 	}
@@ -108,8 +119,6 @@ public class GuiIngameMenu extends GuiScreen {
 			this.drawString(fontRenderer, var1.translateKey("menu.skinCapeSettingsNote1"), 0, 9, c);
 			EaglerAdapter.glPopMatrix();
 		}
-
-		drawString(fontRenderer, "Eaglercraft: " + ConfigConstants.version, 6, 27, 0x999999);
 		
 		if(IntegratedServerLAN.isLANOpen()) {
 			String str = var1.translateKey("lanServer.pauseMenu0");
