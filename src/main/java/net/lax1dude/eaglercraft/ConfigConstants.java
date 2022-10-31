@@ -6,7 +6,7 @@ public class ConfigConstants {
 	
 	public static boolean profanity = false;
 
-	public static final String version = "1.5.2 (beta_0.2)";
+	public static final String version = "1.5.2 (beta_0.2 Pre 1)";
 	public static final String mainMenuString = "Precision Client " + version;
 
 	public static final String githubRepo = "https://github.com/etcherfx/precisionclient";

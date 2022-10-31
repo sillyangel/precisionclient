@@ -1482,5 +1482,6 @@ prcmenu.mods.fullBrightOptions.title=Fullbright Options
 
 prcmenu.options.dynamicFOV=Dynamic FOV
 prcmenu.options.vignette=Vignette
+prcmenu.options.rain=Rain
 prcmenu.mods.fullBright=Fullbright
 prcmenu.mods.keyStrokes=Keystrokes
