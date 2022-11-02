@@ -403,12 +403,12 @@ public class GuiIngame extends Gui {
 			this.mc.mcProfiler.endSection();
 		}
 		
-		this.mc.debug = "" + Minecraft.debugFPS + " fps, " + Minecraft.debugChunkUpdates + " chunk updates";
+		this.mc.debug = "" + Minecraft.debugFPS + " FPS, " + Minecraft.debugChunkUpdates + " chunk updates";
 
 		if (this.mc.gameSettings.showDebugInfo) {
 			this.mc.mcProfiler.startSection("debug");
 			EaglerAdapter.glPushMatrix();
-			var8.drawStringWithShadow("minecraft 1.5.2 (" + this.mc.debug + ")", 2, 2, 16777215);
+			var8.drawStringWithShadow("Minecraft 1.5.2 (" + this.mc.debug + ")", 2, 2, 16777215);
 			var8.drawStringWithShadow(this.mc.debugInfoRenders(), 2, 12, 16777215);
 			var8.drawStringWithShadow(this.mc.getEntityDebug(), 2, 22, 16777215);
 			var8.drawStringWithShadow(this.mc.debugInfoEntities(), 2, 32, 16777215);
@@ -439,11 +439,11 @@ public class GuiIngame extends Gui {
 			var47 = MathHelper.floor_double(this.mc.thePlayer.posX);
 			var22 = MathHelper.floor_double(this.mc.thePlayer.posY);
 			var23 = MathHelper.floor_double(this.mc.thePlayer.posZ);
-			this.drawString(var8, "x: "+doubleToShorterString(this.mc.thePlayer.posX)+" ("+var47+") // c: "+(var47 >> 4)+" ("+(var47 & 15)+")", 2, 92, 14737632);
-			this.drawString(var8, "y: "+doubleToShorterString(this.mc.thePlayer.posY)+" ("+var22+") (feet pos)", 2, 100, 14737632);
-			this.drawString(var8, "z: "+doubleToShorterString(this.mc.thePlayer.posZ)+" ("+var23+") // c: "+(var23 >> 4)+" ("+(var23 & 15)+")", 2, 108, 14737632);
+			this.drawString(var8, "X: "+doubleToShorterString(this.mc.thePlayer.posX)+" ("+var47+") // C: "+(var47 >> 4)+" ("+(var47 & 15)+")", 2, 92, 14737632);
+			this.drawString(var8, "Y: "+doubleToShorterString(this.mc.thePlayer.posY)+" ("+var22+") (feet pos)", 2, 100, 14737632);
+			this.drawString(var8, "Z: "+doubleToShorterString(this.mc.thePlayer.posZ)+" ("+var23+") // C: "+(var23 >> 4)+" ("+(var23 & 15)+")", 2, 108, 14737632);
 			var24 = MathHelper.floor_double((double) (this.mc.thePlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-			this.drawString(var8, "f: " + var24 + " (" + Direction.directions[var24] + ") / " + MathHelper.wrapAngleTo180_float(this.mc.thePlayer.rotationYaw), 2, 116, 14737632);
+			this.drawString(var8, "F: " + var24 + " (" + Direction.directions[var24] + ") / " + MathHelper.wrapAngleTo180_float(this.mc.thePlayer.rotationYaw), 2, 116, 14737632);
 			this.drawString(var8, "Press F+6 to " + (mc.gameSettings.showCoordinates ? "disable" : "enable") + " showing coords in ingame GUI", 2, 135, 0xFFFFFFFF);
 
 			if(IntegratedServer.isWorldRunning()) {
@@ -456,15 +456,15 @@ public class GuiIngame extends Gui {
 			
 			//this.drawString(var8, String.format("ws: %.3f, fs: %.3f, g: %b, fl: %d", new Object[] { Float.valueOf(this.mc.thePlayer.capabilities.getWalkSpeed()), Float.valueOf(this.mc.thePlayer.capabilities.getFlySpeed()),
 			//		Boolean.valueOf(this.mc.thePlayer.onGround), Integer.valueOf(this.mc.theWorld.getHeightValue(var47, var23)) }), 2, 104, 14737632);
-			var45 = "opengl emulator status - v1.0";
+			var45 = "OpenGl emulator status - v1.0";
 			this.drawString(var8, var45, var6 - var8.getStringWidth(var45) - 2, offset + 36, 14737632);
-			var45 = "lists: "+EaglerAdapter.getDisplayListCount()+", upload: "+(EaglerAdapter.getBitsPerSecond() / 1000000)+"mbps";
+			var45 = "Lists: "+EaglerAdapter.getDisplayListCount()+", upload: "+(EaglerAdapter.getBitsPerSecond() / 1000000)+"mbps";
 			this.drawString(var8, var45, var6 - var8.getStringWidth(var45) - 2, offset + 46, 14737632);
-			var45 = "verts: "+(EaglerAdapter.getVertexesPerSecond() / 1000)+"k, triangles: "+(EaglerAdapter.getTrianglesPerSecond() / 1000)+"k";
+			var45 = "Verts: "+(EaglerAdapter.getVertexesPerSecond() / 1000)+"k, triangles: "+(EaglerAdapter.getTrianglesPerSecond() / 1000)+"k";
 			this.drawString(var8, var45, var6 - var8.getStringWidth(var45) - 2, offset + 56, 14737632);
-			var45 = "rendering backend: "+(EaglerAdapter.isWebGL ? "webgl20" : "opengl30");
+			var45 = "Rendering backend: "+(EaglerAdapter.isWebGL ? "WebGL20" : "OpenGL30");
 			this.drawString(var8, var45, var6 - var8.getStringWidth(var45) - 2, offset + 66, 14737632);
-			var45 = "glsl "+(EaglerAdapter._wgetShaderHeader() +", 32 bytes/vert");
+			var45 = "GLSL "+(EaglerAdapter._wgetShaderHeader() +", 32 bytes/vert");
 			this.drawString(var8, var45, var6 - var8.getStringWidth(var45) - 2, offset + 76, 14737632);
 			var45 = "Bound Shaders:";
 			this.drawString(var8, var45, var6 - var8.getStringWidth(var45) - 2, offset + 100, 14737632);
@@ -537,15 +537,18 @@ public class GuiIngame extends Gui {
 						fpsPos = 35;
 						break;
 				}
-				var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), fpsPos, 138, 0xFFFFFF);			
+				var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), fpsPos, 138, 0xFFFFFF);	
 			}
 			
 			if(mc.gameSettings.showCoordinates) {
 				EaglerAdapter.glPopMatrix();
 				EaglerAdapter.glPushMatrix();
-				var8.drawStringWithShadow("[X: "+MathHelper.floor_double(this.mc.thePlayer.posX)+"]", 5, var7 - 32, 16777215);
-				var8.drawStringWithShadow("[Y: "+MathHelper.floor_double(this.mc.thePlayer.posY)+"]", 5, var7 - 22, 16777215);
-				var8.drawStringWithShadow("[Z: "+MathHelper.floor_double(this.mc.thePlayer.posZ)+"]", 5, var7 - 12, 16777215);
+				this.drawGradientRect(13, 163, 120, 215, -1072689136, -804253680);
+				var24 = MathHelper.floor_double((double) (this.mc.thePlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+				var8.drawStringWithShadow("[X: "+MathHelper.floor_double(this.mc.thePlayer.posX)+"]", 20, 170, 16777215);
+				var8.drawStringWithShadow("[Y: "+MathHelper.floor_double(this.mc.thePlayer.posY)+"]", 20, 180, 16777215);
+				var8.drawStringWithShadow("[Z: "+MathHelper.floor_double(this.mc.thePlayer.posZ)+"]", 20, 190, 16777215);
+				var8.drawStringWithShadow("[Direction: "+Direction.directionsC[var24]+"]", 20, 200, 16777215);
 			}
 			
 			if(IntegratedServer.isWorldRunning()) {
