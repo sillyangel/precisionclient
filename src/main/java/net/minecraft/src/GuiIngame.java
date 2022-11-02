@@ -545,10 +545,10 @@ public class GuiIngame extends Gui {
 				EaglerAdapter.glPushMatrix();
 				this.drawGradientRect(13, 163, 120, 215, -1072689136, -804253680);
 				var24 = MathHelper.floor_double((double) (this.mc.thePlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				var8.drawStringWithShadow("[X: "+MathHelper.floor_double(this.mc.thePlayer.posX)+"]", 20, 170, 16777215);
-				var8.drawStringWithShadow("[Y: "+MathHelper.floor_double(this.mc.thePlayer.posY)+"]", 20, 180, 16777215);
-				var8.drawStringWithShadow("[Z: "+MathHelper.floor_double(this.mc.thePlayer.posZ)+"]", 20, 190, 16777215);
-				var8.drawStringWithShadow("[Direction: "+Direction.directionsC[var24]+"]", 20, 200, 16777215);
+				var8.drawStringWithShadow("[X: "+MathHelper.floor_double(this.mc.thePlayer.posX)+"]", 22, 170, 16777215);
+				var8.drawStringWithShadow("[Y: "+MathHelper.floor_double(this.mc.thePlayer.posY)+"]", 22, 180, 16777215);
+				var8.drawStringWithShadow("[Z: "+MathHelper.floor_double(this.mc.thePlayer.posZ)+"]", 22, 190, 16777215);
+				var8.drawStringWithShadow("[Direction: "+Direction.directionsC[var24]+"]", 22, 200, 16777215);
 			}
 			
 			if(IntegratedServer.isWorldRunning()) {
