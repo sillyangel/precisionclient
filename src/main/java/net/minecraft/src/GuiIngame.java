@@ -527,11 +527,17 @@ public class GuiIngame extends Gui {
 				*/
 				EaglerAdapter.glPopMatrix();
 				EaglerAdapter.glPushMatrix();
-				if (this.mc.renderGlobal.getDebugInfoShort().length() > 6) {
-					var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), 33, 138, 0xFFFFFF);
-				} else {
-					var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), 35, 138, 0xFFFFFF);
-				}					
+				int fpsPos = 33;
+				int renderFPS = this.mc.renderGlobal.getDebugInfoShort().length();
+				switch (renderFPS) {
+					case 5: 
+						fpsPos = 37;
+						break;
+					case 6:
+						fpsPos = 35;
+						break;
+				}
+				var8.drawStringWithShadow(this.mc.renderGlobal.getDebugInfoShort(), fpsPos, 138, 0xFFFFFF);			
 			}
 			
 			if(mc.gameSettings.showCoordinates) {
