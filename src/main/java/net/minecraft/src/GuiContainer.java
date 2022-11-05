@@ -112,7 +112,7 @@ public abstract class GuiContainer extends GuiScreen {
         this.theSlot = null;
         short var6 = 240;
         short var7 = 240;
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6, (float) var7);
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, var6, var7);
         EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         int var9;
 
@@ -214,7 +214,7 @@ public abstract class GuiContainer extends GuiScreen {
      * position.
      */
     protected void drawCreativeTabHoveringText(String par1Str, int par2, int par3) {
-        this.func_102021_a(Arrays.asList(par1Str), par2, par3);
+        this.func_102021_a(Collections.singletonList(par1Str), par2, par3);
     }
 
     protected void func_102021_a(List par1List, int par2, int par3) {

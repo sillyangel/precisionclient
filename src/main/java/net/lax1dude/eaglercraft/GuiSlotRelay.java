@@ -55,7 +55,7 @@ class GuiSlotRelay extends GuiSlot {
                 str = "No Connection";
             } else if (ping < 0L) {
                 var15 = 1;
-                var16 = (int) (Minecraft.getSystemTime() / 100L + (long) (id * 2L) & 7L);
+                var16 = (int) (Minecraft.getSystemTime() / 100L + (id * 2L) & 7L);
                 if (var16 > 4) {
                     var16 = 8 - var16;
                 }

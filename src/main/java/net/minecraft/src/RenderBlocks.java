@@ -3306,7 +3306,7 @@ public class RenderBlocks {
         double var15 = par4;
 
         if (par1Block == Block.tallGrass) {
-            long var17 = (long) (par2 * 3129871L) ^ (long) par4 * 116129781L ^ (long) par3;
+            long var17 = (par2 * 3129871L) ^ (long) par4 * 116129781L ^ (long) par3;
             var17 = var17 * var17 * 42317861L + var17 * 11L;
             var19 += ((double) ((float) (var17 >> 16 & 15L) / 15.0F) - 0.5D) * 0.5D;
             var20 += ((double) ((float) (var17 >> 20 & 15L) / 15.0F) - 1.0D) * 0.2D;
@@ -3513,7 +3513,7 @@ public class RenderBlocks {
         double var10 = var6.getMinV();
         double var12 = var6.getMaxU();
         double var14 = var6.getMaxV();
-        long var16 = (long) (par2 * 3129871L) ^ (long) par4 * 116129781L ^ (long) par3;
+        long var16 = (par2 * 3129871L) ^ (long) par4 * 116129781L ^ (long) par3;
         var16 = var16 * var16 * 42317861L + var16 * 11L;
         int var18 = (int) (var16 >> 16 & 3L);
         var5.setBrightness(par1Block.getMixedBrightnessForBlock(this.blockAccess, par2, par3, par4));

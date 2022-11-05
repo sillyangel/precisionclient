@@ -64,9 +64,9 @@ public class OutputChannels {
      * Creates an <code>OutputChannels</code> instance
      * corresponding to the given channel code.
      *
-     * @param    code one of the OutputChannels channel code constants.
+     * @param code one of the OutputChannels channel code constants.
      * @throws IllegalArgumentException if code is not a valid
-     * channel code.
+     *                                  channel code.
      */
     public static OutputChannels fromInt(int code) {
         switch (code) {

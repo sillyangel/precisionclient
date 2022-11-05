@@ -173,7 +173,7 @@ public class GuiFlatPresets extends GuiScreen {
     }
 
     static {
-        addPreset("Classic Flat", Block.grass.blockID, BiomeGenBase.plains, Arrays.asList("village"),
+        addPreset("Classic Flat", Block.grass.blockID, BiomeGenBase.plains, Collections.singletonList("village"),
                 new FlatLayerInfo(1, Block.grass.blockID),
                 new FlatLayerInfo(2, Block.dirt.blockID), new FlatLayerInfo(1, Block.bedrock.blockID));
         addPreset("Tunnelers' Dream", Block.stone.blockID, BiomeGenBase.extremeHills,

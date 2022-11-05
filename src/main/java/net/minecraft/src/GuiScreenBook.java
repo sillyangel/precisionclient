@@ -231,7 +231,6 @@ public class GuiScreenBook extends GuiScreen {
     private void keyTypedInBook(char par1, int par2) {
         if (par1 == 22) {
             this.func_74160_b(GuiScreen.getClipboardString());
-            return;
         } else {
             switch (par2) {
                 case 14:

@@ -68,7 +68,7 @@ public class TextureMap implements IconRegister {
         Texture var22 = TextureManager.instance().makeTexture("missingno", 2, this.missingImage.w, this.missingImage.h, EaglerAdapter.GL_CLAMP, EaglerAdapter.GL_RGBA, EaglerAdapter.GL_NEAREST, EaglerAdapter.GL_NEAREST, false, this.missingImage);
         StitchHolder var24 = new StitchHolder(var22);
         var21.addStitchHolder(var24);
-        var20.put(var24, Arrays.asList(var22));
+        var20.put(var24, Collections.singletonList(var22));
         Iterator var5 = this.textureStichedMap.keySet().iterator();
 
         while (var5.hasNext()) {

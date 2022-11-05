@@ -26,7 +26,7 @@ public class GameSettings {
     public float soundVolume = 1.0F;
     public float mouseSensitivity = 0.5F;
     public boolean invertMouse = false;
-    public int renderDistance = 2;
+    public int renderDistance = 3;
     public boolean viewBobbing = true;
     public boolean anaglyph = false;
 
