@@ -17,12 +17,12 @@ public class CommandServerTp extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.tp.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.tp.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		if (par2ArrayOfStr.length < 1) {
-			throw new WrongUsageException("commands.tp.usage", new Object[0]);
+			throw new WrongUsageException("commands.tp.usage");
 		} else {
 			EntityPlayerMP var3;
 
@@ -47,29 +47,29 @@ public class CommandServerTp extends CommandBase {
 					// var3.mountEntity((Entity) null);
 
 					if (var11.worldObj != var3.worldObj) {
-						notifyAdmins(par1ICommandSender, "commands.tp.notSameDimension", new Object[0]);
+						notifyAdmins(par1ICommandSender, "commands.tp.notSameDimension");
 						return;
 						// var3.mcServer.getConfigurationManager().transferPlayerToDimension(var3, var11.dimension);
 						// var3.playerNetServerHandler.playerEntity = var3.mcServer.getConfigurationManager().recreatePlayerEntity(var3, var11.dimension, true, false);
 						// var3 = var3.playerNetServerHandler.playerEntity;
 					}
 
-					var3.mountEntity((Entity) null);
+					var3.mountEntity(null);
 					
 					var3.playerNetServerHandler.setPlayerLocation(var11.posX, var11.posY, var11.posZ, var11.rotationYaw,
 							var11.rotationPitch);
 					notifyAdmins(par1ICommandSender, "commands.tp.success",
-							new Object[] { var3.getEntityName(), var11.getEntityName() });
+							var3.getEntityName(), var11.getEntityName());
 				}
 			} else if (var3.worldObj != null) {
 				int var4 = par2ArrayOfStr.length - 3;
 				double var5 = this.func_82368_a(par1ICommandSender, var3.posX, par2ArrayOfStr[var4++]);
 				double var7 = this.func_82367_a(par1ICommandSender, var3.posY, par2ArrayOfStr[var4++], 0, 0);
 				double var9 = this.func_82368_a(par1ICommandSender, var3.posZ, par2ArrayOfStr[var4++]);
-				var3.mountEntity((Entity) null);
+				var3.mountEntity(null);
 				var3.setPositionAndUpdate(var5, var7, var9);
-				notifyAdmins(par1ICommandSender, "commands.tp.success.coordinates", new Object[] { var3.getEntityName(),
-						Double.valueOf(var5), Double.valueOf(var7), Double.valueOf(var9) });
+				notifyAdmins(par1ICommandSender, "commands.tp.success.coordinates", var3.getEntityName(),
+						Double.valueOf(var5), Double.valueOf(var7), Double.valueOf(var9));
 			}
 		}
 	}
@@ -99,12 +99,12 @@ public class CommandServerTp extends CommandBase {
 		if (par5 != 0 || par6 != 0) {
 			if (var8 < (double) par5) {
 				throw new NumberInvalidException("commands.generic.double.tooSmall",
-						new Object[] { Double.valueOf(var8), Integer.valueOf(par5) });
+						Double.valueOf(var8), Integer.valueOf(par5));
 			}
 
 			if (var8 > (double) par6) {
 				throw new NumberInvalidException("commands.generic.double.tooBig",
-						new Object[] { Double.valueOf(var8), Integer.valueOf(par6) });
+						Double.valueOf(var8), Integer.valueOf(par6));
 			}
 		}
 

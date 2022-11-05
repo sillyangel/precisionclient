@@ -17,7 +17,7 @@ public class CommandGive extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.give.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.give.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -28,7 +28,7 @@ public class CommandGive extends CommandBase {
 			int var6 = 0;
 
 			if (Item.itemsList[var4] == null) {
-				throw new NumberInvalidException("commands.give.notFound", new Object[] { Integer.valueOf(var4) });
+				throw new NumberInvalidException("commands.give.notFound", Integer.valueOf(var4));
 			} else {
 				if (par2ArrayOfStr.length >= 3) {
 					var5 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[2], 1, 64);
@@ -42,11 +42,11 @@ public class CommandGive extends CommandBase {
 				EntityItem var8 = var3.dropPlayerItem(var7);
 				var8.delayBeforeCanPickup = 0;
 				notifyAdmins(par1ICommandSender, "commands.give.success",
-						new Object[] { Item.itemsList[var4].func_77653_i(var7), Integer.valueOf(var4),
-								Integer.valueOf(var5), var3.getEntityName() });
+						Item.itemsList[var4].func_77653_i(var7), Integer.valueOf(var4),
+						Integer.valueOf(var5), var3.getEntityName());
 			}
 		} else {
-			throw new WrongUsageException("commands.give.usage", new Object[0]);
+			throw new WrongUsageException("commands.give.usage");
 		}
 	}
 

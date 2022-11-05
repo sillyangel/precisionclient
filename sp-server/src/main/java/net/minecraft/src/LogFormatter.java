@@ -7,7 +7,7 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 class LogFormatter extends Formatter {
-	private SimpleDateFormat field_98228_b;
+	private final SimpleDateFormat field_98228_b;
 
 	final LogAgent field_98229_a;
 
@@ -32,7 +32,7 @@ class LogFormatter extends Formatter {
 		if (var3 != null) {
 			StringWriter var4 = new StringWriter();
 			var3.printStackTrace(new PrintWriter(var4));
-			var2.append(var4.toString());
+			var2.append(var4);
 		}
 
 		return var2.toString();

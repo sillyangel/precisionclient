@@ -7,10 +7,10 @@ public class WeightedRandomChestContent extends WeightedRandomItem {
 	private ItemStack theItemId = null;
 
 	/** The minimum chance of item generating. */
-	private int theMinimumChanceToGenerateItem;
+	private final int theMinimumChanceToGenerateItem;
 
 	/** The maximum chance of item generating. */
-	private int theMaximumChanceToGenerateItem;
+	private final int theMaximumChanceToGenerateItem;
 
 	public WeightedRandomChestContent(int par1, int par2, int par3, int par4, int par5) {
 		super(par5);

@@ -123,11 +123,11 @@ public class ItemInWorldManager {
 	public void onBlockClicked(int par1, int par2, int par3, int par4) {
 		if (!this.gameType.isAdventure() || this.thisPlayerMP.canCurrentToolHarvestBlock(par1, par2, par3)) {
 			if (this.isCreative()) {
-				if (!this.theWorld.extinguishFire((EntityPlayer) null, par1, par2, par3, par4)) {
+				if (!this.theWorld.extinguishFire(null, par1, par2, par3, par4)) {
 					this.tryHarvestBlock(par1, par2, par3);
 				}
 			} else {
-				this.theWorld.extinguishFire((EntityPlayer) null, par1, par2, par3, par4);
+				this.theWorld.extinguishFire(null, par1, par2, par3, par4);
 				this.initialDamage = this.curblockDamage;
 				float var5 = 1.0F;
 				int var6 = this.theWorld.getBlockId(par1, par2, par3);

@@ -41,7 +41,7 @@ public class EntityAIHurtByTarget extends EntityAITarget {
 					AxisAlignedBB.getAABBPool()
 							.getAABB(this.taskOwner.posX, this.taskOwner.posY, this.taskOwner.posZ,
 									this.taskOwner.posX + 1.0D, this.taskOwner.posY + 1.0D, this.taskOwner.posZ + 1.0D)
-							.expand((double) this.targetDistance, 10.0D, (double) this.targetDistance));
+							.expand(this.targetDistance, 10.0D, this.targetDistance));
 			Iterator var2 = var1.iterator();
 
 			while (var2.hasNext()) {

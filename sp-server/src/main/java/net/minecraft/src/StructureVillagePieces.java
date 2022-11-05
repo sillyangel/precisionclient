@@ -12,13 +12,13 @@ public class StructureVillagePieces {
 		var2.add(new StructureVillagePieceWeight(ComponentVillageHouse4_Garden.class, 4,
 				MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 4 + par1 * 2)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageChurch.class, 20,
-				MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 1 + par1)));
+				MathHelper.getRandomIntegerInRange(par0Random, par1, 1 + par1)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageHouse1.class, 20,
-				MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 2 + par1)));
+				MathHelper.getRandomIntegerInRange(par0Random, par1, 2 + par1)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageWoodHut.class, 3,
 				MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 5 + par1 * 3)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageHall.class, 15,
-				MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 2 + par1)));
+				MathHelper.getRandomIntegerInRange(par0Random, par1, 2 + par1)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageField.class, 3,
 				MathHelper.getRandomIntegerInRange(par0Random, 1 + par1, 4 + par1)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageField2.class, 3,
@@ -26,7 +26,7 @@ public class StructureVillagePieces {
 		var2.add(new StructureVillagePieceWeight(ComponentVillageHouse2.class, 15,
 				MathHelper.getRandomIntegerInRange(par0Random, 0, 1 + par1)));
 		var2.add(new StructureVillagePieceWeight(ComponentVillageHouse3.class, 8,
-				MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 3 + par1 * 2)));
+				MathHelper.getRandomIntegerInRange(par0Random, par1, 3 + par1 * 2)));
 		Iterator var3 = var2.iterator();
 
 		while (var3.hasNext()) {

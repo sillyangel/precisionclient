@@ -455,7 +455,7 @@ public class InventoryPlayer implements IInventory {
 			return true;
 		} else {
 			ItemStack var2 = this.getStackInSlot(this.currentItem);
-			return var2 != null ? var2.canHarvestBlock(par1Block) : false;
+			return var2 != null && var2.canHarvestBlock(par1Block);
 		}
 	}
 
@@ -545,7 +545,7 @@ public class InventoryPlayer implements IInventory {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.player.isDead ? false : par1EntityPlayer.getDistanceSqToEntity(this.player) <= 64.0D;
+		return !this.player.isDead && par1EntityPlayer.getDistanceSqToEntity(this.player) <= 64.0D;
 	}
 
 	/**

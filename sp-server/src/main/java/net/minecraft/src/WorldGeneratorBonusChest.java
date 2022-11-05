@@ -25,7 +25,6 @@ public class WorldGeneratorBonusChest extends WorldGenerator {
 
 		for (boolean var6 = false; ((var12 = par1World.getBlockId(par3, par4, par5)) == 0
 				|| var12 == Block.leaves.blockID) && par4 > 1; --par4) {
-			;
 		}
 
 		if (par4 < 1) {

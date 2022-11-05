@@ -6,7 +6,7 @@ import java.util.List;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class EntityAIMate extends EntityAIBase {
-	private EntityAnimal theAnimal;
+	private final EntityAnimal theAnimal;
 	World theWorld;
 	private EntityAnimal targetMate;
 
@@ -74,7 +74,7 @@ public class EntityAIMate extends EntityAIBase {
 	private EntityAnimal getNearbyMate() {
 		float var1 = 8.0F;
 		List var2 = this.theWorld.getEntitiesWithinAABB(this.theAnimal.getClass(),
-				this.theAnimal.boundingBox.expand((double) var1, (double) var1, (double) var1));
+				this.theAnimal.boundingBox.expand(var1, var1, var1));
 		double var3 = Double.MAX_VALUE;
 		EntityAnimal var5 = null;
 		Iterator var6 = var2.iterator();

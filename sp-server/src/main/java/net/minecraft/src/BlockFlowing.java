@@ -294,7 +294,7 @@ public class BlockFlowing extends BlockFluid {
 				return false;
 			} else {
 				Material var6 = Block.blocksList[var5].blockMaterial;
-				return var6 == Material.portal ? true : var6.blocksMovement();
+				return var6 == Material.portal || var6.blocksMovement();
 			}
 		} else {
 			return true;
@@ -332,8 +332,7 @@ public class BlockFlowing extends BlockFluid {
 	 */
 	private boolean liquidCanDisplaceBlock(World par1World, int par2, int par3, int par4) {
 		Material var5 = par1World.getBlockMaterial(par2, par3, par4);
-		return var5 == this.blockMaterial ? false
-				: (var5 == Material.lava ? false : !this.blockBlocksFlow(par1World, par2, par3, par4));
+		return var5 != this.blockMaterial && (var5 != Material.lava && !this.blockBlocksFlow(par1World, par2, par3, par4));
 	}
 
 	/**

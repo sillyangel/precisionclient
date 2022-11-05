@@ -7,7 +7,7 @@ public class BlockLeaves extends BlockLeavesBase {
 	public static final String[][] field_94396_b = new String[][] {
 			{ "leaves", "leaves_spruce", "leaves", "leaves_jungle" },
 			{ "leaves_opaque", "leaves_spruce_opaque", "leaves_opaque", "leaves_jungle_opaque" } };
-	private Icon[][] iconArray = new Icon[2][];
+	private final Icon[][] iconArray = new Icon[2][];
 	int[] adjacentTreeBlocks;
 
 	protected BlockLeaves(int par1) {

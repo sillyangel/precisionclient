@@ -8,8 +8,7 @@ public class WorldGenSwamp extends WorldGenerator {
 
 		for (var6 = par2Random.nextInt(4) + 5; par1World.getBlockMaterial(par3, par4 - 1,
 				par5) == Material.water; --par4) {
-			;
-		}
+        }
 
 		boolean var7 = true;
 

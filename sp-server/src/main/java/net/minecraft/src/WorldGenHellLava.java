@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenHellLava extends WorldGenerator {
 	/** Stores the ID for WorldGenHellLava */
-	private int hellLavaID;
+	private final int hellLavaID;
 	private boolean field_94524_b = false;
 
 	public WorldGenHellLava(int par1, boolean par2) {

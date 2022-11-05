@@ -12,7 +12,7 @@ public class BlockRedstoneWire extends Block {
 	 * Used internally during updateCurrentStrength.
 	 */
 	private boolean wiresProvidePower = true;
-	private Set blocksNeedingUpdate = new HashSet();
+	private final Set blocksNeedingUpdate = new HashSet();
 
 	public BlockRedstoneWire(int par1) {
 		super(par1, Material.circuits);

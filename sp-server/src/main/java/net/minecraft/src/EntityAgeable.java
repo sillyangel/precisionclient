@@ -37,7 +37,7 @@ public abstract class EntityAgeable extends EntityCreature {
 
 						if (var2.stackSize <= 0) {
 							par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem,
-									(ItemStack) null);
+									null);
 						}
 					}
 				}
@@ -49,7 +49,7 @@ public abstract class EntityAgeable extends EntityCreature {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(12, new Integer(0));
+		this.dataWatcher.addObject(12, Integer.valueOf(0));
 	}
 
 	/**

@@ -28,8 +28,8 @@ public class Village {
 	private int noBreedTicks;
 
 	/** List of player reputations with this village */
-	private TreeMap playerReputation = new TreeMap();
-	private List villageAgressors = new ArrayList();
+	private final TreeMap playerReputation = new TreeMap();
+	private final List villageAgressors = new ArrayList();
 	private int numIronGolems = 0;
 
 	public Village() {
@@ -88,7 +88,7 @@ public class Village {
 
 			if (this.isInRange(var8, var9, var10)
 					&& this.isValidIronGolemSpawningLocation(var8, var9, var10, par4, par5, par6)) {
-				return this.worldObj.getWorldVec3Pool().getVecFromPool((double) var8, (double) var9, (double) var10);
+				return this.worldObj.getWorldVec3Pool().getVecFromPool(var8, var9, var10);
 			}
 		}
 
@@ -118,19 +118,19 @@ public class Village {
 
 	private void updateNumIronGolems() {
 		List var1 = this.worldObj.getEntitiesWithinAABB(EntityIronGolem.class,
-				AxisAlignedBB.getAABBPool().getAABB((double) (this.center.posX - this.villageRadius),
-						(double) (this.center.posY - 4), (double) (this.center.posZ - this.villageRadius),
-						(double) (this.center.posX + this.villageRadius), (double) (this.center.posY + 4),
-						(double) (this.center.posZ + this.villageRadius)));
+				AxisAlignedBB.getAABBPool().getAABB(this.center.posX - this.villageRadius,
+						this.center.posY - 4, this.center.posZ - this.villageRadius,
+						this.center.posX + this.villageRadius, this.center.posY + 4,
+						this.center.posZ + this.villageRadius));
 		this.numIronGolems = var1.size();
 	}
 
 	private void updateNumVillagers() {
 		List var1 = this.worldObj.getEntitiesWithinAABB(EntityVillager.class,
-				AxisAlignedBB.getAABBPool().getAABB((double) (this.center.posX - this.villageRadius),
-						(double) (this.center.posY - 4), (double) (this.center.posZ - this.villageRadius),
-						(double) (this.center.posX + this.villageRadius), (double) (this.center.posY + 4),
-						(double) (this.center.posZ + this.villageRadius)));
+				AxisAlignedBB.getAABBPool().getAABB(this.center.posX - this.villageRadius,
+						this.center.posY - 4, this.center.posZ - this.villageRadius,
+						this.center.posX + this.villageRadius, this.center.posY + 4,
+						this.center.posZ + this.villageRadius));
 		this.numVillagers = var1.size();
 
 		if (this.numVillagers == 0) {
@@ -361,7 +361,7 @@ public class Village {
 
 	private boolean isBlockDoor(int par1, int par2, int par3) {
 		int var4 = this.worldObj.getBlockId(par1, par2, par3);
-		return var4 <= 0 ? false : var4 == Block.doorWood.blockID;
+		return var4 > 0 && var4 == Block.doorWood.blockID;
 	}
 
 	private void updateVillageRadiusAndCenter() {
@@ -381,7 +381,7 @@ public class Village {
 				var4 = (VillageDoorInfo) var3.next();
 			}
 
-			this.villageRadius = Math.max(32, (int) Math.sqrt((double) var2) + 1);
+			this.villageRadius = Math.max(32, (int) Math.sqrt(var2) + 1);
 		}
 	}
 

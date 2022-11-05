@@ -104,7 +104,7 @@ public class BlockCauldron extends Block {
 
 							if (var10.stackSize <= 0) {
 								par5EntityPlayer.inventory.setInventorySlotContents(
-										par5EntityPlayer.inventory.currentItem, (ItemStack) null);
+										par5EntityPlayer.inventory.currentItem, null);
 							}
 
 							par1World.setBlockMetadata(par2, par3, par4, var11 - 1, 2);

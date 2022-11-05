@@ -53,8 +53,8 @@ public class IntegratedServer {
 	public static final ILogAgent logger = new EAGLogAgent();
 	
 	@JSFunctor
-	private static interface WorkerBinaryPacketHandler extends JSObject {
-		public void onMessage(String channel, ArrayBuffer buf);
+	private interface WorkerBinaryPacketHandler extends JSObject {
+		void onMessage(String channel, ArrayBuffer buf);
 	}
 	
 	private static class WorkerBinaryPacketHandlerImpl implements WorkerBinaryPacketHandler {
@@ -689,7 +689,7 @@ public class IntegratedServer {
 		while(itr.hasNext()) {
 			PKT msg = itr.next();
 			if(!msg.channel.equals("IPC")) {
-				if(System.currentTimeMillis() - watchDog > 500l) {
+				if(System.currentTimeMillis() - watchDog > 500L) {
 					++overflow;
 					continue;
 				}
@@ -768,7 +768,7 @@ public class IntegratedServer {
 			mainLoop();
 			
 			try {
-				Thread.sleep(1l); // allow some async to occur
+				Thread.sleep(1L); // allow some async to occur
 			}catch(InterruptedException e) {
 				System.err.println("you eagler");
 			}

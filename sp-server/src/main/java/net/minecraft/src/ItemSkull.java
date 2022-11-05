@@ -102,7 +102,7 @@ public class ItemSkull extends Item {
 		return par1ItemStack.getItemDamage() == 3 && par1ItemStack.hasTagCompound()
 				&& par1ItemStack.getTagCompound().hasKey("SkullOwner")
 						? StatCollector.translateToLocalFormatted("item.skull.player.name",
-								new Object[] { par1ItemStack.getTagCompound().getString("SkullOwner") })
+				par1ItemStack.getTagCompound().getString("SkullOwner"))
 						: super.getItemDisplayName(par1ItemStack);
 	}
 }

@@ -48,7 +48,7 @@ public class EntityAIOcelotSit extends EntityAIBase {
 	 */
 	public void startExecuting() {
 		this.theOcelot.getNavigator().tryMoveToXYZ((double) ((float) this.sitableBlockX) + 0.5D,
-				(double) (this.sitableBlockY + 1), (double) ((float) this.sitableBlockZ) + 0.5D, this.field_75404_b);
+				this.sitableBlockY + 1, (double) ((float) this.sitableBlockZ) + 0.5D, this.field_75404_b);
 		this.currentTick = 0;
 		this.field_75402_d = 0;
 		this.maxSittingTicks = this.theOcelot.getRNG().nextInt(this.theOcelot.getRNG().nextInt(1200) + 1200) + 1200;
@@ -69,11 +69,11 @@ public class EntityAIOcelotSit extends EntityAIBase {
 		++this.currentTick;
 		this.theOcelot.func_70907_r().setSitting(false);
 
-		if (this.theOcelot.getDistanceSq((double) this.sitableBlockX, (double) (this.sitableBlockY + 1),
-				(double) this.sitableBlockZ) > 1.0D) {
+		if (this.theOcelot.getDistanceSq(this.sitableBlockX, this.sitableBlockY + 1,
+				this.sitableBlockZ) > 1.0D) {
 			this.theOcelot.setSitting(false);
 			this.theOcelot.getNavigator().tryMoveToXYZ((double) ((float) this.sitableBlockX) + 0.5D,
-					(double) (this.sitableBlockY + 1), (double) ((float) this.sitableBlockZ) + 0.5D,
+					this.sitableBlockY + 1, (double) ((float) this.sitableBlockZ) + 0.5D,
 					this.field_75404_b);
 			++this.field_75402_d;
 		} else if (!this.theOcelot.isSitting()) {
@@ -95,7 +95,7 @@ public class EntityAIOcelotSit extends EntityAIBase {
 			for (int var5 = (int) this.theOcelot.posZ - 8; (double) var5 < this.theOcelot.posZ + 8.0D; ++var5) {
 				if (this.isSittableBlock(this.theOcelot.worldObj, var4, var1, var5)
 						&& this.theOcelot.worldObj.isAirBlock(var4, var1 + 1, var5)) {
-					double var6 = this.theOcelot.getDistanceSq((double) var4, (double) var1, (double) var5);
+					double var6 = this.theOcelot.getDistanceSq(var4, var1, var5);
 
 					if (var6 < var2) {
 						this.sitableBlockX = var4;
@@ -120,19 +120,13 @@ public class EntityAIOcelotSit extends EntityAIBase {
 		if (var5 == Block.chest.blockID) {
 			TileEntityChest var7 = (TileEntityChest) par1World.getBlockTileEntity(par2, par3, par4);
 
-			if (var7.numUsingPlayers < 1) {
-				return true;
-			}
+			return var7.numUsingPlayers < 1;
 		} else {
 			if (var5 == Block.furnaceBurning.blockID) {
 				return true;
 			}
 
-			if (var5 == Block.bed.blockID && !BlockBed.isBlockHeadOfBed(var6)) {
-				return true;
-			}
+			return var5 == Block.bed.blockID && !BlockBed.isBlockHeadOfBed(var6);
 		}
-
-		return false;
 	}
 }

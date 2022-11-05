@@ -2,10 +2,10 @@ package net.minecraft.src;
 
 public class ItemSeedFood extends ItemFood {
 	/** Block ID of the crop this seed food should place. */
-	private int cropId;
+	private final int cropId;
 
 	/** Block ID of the soil this seed food should be planted on. */
-	private int soilId;
+	private final int soilId;
 
 	public ItemSeedFood(int par1, int par2, float par3, int par4, int par5) {
 		super(par1, par2, par3, false);

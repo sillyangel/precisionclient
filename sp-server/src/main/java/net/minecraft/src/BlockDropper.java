@@ -35,8 +35,8 @@ public class BlockDropper extends BlockDispenser {
 				ItemStack var8 = var6.getStackInSlot(var7);
 				int var9 = par1World.getBlockMetadata(par2, par3, par4) & 7;
 				IInventory var10 = TileEntityHopper.getInventoryAtLocation(par1World,
-						(double) (par2 + Facing.offsetsXForSide[var9]), (double) (par3 + Facing.offsetsYForSide[var9]),
-						(double) (par4 + Facing.offsetsZForSide[var9]));
+						par2 + Facing.offsetsXForSide[var9], par3 + Facing.offsetsYForSide[var9],
+						par4 + Facing.offsetsZForSide[var9]);
 				ItemStack var11;
 
 				if (var10 != null) {

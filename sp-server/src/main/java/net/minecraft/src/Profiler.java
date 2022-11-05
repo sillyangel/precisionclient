@@ -65,7 +65,7 @@ public class Profiler {
 			}
 
 			if (var5 > 100000000L) { // -2
-				System.out.println("Something\'s taking too long! \'" + this.profilingSection + "\' took aprox "
+				System.out.println("Something's taking too long! '" + this.profilingSection + "' took aprox "
 						+ (double) var5 / 1000000.0D + " ms");
 			}
 

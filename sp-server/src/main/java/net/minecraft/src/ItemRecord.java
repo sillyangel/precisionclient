@@ -31,7 +31,7 @@ public class ItemRecord extends Item {
 				return true;
 			} else {
 				((BlockJukeBox) Block.jukebox).insertRecord(par3World, par4, par5, par6, par1ItemStack);
-				par3World.playAuxSFXAtEntity((EntityPlayer) null, 1005, par4, par5, par6, this.itemID);
+				par3World.playAuxSFXAtEntity(null, 1005, par4, par5, par6, this.itemID);
 				--par1ItemStack.stackSize;
 				return true;
 			}

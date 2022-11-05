@@ -17,8 +17,8 @@ public class MapGenCavesHell extends MapGenBase {
 	 */
 	protected void generateCaveNode(long par1, int par3, int par4, byte[] par5ArrayOfByte, double par6, double par8,
 			double par10, float par12, float par13, float par14, int par15, int par16, double par17) {
-		double var19 = (double) (par3 * 16 + 8);
-		double var21 = (double) (par4 * 16 + 8);
+		double var19 = par3 * 16 + 8;
+		double var21 = par4 * 16 + 8;
 		float var23 = 0.0F;
 		float var24 = 0.0F;
 		EaglercraftRandom var25 = new EaglercraftRandom(par1);
@@ -43,9 +43,9 @@ public class MapGenCavesHell extends MapGenBase {
 			double var31 = var29 * par17;
 			float var33 = MathHelper.cos(par14);
 			float var34 = MathHelper.sin(par14);
-			par6 += (double) (MathHelper.cos(par13) * var33);
-			par8 += (double) var34;
-			par10 += (double) (MathHelper.sin(par13) * var33);
+			par6 += MathHelper.cos(par13) * var33;
+			par8 += var34;
+			par10 += MathHelper.sin(par13) * var33;
 
 			if (var28) {
 				par14 *= 0.92F;
@@ -73,8 +73,8 @@ public class MapGenCavesHell extends MapGenBase {
 			if (var53 || var25.nextInt(4) != 0) {
 				double var35 = par6 - var19;
 				double var37 = par10 - var21;
-				double var39 = (double) (par16 - par15);
-				double var41 = (double) (par12 + 2.0F + 16.0F);
+				double var39 = par16 - par15;
+				double var41 = par12 + 2.0F + 16.0F;
 
 				if (var35 * var35 + var37 * var37 - var39 * var39 > var41 * var41) {
 					return;
@@ -182,9 +182,9 @@ public class MapGenCavesHell extends MapGenBase {
 		}
 
 		for (int var8 = 0; var8 < var7; ++var8) {
-			double var9 = (double) (par2 * 16 + this.rand.nextInt(16));
-			double var11 = (double) this.rand.nextInt(128);
-			double var13 = (double) (par3 * 16 + this.rand.nextInt(16));
+			double var9 = par2 * 16 + this.rand.nextInt(16);
+			double var11 = this.rand.nextInt(128);
+			double var13 = par3 * 16 + this.rand.nextInt(16);
 			int var15 = 1;
 
 			if (this.rand.nextInt(4) == 0) {

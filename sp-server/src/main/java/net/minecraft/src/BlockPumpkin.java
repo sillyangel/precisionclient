@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class BlockPumpkin extends BlockDirectional {
 	/** Boolean used to seperate different states of blocks */
-	private boolean blockType;
+	private final boolean blockType;
 
 	protected BlockPumpkin(int par1, boolean par2) {
 		super(par1, Material.pumpkin);

@@ -50,8 +50,8 @@ public class BlockSand extends Block {
 			if (!fallInstantly && par1World.checkChunksExist(par2 - var8, par3 - var8, par4 - var8, par2 + var8,
 					par3 + var8, par4 + var8)) {
 				if (!par1World.isRemote) {
-					EntityFallingSand var9 = new EntityFallingSand(par1World, (double) ((float) par2 + 0.5F),
-							(double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), this.blockID,
+					EntityFallingSand var9 = new EntityFallingSand(par1World, (float) par2 + 0.5F,
+							(float) par3 + 0.5F, (float) par4 + 0.5F, this.blockID,
 							par1World.getBlockMetadata(par2, par3, par4));
 					this.onStartFalling(var9);
 					par1World.spawnEntityInWorld(var9);
@@ -95,7 +95,7 @@ public class BlockSand extends Block {
 			return true;
 		} else {
 			Material var5 = Block.blocksList[var4].blockMaterial;
-			return var5 == Material.water ? true : var5 == Material.lava;
+			return var5 == Material.water || var5 == Material.lava;
 		}
 	}
 

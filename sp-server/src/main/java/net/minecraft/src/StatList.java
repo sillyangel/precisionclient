@@ -163,7 +163,7 @@ public class StatList {
 
 				if (Item.itemsList[var5.intValue()] != null) {
 					String var3 = StatCollector.translateToLocalFormatted("stat.craftItem",
-							new Object[] { Item.itemsList[var5.intValue()].getStatName() });
+							Item.itemsList[var5.intValue()].getStatName());
 					objectCraftStats[var5
 							.intValue()] = (new StatCrafting(16842752 + var5.intValue(), var3, var5.intValue()))
 									.registerStat();
@@ -183,9 +183,9 @@ public class StatList {
 		for (int var3 = 0; var3 < 256; ++var3) {
 			if (Block.blocksList[var3] != null && Block.blocksList[var3].getEnableStats()) {
 				String var4 = StatCollector.translateToLocalFormatted(par0Str,
-						new Object[] { Block.blocksList[var3].getLocalizedName() });
+						Block.blocksList[var3].getLocalizedName());
 				var2[var3] = (new StatCrafting(par1 + var3, var4, var3)).registerStat();
-				objectMineStats.add((StatCrafting) var2[var3]);
+				objectMineStats.add(var2[var3]);
 			}
 		}
 
@@ -205,11 +205,11 @@ public class StatList {
 		for (int var5 = par3; var5 < par4; ++var5) {
 			if (Item.itemsList[var5] != null) {
 				String var6 = StatCollector.translateToLocalFormatted(par1Str,
-						new Object[] { Item.itemsList[var5].getStatName() });
+						Item.itemsList[var5].getStatName());
 				par0ArrayOfStatBase[var5] = (new StatCrafting(par2 + var5, var6, var5)).registerStat();
 
 				if (var5 >= 256) {
-					itemStats.add((StatCrafting) par0ArrayOfStatBase[var5]);
+					itemStats.add(par0ArrayOfStatBase[var5]);
 				}
 			}
 		}
@@ -227,7 +227,7 @@ public class StatList {
 		for (int var5 = par3; var5 < par4; ++var5) {
 			if (Item.itemsList[var5] != null && Item.itemsList[var5].isDamageable()) {
 				String var6 = StatCollector.translateToLocalFormatted(par1Str,
-						new Object[] { Item.itemsList[var5].getStatName() });
+						Item.itemsList[var5].getStatName());
 				par0ArrayOfStatBase[var5] = (new StatCrafting(par2 + var5, var6, var5)).registerStat();
 			}
 		}

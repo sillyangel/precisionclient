@@ -28,8 +28,8 @@ public class ItemHoe extends Item {
 				return false;
 			} else {
 				Block var13 = Block.tilledField;
-				par3World.playSoundEffect((double) ((float) par4 + 0.5F), (double) ((float) par5 + 0.5F),
-						(double) ((float) par6 + 0.5F), var13.stepSound.getStepSound(),
+				par3World.playSoundEffect((float) par4 + 0.5F, (float) par5 + 0.5F,
+                        (float) par6 + 0.5F, var13.stepSound.getStepSound(),
 						(var13.stepSound.getVolume() + 1.0F) / 2.0F, var13.stepSound.getPitch() * 0.8F);
 
 				if (par3World.isRemote) {

@@ -96,42 +96,27 @@ public class BlockPistonBase extends Block {
 	 * checks the block to that side to see if it is indirectly powered.
 	 */
 	private boolean isIndirectlyPowered(World par1World, int par2, int par3, int par4, int par5) {
-		return par5 != 0 && par1World.getIndirectPowerOutput(par2, par3 - 1, par4, 0) ? true
-				: (par5 != 1 && par1World.getIndirectPowerOutput(par2, par3 + 1, par4, 1) ? true
-						: (par5 != 2 && par1World.getIndirectPowerOutput(par2, par3, par4 - 1, 2) ? true
-								: (par5 != 3 && par1World.getIndirectPowerOutput(par2, par3, par4 + 1, 3) ? true
-										: (par5 != 5 && par1World.getIndirectPowerOutput(par2 + 1, par3, par4, 5) ? true
-												: (par5 != 4
-														&& par1World.getIndirectPowerOutput(par2 - 1, par3, par4, 4)
-																? true
-																: (par1World.getIndirectPowerOutput(par2, par3, par4, 0)
-																		? true
-																		: (par1World.getIndirectPowerOutput(par2,
-																				par3 + 2, par4, 1)
-																						? true
-																						: (par1World
-																								.getIndirectPowerOutput(
-																										par2, par3 + 1,
-																										par4 - 1, 2)
-																												? true
-																												: (par1World
-																														.getIndirectPowerOutput(
-																																par2,
-																																par3 + 1,
-																																par4 + 1,
-																																3) ? true
-																																		: (par1World
-																																				.getIndirectPowerOutput(
-																																						par2 - 1,
-																																						par3 + 1,
-																																						par4,
-																																						4) ? true
-																																								: par1World
-																																										.getIndirectPowerOutput(
-																																												par2 + 1,
-																																												par3 + 1,
-																																												par4,
-																																												5)))))))))));
+		return par5 != 0 && par1World.getIndirectPowerOutput(par2, par3 - 1, par4, 0) || (par5 != 1 && par1World.getIndirectPowerOutput(par2, par3 + 1, par4, 1) || (par5 != 2 && par1World.getIndirectPowerOutput(par2, par3, par4 - 1, 2) || (par5 != 3 && par1World.getIndirectPowerOutput(par2, par3, par4 + 1, 3) || (par5 != 5 && par1World.getIndirectPowerOutput(par2 + 1, par3, par4, 5) || (par5 != 4
+				&& par1World.getIndirectPowerOutput(par2 - 1, par3, par4, 4) || (par1World.getIndirectPowerOutput(par2, par3, par4, 0) || (par1World.getIndirectPowerOutput(par2,
+				par3 + 2, par4, 1) || (par1World
+				.getIndirectPowerOutput(
+						par2, par3 + 1,
+						par4 - 1, 2) || (par1World
+				.getIndirectPowerOutput(
+						par2,
+						par3 + 1,
+						par4 + 1,
+						3) || (par1World
+				.getIndirectPowerOutput(
+						par2 - 1,
+						par3 + 1,
+						par4,
+						4) || par1World
+				.getIndirectPowerOutput(
+						par2 + 1,
+						par3 + 1,
+						par4,
+						5)))))))))));
 	}
 
 	/**
@@ -346,11 +331,7 @@ public class BlockPistonBase extends Block {
 				}
 
 				if (Block.blocksList[par0].getMobilityFlag() == 1) {
-					if (!par5) {
-						return false;
-					}
-
-					return true;
+					return par5;
 				}
 			} else if (isExtended(par1World.getBlockMetadata(par2, par3, par4))) {
 				return false;

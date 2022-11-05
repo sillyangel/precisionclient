@@ -219,7 +219,7 @@ public abstract class BiomeGenBase {
 	 * Gets a WorldGen appropriate for this biome.
 	 */
 	public WorldGenerator getRandomWorldGenForTrees(EaglercraftRandom par1Random) {
-		return (WorldGenerator) (par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree : this.worldGeneratorTrees);
+		return par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree : this.worldGeneratorTrees;
 	}
 
 	/**
@@ -275,7 +275,7 @@ public abstract class BiomeGenBase {
 	 * bolts enabled and have rain enabled.
 	 */
 	public boolean canSpawnLightningBolt() {
-		return this.enableSnow ? false : this.enableRain;
+		return !this.enableSnow && this.enableRain;
 	}
 
 	/**

@@ -112,9 +112,7 @@ public class CommandHandler implements ICommandManager {
 	private static String[] dropFirstString(String[] par0ArrayOfStr) {
 		String[] var1 = new String[par0ArrayOfStr.length - 1];
 
-		for (int var2 = 1; var2 < par0ArrayOfStr.length; ++var2) {
-			var1[var2 - 1] = par0ArrayOfStr[var2];
-		}
+		System.arraycopy(par0ArrayOfStr, 1, var1, 0, par0ArrayOfStr.length - 1);
 
 		return var1;
 	}

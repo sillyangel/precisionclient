@@ -77,7 +77,7 @@ public class EntityMinecartTNT extends EntityMinecart {
 	protected void fall(float par1) {
 		if (par1 >= 3.0F) {
 			float var2 = par1 / 10.0F;
-			this.explodeCart((double) (var2 * var2));
+			this.explodeCart(var2 * var2);
 		}
 
 		super.fall(par1);
@@ -120,10 +120,8 @@ public class EntityMinecartTNT extends EntityMinecart {
 
 	public boolean func_96091_a(Explosion par1Explosion, World par2World, int par3, int par4, int par5, int par6,
 			float par7) {
-		return this.isIgnited()
-				&& (BlockRailBase.isRailBlock(par6) || BlockRailBase.isRailBlockAt(par2World, par3, par4 + 1, par5))
-						? false
-						: super.func_96091_a(par1Explosion, par2World, par3, par4, par5, par6, par7);
+		return (!this.isIgnited()
+				|| (!BlockRailBase.isRailBlock(par6) && !BlockRailBase.isRailBlockAt(par2World, par3, par4 + 1, par5))) && super.func_96091_a(par1Explosion, par2World, par3, par4, par5, par6, par7);
 	}
 
 	/**

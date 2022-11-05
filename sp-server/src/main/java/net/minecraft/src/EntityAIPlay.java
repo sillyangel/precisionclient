@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EntityAIPlay extends EntityAIBase {
-	private EntityVillager villagerObj;
+	private final EntityVillager villagerObj;
 	private EntityLiving targetVillager;
-	private float field_75261_c;
+	private final float field_75261_c;
 	private int playTime;
 
 	public EntityAIPlay(EntityVillager par1EntityVillager, float par2) {
@@ -45,9 +45,7 @@ public class EntityAIPlay extends EntityAIBase {
 			if (this.targetVillager == null) {
 				Vec3 var8 = RandomPositionGenerator.findRandomTarget(this.villagerObj, 16, 3);
 
-				if (var8 == null) {
-					return false;
-				}
+				return var8 != null;
 			}
 
 			return true;

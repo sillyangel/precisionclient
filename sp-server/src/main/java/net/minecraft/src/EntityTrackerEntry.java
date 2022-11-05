@@ -36,7 +36,7 @@ public class EntityTrackerEntry {
 	private double lastTrackedEntityPosY;
 	private double lastTrackedEntityPosZ;
 	private boolean firstUpdateDone = false;
-	private boolean sendVelocityUpdates;
+	private final boolean sendVelocityUpdates;
 
 	/**
 	 * every 400 ticks a full teleport packet is sent, rather than just a "move me
@@ -67,9 +67,7 @@ public class EntityTrackerEntry {
 	}
 
 	public boolean equals(Object par1Obj) {
-		return par1Obj instanceof EntityTrackerEntry
-				? ((EntityTrackerEntry) par1Obj).trackedEntity.entityId == this.trackedEntity.entityId
-				: false;
+		return par1Obj instanceof EntityTrackerEntry && ((EntityTrackerEntry) par1Obj).trackedEntity.entityId == this.trackedEntity.entityId;
 	}
 
 	public int hashCode() {
@@ -468,7 +466,7 @@ public class EntityTrackerEntry {
 				} else if (this.trackedEntity instanceof EntityXPOrb) {
 					return new Packet26EntityExpOrb((EntityXPOrb) this.trackedEntity);
 				} else {
-					throw new IllegalArgumentException("Don\'t know how to add " + this.trackedEntity.getClass() + "!");
+					throw new IllegalArgumentException("Don't know how to add " + this.trackedEntity.getClass() + "!");
 				}
 			}
 		} else {

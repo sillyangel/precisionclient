@@ -26,9 +26,9 @@ public class ItemEnderEye extends Item {
 				int var13;
 
 				for (var13 = 0; var13 < 16; ++var13) {
-					double var14 = (double) ((float) par4 + (5.0F + itemRand.nextFloat() * 6.0F) / 16.0F);
-					double var16 = (double) ((float) par5 + 0.8125F);
-					double var18 = (double) ((float) par6 + (5.0F + itemRand.nextFloat() * 6.0F) / 16.0F);
+					double var14 = (float) par4 + (5.0F + itemRand.nextFloat() * 6.0F) / 16.0F;
+					double var16 = (float) par5 + 0.8125F;
+					double var18 = (float) par6 + (5.0F + itemRand.nextFloat() * 6.0F) / 16.0F;
 					double var20 = 0.0D;
 					double var22 = 0.0D;
 					double var24 = 0.0D;
@@ -143,11 +143,11 @@ public class ItemEnderEye extends Item {
 			if (var7 != null) {
 				EntityEnderEye var6 = new EntityEnderEye(par2World, par3EntityPlayer.posX,
 						par3EntityPlayer.posY + 1.62D - (double) par3EntityPlayer.yOffset, par3EntityPlayer.posZ);
-				var6.moveTowards((double) var7.x, var7.y, (double) var7.z);
+				var6.moveTowards(var7.x, var7.y, var7.z);
 				par2World.spawnEntityInWorld(var6);
 				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F,
 						0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-				par2World.playAuxSFXAtEntity((EntityPlayer) null, 1002, (int) par3EntityPlayer.posX,
+				par2World.playAuxSFXAtEntity(null, 1002, (int) par3EntityPlayer.posX,
 						(int) par3EntityPlayer.posY, (int) par3EntityPlayer.posZ, 0);
 
 				if (!par3EntityPlayer.capabilities.isCreativeMode) {

@@ -79,8 +79,7 @@ public class BlockRailPowered extends BlockRailBase {
 				var8 = 0;
 			}
 
-			return this.func_94361_a(par1World, par2, par3, par4, par6, par7, var8) ? true
-					: var9 && this.func_94361_a(par1World, par2, par3 - 1, par4, par6, par7, var8);
+			return this.func_94361_a(par1World, par2, par3, par4, par6, par7, var8) || var9 && this.func_94361_a(par1World, par2, par3 - 1, par4, par6, par7, var8);
 		}
 	}
 

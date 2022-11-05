@@ -14,7 +14,7 @@ public class BiomeGenForest extends BiomeGenBase {
 	 * Gets a WorldGen appropriate for this biome.
 	 */
 	public WorldGenerator getRandomWorldGenForTrees(EaglercraftRandom par1Random) {
-		return (WorldGenerator) (par1Random.nextInt(5) == 0 ? this.worldGeneratorForest
-				: (par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree : this.worldGeneratorTrees));
+		return par1Random.nextInt(5) == 0 ? this.worldGeneratorForest
+				: (par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree : this.worldGeneratorTrees);
 	}
 }

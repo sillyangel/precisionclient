@@ -8,8 +8,8 @@ import java.util.Map;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ChunkProviderFlat implements IChunkProvider {
-	private World worldObj;
-	private EaglercraftRandom random;
+	private final World worldObj;
+	private final EaglercraftRandom random;
 	private final byte[] field_82700_c = new byte[256];
 	private final byte[] field_82698_d = new byte[256];
 	private final FlatGeneratorInfo field_82699_e;
@@ -106,7 +106,7 @@ public class ChunkProviderFlat implements IChunkProvider {
 		}
 
 		var3.generateSkylightMap();
-		BiomeGenBase[] var9 = this.worldObj.getWorldChunkManager().loadBlockGeneratorData((BiomeGenBase[]) null,
+		BiomeGenBase[] var9 = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(null,
 				par1 * 16, par2 * 16, 16, 16);
 		byte[] var10 = var3.getBiomeArray();
 
@@ -118,7 +118,7 @@ public class ChunkProviderFlat implements IChunkProvider {
 
 		while (var12.hasNext()) {
 			MapGenStructure var13 = (MapGenStructure) var12.next();
-			var13.generate(this, this.worldObj, par1, par2, (byte[]) null);
+			var13.generate(this, this.worldObj, par1, par2, null);
 		}
 
 		var3.generateSkylightMap();
@@ -261,7 +261,7 @@ public class ChunkProviderFlat implements IChunkProvider {
 
 		while (var3.hasNext()) {
 			MapGenStructure var4 = (MapGenStructure) var3.next();
-			var4.generate(this, this.worldObj, par1, par2, (byte[]) null);
+			var4.generate(this, this.worldObj, par1, par2, null);
 		}
 	}
 }

@@ -189,10 +189,7 @@ public abstract class NBTBase {
 			return false;
 		} else {
 			NBTBase var2 = (NBTBase) par1Obj;
-			return this.getId() != var2.getId() ? false
-					: ((this.name != null || var2.name == null) && (this.name == null || var2.name != null)
-							? this.name == null || this.name.equals(var2.name)
-							: false);
+			return this.getId() == var2.getId() && ((this.name != null || var2.name == null) && (this.name == null || var2.name != null) && (this.name == null || this.name.equals(var2.name)));
 		}
 	}
 

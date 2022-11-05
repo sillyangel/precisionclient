@@ -7,8 +7,8 @@ public class NoiseGeneratorOctaves extends NoiseGenerator {
 	 * Collection of noise generation functions. Output is combined to produce
 	 * different octaves of noise.
 	 */
-	private NoiseGeneratorPerlin[] generatorCollection;
-	private int octaves;
+	private final NoiseGeneratorPerlin[] generatorCollection;
+	private final int octaves;
 
 	public NoiseGeneratorOctaves(EaglercraftRandom par1Random, int par2) {
 		this.octaves = par2;

@@ -5,7 +5,7 @@ import java.util.List;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class BlockBrewingStand extends BlockContainer {
-	private EaglercraftRandom rand = new EaglercraftRandom();
+	private final EaglercraftRandom rand = new EaglercraftRandom();
 
 	public BlockBrewingStand(int par1) {
 		super(par1, Material.iron);
@@ -118,13 +118,13 @@ public class BlockBrewingStand extends BlockContainer {
 						}
 
 						var10.stackSize -= var14;
-						EntityItem var15 = new EntityItem(par1World, (double) ((float) par2 + var11),
-								(double) ((float) par3 + var12), (double) ((float) par4 + var13),
+						EntityItem var15 = new EntityItem(par1World, (float) par2 + var11,
+								(float) par3 + var12, (float) par4 + var13,
 								new ItemStack(var10.itemID, var14, var10.getItemDamage()));
 						float var16 = 0.05F;
-						var15.motionX = (double) ((float) this.rand.nextGaussian() * var16);
-						var15.motionY = (double) ((float) this.rand.nextGaussian() * var16 + 0.2F);
-						var15.motionZ = (double) ((float) this.rand.nextGaussian() * var16);
+						var15.motionX = (float) this.rand.nextGaussian() * var16;
+						var15.motionY = (float) this.rand.nextGaussian() * var16 + 0.2F;
+						var15.motionZ = (float) this.rand.nextGaussian() * var16;
 						par1World.spawnEntityInWorld(var15);
 					}
 				}

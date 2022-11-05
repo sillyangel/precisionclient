@@ -15,7 +15,7 @@ import net.lax1dude.eaglercraft.sp.EaglerUUID;
 import net.minecraft.server.MinecraftServer;
 
 public class EntityPlayerMP extends EntityPlayer implements ICrafting {
-	private StringTranslate translator = StringTranslate.getInstance();
+	private final StringTranslate translator = StringTranslate.getInstance();
 
 	/**
 	 * The NetServerHandler assigned to this player by the
@@ -101,7 +101,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting {
 		this.stepHeight = 0.0F;
 		this.username = par3Str;
 		this.yOffset = 0.0F;
-		this.setLocationAndAngles((double) var6 + 0.5D, (double) var8, (double) var7 + 0.5D, 0.0F, 0.0F);
+		this.setLocationAndAngles((double) var6 + 0.5D, var8, (double) var7 + 0.5D, 0.0F, 0.0F);
 
 		while (!par2World.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()) {
 			this.setPosition(this.posX, this.posY + 1.0D, this.posZ);
@@ -223,7 +223,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting {
 		while (var3.hasNext()) {
 			ScoreObjective var4 = (ScoreObjective) var3.next();
 			this.getWorldScoreboard().func_96529_a(this.getEntityName(), var4)
-					.func_96651_a(Arrays.asList(new EntityPlayer[] { this }));
+					.func_96651_a(Arrays.asList(this));
 		}
 	}
 
@@ -322,7 +322,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting {
 	}
 
 	public boolean func_96122_a(EntityPlayer par1EntityPlayer) {
-		return !this.mcServer.isPVPEnabled() ? false : super.func_96122_a(par1EntityPlayer);
+		return this.mcServer.isPVPEnabled() && super.func_96122_a(par1EntityPlayer);
 	}
 
 	public void travelToTheEnd(int par1) {
@@ -337,8 +337,8 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting {
 				ChunkCoordinates var2 = this.mcServer.worldServerForDimension(par1).getEntrancePortalLocation();
 
 				if (var2 != null) {
-					this.playerNetServerHandler.setPlayerLocation((double) var2.posX, (double) var2.posY,
-							(double) var2.posZ, 0.0F, 0.0F);
+					this.playerNetServerHandler.setPlayerLocation(var2.posX, var2.posY,
+							var2.posZ, 0.0F, 0.0F);
 				}
 
 				par1 = 1;
@@ -789,10 +789,7 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting {
 	 * Returns true if the command sender is allowed to use the given command.
 	 */
 	public boolean canCommandSenderUseCommand(int par1, String par2Str) {
-		return "seed".equals(par2Str) && !this.mcServer.isDedicatedServer() ? true
-				: (!"tell".equals(par2Str) && !"help".equals(par2Str) && !"me".equals(par2Str)
-						? this.mcServer.getConfigurationManager().areCommandsAllowed(this.username)
-						: true);
+		return "seed".equals(par2Str) && !this.mcServer.isDedicatedServer() || ("tell".equals(par2Str) || "help".equals(par2Str) || "me".equals(par2Str) || this.mcServer.getConfigurationManager().areCommandsAllowed(this.username));
 	}
 
 	/**

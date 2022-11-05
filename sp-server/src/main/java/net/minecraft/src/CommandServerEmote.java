@@ -17,7 +17,7 @@ public class CommandServerEmote extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.me.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.me.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -27,7 +27,7 @@ public class CommandServerEmote extends CommandBase {
 			MinecraftServer.getServer().getConfigurationManager().sendPacketToAllPlayers(
 					new Packet3Chat("* " + par1ICommandSender.getCommandSenderName() + " " + var3));
 		} else {
-			throw new WrongUsageException("commands.me.usage", new Object[0]);
+			throw new WrongUsageException("commands.me.usage");
 		}
 	}
 

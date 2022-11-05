@@ -1,13 +1,13 @@
 package net.minecraft.src;
 
 public class EntityAIMoveTowardsTarget extends EntityAIBase {
-	private EntityCreature theEntity;
+	private final EntityCreature theEntity;
 	private EntityLiving targetEntity;
 	private double movePosX;
 	private double movePosY;
 	private double movePosZ;
-	private float field_75425_f;
-	private float field_75426_g;
+	private final float field_75425_f;
+	private final float field_75426_g;
 
 	public EntityAIMoveTowardsTarget(EntityCreature par1EntityCreature, float par2, float par3) {
 		this.theEntity = par1EntityCreature;

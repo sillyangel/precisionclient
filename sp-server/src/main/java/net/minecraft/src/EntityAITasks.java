@@ -6,15 +6,15 @@ import java.util.List;
 
 public class EntityAITasks {
 	/** A list of EntityAITaskEntrys in EntityAITasks. */
-	private List taskEntries = new ArrayList();
+	private final List taskEntries = new ArrayList();
 
 	/** A list of EntityAITaskEntrys that are currently being executed. */
-	private List executingTaskEntries = new ArrayList();
+	private final List executingTaskEntries = new ArrayList();
 
 	/** Instance of Profiler. */
 	private final Profiler theProfiler;
 	private int field_75778_d = 0;
-	private int field_75779_e = 3;
+	private final int field_75779_e = 3;
 
 	public EntityAITasks(Profiler par1Profiler) {
 		this.theProfiler = par1Profiler;

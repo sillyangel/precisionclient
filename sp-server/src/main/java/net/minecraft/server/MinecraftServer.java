@@ -127,7 +127,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable {
 
 	private int tpsCounter = 0;
 	private int tpsMeasure = 0;
-	private long tpsTimer = 0l;
+	private long tpsTimer = 0L;
 
 	public MinecraftServer(String folder) {
 		mcServer = this;
@@ -290,10 +290,10 @@ public abstract class MinecraftServer implements ICommandSender, Runnable {
 				WorldServer var5 = var2[var4];
 
 				if (var5 != null) {
-					setUserMessage("Saving chunks for level \'" + var5.getWorldInfo().getWorldName() + "\'/" + var5.provider.getDimensionName());
+					setUserMessage("Saving chunks for level '" + var5.getWorldInfo().getWorldName() + "'/" + var5.provider.getDimensionName());
 
 					try {
-						var5.saveAllChunks(true, (IProgressUpdate) null);
+						var5.saveAllChunks(true, null);
 					} catch (MinecraftException var7) {
 						this.getLogAgent().func_98236_b(var7.getMessage());
 					}
@@ -363,7 +363,7 @@ public abstract class MinecraftServer implements ICommandSender, Runnable {
 
 					if (var7 > 2000L && var1 - this.timeOfLastWarning >= 15000L) {
 						this.getLogAgent().func_98236_b(
-								"Can\'t keep up! Did the system time change, or is the server overloaded?");
+                                "Can't keep up! Did the system time change, or is the server overloaded?");
 						var7 = 2000L;
 						this.timeOfLastWarning = var1;
 					}
@@ -458,9 +458,9 @@ public abstract class MinecraftServer implements ICommandSender, Runnable {
 		++tpsCounter;
 		long millis = System.currentTimeMillis();
 		long elapsed = millis - tpsTimer;
-		if(elapsed >= 1000l) {
+		if(elapsed >= 1000L) {
 			tpsTimer = millis;
-			tpsMeasure = (int)(tpsCounter * 1000l / elapsed);
+			tpsMeasure = (int)(tpsCounter * 1000L / elapsed);
 			IntegratedServer.sendIPCPacket(new IPCPacket14StringList(IPCPacket14StringList.SERVER_TPS, getTPSAndChunkBuffer()));
 			tpsCounter = 0;
 		}

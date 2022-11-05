@@ -6,7 +6,7 @@ import net.minecraft.src.ISaveHandler;
 
 public class VFSSaveFormat implements ISaveFormat {
 	
-	private VFSSaveHandler folder;
+	private final VFSSaveHandler folder;
 	
 	public VFSSaveFormat(VFSSaveHandler dir) {
 		folder = dir;

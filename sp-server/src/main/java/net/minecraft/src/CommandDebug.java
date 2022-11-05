@@ -25,7 +25,7 @@ public class CommandDebug extends CommandBase {
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		if (par2ArrayOfStr.length == 1) {
 			if (par2ArrayOfStr[0].equals("start")) {
-				notifyAdmins(par1ICommandSender, "commands.debug.start", new Object[0]);
+				notifyAdmins(par1ICommandSender, "commands.debug.start");
 				MinecraftServer.getServer().enableProfiling();
 				this.startTime = System.currentTimeMillis();
 				this.startTicks = MinecraftServer.getServer().getTickCounter();
@@ -34,7 +34,7 @@ public class CommandDebug extends CommandBase {
 
 			if (par2ArrayOfStr[0].equals("stop")) {
 				if (!MinecraftServer.getServer().theProfiler.profilingEnabled) {
-					throw new CommandException("commands.debug.notStarted", new Object[0]);
+					throw new CommandException("commands.debug.notStarted");
 				}
 
 				long var3 = System.currentTimeMillis();
@@ -44,12 +44,12 @@ public class CommandDebug extends CommandBase {
 				this.saveProfilerResults(var6, var8);
 				MinecraftServer.getServer().theProfiler.profilingEnabled = false;
 				notifyAdmins(par1ICommandSender, "commands.debug.stop",
-						new Object[] { Float.valueOf(var6 / 1000.0F), Integer.valueOf(var8) });
+						Float.valueOf(var6 / 1000.0F), Integer.valueOf(var8));
 				return;
 			}
 		}
 
-		throw new WrongUsageException("commands.debug.usage", new Object[0]);
+		throw new WrongUsageException("commands.debug.usage");
 	}
 
 	private void saveProfilerResults(long par1, int par3) {
@@ -79,7 +79,7 @@ public class CommandDebug extends CommandBase {
 		var4.append("Time span: ").append(par1).append(" ms\n");
 		var4.append("Tick span: ").append(par3).append(" ticks\n");
 		var4.append("// This is approximately ")
-				.append(String.format("%s", new Object[] { Float.valueOf((float) par3 / ((float) par1 / 1000.0F)) }))
+				.append(String.format("%s", Float.valueOf((float) par3 / ((float) par1 / 1000.0F))))
 				.append(" ticks per second. It should be ").append(20).append(" ticks per second\n\n");
 		var4.append("--- BEGIN PROFILE DUMP ---\n\n");
 		this.getProfileDump(0, "root", var4);
@@ -93,7 +93,7 @@ public class CommandDebug extends CommandBase {
 		if (var4 != null && var4.size() >= 3) {
 			for (int var5 = 1; var5 < var4.size(); ++var5) {
 				ProfilerResult var6 = (ProfilerResult) var4.get(var5);
-				par3StringBuilder.append(String.format("[%d] ", new Object[] { Integer.valueOf(par1) }));
+				par3StringBuilder.append(String.format("[%d] ", Integer.valueOf(par1)));
 
 				for (int var7 = 0; var7 < par1; ++var7) {
 					par3StringBuilder.append(" ");
@@ -101,9 +101,9 @@ public class CommandDebug extends CommandBase {
 
 				par3StringBuilder.append(var6.field_76331_c);
 				par3StringBuilder.append(" - ");
-				par3StringBuilder.append(String.format("%s", new Object[] { Double.valueOf(var6.field_76332_a) }));
+				par3StringBuilder.append(String.format("%s", Double.valueOf(var6.field_76332_a)));
 				par3StringBuilder.append("%/");
-				par3StringBuilder.append(String.format("%s", new Object[] { Double.valueOf(var6.field_76330_b) }));
+				par3StringBuilder.append(String.format("%s", Double.valueOf(var6.field_76330_b)));
 				par3StringBuilder.append("%\n");
 
 				if (!var6.field_76331_c.equals("unspecified")) {
@@ -122,11 +122,11 @@ public class CommandDebug extends CommandBase {
 	 */
 	private static String getWittyComment() {
 		String[] var0 = new String[] { "Shiny numbers!", "Am I not running fast enough? :(",
-				"I\'m working as hard as I can!", "Will I ever be good enough for you? :(", "Speedy. Zoooooom!",
+				"I'm working as hard as I can!", "Will I ever be good enough for you? :(", "Speedy. Zoooooom!",
 				"Hello world", "40% better than a crash report.", "Now with extra numbers", "Now with less numbers",
 				"Now with the same numbers", "You should add flames to things, it makes them go faster!",
 				"Do you feel the need for... optimization?", "*cracks redstone whip*",
-				"Maybe if you treated it better then it\'ll have more motivation to work faster! Poor server." };
+				"Maybe if you treated it better then it'll have more motivation to work faster! Poor server."};
 
 		try {
 			return var0[(int) (System.nanoTime() % (long) var0.length)];
@@ -141,7 +141,7 @@ public class CommandDebug extends CommandBase {
 	 */
 	public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		return par2ArrayOfStr.length == 1
-				? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] { "start", "stop" })
+				? getListOfStringsMatchingLastWord(par2ArrayOfStr, "start", "stop")
 				: null;
 	}
 }

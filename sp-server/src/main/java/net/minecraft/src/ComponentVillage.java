@@ -127,7 +127,7 @@ abstract class ComponentVillage extends StructureComponent {
 
 				++this.villagersSpawned;
 				EntityVillager var11 = new EntityVillager(par1World, this.getVillagerType(var7));
-				var11.setLocationAndAngles((double) var8 + 0.5D, (double) var9, (double) var10 + 0.5D, 0.0F, 0.0F);
+				var11.setLocationAndAngles((double) var8 + 0.5D, var9, (double) var10 + 0.5D, 0.0F, 0.0F);
 				par1World.spawnEntityInWorld(var11);
 			}
 		}

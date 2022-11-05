@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class BlockBreakable extends Block {
-	private boolean localFlag;
-	private String breakableBlockIcon;
+	private final boolean localFlag;
+	private final String breakableBlockIcon;
 
 	protected BlockBreakable(int par1, String par2Str, Material par3Material, boolean par4) {
 		super(par1, par3Material);

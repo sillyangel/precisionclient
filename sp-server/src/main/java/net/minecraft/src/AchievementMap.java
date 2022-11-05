@@ -14,7 +14,7 @@ public class AchievementMap {
 	}
 
 	/** Maps a achievement id with it's unique GUID. */
-	private Map guidMap = new HashMap();
+	private final Map guidMap = new HashMap();
 
 	private AchievementMap(List<String> guid) {
 		for (String var2 : guid) {

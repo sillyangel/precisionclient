@@ -8,16 +8,16 @@ public class ComponentVillageField extends ComponentVillage {
 	private int averageGroundLevel = -1;
 
 	/** First crop type for this field. */
-	private int cropTypeA;
+	private final int cropTypeA;
 
 	/** Second crop type for this field. */
-	private int cropTypeB;
+	private final int cropTypeB;
 
 	/** Third crop type for this field. */
-	private int cropTypeC;
+	private final int cropTypeC;
 
 	/** Fourth crop type for this field. */
-	private int cropTypeD;
+	private final int cropTypeD;
 
 	public ComponentVillageField(ComponentVillageStartPiece par1ComponentVillageStartPiece, int par2, EaglercraftRandom par3Random,
 			StructureBoundingBox par4StructureBoundingBox, int par5) {

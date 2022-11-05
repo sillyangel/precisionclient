@@ -59,7 +59,7 @@ public class Vec3 {
 	 * Normalizes the vector to a length of 1 (except if it is the zero vector)
 	 */
 	public Vec3 normalize() {
-		double var1 = (double) MathHelper
+		double var1 = MathHelper
 				.sqrt_double(this.xCoord * this.xCoord + this.yCoord * this.yCoord + this.zCoord * this.zCoord);
 		return var1 < 1.0E-4D ? this.myVec3LocalPool.getVecFromPool(0.0D, 0.0D, 0.0D)
 				: this.myVec3LocalPool.getVecFromPool(this.xCoord / var1, this.yCoord / var1, this.zCoord / var1);
@@ -84,7 +84,7 @@ public class Vec3 {
 		double var2 = par1Vec3.xCoord - this.xCoord;
 		double var4 = par1Vec3.yCoord - this.yCoord;
 		double var6 = par1Vec3.zCoord - this.zCoord;
-		return (double) MathHelper.sqrt_double(var2 * var2 + var4 * var4 + var6 * var6);
+		return MathHelper.sqrt_double(var2 * var2 + var4 * var4 + var6 * var6);
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Vec3 {
 	 * Returns the length of the vector.
 	 */
 	public double lengthVector() {
-		return (double) MathHelper
+		return MathHelper
 				.sqrt_double(this.xCoord * this.xCoord + this.yCoord * this.yCoord + this.zCoord * this.zCoord);
 	}
 

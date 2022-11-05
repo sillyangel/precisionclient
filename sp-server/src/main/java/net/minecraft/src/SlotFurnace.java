@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class SlotFurnace extends Slot {
 	/** The player that is using the GUI where this slot resides. */
-	private EntityPlayer thePlayer;
+	private final EntityPlayer thePlayer;
 	private int field_75228_b;
 
 	public SlotFurnace(EntityPlayer par1EntityPlayer, IInventory par2IInventory, int par3, int par4, int par5) {

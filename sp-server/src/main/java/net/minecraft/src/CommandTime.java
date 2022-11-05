@@ -17,7 +17,7 @@ public class CommandTime extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.time.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.time.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -34,19 +34,19 @@ public class CommandTime extends CommandBase {
 				}
 
 				this.setTime(par1ICommandSender, var3);
-				notifyAdmins(par1ICommandSender, "commands.time.set", new Object[] { Integer.valueOf(var3) });
+				notifyAdmins(par1ICommandSender, "commands.time.set", Integer.valueOf(var3));
 				return;
 			}
 
 			if (par2ArrayOfStr[0].equals("add")) {
 				var3 = parseIntWithMin(par1ICommandSender, par2ArrayOfStr[1], 0);
 				this.addTime(par1ICommandSender, var3);
-				notifyAdmins(par1ICommandSender, "commands.time.added", new Object[] { Integer.valueOf(var3) });
+				notifyAdmins(par1ICommandSender, "commands.time.added", Integer.valueOf(var3));
 				return;
 			}
 		}
 
-		throw new WrongUsageException("commands.time.usage", new Object[0]);
+		throw new WrongUsageException("commands.time.usage");
 	}
 
 	/**
@@ -55,9 +55,9 @@ public class CommandTime extends CommandBase {
 	 */
 	public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		return par2ArrayOfStr.length == 1
-				? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] { "set", "add" })
+				? getListOfStringsMatchingLastWord(par2ArrayOfStr, "set", "add")
 				: (par2ArrayOfStr.length == 2 && par2ArrayOfStr[0].equals("set")
-						? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] { "day", "night" })
+						? getListOfStringsMatchingLastWord(par2ArrayOfStr, "day", "night")
 						: null);
 	}
 
@@ -66,7 +66,7 @@ public class CommandTime extends CommandBase {
 	 */
 	protected void setTime(ICommandSender par1ICommandSender, int par2) {
 		for (int var3 = 0; var3 < MinecraftServer.getServer().worldServers.length; ++var3) {
-			MinecraftServer.getServer().worldServers[var3].setWorldTime((long) par2);
+			MinecraftServer.getServer().worldServers[var3].setWorldTime(par2);
 		}
 	}
 

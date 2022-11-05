@@ -29,7 +29,7 @@ public abstract class EntityFireball extends Entity {
 		this.setSize(1.0F, 1.0F);
 		this.setLocationAndAngles(par2, par4, par6, this.rotationYaw, this.rotationPitch);
 		this.setPosition(par2, par4, par6);
-		double var14 = (double) MathHelper.sqrt_double(par8 * par8 + par10 * par10 + par12 * par12);
+		double var14 = MathHelper.sqrt_double(par8 * par8 + par10 * par10 + par12 * par12);
 		this.accelerationX = par8 / var14 * 0.1D;
 		this.accelerationY = par10 / var14 * 0.1D;
 		this.accelerationZ = par12 / var14 * 0.1D;
@@ -47,7 +47,7 @@ public abstract class EntityFireball extends Entity {
 		par3 += this.rand.nextGaussian() * 0.4D;
 		par5 += this.rand.nextGaussian() * 0.4D;
 		par7 += this.rand.nextGaussian() * 0.4D;
-		double var9 = (double) MathHelper.sqrt_double(par3 * par3 + par5 * par5 + par7 * par7);
+		double var9 = MathHelper.sqrt_double(par3 * par3 + par5 * par5 + par7 * par7);
 		this.accelerationX = par3 / var9 * 0.1D;
 		this.accelerationY = par5 / var9 * 0.1D;
 		this.accelerationZ = par7 / var9 * 0.1D;
@@ -78,9 +78,9 @@ public abstract class EntityFireball extends Entity {
 				}
 
 				this.inGround = false;
-				this.motionX *= (double) (this.rand.nextFloat() * 0.2F);
-				this.motionY *= (double) (this.rand.nextFloat() * 0.2F);
-				this.motionZ *= (double) (this.rand.nextFloat() * 0.2F);
+				this.motionX *= this.rand.nextFloat() * 0.2F;
+				this.motionY *= this.rand.nextFloat() * 0.2F;
+				this.motionZ *= this.rand.nextFloat() * 0.2F;
 				this.ticksAlive = 0;
 				this.ticksInAir = 0;
 			} else {
@@ -110,7 +110,7 @@ public abstract class EntityFireball extends Entity {
 
 				if (var9.canBeCollidedWith() && (!var9.isEntityEqual(this.shootingEntity) || this.ticksInAir >= 25)) {
 					float var10 = 0.3F;
-					AxisAlignedBB var11 = var9.boundingBox.expand((double) var10, (double) var10, (double) var10);
+					AxisAlignedBB var11 = var9.boundingBox.expand(var10, var10, var10);
 					MovingObjectPosition var12 = var11.calculateIntercept(var15, var2);
 
 					if (var12 != null) {
@@ -138,9 +138,8 @@ public abstract class EntityFireball extends Entity {
 			float var16 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 			this.rotationYaw = (float) (Math.atan2(this.motionZ, this.motionX) * 180.0D / Math.PI) + 90.0F;
 
-			for (this.rotationPitch = (float) (Math.atan2((double) var16, this.motionY) * 180.0D / Math.PI)
+			for (this.rotationPitch = (float) (Math.atan2(var16, this.motionY) * 180.0D / Math.PI)
 					- 90.0F; this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
-				;
 			}
 
 			while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
@@ -173,9 +172,9 @@ public abstract class EntityFireball extends Entity {
 			this.motionX += this.accelerationX;
 			this.motionY += this.accelerationY;
 			this.motionZ += this.accelerationZ;
-			this.motionX *= (double) var17;
-			this.motionY *= (double) var17;
-			this.motionZ *= (double) var17;
+			this.motionX *= var17;
+			this.motionY *= var17;
+			this.motionZ *= var17;
 			this.worldObj.spawnParticle("smoke", this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
 			this.setPosition(this.posX, this.posY, this.posZ);
 		}
@@ -204,7 +203,7 @@ public abstract class EntityFireball extends Entity {
 		par1NBTTagCompound.setByte("inTile", (byte) this.inTile);
 		par1NBTTagCompound.setByte("inGround", (byte) (this.inGround ? 1 : 0));
 		par1NBTTagCompound.setTag("direction",
-				this.newDoubleNBTList(new double[] { this.motionX, this.motionY, this.motionZ }));
+				this.newDoubleNBTList(this.motionX, this.motionY, this.motionZ));
 	}
 
 	/**

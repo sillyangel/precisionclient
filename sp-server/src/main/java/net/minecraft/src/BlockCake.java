@@ -37,9 +37,9 @@ public class BlockCake extends Block {
 		float var6 = 0.0625F;
 		float var7 = (float) (1 + var5 * 2) / 16.0F;
 		float var8 = 0.5F;
-		return AxisAlignedBB.getAABBPool().getAABB((double) ((float) par2 + var7), (double) par3,
-				(double) ((float) par4 + var6), (double) ((float) (par2 + 1) - var6),
-				(double) ((float) par3 + var8 - var6), (double) ((float) (par4 + 1) - var6));
+		return AxisAlignedBB.getAABBPool().getAABB((float) par2 + var7, par3,
+				(float) par4 + var6, (float) (par2 + 1) - var6,
+				(float) par3 + var8 - var6, (float) (par4 + 1) - var6);
 	}
 
 	/**
@@ -96,8 +96,7 @@ public class BlockCake extends Block {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return !super.canPlaceBlockAt(par1World, par2, par3, par4) ? false
-				: this.canBlockStay(par1World, par2, par3, par4);
+		return super.canPlaceBlockAt(par1World, par2, par3, par4) && this.canBlockStay(par1World, par2, par3, par4);
 	}
 
 	/**

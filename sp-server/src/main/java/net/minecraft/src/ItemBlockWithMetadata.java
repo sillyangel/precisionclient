@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class ItemBlockWithMetadata extends ItemBlock {
-	private Block theBlock;
+	private final Block theBlock;
 
 	public ItemBlockWithMetadata(int par1, Block par2Block) {
 		super(par1);

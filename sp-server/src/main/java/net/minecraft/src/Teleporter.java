@@ -54,7 +54,7 @@ public class Teleporter {
 				}
 			}
 
-			par1Entity.setLocationAndAngles((double) var9, (double) var10, (double) var11, par1Entity.rotationYaw,
+			par1Entity.setLocationAndAngles(var9, var10, var11, par1Entity.rotationYaw,
 					0.0F);
 			par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
 		}
@@ -164,9 +164,9 @@ public class Teleporter {
 					var34 = Direction.offsetX[var31];
 					var35 = Direction.offsetZ[var31];
 					var48 = var12 - var34;
-					var49 -= (double) var34;
+					var49 -= var34;
 					int var22 = var14 - var35;
-					var27 -= (double) var35;
+					var27 -= var35;
 					var36 = !this.worldServerInstance.isAirBlock(var48 + var32 + var34, var13, var22 + var33 + var35)
 							|| !this.worldServerInstance.isAirBlock(var48 + var32 + var34, var13 + 1,
 									var22 + var33 + var35);
@@ -185,8 +185,8 @@ public class Teleporter {
 					var39 = 0.0F;
 				}
 
-				var49 += (double) ((float) var34 * var38 + var39 * (float) var32);
-				var27 += (double) ((float) var35 * var38 + var39 * (float) var33);
+				var49 += (float) var34 * var38 + var39 * (float) var32;
+				var27 += (float) var35 * var38 + var39 * (float) var33;
 				float var40 = 0.0F;
 				float var41 = 0.0F;
 				float var42 = 0.0F;

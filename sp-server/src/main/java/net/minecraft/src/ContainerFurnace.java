@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class ContainerFurnace extends Container {
-	private TileEntityFurnace furnace;
+	private final TileEntityFurnace furnace;
 	private int lastCookTime = 0;
 	private int lastBurnTime = 0;
 	private int lastItemBurnTime = 0;
@@ -101,7 +101,7 @@ public class ContainerFurnace extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

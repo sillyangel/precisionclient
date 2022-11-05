@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityAISit extends EntityAIBase {
-	private EntityTameable theEntity;
+	private final EntityTameable theEntity;
 
 	/** If the EntityTameable is sitting. */
 	private boolean isSitting = false;
@@ -23,9 +23,7 @@ public class EntityAISit extends EntityAIBase {
 			return false;
 		} else {
 			EntityLiving var1 = this.theEntity.getOwner();
-			return var1 == null ? true
-					: (this.theEntity.getDistanceSqToEntity(var1) < 144.0D && var1.getAITarget() != null ? false
-							: this.isSitting);
+			return var1 == null || ((!(this.theEntity.getDistanceSqToEntity(var1) < 144.0D) || var1.getAITarget() == null) && this.isSitting);
 		}
 	}
 

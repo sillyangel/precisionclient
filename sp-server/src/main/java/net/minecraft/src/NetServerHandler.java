@@ -34,7 +34,7 @@ public class NetServerHandler extends NetHandler {
 	private long keepAliveTimeSent;
 
 	/** The Java Random object. */
-	private static EaglercraftRandom rndmObj = new EaglercraftRandom();
+	private static final EaglercraftRandom rndmObj = new EaglercraftRandom();
 	private long ticksOfLastKeepAlive;
 	private int chatSpamThresholdCount = 0;
 	private int creativeItemCreationSpamThresholdTally = 0;
@@ -50,7 +50,7 @@ public class NetServerHandler extends NetHandler {
 
 	/** is true when the player has moved since his last movement packet */
 	private boolean hasMoved = true;
-	private IntHashMap field_72586_s = new IntHashMap();
+	private final IntHashMap field_72586_s = new IntHashMap();
 	private int hash = 0;
 	private static int hashCounter = 0;
 
@@ -83,7 +83,7 @@ public class NetServerHandler extends NetHandler {
 		this.mcServer.theProfiler.endStartSection("keepAlive");
 
 		if ((long) this.currentTicks - this.ticksOfLastKeepAlive > 20L) {
-			this.ticksOfLastKeepAlive = (long) this.currentTicks;
+			this.ticksOfLastKeepAlive = this.currentTicks;
 			this.keepAliveTimeSent = System.nanoTime() / 1000000L;
 			this.keepAliveRandomID = rndmObj.nextInt();
 			this.sendPacket(new Packet0KeepAlive(this.keepAliveRandomID));
@@ -271,7 +271,7 @@ public class NetServerHandler extends NetHandler {
 
 				float var27 = 0.0625F;
 				boolean var28 = var2.getCollidingBoundingBoxes(this.playerEntity,
-						this.playerEntity.boundingBox.copy().contract((double) var27, (double) var27, (double) var27))
+						this.playerEntity.boundingBox.copy().contract(var27, var27, var27))
 						.isEmpty();
 
 				if (this.playerEntity.onGround && !par1Packet10Flying.onGround && var15 > 0.0D) {
@@ -301,7 +301,7 @@ public class NetServerHandler extends NetHandler {
 
 				this.playerEntity.setPositionAndRotation(var5, var7, var9, var11, var12);
 				boolean var32 = var2.getCollidingBoundingBoxes(this.playerEntity,
-						this.playerEntity.boundingBox.copy().contract((double) var27, (double) var27, (double) var27))
+						this.playerEntity.boundingBox.copy().contract(var27, var27, var27))
 						.isEmpty();
 
 				if (var28 && (var31 || !var32) && !this.playerEntity.isPlayerSleeping()) {
@@ -310,7 +310,7 @@ public class NetServerHandler extends NetHandler {
 				}
 
 				AxisAlignedBB var33 = this.playerEntity.boundingBox.copy()
-						.expand((double) var27, (double) var27, (double) var27).addCoord(0.0D, -0.55D, 0.0D);
+						.expand(var27, var27, var27).addCoord(0.0D, -0.55D, 0.0D);
 
 				if (!this.mcServer.isFlightAllowed() && !this.playerEntity.theItemInWorldManager.isCreative()
 						&& !var2.checkBlockCollision(var33)) {
@@ -358,11 +358,7 @@ public class NetServerHandler extends NetHandler {
 		} else if (par1Packet14BlockDig.status == 5) {
 			this.playerEntity.stopUsingItem();
 		} else {
-			boolean var3 = false;
-
-			if (par1Packet14BlockDig.status == 0) {
-				var3 = true;
-			}
+			boolean var3 = par1Packet14BlockDig.status == 0;
 
 			if (par1Packet14BlockDig.status == 1) {
 				var3 = true;
@@ -523,7 +519,7 @@ public class NetServerHandler extends NetHandler {
 	 */
 	public void unexpectedPacket(Packet par1Packet) {
 		this.mcServer.getLogAgent()
-				.func_98236_b(this.getClass() + " wasn\'t prepared to deal with a " + par1Packet.getClass());
+				.func_98236_b(this.getClass() + " wasn't prepared to deal with a " + par1Packet.getClass());
 		this.kickPlayer("Protocol error, unexpected packet");
 	}
 
@@ -629,7 +625,7 @@ public class NetServerHandler extends NetHandler {
 	}
 
 	public void handleKickDisconnect(Packet255KickDisconnect par1Packet255KickDisconnect) {
-		this.netManager.networkShutdown("disconnect.quitting", new Object[0]);
+		this.netManager.networkShutdown("disconnect.quitting");
 	}
 
 	/**
@@ -669,7 +665,7 @@ public class NetServerHandler extends NetHandler {
 				if (this.mcServer.isSinglePlayer()
 						&& this.playerEntity.username.equals(this.mcServer.getServerOwner())) {
 					this.playerEntity.playerNetServerHandler
-							.kickPlayer("You have died. Game over, man, it\'s game over!");
+							.kickPlayer("You have died. Game over, man, it's game over!");
 					this.mcServer.deleteWorldAndStopServer();
 				}
 			} else {
@@ -757,7 +753,7 @@ public class NetServerHandler extends NetHandler {
 			if (var4 && var5 && var6) {
 				if (var3 == null) {
 					this.playerEntity.inventoryContainer.putStackInSlot(par1Packet107CreativeSetSlot.slot,
-							(ItemStack) null);
+							null);
 				} else {
 					this.playerEntity.inventoryContainer.putStackInSlot(par1Packet107CreativeSetSlot.slot, var3);
 				}
@@ -948,7 +944,7 @@ public class NetServerHandler extends NetHandler {
 				if ("MC|AdvCdm".equals(par1Packet250CustomPayload.channel)) {
 					if (!this.mcServer.isCommandBlockEnabled()) {
 						this.playerEntity.sendChatToPlayer(
-								this.playerEntity.translateString("advMode.notEnabled", new Object[0]));
+								this.playerEntity.translateString("advMode.notEnabled"));
 					} else if (this.playerEntity.canCommandSenderUseCommand(2, "")
 							&& this.playerEntity.capabilities.isCreativeMode) {
 						try {
@@ -969,7 +965,7 @@ public class NetServerHandler extends NetHandler {
 						}
 					} else {
 						this.playerEntity.sendChatToPlayer(
-								this.playerEntity.translateString("advMode.notAllowed", new Object[0]));
+								this.playerEntity.translateString("advMode.notAllowed"));
 					}
 				} else if ("MC|Beacon".equals(par1Packet250CustomPayload.channel)) {
 					if (this.playerEntity.openContainer instanceof ContainerBeacon) {

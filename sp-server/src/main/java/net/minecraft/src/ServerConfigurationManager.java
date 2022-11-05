@@ -15,7 +15,7 @@ import net.lax1dude.eaglercraft.sp.VoiceChatPlugin;
 import net.minecraft.server.MinecraftServer;
 
 public class ServerConfigurationManager {
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd \'at\' HH:mm:ss z");
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 
 	/** Reference to the MinecraftServer object. */
 	private final MinecraftServer mcServer;
@@ -24,10 +24,10 @@ public class ServerConfigurationManager {
 	public final List playerEntityList = new ArrayList();
 
 	/** A set containing the OPs. */
-	private Set ops = new HashSet();
+	private final Set ops = new HashSet();
 
 	/** The Set of all whitelisted players. */
-	private Set whiteListedPlayers = new HashSet();
+	private final Set whiteListedPlayers = new HashSet();
 
 	/** Reference to the PlayerNBTManager object. */
 	private IPlayerFileData playerNBTManagerObj;
@@ -74,7 +74,7 @@ public class ServerConfigurationManager {
 						+ par2EntityPlayerMP.posY + ", " + par2EntityPlayerMP.posZ + ")");
 		WorldServer var5 = this.mcServer.worldServerForDimension(par2EntityPlayerMP.dimension);
 		ChunkCoordinates var6 = var5.getSpawnPoint();
-		this.func_72381_a(par2EntityPlayerMP, (EntityPlayerMP) null, var5);
+		this.func_72381_a(par2EntityPlayerMP, null, var5);
 		NetServerHandler var7 = new NetServerHandler(this.mcServer, par1INetworkManager, par2EntityPlayerMP);
 		var7.sendPacket(new Packet1Login(par2EntityPlayerMP.entityId, var5.getWorldInfo().getTerrainType(),
 				par2EntityPlayerMP.theItemInWorldManager.getGameType(), var5.getWorldInfo().isHardcoreModeEnabled(),
@@ -200,7 +200,7 @@ public class ServerConfigurationManager {
 		this.playerEntityList.add(par1EntityPlayerMP);
 		WorldServer var2 = this.mcServer.worldServerForDimension(par1EntityPlayerMP.dimension);
 		var2.spawnEntityInWorld(par1EntityPlayerMP);
-		this.func_72375_a(par1EntityPlayerMP, (WorldServer) null);
+		this.func_72375_a(par1EntityPlayerMP, null);
 
 		for (int var3 = 0; var3 < this.playerEntityList.size(); ++var3) {
 			EntityPlayerMP var4 = (EntityPlayerMP) this.playerEntityList.get(var3);
@@ -360,8 +360,8 @@ public class ServerConfigurationManager {
 					this.mcServer.worldServerForDimension(par1EntityPlayerMP.dimension), var4, var5);
 
 			if (var9 != null) {
-				var7.setLocationAndAngles((double) ((float) var9.posX + 0.5F), (double) ((float) var9.posY + 0.1F),
-						(double) ((float) var9.posZ + 0.5F), 0.0F, 0.0F);
+				var7.setLocationAndAngles((float) var9.posX + 0.5F, (float) var9.posY + 0.1F,
+						(float) var9.posZ + 0.5F, 0.0F, 0.0F);
 				var7.setSpawnChunk(var4, var5);
 			} else {
 				var7.playerNetServerHandler.sendPacket(new Packet70GameEvent(0, 0));
@@ -462,9 +462,9 @@ public class ServerConfigurationManager {
 				var18 = par4WorldServer.getEntrancePortalLocation();
 			}
 
-			var5 = (double) var18.posX;
-			par1Entity.posY = (double) var18.posY;
-			var7 = (double) var18.posZ;
+			var5 = var18.posX;
+			par1Entity.posY = var18.posY;
+			var7 = var18.posZ;
 			par1Entity.setLocationAndAngles(var5, par1Entity.posY, var7, 90.0F, 0.0F);
 
 			if (par1Entity.isEntityAlive()) {
@@ -476,8 +476,8 @@ public class ServerConfigurationManager {
 
 		if (par2 != 1) {
 			par3WorldServer.theProfiler.startSection("placing");
-			var5 = (double) MathHelper.clamp_int((int) var5, -29999872, 29999872);
-			var7 = (double) MathHelper.clamp_int((int) var7, -29999872, 29999872);
+			var5 = MathHelper.clamp_int((int) var5, -29999872, 29999872);
+			var7 = MathHelper.clamp_int((int) var7, -29999872, 29999872);
 
 			if (par1Entity.isEntityAlive()) {
 				par4WorldServer.spawnEntityInWorld(par1Entity);
@@ -735,7 +735,7 @@ public class ServerConfigurationManager {
 	 */
 	public void sendPacketToPlayersAroundPoint(double par1, double par3, double par5, double par7, int par9,
 			Packet par10Packet) {
-		this.sendToAllNearExcept((EntityPlayer) null, par1, par3, par5, par7, par9, par10Packet);
+		this.sendToAllNearExcept(null, par1, par3, par5, par7, par9, par10Packet);
 	}
 
 	/**

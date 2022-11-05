@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class EntityAIEatGrass extends EntityAIBase {
-	private EntityLiving theEntity;
-	private World theWorld;
+	private final EntityLiving theEntity;
+	private final World theWorld;
 
 	/** A decrementing tick used for the sheep's head offset and animation. */
 	int eatGrassTick = 0;
@@ -24,8 +24,7 @@ public class EntityAIEatGrass extends EntityAIBase {
 			int var2 = MathHelper.floor_double(this.theEntity.posY);
 			int var3 = MathHelper.floor_double(this.theEntity.posZ);
 			return this.theWorld.getBlockId(var1, var2, var3) == Block.tallGrass.blockID
-					&& this.theWorld.getBlockMetadata(var1, var2, var3) == 1 ? true
-							: this.theWorld.getBlockId(var1, var2 - 1, var3) == Block.grass.blockID;
+					&& this.theWorld.getBlockMetadata(var1, var2, var3) == 1 || this.theWorld.getBlockId(var1, var2 - 1, var3) == Block.grass.blockID;
 		}
 	}
 

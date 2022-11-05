@@ -2,16 +2,16 @@ package net.minecraft.src;
 
 public class InventoryCrafting implements IInventory {
 	/** List of the stacks in the crafting matrix. */
-	private ItemStack[] stackList;
+	private final ItemStack[] stackList;
 
 	/** the width of the crafting inventory */
-	private int inventoryWidth;
+	private final int inventoryWidth;
 
 	/**
 	 * Class containing the callbacks for the events on_GUIClosed and
 	 * on_CraftMaxtrixChanged.
 	 */
-	private Container eventHandler;
+	private final Container eventHandler;
 
 	public InventoryCrafting(Container par1Container, int par2, int par3) {
 		int var4 = par2 * par3;

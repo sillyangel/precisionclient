@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityEnderman extends EntityMob {
-	private static boolean[] carriableBlocks = new boolean[256];
+	private static final boolean[] carriableBlocks = new boolean[256];
 
 	/**
 	 * Counter to delay the teleportation of an enderman towards the currently
@@ -25,9 +25,9 @@ public class EntityEnderman extends EntityMob {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
-		this.dataWatcher.addObject(17, new Byte((byte) 0));
-		this.dataWatcher.addObject(18, new Byte((byte) 0));
+		this.dataWatcher.addObject(16, Byte.valueOf((byte) 0));
+		this.dataWatcher.addObject(17, Byte.valueOf((byte) 0));
+		this.dataWatcher.addObject(18, Byte.valueOf((byte) 0));
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class EntityEnderman extends EntityMob {
 			double var5 = var4.lengthVector();
 			var4 = var4.normalize();
 			double var7 = var3.dotProduct(var4);
-			return var7 > 1.0D - 0.025D / var5 ? par1EntityPlayer.canEntityBeSeen(this) : false;
+			return var7 > 1.0D - 0.025D / var5 && par1EntityPlayer.canEntityBeSeen(this);
 		}
 	}
 
@@ -287,8 +287,8 @@ public class EntityEnderman extends EntityMob {
 				double var26 = var9 + (this.posY - var9) * var19 + this.rand.nextDouble() * (double) this.height;
 				double var28 = var11 + (this.posZ - var11) * var19
 						+ (this.rand.nextDouble() - 0.5D) * (double) this.width * 2.0D;
-				this.worldObj.spawnParticle("portal", var24, var26, var28, (double) var21, (double) var22,
-						(double) var23);
+				this.worldObj.spawnParticle("portal", var24, var26, var28, var21, var22,
+						var23);
 			}
 
 			this.worldObj.playSoundEffect(var7, var9, var11, "mob.endermen.portal", 1.0F, 1.0F);

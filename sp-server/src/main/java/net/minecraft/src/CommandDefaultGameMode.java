@@ -8,7 +8,7 @@ public class CommandDefaultGameMode extends CommandGameMode {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.defaultgamemode.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.defaultgamemode.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -16,9 +16,9 @@ public class CommandDefaultGameMode extends CommandGameMode {
 			EnumGameType var3 = this.getGameModeFromCommand(par1ICommandSender, par2ArrayOfStr[0]);
 			this.setGameType(var3);
 			String var4 = StatCollector.translateToLocal("gameMode." + var3.getName());
-			notifyAdmins(par1ICommandSender, "commands.defaultgamemode.success", new Object[] { var4 });
+			notifyAdmins(par1ICommandSender, "commands.defaultgamemode.success", var4);
 		} else {
-			throw new WrongUsageException("commands.defaultgamemode.usage", new Object[0]);
+			throw new WrongUsageException("commands.defaultgamemode.usage");
 		}
 	}
 

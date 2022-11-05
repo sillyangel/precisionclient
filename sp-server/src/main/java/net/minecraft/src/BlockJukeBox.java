@@ -45,8 +45,8 @@ public class BlockJukeBox extends BlockContainer {
 
 				if (var6 != null) {
 					par1World.playAuxSFX(1005, par2, par3, par4, 0);
-					par1World.playRecord((String) null, par2, par3, par4);
-					var5.func_96098_a((ItemStack) null);
+					par1World.playRecord(null, par2, par3, par4);
+					var5.func_96098_a(null);
 					par1World.setBlockMetadata(par2, par3, par4, 0, 2);
 					float var7 = 0.7F;
 					double var8 = (double) (par1World.rand.nextFloat() * var7) + (double) (1.0F - var7) * 0.5D;

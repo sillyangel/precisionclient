@@ -10,7 +10,7 @@ public abstract class EntityAITarget extends EntityAIBase {
 	 * walls) to be suitable targets.
 	 */
 	protected boolean shouldCheckSight;
-	private boolean field_75303_a;
+	private final boolean field_75303_a;
 	private int field_75301_b;
 	private int field_75302_c;
 	private int field_75298_g;
@@ -45,9 +45,7 @@ public abstract class EntityAITarget extends EntityAIBase {
 			if (this.shouldCheckSight) {
 				if (this.taskOwner.getEntitySenses().canSee(var1)) {
 					this.field_75298_g = 0;
-				} else if (++this.field_75298_g > 60) {
-					return false;
-				}
+				} else return ++this.field_75298_g <= 60;
 			}
 
 			return true;
@@ -67,7 +65,7 @@ public abstract class EntityAITarget extends EntityAIBase {
 	 * Resets the task
 	 */
 	public void resetTask() {
-		this.taskOwner.setAttackTarget((EntityLiving) null);
+		this.taskOwner.setAttackTarget(null);
 	}
 
 	/**
@@ -112,9 +110,7 @@ public abstract class EntityAITarget extends EntityAIBase {
 						this.field_75301_b = this.func_75295_a(par1EntityLiving) ? 1 : 2;
 					}
 
-					if (this.field_75301_b == 2) {
-						return false;
-					}
+					return this.field_75301_b != 2;
 				}
 
 				return true;

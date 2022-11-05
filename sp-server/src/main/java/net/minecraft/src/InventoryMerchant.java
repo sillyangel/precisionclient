@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class InventoryMerchant implements IInventory {
 	private final IMerchant theMerchant;
-	private ItemStack[] theInventory = new ItemStack[3];
+	private final ItemStack[] theInventory = new ItemStack[3];
 	private final EntityPlayer thePlayer;
 	private MerchantRecipe currentRecipe;
 	private int currentRecipeIndex;
@@ -166,7 +166,7 @@ public class InventoryMerchant implements IInventory {
 		}
 
 		if (var1 == null) {
-			this.setInventorySlotContents(2, (ItemStack) null);
+			this.setInventorySlotContents(2, null);
 		} else {
 			MerchantRecipeList var3 = this.theMerchant.getRecipes(this.thePlayer);
 
@@ -183,10 +183,10 @@ public class InventoryMerchant implements IInventory {
 						this.currentRecipe = var4;
 						this.setInventorySlotContents(2, var4.getItemToSell().copy());
 					} else {
-						this.setInventorySlotContents(2, (ItemStack) null);
+						this.setInventorySlotContents(2, null);
 					}
 				} else {
-					this.setInventorySlotContents(2, (ItemStack) null);
+					this.setInventorySlotContents(2, null);
 				}
 			}
 		}

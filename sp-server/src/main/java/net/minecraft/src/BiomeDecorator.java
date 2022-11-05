@@ -281,8 +281,7 @@ public class BiomeDecorator {
 
 			for (var7 = this.randomGenerator.nextInt(128); var7 > 0
 					&& this.currentWorld.getBlockId(var3, var7 - 1, var4) == 0; --var7) {
-				;
-			}
+            }
 
 			this.waterlilyGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
 		}

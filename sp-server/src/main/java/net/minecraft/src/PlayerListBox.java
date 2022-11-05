@@ -8,7 +8,7 @@ import net.minecraft.server.MinecraftServer;
 
 public class PlayerListBox extends JList implements IUpdatePlayerListBox {
 	/** Reference to the MinecraftServer object. */
-	private MinecraftServer mcServer;
+	private final MinecraftServer mcServer;
 
 	/** Counts the number of updates. */
 	private int updateCounter = 0;

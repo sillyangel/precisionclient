@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BlockPressurePlate extends BlockBasePressurePlate {
 	/** The mob type that can trigger this pressure plate. */
-	private EnumMobType triggerMobType;
+	private final EnumMobType triggerMobType;
 
 	protected BlockPressurePlate(int par1, String par2Str, Material par3Material, EnumMobType par4EnumMobType) {
 		super(par1, par2Str, par3Material);
@@ -34,7 +34,7 @@ public class BlockPressurePlate extends BlockBasePressurePlate {
 		List var5 = null;
 
 		if (this.triggerMobType == EnumMobType.everything) {
-			var5 = par1World.getEntitiesWithinAABBExcludingEntity((Entity) null,
+			var5 = par1World.getEntitiesWithinAABBExcludingEntity(null,
 					this.getSensitiveAABB(par2, par3, par4));
 		}
 

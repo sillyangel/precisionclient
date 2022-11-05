@@ -20,7 +20,7 @@ public class CommandDifficulty extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.difficulty.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.difficulty.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -28,9 +28,9 @@ public class CommandDifficulty extends CommandBase {
 			int var3 = this.getDifficultyForName(par1ICommandSender, par2ArrayOfStr[0]);
 			MinecraftServer.getServer().setDifficultyForAllWorlds(var3);
 			String var4 = StatCollector.translateToLocal(difficulties[var3]);
-			notifyAdmins(par1ICommandSender, "commands.difficulty.success", new Object[] { var4 });
+			notifyAdmins(par1ICommandSender, "commands.difficulty.success", var4);
 		} else {
-			throw new WrongUsageException("commands.difficulty.usage", new Object[0]);
+			throw new WrongUsageException("commands.difficulty.usage");
 		}
 	}
 
@@ -58,7 +58,7 @@ public class CommandDifficulty extends CommandBase {
 	public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		return par2ArrayOfStr.length == 1
 				? getListOfStringsMatchingLastWord(par2ArrayOfStr,
-						new String[] { "peaceful", "easy", "normal", "hard" })
+				"peaceful", "easy", "normal", "hard")
 				: null;
 	}
 }

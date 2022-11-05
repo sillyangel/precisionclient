@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class PathNavigate {
-	private EntityLiving theEntity;
-	private World worldObj;
+	private final EntityLiving theEntity;
+	private final World worldObj;
 
 	/** The PathEntity being followed. */
 	private PathEntity currentPath;
@@ -12,7 +12,7 @@ public class PathNavigate {
 	 * The number of blocks (extra) +/- in each axis that get pulled out as cache
 	 * for the pathfinder's search space
 	 */
-	private float pathSearchRange;
+	private final float pathSearchRange;
 	private boolean noSunPathfind = false;
 
 	/** Time, in number of ticks, following the current path */
@@ -28,7 +28,7 @@ public class PathNavigate {
 	 * Coordinates of the entity's position last time a check was done (part of
 	 * monitoring getting 'stuck')
 	 */
-	private Vec3 lastPosCheck = Vec3.createVectorHelper(0.0D, 0.0D, 0.0D);
+	private final Vec3 lastPosCheck = Vec3.createVectorHelper(0.0D, 0.0D, 0.0D);
 
 	/**
 	 * Specifically, if a wooden door block is even considered to be passable by the
@@ -115,8 +115,8 @@ public class PathNavigate {
 	 * Try to find and set a path to XYZ. Returns true if successful.
 	 */
 	public boolean tryMoveToXYZ(double par1, double par3, double par5, float par7) {
-		PathEntity var8 = this.getPathToXYZ((double) MathHelper.floor_double(par1), (double) ((int) par3),
-				(double) MathHelper.floor_double(par5));
+		PathEntity var8 = this.getPathToXYZ(MathHelper.floor_double(par1), (int) par3,
+				MathHelper.floor_double(par5));
 		return this.setPath(var8, par7);
 	}
 
@@ -134,7 +134,7 @@ public class PathNavigate {
 	 */
 	public boolean tryMoveToEntityLiving(EntityLiving par1EntityLiving, float par2) {
 		PathEntity var3 = this.getPathToEntityLiving(par1EntityLiving);
-		return var3 != null ? this.setPath(var3, par2) : false;
+		return var3 != null && this.setPath(var3, par2);
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class PathNavigate {
 	}
 
 	private Vec3 getEntityPosition() {
-		return this.worldObj.getWorldVec3Pool().getVecFromPool(this.theEntity.posX, (double) this.getPathableYPos(),
+		return this.worldObj.getWorldVec3Pool().getVecFromPool(this.theEntity.posX, this.getPathableYPos(),
 				this.theEntity.posZ);
 	}
 
@@ -344,8 +344,8 @@ public class PathNavigate {
 				par5 -= 2;
 				double var16 = 1.0D / Math.abs(var8);
 				double var18 = 1.0D / Math.abs(var10);
-				double var20 = (double) (var6 * 1) - par1Vec3.xCoord;
-				double var22 = (double) (var7 * 1) - par1Vec3.zCoord;
+				double var20 = (double) (var6) - par1Vec3.xCoord;
+				double var22 = (double) (var7) - par1Vec3.zCoord;
 
 				if (var8 >= 0.0D) {
 					++var20;

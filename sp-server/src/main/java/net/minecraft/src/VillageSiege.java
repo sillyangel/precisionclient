@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class VillageSiege {
-	private World worldObj;
+	private final World worldObj;
 	private boolean field_75535_b = false;
 	private int field_75536_c = -1;
 	private int field_75533_d;
@@ -175,7 +175,7 @@ public class VillageSiege {
 
 			if (this.theVillage.isInRange(var5, var6, var7) && SpawnerAnimals
 					.canCreatureTypeSpawnAtLocation(EnumCreatureType.monster, this.worldObj, var5, var6, var7)) {
-				this.worldObj.getWorldVec3Pool().getVecFromPool((double) var5, (double) var6, (double) var7);
+				this.worldObj.getWorldVec3Pool().getVecFromPool(var5, var6, var7);
 			}
 		}
 

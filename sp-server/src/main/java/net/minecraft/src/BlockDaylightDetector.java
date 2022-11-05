@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class BlockDaylightDetector extends BlockContainer {
-	private Icon[] iconArray = new Icon[2];
+	private final Icon[] iconArray = new Icon[2];
 
 	public BlockDaylightDetector(int par1) {
 		super(par1, Material.wood);

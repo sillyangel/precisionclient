@@ -2,28 +2,28 @@ package net.minecraft.src;
 
 public class PathFinder {
 	/** Used to find obstacles */
-	private IBlockAccess worldMap;
+	private final IBlockAccess worldMap;
 
 	/** The path being generated */
-	private Path path = new Path();
+	private final Path path = new Path();
 
 	/** The points in the path */
-	private IntHashMap pointMap = new IntHashMap();
+	private final IntHashMap pointMap = new IntHashMap();
 
 	/** Selection of path points to add to the path */
-	private PathPoint[] pathOptions = new PathPoint[32];
+	private final PathPoint[] pathOptions = new PathPoint[32];
 
 	/** should the PathFinder go through wodden door blocks */
-	private boolean isWoddenDoorAllowed;
+	private final boolean isWoddenDoorAllowed;
 
 	/**
 	 * should the PathFinder disregard BlockMovement type materials in its path
 	 */
-	private boolean isMovementBlockAllowed;
+	private final boolean isMovementBlockAllowed;
 	private boolean isPathingInWater;
 
 	/** tells the FathFinder to not stop pathing underwater */
-	private boolean canEntityDrown;
+	private final boolean canEntityDrown;
 
 	public PathFinder(IBlockAccess par1IBlockAccess, boolean par2, boolean par3, boolean par4, boolean par5) {
 		this.worldMap = par1IBlockAccess;
@@ -45,8 +45,8 @@ public class PathFinder {
 	 * distance
 	 */
 	public PathEntity createEntityPathTo(Entity par1Entity, int par2, int par3, int par4, float par5) {
-		return this.createEntityPathTo(par1Entity, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F),
-				(double) ((float) par4 + 0.5F), par5);
+		return this.createEntityPathTo(par1Entity, (float) par2 + 0.5F, (float) par3 + 0.5F,
+				(float) par4 + 0.5F, par5);
 	}
 
 	/**

@@ -33,7 +33,7 @@ public class LogAgent implements ILogAgent {
 			this.serverLogger.removeHandler(var4);
 		}
 
-		LogFormatter var6 = new LogFormatter(this, (LogAgentINNER1) null);
+		LogFormatter var6 = new LogFormatter(this, null);
 		ConsoleHandler var7 = new ConsoleHandler();
 		var7.setFormatter(var6);
 		this.serverLogger.addHandler(var7);

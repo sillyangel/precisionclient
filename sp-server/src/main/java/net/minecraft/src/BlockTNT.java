@@ -44,8 +44,8 @@ public class BlockTNT extends Block {
 	 */
 	public void onBlockDestroyedByExplosion(World par1World, int par2, int par3, int par4, Explosion par5Explosion) {
 		if (!par1World.isRemote) {
-			EntityTNTPrimed var6 = new EntityTNTPrimed(par1World, (double) ((float) par2 + 0.5F),
-					(double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), par5Explosion.func_94613_c());
+			EntityTNTPrimed var6 = new EntityTNTPrimed(par1World, (float) par2 + 0.5F,
+					(float) par3 + 0.5F, (float) par4 + 0.5F, par5Explosion.func_94613_c());
 			var6.fuse = par1World.rand.nextInt(var6.fuse / 4) + var6.fuse / 8;
 			par1World.spawnEntityInWorld(var6);
 		}
@@ -56,14 +56,14 @@ public class BlockTNT extends Block {
 	 * metaData
 	 */
 	public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5) {
-		this.func_94391_a(par1World, par2, par3, par4, par5, (EntityLiving) null);
+		this.func_94391_a(par1World, par2, par3, par4, par5, null);
 	}
 
 	public void func_94391_a(World par1World, int par2, int par3, int par4, int par5, EntityLiving par6EntityLiving) {
 		if (!par1World.isRemote) {
 			if ((par5 & 1) == 1) {
-				EntityTNTPrimed var7 = new EntityTNTPrimed(par1World, (double) ((float) par2 + 0.5F),
-						(double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), par6EntityLiving);
+				EntityTNTPrimed var7 = new EntityTNTPrimed(par1World, (float) par2 + 0.5F,
+						(float) par3 + 0.5F, (float) par4 + 0.5F, par6EntityLiving);
 				par1World.spawnEntityInWorld(var7);
 				par1World.playSoundAtEntity(var7, "random.fuse", 1.0F, 1.0F);
 			}

@@ -17,7 +17,7 @@ public class CommandGameMode extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.gamemode.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.gamemode.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -31,12 +31,12 @@ public class CommandGameMode extends CommandBase {
 
 			if (var4 != par1ICommandSender) {
 				notifyAdmins(par1ICommandSender, 1, "commands.gamemode.success.other",
-						new Object[] { var4.getEntityName(), var5 });
+						var4.getEntityName(), var5);
 			} else {
-				notifyAdmins(par1ICommandSender, 1, "commands.gamemode.success.self", new Object[] { var5 });
+				notifyAdmins(par1ICommandSender, 1, "commands.gamemode.success.self", var5);
 			}
 		} else {
-			throw new WrongUsageException("commands.gamemode.usage", new Object[0]);
+			throw new WrongUsageException("commands.gamemode.usage");
 		}
 	}
 
@@ -60,7 +60,7 @@ public class CommandGameMode extends CommandBase {
 	 */
 	public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		return par2ArrayOfStr.length == 1
-				? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] { "survival", "creative", "adventure" })
+				? getListOfStringsMatchingLastWord(par2ArrayOfStr, "survival", "creative", "adventure")
 				: (par2ArrayOfStr.length == 2
 						? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames())
 						: null);

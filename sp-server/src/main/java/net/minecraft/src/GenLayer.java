@@ -49,7 +49,7 @@ public abstract class GenLayer {
 		Object var18 = new GenLayerHills(1000L, var6);
 
 		for (int var7 = 0; var7 < var4; ++var7) {
-			var18 = new GenLayerZoom((long) (1000 + var7), (GenLayer) var18);
+			var18 = new GenLayerZoom(1000 + var7, (GenLayer) var18);
 
 			if (var7 == 0) {
 				var18 = new GenLayerAddIsland(3L, (GenLayer) var18);

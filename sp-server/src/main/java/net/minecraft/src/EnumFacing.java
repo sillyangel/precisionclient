@@ -16,7 +16,7 @@ public enum EnumFacing {
 	/** List of all values in EnumFacing. Order is D-U-N-S-E-W. */
 	private static final EnumFacing[] faceList = new EnumFacing[6];
 
-	private EnumFacing(int par3, int par4, int par5, int par6, int par7) {
+	EnumFacing(int par3, int par4, int par5, int par6, int par7) {
 		this.order_a = par3;
 		this.order_b = par4;
 		this.frontOffsetX = par5;

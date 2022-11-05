@@ -5,7 +5,7 @@ import java.util.List;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ComponentNetherBridgeEnd extends ComponentNetherBridgePiece {
-	private int fillSeed;
+	private final int fillSeed;
 
 	public ComponentNetherBridgeEnd(int par1, EaglercraftRandom par2Random, StructureBoundingBox par3StructureBoundingBox,
 			int par4) {
@@ -30,7 +30,7 @@ public class ComponentNetherBridgeEnd extends ComponentNetherBridgePiece {
 	 */
 	public boolean addComponentParts(World par1World, EaglercraftRandom par2Random,
 			StructureBoundingBox par3StructureBoundingBox) {
-		EaglercraftRandom var4 = new EaglercraftRandom((long) this.fillSeed);
+		EaglercraftRandom var4 = new EaglercraftRandom(this.fillSeed);
 		int var5;
 		int var6;
 		int var7;

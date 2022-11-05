@@ -37,8 +37,8 @@ public abstract class EntityAIDoorInteract extends EntityAIBase {
 					this.entityPosY = var4.yCoord + 1;
 					this.entityPosZ = var4.zCoord;
 
-					if (this.theEntity.getDistanceSq((double) this.entityPosX, this.theEntity.posY,
-							(double) this.entityPosZ) <= 2.25D) {
+					if (this.theEntity.getDistanceSq(this.entityPosX, this.theEntity.posY,
+							this.entityPosZ) <= 2.25D) {
 						this.targetDoor = this.findUsableDoor(this.entityPosX, this.entityPosY, this.entityPosZ);
 
 						if (this.targetDoor != null) {

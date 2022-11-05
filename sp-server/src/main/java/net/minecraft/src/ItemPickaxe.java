@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class ItemPickaxe extends ItemTool {
 	/** an array of the blocks this pickaxe is effective against */
-	private static Block[] blocksEffectiveAgainst = new Block[] { Block.cobblestone, Block.stoneDoubleSlab,
+	private static final Block[] blocksEffectiveAgainst = new Block[] { Block.cobblestone, Block.stoneDoubleSlab,
 			Block.stoneSingleSlab, Block.stone, Block.sandStone, Block.cobblestoneMossy, Block.oreIron, Block.blockIron,
 			Block.oreCoal, Block.blockGold, Block.oreGold, Block.oreDiamond, Block.blockDiamond, Block.ice,
 			Block.netherrack, Block.oreLapis, Block.blockLapis, Block.oreRedstone, Block.oreRedstoneGlowing, Block.rail,
@@ -24,11 +24,7 @@ public class ItemPickaxe extends ItemTool {
 												? (par1Block != Block.blockLapis && par1Block != Block.oreLapis
 														? (par1Block != Block.oreRedstone
 																&& par1Block != Block.oreRedstoneGlowing
-																		? (par1Block.blockMaterial == Material.rock
-																				? true
-																				: (par1Block.blockMaterial == Material.iron
-																						? true
-																						: par1Block.blockMaterial == Material.anvil))
+																		? (par1Block.blockMaterial == Material.rock || (par1Block.blockMaterial == Material.iron || par1Block.blockMaterial == Material.anvil))
 																		: this.toolMaterial.getHarvestLevel() >= 2)
 														: this.toolMaterial.getHarvestLevel() >= 1)
 												: this.toolMaterial.getHarvestLevel() >= 1)

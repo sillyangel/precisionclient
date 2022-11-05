@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.util.Calendar;
 
 public class EntitySkeleton extends EntityMob implements IRangedAttackMob {
-	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
-	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F,
+	private final EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
+	private final EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F,
 			false);
 
 	public EntitySkeleton(World par1World) {
@@ -27,7 +27,7 @@ public class EntitySkeleton extends EntityMob implements IRangedAttackMob {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(13, new Byte((byte) 0));
+		this.dataWatcher.addObject(13, Byte.valueOf((byte) 0));
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class EntitySkeleton extends EntityMob implements IRangedAttackMob {
 
 						if (var3.getItemDamageForDisplay() >= var3.getMaxDamage()) {
 							this.renderBrokenItemStack(var3);
-							this.setCurrentItemOrArmor(4, (ItemStack) null);
+							this.setCurrentItemOrArmor(4, null);
 						}
 					}
 

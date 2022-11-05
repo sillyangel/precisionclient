@@ -12,10 +12,8 @@ public class EntityAIBreakDoor extends EntityAIDoorInteract {
 	 * Returns whether the EntityAIBase should begin execution.
 	 */
 	public boolean shouldExecute() {
-		return !super.shouldExecute() ? false
-				: (!this.theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") ? false
-						: !this.targetDoor.isDoorOpen(this.theEntity.worldObj, this.entityPosX, this.entityPosY,
-								this.entityPosZ));
+		return super.shouldExecute() && (this.theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing") && !this.targetDoor.isDoorOpen(this.theEntity.worldObj, this.entityPosX, this.entityPosY,
+				this.entityPosZ));
 	}
 
 	/**
@@ -30,8 +28,8 @@ public class EntityAIBreakDoor extends EntityAIDoorInteract {
 	 * Returns whether an in-progress EntityAIBase should continue executing
 	 */
 	public boolean continueExecuting() {
-		double var1 = this.theEntity.getDistanceSq((double) this.entityPosX, (double) this.entityPosY,
-				(double) this.entityPosZ);
+		double var1 = this.theEntity.getDistanceSq(this.entityPosX, this.entityPosY,
+				this.entityPosZ);
 		return this.breakingTime <= 240 && !this.targetDoor.isDoorOpen(this.theEntity.worldObj, this.entityPosX,
 				this.entityPosY, this.entityPosZ) && var1 < 4.0D;
 	}

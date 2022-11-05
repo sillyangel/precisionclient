@@ -58,8 +58,8 @@ public class ItemSlab extends ItemBlock {
 				if (par3World.checkNoEntityCollision(
 						this.doubleSlab.getCollisionBoundingBoxFromPool(par3World, par4, par5, par6))
 						&& par3World.setBlock(par4, par5, par6, this.doubleSlab.blockID, var13, 3)) {
-					par3World.playSoundEffect((double) ((float) par4 + 0.5F), (double) ((float) par5 + 0.5F),
-							(double) ((float) par6 + 0.5F), this.doubleSlab.stepSound.getPlaceSound(),
+					par3World.playSoundEffect((float) par4 + 0.5F, (float) par5 + 0.5F,
+							(float) par6 + 0.5F, this.doubleSlab.stepSound.getPlaceSound(),
 							(this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F,
 							this.doubleSlab.stepSound.getPitch() * 0.8F);
 					--par1ItemStack.stackSize;
@@ -67,9 +67,8 @@ public class ItemSlab extends ItemBlock {
 
 				return true;
 			} else {
-				return this.func_77888_a(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7) ? true
-						: super.onItemUse(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8,
-								par9, par10);
+				return this.func_77888_a(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7) || super.onItemUse(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8,
+						par9, par10);
 			}
 		}
 	}
@@ -108,8 +107,8 @@ public class ItemSlab extends ItemBlock {
 			if (par3World.checkNoEntityCollision(
 					this.doubleSlab.getCollisionBoundingBoxFromPool(par3World, par4, par5, par6))
 					&& par3World.setBlock(par4, par5, par6, this.doubleSlab.blockID, var10, 3)) {
-				par3World.playSoundEffect((double) ((float) par4 + 0.5F), (double) ((float) par5 + 0.5F),
-						(double) ((float) par6 + 0.5F), this.doubleSlab.stepSound.getPlaceSound(),
+				par3World.playSoundEffect((float) par4 + 0.5F, (float) par5 + 0.5F,
+						(float) par6 + 0.5F, this.doubleSlab.stepSound.getPlaceSound(),
 						(this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F,
 						this.doubleSlab.stepSound.getPitch() * 0.8F);
 				--par1ItemStack.stackSize;

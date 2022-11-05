@@ -43,7 +43,7 @@ public class IPCOutputStream extends OutputStream {
 	}
 	
 	@Override
-	public void write(byte b[], int off, int len) throws IOException {
+	public void write(byte[] b, int off, int len) throws IOException {
 		if(idx + len > currentBuffer.length) {
 			growBuffer(idx + len);
 		}

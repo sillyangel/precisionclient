@@ -55,11 +55,11 @@ public class Packet52MultiBlockChange extends Packet {
 
 				if (this.metadataArray.length != var6) {
 					throw new RuntimeException(
-							"Expected length " + var6 + " doesn\'t match received length " + this.metadataArray.length);
+							"Expected length " + var6 + " doesn't match received length " + this.metadataArray.length);
 				}
 			}
 		} catch (IOException var14) {
-			this.field_98193_m.logSevereException("Couldn\'t create chunk packet", var14);
+			this.field_98193_m.logSevereException("Couldn't create chunk packet", var14);
 			this.metadataArray = null;
 		}
 	}

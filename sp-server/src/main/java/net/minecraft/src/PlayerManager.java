@@ -222,7 +222,7 @@ public class PlayerManager {
 	private boolean func_72684_a(int par1, int par2, int par3, int par4, int par5) {
 		int var6 = par1 - par3;
 		int var7 = par2 - par4;
-		return var6 >= -par5 && var6 <= par5 ? var7 >= -par5 && var7 <= par5 : false;
+		return var6 >= -par5 && var6 <= par5 && var7 >= -par5 && var7 <= par5;
 	}
 
 	/**
@@ -271,9 +271,8 @@ public class PlayerManager {
 
 	public boolean isPlayerWatchingChunk(EntityPlayerMP par1EntityPlayerMP, int par2, int par3) {
 		PlayerInstance var4 = this.getPlayerInstance(par2, par3, false);
-		return var4 == null ? false
-				: PlayerInstance.getPlayersInChunk(var4).contains(par1EntityPlayerMP)
-						&& !par1EntityPlayerMP.loadedChunks.contains(PlayerInstance.getChunkLocation(var4));
+		return var4 != null && PlayerInstance.getPlayersInChunk(var4).contains(par1EntityPlayerMP)
+				&& !par1EntityPlayerMP.loadedChunks.contains(PlayerInstance.getChunkLocation(var4));
 	}
 
 	/**

@@ -5,7 +5,7 @@ import java.util.List;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ComponentVillagePathGen extends ComponentVillageRoadPiece {
-	private int averageGroundLevel;
+	private final int averageGroundLevel;
 
 	public ComponentVillagePathGen(ComponentVillageStartPiece par1ComponentVillageStartPiece, int par2,
 			EaglercraftRandom par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {

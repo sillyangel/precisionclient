@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class ItemDoor extends Item {
-	private Material doorMaterial;
+	private final Material doorMaterial;
 
 	public ItemDoor(int par1, Material par2Material) {
 		super(par1);

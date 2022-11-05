@@ -13,7 +13,7 @@ public class ItemEditableBook extends Item {
 			return false;
 		} else {
 			String var1 = par0NBTTagCompound.getString("title");
-			return var1 != null && var1.length() <= 16 ? par0NBTTagCompound.hasKey("author") : false;
+			return var1 != null && var1.length() <= 16 && par0NBTTagCompound.hasKey("author");
 		}
 	}
 

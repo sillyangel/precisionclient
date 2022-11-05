@@ -201,7 +201,7 @@ public class PlayerSelector {
 	 * Returns whether the given token has any arguments set.
 	 */
 	public static boolean hasArguments(String par0Str) {
-		return hasTheseArguments(par0Str, (String) null);
+		return hasTheseArguments(par0Str, null);
 	}
 
 	/**

@@ -91,8 +91,8 @@ public class BlockBed extends BlockDirectional {
 					var15 = (var15 + (double) par4 + 0.5D) / 2.0D;
 				}
 
-				par1World.newExplosion((Entity) null, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F),
-						(double) ((float) par4 + 0.5F), 5.0F, true, true);
+				par1World.newExplosion(null, (float) par2 + 0.5F, (float) par3 + 0.5F,
+						(float) par4 + 0.5F, 5.0F, true, true);
 				return true;
 			}
 		}

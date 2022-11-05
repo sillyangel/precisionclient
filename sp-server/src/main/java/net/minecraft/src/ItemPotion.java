@@ -12,7 +12,7 @@ public class ItemPotion extends Item {
 	 * Contains a map from integers to the list of potion effects that potions with
 	 * that damage value confer (to prevent recalculating it).
 	 */
-	private HashMap effectCache = new HashMap();
+	private final HashMap effectCache = new HashMap();
 	private static final Map field_77835_b = new LinkedHashMap();
 
 	public ItemPotion(int par1) {

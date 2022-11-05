@@ -76,10 +76,7 @@ public class BlockLadder extends Block {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.isBlockNormalCube(par2 - 1, par3, par4) ? true
-				: (par1World.isBlockNormalCube(par2 + 1, par3, par4) ? true
-						: (par1World.isBlockNormalCube(par2, par3, par4 - 1) ? true
-								: par1World.isBlockNormalCube(par2, par3, par4 + 1)));
+		return par1World.isBlockNormalCube(par2 - 1, par3, par4) || (par1World.isBlockNormalCube(par2 + 1, par3, par4) || (par1World.isBlockNormalCube(par2, par3, par4 - 1) || par1World.isBlockNormalCube(par2, par3, par4 + 1)));
 	}
 
 	/**
@@ -116,13 +113,9 @@ public class BlockLadder extends Block {
 	 */
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		int var6 = par1World.getBlockMetadata(par2, par3, par4);
-		boolean var7 = false;
+		boolean var7 = var6 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1);
 
-		if (var6 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1)) {
-			var7 = true;
-		}
-
-		if (var6 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1)) {
+        if (var6 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1)) {
 			var7 = true;
 		}
 

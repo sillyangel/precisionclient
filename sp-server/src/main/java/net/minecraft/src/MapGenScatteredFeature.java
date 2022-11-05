@@ -10,17 +10,17 @@ import java.util.Map.Entry;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class MapGenScatteredFeature extends MapGenStructure {
-	private static List biomelist = Arrays.asList(new BiomeGenBase[] { BiomeGenBase.desert, BiomeGenBase.desertHills,
-			BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland });
+	private static final List biomelist = Arrays.asList(BiomeGenBase.desert, BiomeGenBase.desertHills,
+			BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland);
 
 	/** contains possible spawns for scattered features */
-	private List scatteredFeatureSpawnList;
+	private final List scatteredFeatureSpawnList;
 
 	/** the maximum distance between scattered features */
 	private int maxDistanceBetweenScatteredFeatures;
 
 	/** the minimum distance between scattered features */
-	private int minDistanceBetweenScatteredFeatures;
+	private final int minDistanceBetweenScatteredFeatures;
 
 	public MapGenScatteredFeature() {
 		this.scatteredFeatureSpawnList = new ArrayList();
@@ -36,7 +36,7 @@ public class MapGenScatteredFeature extends MapGenStructure {
 		while (var2.hasNext()) {
 			Entry var3 = (Entry) var2.next();
 
-			if (((String) var3.getKey()).equals("distance")) {
+			if (var3.getKey().equals("distance")) {
 				this.maxDistanceBetweenScatteredFeatures = MathHelper.parseIntWithDefaultAndMax(
 						(String) var3.getValue(), this.maxDistanceBetweenScatteredFeatures,
 						this.minDistanceBetweenScatteredFeatures + 1);

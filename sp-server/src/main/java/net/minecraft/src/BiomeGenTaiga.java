@@ -14,6 +14,6 @@ public class BiomeGenTaiga extends BiomeGenBase {
 	 * Gets a WorldGen appropriate for this biome.
 	 */
 	public WorldGenerator getRandomWorldGenForTrees(EaglercraftRandom par1Random) {
-		return (WorldGenerator) (par1Random.nextInt(3) == 0 ? new WorldGenTaiga1() : new WorldGenTaiga2(false));
+		return par1Random.nextInt(3) == 0 ? new WorldGenTaiga1() : new WorldGenTaiga2(false);
 	}
 }

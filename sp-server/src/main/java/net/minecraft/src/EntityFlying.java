@@ -63,9 +63,9 @@ public abstract class EntityFlying extends EntityLiving {
 			}
 
 			this.moveEntity(this.motionX, this.motionY, this.motionZ);
-			this.motionX *= (double) var3;
-			this.motionY *= (double) var3;
-			this.motionZ *= (double) var3;
+			this.motionX *= var3;
+			this.motionY *= var3;
+			this.motionZ *= var3;
 		}
 
 		this.prevLimbYaw = this.limbYaw;

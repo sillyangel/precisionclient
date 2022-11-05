@@ -7,7 +7,7 @@ import net.minecraft.server.MinecraftServer;
 
 public class CommandServerMessage extends CommandBase {
 	public List getCommandAliases() {
-		return Arrays.asList(new String[] { "w", "msg" });
+		return Arrays.asList("w", "msg");
 	}
 
 	public String getCommandName() {
@@ -23,14 +23,14 @@ public class CommandServerMessage extends CommandBase {
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		if (par2ArrayOfStr.length < 2) {
-			throw new WrongUsageException("commands.message.usage", new Object[0]);
+			throw new WrongUsageException("commands.message.usage");
 		} else {
 			EntityPlayerMP var3 = func_82359_c(par1ICommandSender, par2ArrayOfStr[0]);
 
 			if (var3 == null) {
 				throw new PlayerNotFoundException();
 			} else if (var3 == par1ICommandSender) {
-				throw new PlayerNotFoundException("commands.message.sameTarget", new Object[0]);
+				throw new PlayerNotFoundException("commands.message.sameTarget");
 			} else {
 				String var4 = func_82361_a(par1ICommandSender, par2ArrayOfStr, 1,
 						!(par1ICommandSender instanceof EntityPlayer));

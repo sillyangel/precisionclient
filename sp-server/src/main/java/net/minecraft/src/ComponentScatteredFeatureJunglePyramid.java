@@ -24,8 +24,8 @@ public class ComponentScatteredFeatureJunglePyramid extends ComponentScatteredFe
 			new WeightedRandomChestContent(Item.arrow.itemID, 0, 2, 7, 30) };
 
 	/** List of random stones to be generated in the Jungle Pyramid. */
-	private static StructureScatteredFeatureStones junglePyramidsRandomScatteredStones = new StructureScatteredFeatureStones(
-			(ComponentScatteredFeaturePieces2) null);
+	private static final StructureScatteredFeatureStones junglePyramidsRandomScatteredStones = new StructureScatteredFeatureStones(
+			null);
 
 	public ComponentScatteredFeatureJunglePyramid(EaglercraftRandom par1Random, int par2, int par3) {
 		super(par1Random, par2, 64, par3, 12, 10, 15);
@@ -171,11 +171,11 @@ public class ComponentScatteredFeatureJunglePyramid extends ComponentScatteredFe
 					par3StructureBoundingBox);
 
 			for (var8 = 0; var8 < 4; ++var8) {
-				this.placeBlockAtCurrentPosition(par1World, Block.stairsCobblestone.blockID, var5, 5, 0 - var8,
+				this.placeBlockAtCurrentPosition(par1World, Block.stairsCobblestone.blockID, var5, 5, -var8,
 						6 + var8, par3StructureBoundingBox);
-				this.placeBlockAtCurrentPosition(par1World, Block.stairsCobblestone.blockID, var5, 6, 0 - var8,
+				this.placeBlockAtCurrentPosition(par1World, Block.stairsCobblestone.blockID, var5, 6, -var8,
 						6 + var8, par3StructureBoundingBox);
-				this.fillWithAir(par1World, par3StructureBoundingBox, 5, 0 - var8, 7 + var8, 6, 0 - var8, 9 + var8);
+				this.fillWithAir(par1World, par3StructureBoundingBox, 5, -var8, 7 + var8, 6, -var8, 9 + var8);
 			}
 
 			this.fillWithAir(par1World, par3StructureBoundingBox, 1, -3, 12, 10, -1, 13);
@@ -265,7 +265,7 @@ public class ComponentScatteredFeatureJunglePyramid extends ComponentScatteredFe
 				this.field_74947_h = this.generateStructureChestContents(par1World, par3StructureBoundingBox,
 						par2Random, 8, -3, 3,
 						WeightedRandomChestContent.func_92080_a(junglePyramidsChestContents,
-								new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+								Item.enchantedBook.func_92114_b(par2Random)),
 						2 + par2Random.nextInt(5));
 			}
 
@@ -331,7 +331,7 @@ public class ComponentScatteredFeatureJunglePyramid extends ComponentScatteredFe
 				this.field_74948_i = this.generateStructureChestContents(par1World, par3StructureBoundingBox,
 						par2Random, 9, -3, 10,
 						WeightedRandomChestContent.func_92080_a(junglePyramidsChestContents,
-								new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+								Item.enchantedBook.func_92114_b(par2Random)),
 						2 + par2Random.nextInt(5));
 			}
 

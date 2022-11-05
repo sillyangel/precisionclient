@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import java.util.Objects;
+
 class IntHashMapEntry {
 	/** The hash code of this entry */
 	final int hashEntry;
@@ -42,13 +44,11 @@ class IntHashMapEntry {
 			Integer var3 = Integer.valueOf(this.getHash());
 			Integer var4 = Integer.valueOf(var2.getHash());
 
-			if (var3 == var4 || var3 != null && var3.equals(var4)) {
+			if (Objects.equals(var3, var4)) {
 				Object var5 = this.getValue();
 				Object var6 = var2.getValue();
 
-				if (var5 == var6 || var5 != null && var5.equals(var6)) {
-					return true;
-				}
+				return Objects.equals(var5, var6);
 			}
 
 			return false;

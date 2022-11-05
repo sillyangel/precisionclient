@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenFlowers extends WorldGenerator {
 	/** The ID of the plant block used in this plant generator. */
-	private int plantBlockId;
+	private final int plantBlockId;
 
 	public WorldGenFlowers(int par1) {
 		this.plantBlockId = par1;

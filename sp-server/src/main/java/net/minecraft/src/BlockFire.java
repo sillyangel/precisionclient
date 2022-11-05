@@ -4,13 +4,13 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class BlockFire extends Block {
 	/** The chance this block will encourage nearby blocks to catch on fire */
-	private int[] chanceToEncourageFire = new int[256];
+	private final int[] chanceToEncourageFire = new int[256];
 
 	/**
 	 * This is an array indexed by block ID the larger the number in the array the
 	 * more likely a block type will catch fires
 	 */
-	private int[] abilityToCatchFire = new int[256];
+	private final int[] abilityToCatchFire = new int[256];
 
 	protected BlockFire(int par1) {
 		super(par1, Material.fire);
@@ -230,12 +230,7 @@ public class BlockFire extends Block {
 	 * Returns true if at least one block next to this one can burn.
 	 */
 	private boolean canNeighborBurn(World par1World, int par2, int par3, int par4) {
-		return this.canBlockCatchFire(par1World, par2 + 1, par3, par4) ? true
-				: (this.canBlockCatchFire(par1World, par2 - 1, par3, par4) ? true
-						: (this.canBlockCatchFire(par1World, par2, par3 - 1, par4) ? true
-								: (this.canBlockCatchFire(par1World, par2, par3 + 1, par4) ? true
-										: (this.canBlockCatchFire(par1World, par2, par3, par4 - 1) ? true
-												: this.canBlockCatchFire(par1World, par2, par3, par4 + 1)))));
+		return this.canBlockCatchFire(par1World, par2 + 1, par3, par4) || (this.canBlockCatchFire(par1World, par2 - 1, par3, par4) || (this.canBlockCatchFire(par1World, par2, par3 - 1, par4) || (this.canBlockCatchFire(par1World, par2, par3 + 1, par4) || (this.canBlockCatchFire(par1World, par2, par3, par4 - 1) || this.canBlockCatchFire(par1World, par2, par3, par4 + 1)))));
 	}
 
 	/**

@@ -8,17 +8,17 @@ import java.util.List;
 import java.util.Set;
 
 public class ChunkProviderServer implements IChunkProvider {
-	private Set droppedChunksSet = new HashSet();
+	private final Set droppedChunksSet = new HashSet();
 
 	/** a dummy chunk, returned in place of an actual chunk. */
-	private Chunk dummyChunk;
+	private final Chunk dummyChunk;
 
 	/**
 	 * chunk generator object. Calls to load nonexistent chunks are forwarded to
 	 * this object.
 	 */
-	private IChunkProvider serverChunkGenerator;
-	private IChunkLoader chunkLoader;
+	private final IChunkProvider serverChunkGenerator;
+	private final IChunkLoader chunkLoader;
 
 	/**
 	 * if set, this flag forces a request to load a chunk to load the chunk rather
@@ -27,9 +27,9 @@ public class ChunkProviderServer implements IChunkProvider {
 	public boolean chunkLoadOverride = true;
 
 	/** map of chunk Id's to Chunk instances */
-	private LongHashMap id2ChunkMap = new LongHashMap();
-	private List loadedChunks = new ArrayList();
-	private WorldServer worldObj;
+	private final LongHashMap id2ChunkMap = new LongHashMap();
+	private final List loadedChunks = new ArrayList();
+	private final WorldServer worldObj;
 
 	public ChunkProviderServer(WorldServer par1WorldServer, IChunkLoader par2IChunkLoader,
 			IChunkProvider par3IChunkProvider) {
@@ -218,7 +218,7 @@ public class ChunkProviderServer implements IChunkProvider {
 		}
 	}
 	
-	private long fixTheFuckingMemoryLeak = 0l;
+	private long fixTheFuckingMemoryLeak = 0L;
 
 	/**
 	 * Unloads chunks that are marked to be unloaded. This is not guaranteed to
@@ -228,7 +228,7 @@ public class ChunkProviderServer implements IChunkProvider {
 		if (!this.worldObj.levelSaving) {
 			
 			long millis = System.currentTimeMillis();
-			if(millis - fixTheFuckingMemoryLeak > 10000l) {  // FUCK OFF SUCK MY FUCKING COCK
+			if(millis - fixTheFuckingMemoryLeak > 10000L) {  // FUCK OFF SUCK MY FUCKING COCK
 				fixTheFuckingMemoryLeak = millis;
 				this.id2ChunkMap.iterate((l,o) -> {
 					Chunk id = (Chunk) o;

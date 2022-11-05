@@ -40,12 +40,8 @@ public class ServerCommandManager extends CommandHandler implements IAdminComman
 	 * zero, the original sender is also notified.
 	 */
 	public void notifyAdmins(ICommandSender par1ICommandSender, int par2, String par3Str, Object... par4ArrayOfObj) {
-		boolean var5 = true;
-
-		if (par1ICommandSender instanceof TileEntityCommandBlock && !MinecraftServer.getServer().worldServers[0]
-				.getGameRules().getGameRuleBooleanValue("commandBlockOutput")) {
-			var5 = false;
-		}
+		boolean var5 = !(par1ICommandSender instanceof TileEntityCommandBlock) || MinecraftServer.getServer().worldServers[0]
+				.getGameRules().getGameRuleBooleanValue("commandBlockOutput");
 
 		if (var5) {
 			Iterator var6 = MinecraftServer.getServer().getConfigurationManager().playerEntityList.iterator();

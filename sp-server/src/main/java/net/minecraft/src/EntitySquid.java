@@ -127,9 +127,9 @@ public class EntitySquid extends EntityWaterMob {
 			}
 
 			if (!this.worldObj.isRemote) {
-				this.motionX = (double) (this.randomMotionVecX * this.randomMotionSpeed);
-				this.motionY = (double) (this.randomMotionVecY * this.randomMotionSpeed);
-				this.motionZ = (double) (this.randomMotionVecZ * this.randomMotionSpeed);
+				this.motionX = this.randomMotionVecX * this.randomMotionSpeed;
+				this.motionY = this.randomMotionVecY * this.randomMotionSpeed;
+				this.motionZ = this.randomMotionVecZ * this.randomMotionSpeed;
 			}
 
 			var1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
@@ -137,7 +137,7 @@ public class EntitySquid extends EntityWaterMob {
 					- this.renderYawOffset) * 0.1F;
 			this.rotationYaw = this.renderYawOffset;
 			this.field_70859_f += (float) Math.PI * this.field_70871_bB * 1.5F;
-			this.field_70861_d += (-((float) Math.atan2((double) var1, this.motionY)) * 180.0F / (float) Math.PI
+			this.field_70861_d += (-((float) Math.atan2(var1, this.motionY)) * 180.0F / (float) Math.PI
 					- this.field_70861_d) * 0.1F;
 		} else {
 			this.tentacleAngle = MathHelper.abs(MathHelper.sin(this.field_70867_h)) * (float) Math.PI * 0.25F;

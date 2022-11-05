@@ -6,12 +6,12 @@ import java.io.IOException;
 
 public interface IPCPacketBase {
 
-	public void deserialize(DataInput bin) throws IOException;
-	public void serialize(DataOutput bin) throws IOException;
-	public int id();
-	public int size();
+	void deserialize(DataInput bin) throws IOException;
+	void serialize(DataOutput bin) throws IOException;
+	int id();
+	int size();
 	
-	public static int strLen(String s) {
+	static int strLen(String s) {
 		int strlen = s.length();
 		int utflen = 2;
 		int c;

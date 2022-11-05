@@ -15,9 +15,9 @@ public class StatBase {
 	/** Holds the GUID of the stat. */
 	public String statGuid;
 	private final IStatType type;
-	private static NumberFormat numberFormat = NumberFormat.getIntegerInstance(Locale.US);
+	private static final NumberFormat numberFormat = NumberFormat.getIntegerInstance(Locale.US);
 	public static IStatType simpleStatType = new StatTypeSimple();
-	private static DecimalFormat decimalFormat = new DecimalFormat("########0.00");
+	private static final DecimalFormat decimalFormat = new DecimalFormat("########0.00");
 	public static IStatType timeStatType = new StatTypeTime();
 	public static IStatType distanceStatType = new StatTypeDistance();
 

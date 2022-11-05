@@ -45,7 +45,7 @@ public class EntityEnderEye extends Entity {
 			this.targetY = this.posY + 8.0D;
 		} else {
 			this.targetX = par1;
-			this.targetY = (double) par3;
+			this.targetY = par3;
 			this.targetZ = par4;
 		}
 
@@ -67,9 +67,8 @@ public class EntityEnderEye extends Entity {
 		float var1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 		this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-		for (this.rotationPitch = (float) (Math.atan2(this.motionY, (double) var1) * 180.0D
+		for (this.rotationPitch = (float) (Math.atan2(this.motionY, var1) * 180.0D
 				/ Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
-			;
 		}
 
 		while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
@@ -99,8 +98,8 @@ public class EntityEnderEye extends Entity {
 				this.motionY *= 0.8D;
 			}
 
-			this.motionX = Math.cos((double) var7) * var8;
-			this.motionZ = Math.sin((double) var7) * var8;
+			this.motionX = Math.cos(var7) * var8;
+			this.motionZ = Math.sin(var7) * var8;
 
 			if (this.posY < this.targetY) {
 				this.motionY += (1.0D - this.motionY) * 0.014999999664723873D;

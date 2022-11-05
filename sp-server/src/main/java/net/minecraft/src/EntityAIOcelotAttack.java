@@ -30,9 +30,7 @@ public class EntityAIOcelotAttack extends EntityAIBase {
 	 * Returns whether an in-progress EntityAIBase should continue executing
 	 */
 	public boolean continueExecuting() {
-		return !this.theVictim.isEntityAlive() ? false
-				: (this.theEntity.getDistanceSqToEntity(this.theVictim) > 225.0D ? false
-						: !this.theEntity.getNavigator().noPath() || this.shouldExecute());
+		return this.theVictim.isEntityAlive() && (!(this.theEntity.getDistanceSqToEntity(this.theVictim) > 225.0D) && (!this.theEntity.getNavigator().noPath() || this.shouldExecute()));
 	}
 
 	/**
@@ -48,7 +46,7 @@ public class EntityAIOcelotAttack extends EntityAIBase {
 	 */
 	public void updateTask() {
 		this.theEntity.getLookHelper().setLookPositionWithEntity(this.theVictim, 30.0F, 30.0F);
-		double var1 = (double) (this.theEntity.width * 2.0F * this.theEntity.width * 2.0F);
+		double var1 = this.theEntity.width * 2.0F * this.theEntity.width * 2.0F;
 		double var3 = this.theEntity.getDistanceSq(this.theVictim.posX, this.theVictim.boundingBox.minY,
 				this.theVictim.posZ);
 		float var5 = 0.23F;

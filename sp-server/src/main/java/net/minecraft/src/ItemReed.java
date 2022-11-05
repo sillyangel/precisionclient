@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class ItemReed extends Item {
 	/** The ID of the block the reed will spawn when used from inventory bar. */
-	private int spawnID;
+	private final int spawnID;
 
 	public ItemReed(int par1, Block par2Block) {
 		super(par1);
@@ -51,7 +51,7 @@ public class ItemReed extends Item {
 		} else if (par1ItemStack.stackSize == 0) {
 			return false;
 		} else {
-			if (par3World.canPlaceEntityOnSide(this.spawnID, par4, par5, par6, false, par7, (Entity) null,
+			if (par3World.canPlaceEntityOnSide(this.spawnID, par4, par5, par6, false, par7, null,
 					par1ItemStack)) {
 				Block var12 = Block.blocksList[this.spawnID];
 				int var13 = var12.onBlockPlaced(par3World, par4, par5, par6, par7, par8, par9, par10, 0);
@@ -63,8 +63,8 @@ public class ItemReed extends Item {
 						Block.blocksList[this.spawnID].onPostBlockPlaced(par3World, par4, par5, par6, var13);
 					}
 
-					par3World.playSoundEffect((double) ((float) par4 + 0.5F), (double) ((float) par5 + 0.5F),
-							(double) ((float) par6 + 0.5F), var12.stepSound.getPlaceSound(),
+					par3World.playSoundEffect((float) par4 + 0.5F, (float) par5 + 0.5F,
+							(float) par6 + 0.5F, var12.stepSound.getPlaceSound(),
 							(var12.stepSound.getVolume() + 1.0F) / 2.0F, var12.stepSound.getPitch() * 0.8F);
 					--par1ItemStack.stackSize;
 				}

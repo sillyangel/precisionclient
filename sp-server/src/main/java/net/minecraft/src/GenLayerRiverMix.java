@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class GenLayerRiverMix extends GenLayer {
-	private GenLayer biomePatternGeneratorChain;
-	private GenLayer riverPatternGeneratorChain;
+	private final GenLayer biomePatternGeneratorChain;
+	private final GenLayer riverPatternGeneratorChain;
 
 	public GenLayerRiverMix(long par1, GenLayer par3GenLayer, GenLayer par4GenLayer) {
 		super(par1);

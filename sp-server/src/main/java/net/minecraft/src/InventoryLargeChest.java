@@ -2,13 +2,13 @@ package net.minecraft.src;
 
 public class InventoryLargeChest implements IInventory {
 	/** Name of the chest. */
-	private String name;
+	private final String name;
 
 	/** Inventory object corresponding to double chest upper part */
-	private IInventory upperChest;
+	private final IInventory upperChest;
 
 	/** Inventory object corresponding to double chest lower part */
-	private IInventory lowerChest;
+	private final IInventory lowerChest;
 
 	public InventoryLargeChest(String par1Str, IInventory par2IInventory, IInventory par3IInventory) {
 		this.name = par1Str;

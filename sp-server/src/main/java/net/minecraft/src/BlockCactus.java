@@ -17,7 +17,6 @@ public class BlockCactus extends Block {
 			int var6;
 
 			for (var6 = 1; par1World.getBlockId(par2, par3 - var6, par4) == this.blockID; ++var6) {
-				;
 			}
 
 			if (var6 < 3) {
@@ -40,9 +39,9 @@ public class BlockCactus extends Block {
 	 */
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		float var5 = 0.0625F;
-		return AxisAlignedBB.getAABBPool().getAABB((double) ((float) par2 + var5), (double) par3,
-				(double) ((float) par4 + var5), (double) ((float) (par2 + 1) - var5),
-				(double) ((float) (par3 + 1) - var5), (double) ((float) (par4 + 1) - var5));
+		return AxisAlignedBB.getAABBPool().getAABB((float) par2 + var5, par3,
+				(float) par4 + var5, (float) (par2 + 1) - var5,
+				(float) (par3 + 1) - var5, (float) (par4 + 1) - var5);
 	}
 
 	/**
@@ -74,8 +73,7 @@ public class BlockCactus extends Block {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return !super.canPlaceBlockAt(par1World, par2, par3, par4) ? false
-				: this.canBlockStay(par1World, par2, par3, par4);
+		return super.canPlaceBlockAt(par1World, par2, par3, par4) && this.canBlockStay(par1World, par2, par3, par4);
 	}
 
 	/**

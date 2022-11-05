@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class RecipesIngots {
-	private Object[][] recipeItems;
+	private final Object[][] recipeItems;
 
 	public RecipesIngots() {
 		this.recipeItems = new Object[][] { { Block.blockGold, new ItemStack(Item.ingotGold, 9) },
@@ -19,12 +19,12 @@ public class RecipesIngots {
 		for (int var2 = 0; var2 < this.recipeItems.length; ++var2) {
 			Block var3 = (Block) this.recipeItems[var2][0];
 			ItemStack var4 = (ItemStack) this.recipeItems[var2][1];
-			par1CraftingManager.addRecipe(new ItemStack(var3), new Object[] { "###", "###", "###", '#', var4 });
-			par1CraftingManager.addRecipe(var4, new Object[] { "#", '#', var3 });
+			par1CraftingManager.addRecipe(new ItemStack(var3), "###", "###", "###", '#', var4);
+			par1CraftingManager.addRecipe(var4, "#", '#', var3);
 		}
 
 		par1CraftingManager.addRecipe(new ItemStack(Item.ingotGold),
-				new Object[] { "###", "###", "###", '#', Item.goldNugget });
-		par1CraftingManager.addRecipe(new ItemStack(Item.goldNugget, 9), new Object[] { "#", '#', Item.ingotGold });
+				"###", "###", "###", '#', Item.goldNugget);
+		par1CraftingManager.addRecipe(new ItemStack(Item.goldNugget, 9), "#", '#', Item.ingotGold);
 	}
 }

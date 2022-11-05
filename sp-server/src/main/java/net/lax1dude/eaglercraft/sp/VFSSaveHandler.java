@@ -126,7 +126,7 @@ public class VFSSaveHandler implements ISaveHandler, IPlayerFileData {
 		VFile playerData = new VFile(worldDirectory, "player", var1.username.toLowerCase() + ".dat");
 		
 		if(!playerData.setAllBytes(bin)) {
-			System.err.println("Could not write player data for \"" + var1.username + "\" to file \"" + playerData.toString() + "\"");
+			System.err.println("Could not write player data for \"" + var1.username + "\" to file \"" + playerData + "\"");
 		}
 	}
 

@@ -47,7 +47,7 @@ public abstract class CommandBase implements ICommand {
 		try {
 			return Integer.parseInt(par1Str);
 		} catch (NumberFormatException var3) {
-			throw new NumberInvalidException("commands.generic.num.invalid", new Object[] { par1Str });
+			throw new NumberInvalidException("commands.generic.num.invalid", par1Str);
 		}
 	}
 
@@ -66,10 +66,10 @@ public abstract class CommandBase implements ICommand {
 
 		if (var4 < par2) {
 			throw new NumberInvalidException("commands.generic.num.tooSmall",
-					new Object[] { Integer.valueOf(var4), Integer.valueOf(par2) });
+					Integer.valueOf(var4), Integer.valueOf(par2));
 		} else if (var4 > par3) {
 			throw new NumberInvalidException("commands.generic.num.tooBig",
-					new Object[] { Integer.valueOf(var4), Integer.valueOf(par3) });
+					Integer.valueOf(var4), Integer.valueOf(par3));
 		} else {
 			return var4;
 		}
@@ -83,7 +83,7 @@ public abstract class CommandBase implements ICommand {
 		try {
 			return Double.parseDouble(par1Str);
 		} catch (NumberFormatException var3) {
-			throw new NumberInvalidException("commands.generic.double.invalid", new Object[] { par1Str });
+			throw new NumberInvalidException("commands.generic.double.invalid", par1Str);
 		}
 	}
 
@@ -94,8 +94,8 @@ public abstract class CommandBase implements ICommand {
 		if (par0ICommandSender instanceof EntityPlayerMP) {
 			return (EntityPlayerMP) par0ICommandSender;
 		} else {
-			throw new PlayerNotFoundException("You must specify which player you wish to perform this action on.",
-					new Object[0]);
+			throw new PlayerNotFoundException("You must specify which player you wish to perform this action on."
+			);
 		}
 	}
 

@@ -17,12 +17,12 @@ public class CommandXP extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.xp.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.xp.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		if (par2ArrayOfStr.length <= 0) {
-			throw new WrongUsageException("commands.xp.usage", new Object[0]);
+			throw new WrongUsageException("commands.xp.usage");
 		} else {
 			String var4 = par2ArrayOfStr[0];
 			boolean var5 = var4.endsWith("l") || var4.endsWith("L");
@@ -50,20 +50,20 @@ public class CommandXP extends CommandBase {
 				if (var7) {
 					var3.addExperienceLevel(-var6);
 					notifyAdmins(par1ICommandSender, "commands.xp.success.negative.levels",
-							new Object[] { Integer.valueOf(var6), var3.getEntityName() });
+							Integer.valueOf(var6), var3.getEntityName());
 				} else {
 					var3.addExperienceLevel(var6);
 					notifyAdmins(par1ICommandSender, "commands.xp.success.levels",
-							new Object[] { Integer.valueOf(var6), var3.getEntityName() });
+							Integer.valueOf(var6), var3.getEntityName());
 				}
 			} else {
 				if (var7) {
-					throw new WrongUsageException("commands.xp.failure.widthdrawXp", new Object[0]);
+					throw new WrongUsageException("commands.xp.failure.widthdrawXp");
 				}
 
 				var3.addExperience(var6);
 				notifyAdmins(par1ICommandSender, "commands.xp.success",
-						new Object[] { Integer.valueOf(var6), var3.getEntityName() });
+						Integer.valueOf(var6), var3.getEntityName());
 			}
 		}
 	}

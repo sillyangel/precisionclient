@@ -4,10 +4,10 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenClay extends WorldGenerator {
 	/** The block ID for clay. */
-	private int clayBlockId;
+	private final int clayBlockId;
 
 	/** The number of blocks to generate. */
-	private int numberOfBlocks;
+	private final int numberOfBlocks;
 
 	public WorldGenClay(int par1) {
 		this.clayBlockId = Block.blockClay.blockID;

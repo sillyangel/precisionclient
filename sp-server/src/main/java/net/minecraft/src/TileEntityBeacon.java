@@ -36,7 +36,7 @@ public class TileEntityBeacon extends TileEntity implements IInventory {
 
 	private void addEffectsToPlayers() {
 		if (this.isBeaconActive && this.levels > 0 && !this.worldObj.isRemote && this.primaryEffect > 0) {
-			double var1 = (double) (this.levels * 10 + 10);
+			double var1 = this.levels * 10 + 10;
 			byte var3 = 0;
 
 			if (this.levels >= 4 && this.primaryEffect == this.secondaryEffect) {
@@ -44,10 +44,10 @@ public class TileEntityBeacon extends TileEntity implements IInventory {
 			}
 
 			AxisAlignedBB var4 = AxisAlignedBB.getAABBPool()
-					.getAABB((double) this.xCoord, (double) this.yCoord, (double) this.zCoord,
-							(double) (this.xCoord + 1), (double) (this.yCoord + 1), (double) (this.zCoord + 1))
+					.getAABB(this.xCoord, this.yCoord, this.zCoord,
+							this.xCoord + 1, this.yCoord + 1, this.zCoord + 1)
 					.expand(var1, var1, var1);
-			var4.maxY = (double) this.worldObj.getHeight();
+			var4.maxY = this.worldObj.getHeight();
 			List var5 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, var4);
 			Iterator var6 = var5.iterator();
 			EntityPlayer var7;
@@ -289,9 +289,8 @@ public class TileEntityBeacon extends TileEntity implements IInventory {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false
-				: par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-						(double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) == this && par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
+				(double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	public void openChest() {

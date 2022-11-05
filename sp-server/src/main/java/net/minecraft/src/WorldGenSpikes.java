@@ -7,7 +7,7 @@ public class WorldGenSpikes extends WorldGenerator {
 	 * The Block ID that the generator is allowed to replace while generating the
 	 * terrain.
 	 */
-	private int replaceID;
+	private final int replaceID;
 
 	public WorldGenSpikes(int par1) {
 		this.replaceID = par1;
@@ -48,8 +48,8 @@ public class WorldGenSpikes extends WorldGenerator {
 			}
 
 			EntityEnderCrystal var13 = new EntityEnderCrystal(par1World);
-			var13.setLocationAndAngles((double) ((float) par3 + 0.5F), (double) (par4 + var6),
-					(double) ((float) par5 + 0.5F), par2Random.nextFloat() * 360.0F, 0.0F);
+			var13.setLocationAndAngles((float) par3 + 0.5F, par4 + var6,
+					(float) par5 + 0.5F, par2Random.nextFloat() * 360.0F, 0.0F);
 			par1World.spawnEntityInWorld(var13);
 			par1World.setBlock(par3, par4 + var6, par5, Block.bedrock.blockID, 0, 2);
 			return true;

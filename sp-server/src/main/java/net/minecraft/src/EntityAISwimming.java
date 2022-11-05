@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityAISwimming extends EntityAIBase {
-	private EntityLiving theEntity;
+	private final EntityLiving theEntity;
 
 	public EntityAISwimming(EntityLiving par1EntityLiving) {
 		this.theEntity = par1EntityLiving;

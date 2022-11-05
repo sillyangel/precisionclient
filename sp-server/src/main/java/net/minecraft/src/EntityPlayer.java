@@ -109,7 +109,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 		this.openContainer = this.inventoryContainer;
 		this.yOffset = 1.62F;
 		ChunkCoordinates var2 = par1World.getSpawnPoint();
-		this.setLocationAndAngles((double) var2.posX + 0.5D, (double) (var2.posY + 1), (double) var2.posZ + 0.5D, 0.0F,
+		this.setLocationAndAngles((double) var2.posX + 0.5D, var2.posY + 1, (double) var2.posZ + 0.5D, 0.0F,
 				0.0F);
 		this.entityType = "humanoid";
 		this.field_70741_aB = 180.0F;
@@ -488,10 +488,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 		}
 
 		if (par1DamageSource != null) {
-			this.motionX = (double) (-MathHelper.cos((this.attackedAtYaw + this.rotationYaw) * (float) Math.PI / 180.0F)
-					* 0.1F);
-			this.motionZ = (double) (-MathHelper.sin((this.attackedAtYaw + this.rotationYaw) * (float) Math.PI / 180.0F)
-					* 0.1F);
+			this.motionX = -MathHelper.cos((this.attackedAtYaw + this.rotationYaw) * (float) Math.PI / 180.0F)
+					* 0.1F;
+			this.motionZ = -MathHelper.sin((this.attackedAtYaw + this.rotationYaw) * (float) Math.PI / 180.0F)
+					* 0.1F;
 		} else {
 			this.motionX = this.motionZ = 0.0D;
 		}
@@ -558,22 +558,22 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 			if (par2) {
 				var5 = this.rand.nextFloat() * 0.5F;
 				float var6 = this.rand.nextFloat() * (float) Math.PI * 2.0F;
-				var3.motionX = (double) (-MathHelper.sin(var6) * var5);
-				var3.motionZ = (double) (MathHelper.cos(var6) * var5);
+				var3.motionX = -MathHelper.sin(var6) * var5;
+				var3.motionZ = MathHelper.cos(var6) * var5;
 				var3.motionY = 0.20000000298023224D;
 			} else {
 				var4 = 0.3F;
-				var3.motionX = (double) (-MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI)
-						* MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var4);
-				var3.motionZ = (double) (MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI)
-						* MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var4);
-				var3.motionY = (double) (-MathHelper.sin(this.rotationPitch / 180.0F * (float) Math.PI) * var4 + 0.1F);
+				var3.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI)
+						* MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var4;
+				var3.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI)
+						* MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var4;
+				var3.motionY = -MathHelper.sin(this.rotationPitch / 180.0F * (float) Math.PI) * var4 + 0.1F;
 				var4 = 0.02F;
 				var5 = this.rand.nextFloat() * (float) Math.PI * 2.0F;
 				var4 *= this.rand.nextFloat();
-				var3.motionX += Math.cos((double) var5) * (double) var4;
-				var3.motionY += (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F);
-				var3.motionZ += Math.sin((double) var5) * (double) var4;
+				var3.motionX += Math.cos(var5) * (double) var4;
+				var3.motionY += (this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F;
+				var3.motionZ += Math.sin(var5) * (double) var4;
 			}
 
 			this.joinEntityItemWithWorld(var3);
@@ -794,7 +794,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 	public boolean func_96122_a(EntityPlayer par1EntityPlayer) {
 		ScorePlayerTeam var2 = this.getTeam();
 		ScorePlayerTeam var3 = par1EntityPlayer.getTeam();
-		return var2 != var3 ? true : (var2 != null ? var2.func_96665_g() : true);
+		return var2 != var3 || (var2 == null || var2.func_96665_g());
 	}
 
 	/**
@@ -954,14 +954,14 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 	 * Destroys the currently equipped item from the player's inventory.
 	 */
 	public void destroyCurrentEquippedItem() {
-		this.inventory.setInventorySlotContents(this.inventory.currentItem, (ItemStack) null);
+		this.inventory.setInventorySlotContents(this.inventory.currentItem, null);
 	}
 
 	/**
 	 * Returns the Y Offset of this entity.
 	 */
 	public double getYOffset() {
-		return (double) (this.yOffset - 0.5F);
+		return this.yOffset - 0.5F;
 	}
 
 	/**
@@ -1016,10 +1016,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 					if (var8) {
 						if (var3 > 0) {
 							par1Entity.addVelocity(
-									(double) (-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F)
-											* (float) var3 * 0.5F),
-									0.1D, (double) (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F)
-											* (float) var3 * 0.5F));
+									-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F)
+											* (float) var3 * 0.5F,
+									0.1D, MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F)
+											* (float) var3 * 0.5F);
 							this.motionX *= 0.6D;
 							this.motionZ *= 0.6D;
 							this.setSprinting(false);
@@ -1051,7 +1051,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 						IEntityMultiPart var11 = ((EntityDragonPart) par1Entity).entityDragonObj;
 
 						if (var11 != null && var11 instanceof EntityLiving) {
-							var10 = (EntityLiving) var11;
+							var10 = var11;
 						}
 					}
 
@@ -1176,11 +1176,11 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 			}
 
 			this.func_71013_b(var5);
-			this.setPosition((double) ((float) par1 + var10), (double) ((float) par2 + 0.9375F),
-					(double) ((float) par3 + var7));
+			this.setPosition((float) par1 + var10, (float) par2 + 0.9375F,
+					(float) par3 + var7);
 		} else {
-			this.setPosition((double) ((float) par1 + 0.5F), (double) ((float) par2 + 0.9375F),
-					(double) ((float) par3 + 0.5F));
+			this.setPosition((float) par1 + 0.5F, (float) par2 + 0.9375F,
+					(float) par3 + 0.5F);
 		}
 
 		this.sleeping = true;
@@ -1234,8 +1234,8 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 				var5 = new ChunkCoordinates(var4.posX, var4.posY + 1, var4.posZ);
 			}
 
-			this.setPosition((double) ((float) var5.posX + 0.5F), (double) ((float) var5.posY + this.yOffset + 0.1F),
-					(double) ((float) var5.posZ + 0.5F));
+			this.setPosition((float) var5.posX + 0.5F, (float) var5.posY + this.yOffset + 0.1F,
+					(float) var5.posZ + 0.5F);
 		}
 
 		this.sleeping = false;
@@ -1629,9 +1629,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 				if (this.getCurrentEquippedItem() != null) {
 					ItemStack var6 = this.getCurrentEquippedItem();
 
-					if (var6.canHarvestBlock(var5) || var6.getStrVsBlock(var5) > 1.0F) {
-						return true;
-					}
+					return var6.canHarvestBlock(var5) || var6.getStrVsBlock(var5) > 1.0F;
 				}
 			}
 
@@ -1640,7 +1638,7 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 	}
 
 	public boolean canPlayerEdit(int par1, int par2, int par3, int par4, ItemStack par5ItemStack) {
-		return this.capabilities.allowEdit ? true : (par5ItemStack != null ? par5ItemStack.func_82835_x() : false);
+		return this.capabilities.allowEdit || (par5ItemStack != null && par5ItemStack.func_82835_x());
 	}
 
 	/**

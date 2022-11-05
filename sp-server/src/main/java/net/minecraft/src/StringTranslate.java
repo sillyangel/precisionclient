@@ -7,13 +7,13 @@ import java.util.TreeMap;
 
 public class StringTranslate {
 	/** Is the private singleton instance of StringTranslate. */
-	private static StringTranslate instance = new StringTranslate(null);
+	private static final StringTranslate instance = new StringTranslate(null);
 
 	/**
 	 * Contains all key/value pairs to be translated - is loaded from
 	 * '/lang/en_US.lang' when the StringTranslate is created.
 	 */
-	private Properties translateTable = new Properties();
+	private final Properties translateTable = new Properties();
 	private TreeMap languageList;
 
 	private StringTranslate(List<String> en_us) {

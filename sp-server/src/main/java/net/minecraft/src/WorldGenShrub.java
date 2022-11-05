@@ -3,8 +3,8 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenShrub extends WorldGenerator {
-	private int field_76527_a;
-	private int field_76526_b;
+	private final int field_76527_a;
+	private final int field_76526_b;
 
 	public WorldGenShrub(int par1, int par2) {
 		this.field_76526_b = par1;
@@ -16,8 +16,7 @@ public class WorldGenShrub extends WorldGenerator {
 
 		for (boolean var6 = false; ((var15 = par1World.getBlockId(par3, par4, par5)) == 0
 				|| var15 == Block.leaves.blockID) && par4 > 0; --par4) {
-			;
-		}
+        }
 
 		int var7 = par1World.getBlockId(par3, par4, par5);
 

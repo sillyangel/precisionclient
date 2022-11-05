@@ -17,7 +17,7 @@ public class CommandSetSpawnpoint extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.spawnpoint.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.spawnpoint.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -33,18 +33,18 @@ public class CommandSetSpawnpoint extends CommandBase {
 				int var7 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[var9++], 0, 256);
 				int var8 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[var9++], -var5, var5);
 				var3.setSpawnChunk(new ChunkCoordinates(var6, var7, var8), true);
-				notifyAdmins(par1ICommandSender, "commands.spawnpoint.success", new Object[] { var3.getEntityName(),
-						Integer.valueOf(var6), Integer.valueOf(var7), Integer.valueOf(var8) });
+				notifyAdmins(par1ICommandSender, "commands.spawnpoint.success", var3.getEntityName(),
+						Integer.valueOf(var6), Integer.valueOf(var7), Integer.valueOf(var8));
 			}
 		} else {
 			if (par2ArrayOfStr.length > 1) {
-				throw new WrongUsageException("commands.spawnpoint.usage", new Object[0]);
+				throw new WrongUsageException("commands.spawnpoint.usage");
 			}
 
 			ChunkCoordinates var10 = var3.getCommandSenderPosition();
 			var3.setSpawnChunk(var10, true);
-			notifyAdmins(par1ICommandSender, "commands.spawnpoint.success", new Object[] { var3.getEntityName(),
-					Integer.valueOf(var10.posX), Integer.valueOf(var10.posY), Integer.valueOf(var10.posZ) });
+			notifyAdmins(par1ICommandSender, "commands.spawnpoint.success", var3.getEntityName(),
+					Integer.valueOf(var10.posX), Integer.valueOf(var10.posY), Integer.valueOf(var10.posZ));
 		}
 	}
 

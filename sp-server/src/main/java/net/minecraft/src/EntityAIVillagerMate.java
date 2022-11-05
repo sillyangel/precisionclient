@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
 public class EntityAIVillagerMate extends EntityAIBase {
-	private EntityVillager villagerObj;
+	private final EntityVillager villagerObj;
 	private EntityVillager mate;
-	private World worldObj;
+	private final World worldObj;
 	private int matingTimeout = 0;
 	Village villageObj;
 

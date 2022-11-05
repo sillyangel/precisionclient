@@ -32,11 +32,10 @@ public class EnchantmentDurability extends Enchantment {
 	}
 
 	public boolean func_92089_a(ItemStack par1ItemStack) {
-		return par1ItemStack.isItemStackDamageable() ? true : super.func_92089_a(par1ItemStack);
+		return par1ItemStack.isItemStackDamageable() || super.func_92089_a(par1ItemStack);
 	}
 
 	public static boolean func_92097_a(ItemStack par0ItemStack, int par1, EaglercraftRandom par2Random) {
-		return par0ItemStack.getItem() instanceof ItemArmor && par2Random.nextFloat() < 0.6F ? false
-				: par2Random.nextInt(par1 + 1) > 0;
+		return (!(par0ItemStack.getItem() instanceof ItemArmor) || !(par2Random.nextFloat() < 0.6F)) && par2Random.nextInt(par1 + 1) > 0;
 	}
 }

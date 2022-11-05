@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityAIRestrictSun extends EntityAIBase {
-	private EntityCreature theEntity;
+	private final EntityCreature theEntity;
 
 	public EntityAIRestrictSun(EntityCreature par1EntityCreature) {
 		this.theEntity = par1EntityCreature;

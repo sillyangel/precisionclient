@@ -124,10 +124,10 @@ public class EntitySilverfish extends EntityMob {
 					var3 = MathHelper.floor_double(this.posZ);
 					boolean var4 = false;
 
-					for (var5 = 0; !var4 && var5 <= 5 && var5 >= -5; var5 = var5 <= 0 ? 1 - var5 : 0 - var5) {
-						for (int var6 = 0; !var4 && var6 <= 10 && var6 >= -10; var6 = var6 <= 0 ? 1 - var6 : 0 - var6) {
+					for (var5 = 0; !var4 && var5 <= 5 && var5 >= -5; var5 = var5 <= 0 ? 1 - var5 : -var5) {
+						for (int var6 = 0; !var4 && var6 <= 10 && var6 >= -10; var6 = var6 <= 0 ? 1 - var6 : -var6) {
 							for (int var7 = 0; !var4 && var7 <= 10
-									&& var7 >= -10; var7 = var7 <= 0 ? 1 - var7 : 0 - var7) {
+									&& var7 >= -10; var7 = var7 <= 0 ? 1 - var7 : -var7) {
 								int var8 = this.worldObj.getBlockId(var1 + var6, var2 + var5, var3 + var7);
 
 								if (var8 == Block.silverfish.blockID) {

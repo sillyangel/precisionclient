@@ -4,7 +4,7 @@ public class EntityOcelot extends EntityTameable {
 	/**
 	 * The tempt AI task for this mob, used to prevent taming while it is fleeing.
 	 */
-	private EntityAITempt aiTempt;
+	private final EntityAITempt aiTempt;
 
 	public EntityOcelot(World par1World) {
 		super(par1World);
@@ -172,7 +172,7 @@ public class EntityOcelot extends EntityTameable {
 
 			if (var2.stackSize <= 0) {
 				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem,
-						(ItemStack) null);
+						null);
 			}
 
 			if (!this.worldObj.isRemote) {
@@ -231,7 +231,7 @@ public class EntityOcelot extends EntityTameable {
 			return false;
 		} else {
 			EntityOcelot var2 = (EntityOcelot) par1EntityAnimal;
-			return !var2.isTamed() ? false : this.isInLove() && var2.isInLove();
+			return var2.isTamed() && this.isInLove() && var2.isInLove();
 		}
 	}
 
@@ -264,9 +264,7 @@ public class EntityOcelot extends EntityTameable {
 
 				int var4 = this.worldObj.getBlockId(var1, var2 - 1, var3);
 
-				if (var4 == Block.grass.blockID || var4 == Block.leaves.blockID) {
-					return true;
-				}
+				return var4 == Block.grass.blockID || var4 == Block.leaves.blockID;
 			}
 
 			return false;

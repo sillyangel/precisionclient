@@ -28,7 +28,7 @@ public abstract class WorldProvider {
 	public int dimensionId = 0;
 
 	/** Array for sunrise/sunset colors (RGBA) */
-	private float[] colorsSunriseSunset = new float[4];
+	private final float[] colorsSunriseSunset = new float[4];
 
 	/**
 	 * associate an existing world with a World provider, and setup its
@@ -71,11 +71,11 @@ public abstract class WorldProvider {
 	 * Returns a new chunk provider which generates chunks for this world
 	 */
 	public IChunkProvider createChunkGenerator() {
-		return (IChunkProvider) (this.terrainType == WorldType.FLAT
+		return this.terrainType == WorldType.FLAT
 				? new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(),
 						this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c)
 				: new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(),
-						this.worldObj.getWorldInfo().isMapFeaturesEnabled()));
+						this.worldObj.getWorldInfo().isMapFeaturesEnabled());
 	}
 
 	/**
@@ -130,8 +130,8 @@ public abstract class WorldProvider {
 	}
 
 	public static WorldProvider getProviderForDimension(int par0) {
-		return (WorldProvider) (par0 == -1 ? new WorldProviderHell()
-				: (par0 == 0 ? new WorldProviderSurface() : (par0 == 1 ? new WorldProviderEnd() : null)));
+		return par0 == -1 ? new WorldProviderHell()
+				: (par0 == 0 ? new WorldProviderSurface() : (par0 == 1 ? new WorldProviderEnd() : null));
 	}
 
 	/**

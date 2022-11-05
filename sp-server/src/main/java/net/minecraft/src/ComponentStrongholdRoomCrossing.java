@@ -196,7 +196,7 @@ public class ComponentStrongholdRoomCrossing extends ComponentStronghold {
 						this.getMetadataWithOffset(Block.ladder.blockID, 4), 9, 3, 3, par3StructureBoundingBox);
 				this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 3, 4, 8,
 						WeightedRandomChestContent.func_92080_a(strongholdRoomCrossingChestContents,
-								new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+								Item.enchantedBook.func_92114_b(par2Random)),
 						1 + par2Random.nextInt(4));
 			}
 

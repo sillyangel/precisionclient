@@ -15,16 +15,16 @@ public class EntityAIArrowAttack extends EntityAIBase {
 	 * is then set back to the maxRangedAttackTime.
 	 */
 	private int rangedAttackTime;
-	private float entityMoveSpeed;
+	private final float entityMoveSpeed;
 	private int field_75318_f;
-	private int field_96561_g;
+	private final int field_96561_g;
 
 	/**
 	 * The maximum time the AI has to wait before peforming another ranged attack.
 	 */
-	private int maxRangedAttackTime;
-	private float field_96562_i;
-	private float field_82642_h;
+	private final int maxRangedAttackTime;
+	private final float field_96562_i;
+	private final float field_82642_h;
 
 	public EntityAIArrowAttack(IRangedAttackMob par1IRangedAttackMob, float par2, int par3, float par4) {
 		this(par1IRangedAttackMob, par2, par3, par3, par4);

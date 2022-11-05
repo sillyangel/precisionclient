@@ -17,7 +17,7 @@ public class CommandEffect extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.effect.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.effect.usage");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -48,25 +48,24 @@ public class CommandEffect extends CommandBase {
 				if (var6 == 0) {
 					if (!var3.isPotionActive(var4)) {
 						throw new CommandException("commands.effect.failure.notActive",
-								new Object[] { StatCollector.translateToLocal(Potion.potionTypes[var4].getName()),
-										var3.getEntityName() });
+								StatCollector.translateToLocal(Potion.potionTypes[var4].getName()),
+								var3.getEntityName());
 					}
 
 					var3.removePotionEffect(var4);
-					notifyAdmins(par1ICommandSender, "commands.effect.success.removed", new Object[] {
-							StatCollector.translateToLocal(Potion.potionTypes[var4].getName()), var3.getEntityName() });
+					notifyAdmins(par1ICommandSender, "commands.effect.success.removed", StatCollector.translateToLocal(Potion.potionTypes[var4].getName()), var3.getEntityName());
 				} else {
 					PotionEffect var8 = new PotionEffect(var4, var5, var7);
 					var3.addPotionEffect(var8);
 					notifyAdmins(par1ICommandSender, "commands.effect.success",
-							new Object[] { StatCollector.translateToLocal(var8.getEffectName()), Integer.valueOf(var4),
-									Integer.valueOf(var7), var3.getEntityName(), Integer.valueOf(var6) });
+							StatCollector.translateToLocal(var8.getEffectName()), Integer.valueOf(var4),
+							Integer.valueOf(var7), var3.getEntityName(), Integer.valueOf(var6));
 				}
 			} else {
-				throw new NumberInvalidException("commands.effect.notFound", new Object[] { Integer.valueOf(var4) });
+				throw new NumberInvalidException("commands.effect.notFound", Integer.valueOf(var4));
 			}
 		} else {
-			throw new WrongUsageException("commands.effect.usage", new Object[0]);
+			throw new WrongUsageException("commands.effect.usage");
 		}
 	}
 

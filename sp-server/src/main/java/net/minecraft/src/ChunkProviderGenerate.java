@@ -6,19 +6,19 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ChunkProviderGenerate implements IChunkProvider {
 	/** RNG. */
-	private EaglercraftRandom rand;
+	private final EaglercraftRandom rand;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen1;
+	private final NoiseGeneratorOctaves noiseGen1;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen2;
+	private final NoiseGeneratorOctaves noiseGen2;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen3;
+	private final NoiseGeneratorOctaves noiseGen3;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen4;
+	private final NoiseGeneratorOctaves noiseGen4;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
 	public NoiseGeneratorOctaves noiseGen5;
@@ -28,7 +28,7 @@ public class ChunkProviderGenerate implements IChunkProvider {
 	public NoiseGeneratorOctaves mobSpawnerNoise;
 
 	/** Reference to the World object. */
-	private World worldObj;
+	private final World worldObj;
 
 	/** are map structures going to be generated (e.g. strongholds) */
 	private final boolean mapFeaturesEnabled;
@@ -36,20 +36,20 @@ public class ChunkProviderGenerate implements IChunkProvider {
 	/** Holds the overall noise array used in chunk generation */
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
-	private MapGenBase caveGenerator = new MapGenCaves();
+	private final MapGenBase caveGenerator = new MapGenCaves();
 
 	/** Holds Stronghold Generator */
-	private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+	private final MapGenStronghold strongholdGenerator = new MapGenStronghold();
 
 	/** Holds Village Generator */
-	private MapGenVillage villageGenerator = new MapGenVillage();
+	private final MapGenVillage villageGenerator = new MapGenVillage();
 
 	/** Holds Mineshaft Generator */
-	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
-	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
+	private final MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
+	private final MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 
 	/** Holds ravine generator */
-	private MapGenBase ravineGenerator = new MapGenRavine();
+	private final MapGenBase ravineGenerator = new MapGenRavine();
 
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
@@ -107,15 +107,15 @@ public class ChunkProviderGenerate implements IChunkProvider {
 			for (int var11 = 0; var11 < var4; ++var11) {
 				for (int var12 = 0; var12 < var5; ++var12) {
 					double var13 = 0.125D;
-					double var15 = this.noiseArray[((var10 + 0) * var9 + var11 + 0) * var8 + var12 + 0];
-					double var17 = this.noiseArray[((var10 + 0) * var9 + var11 + 1) * var8 + var12 + 0];
-					double var19 = this.noiseArray[((var10 + 1) * var9 + var11 + 0) * var8 + var12 + 0];
-					double var21 = this.noiseArray[((var10 + 1) * var9 + var11 + 1) * var8 + var12 + 0];
-					double var23 = (this.noiseArray[((var10 + 0) * var9 + var11 + 0) * var8 + var12 + 1] - var15)
+					double var15 = this.noiseArray[((var10) * var9 + var11) * var8 + var12];
+					double var17 = this.noiseArray[((var10) * var9 + var11 + 1) * var8 + var12];
+					double var19 = this.noiseArray[((var10 + 1) * var9 + var11) * var8 + var12];
+					double var21 = this.noiseArray[((var10 + 1) * var9 + var11 + 1) * var8 + var12];
+					double var23 = (this.noiseArray[((var10) * var9 + var11) * var8 + var12 + 1] - var15)
 							* var13;
-					double var25 = (this.noiseArray[((var10 + 0) * var9 + var11 + 1) * var8 + var12 + 1] - var17)
+					double var25 = (this.noiseArray[((var10) * var9 + var11 + 1) * var8 + var12 + 1] - var17)
 							* var13;
-					double var27 = (this.noiseArray[((var10 + 1) * var9 + var11 + 0) * var8 + var12 + 1] - var19)
+					double var27 = (this.noiseArray[((var10 + 1) * var9 + var11) * var8 + var12 + 1] - var19)
 							* var13;
 					double var29 = (this.noiseArray[((var10 + 1) * var9 + var11 + 1) * var8 + var12 + 1] - var21)
 							* var13;
@@ -128,7 +128,7 @@ public class ChunkProviderGenerate implements IChunkProvider {
 						double var40 = (var21 - var17) * var32;
 
 						for (int var42 = 0; var42 < 4; ++var42) {
-							int var43 = var42 + var10 * 4 << 11 | 0 + var11 * 4 << 7 | var12 * 8 + var31;
+							int var43 = var42 + var10 * 4 << 11 | var11 * 4 << 7 | var12 * 8 + var31;
 							short var44 = 128;
 							var43 -= var44;
 							double var45 = 0.25D;
@@ -181,7 +181,7 @@ public class ChunkProviderGenerate implements IChunkProvider {
 				for (int var16 = 127; var16 >= 0; --var16) {
 					int var17 = (var9 * 16 + var8) * 128 + var16;
 
-					if (var16 <= 0 + this.rand.nextInt(5)) {
+					if (var16 <= this.rand.nextInt(5)) {
 						par3ArrayOfByte[var17] = (byte) Block.bedrock.blockID;
 					} else {
 						byte var18 = par3ArrayOfByte[var17];
@@ -361,8 +361,8 @@ public class ChunkProviderGenerate implements IChunkProvider {
 				++var13;
 
 				for (int var47 = 0; var47 < par6; ++var47) {
-					double var48 = (double) var17;
-					double var26 = (double) var16;
+					double var48 = var17;
+					double var26 = var16;
 					var48 += var46 * 0.2D;
 					var48 = var48 * (double) par6 / 16.0D;
 					double var28 = (double) par6 / 2.0D + var48 * 4.0D;
@@ -388,7 +388,7 @@ public class ChunkProviderGenerate implements IChunkProvider {
 					var30 -= var32;
 
 					if (var47 > par6 - 4) {
-						double var40 = (double) ((float) (var47 - (par6 - 4)) / 3.0F);
+						double var40 = (float) (var47 - (par6 - 4)) / 3.0F;
 						var30 = var30 * (1.0D - var40) + -10.0D * var40;
 					}
 
@@ -456,7 +456,6 @@ public class ChunkProviderGenerate implements IChunkProvider {
 			int var15 = var5 + this.rand.nextInt(16) + 8;
 
 			if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var13, var14, var15)) {
-				;
 			}
 		}
 
@@ -544,10 +543,10 @@ public class ChunkProviderGenerate implements IChunkProvider {
 
 	public void recreateStructures(int par1, int par2) {
 		if (this.mapFeaturesEnabled) {
-			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
-			this.villageGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
-			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[]) null);
+			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, null);
+			this.villageGenerator.generate(this, this.worldObj, par1, par2, null);
+			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, null);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, null);
 		}
 	}
 }

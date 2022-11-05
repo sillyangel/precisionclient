@@ -34,8 +34,7 @@ public class PropertyManager {
 					try {
 						var3.close();
 					} catch (IOException var12) {
-						;
-					}
+                    }
 				}
 			}
 		} else {
@@ -69,8 +68,7 @@ public class PropertyManager {
 				try {
 					var1.close();
 				} catch (IOException var10) {
-					;
-				}
+                }
 			}
 		}
 	}

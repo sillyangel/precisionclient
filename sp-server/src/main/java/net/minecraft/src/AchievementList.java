@@ -102,7 +102,7 @@ public class AchievementList {
 	public static void init() {
 		achievementList = new ArrayList();
 
-		openInventory = (new Achievement(0, "openInventory", 0, 0, Item.book, (Achievement) null))
+		openInventory = (new Achievement(0, "openInventory", 0, 0, Item.book, null))
 				.setIndependent().registerAchievement();
 
 		mineWood = (new Achievement(1, "mineWood", 2, 1, Block.wood, openInventory))

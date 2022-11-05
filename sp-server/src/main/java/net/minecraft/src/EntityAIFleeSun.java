@@ -3,12 +3,12 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class EntityAIFleeSun extends EntityAIBase {
-	private EntityCreature theCreature;
+	private final EntityCreature theCreature;
 	private double shelterX;
 	private double shelterY;
 	private double shelterZ;
-	private float movementSpeed;
-	private World theWorld;
+	private final float movementSpeed;
+	private final World theWorld;
 
 	public EntityAIFleeSun(EntityCreature par1EntityCreature, float par2) {
 		this.theCreature = par1EntityCreature;
@@ -66,7 +66,7 @@ public class EntityAIFleeSun extends EntityAIBase {
 
 			if (!this.theWorld.canBlockSeeTheSky(var3, var4, var5)
 					&& this.theCreature.getBlockPathWeight(var3, var4, var5) < 0.0F) {
-				return this.theWorld.getWorldVec3Pool().getVecFromPool((double) var3, (double) var4, (double) var5);
+				return this.theWorld.getWorldVec3Pool().getVecFromPool(var3, var4, var5);
 			}
 		}
 

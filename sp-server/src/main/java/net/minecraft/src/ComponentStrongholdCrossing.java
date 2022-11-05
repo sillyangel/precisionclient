@@ -6,10 +6,10 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ComponentStrongholdCrossing extends ComponentStronghold {
 	protected final EnumDoor doorType;
-	private boolean field_74996_b;
-	private boolean field_74997_c;
-	private boolean field_74995_d;
-	private boolean field_74999_h;
+	private final boolean field_74996_b;
+	private final boolean field_74997_c;
+	private final boolean field_74995_d;
+	private final boolean field_74999_h;
 
 	public ComponentStrongholdCrossing(int par1, EaglercraftRandom par2Random, StructureBoundingBox par3StructureBoundingBox,
 			int par4) {

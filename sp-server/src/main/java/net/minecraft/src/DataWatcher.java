@@ -42,7 +42,7 @@ public class DataWatcher {
 	 * Add a new object for the DataWatcher to watch, using the specified data type.
 	 */
 	public void addObjectByDataType(int par1, int par2) {
-		WatchableObject var3 = new WatchableObject(par2, par1, (Object) null);
+		WatchableObject var3 = new WatchableObject(par2, par1, null);
 		this.watchedObjects.put(Integer.valueOf(par1), var3);
 		this.isBlank = false;
 	}

@@ -101,9 +101,7 @@ public class BlockWall extends Block {
 
 		if (var5 != this.blockID && var5 != Block.fenceGate.blockID) {
 			Block var6 = Block.blocksList[var5];
-			return var6 != null && var6.blockMaterial.isOpaque() && var6.renderAsNormalBlock()
-					? var6.blockMaterial != Material.pumpkin
-					: false;
+			return var6 != null && var6.blockMaterial.isOpaque() && var6.renderAsNormalBlock() && var6.blockMaterial != Material.pumpkin;
 		} else {
 			return true;
 		}

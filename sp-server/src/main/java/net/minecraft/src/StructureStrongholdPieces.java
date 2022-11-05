@@ -23,7 +23,7 @@ public class StructureStrongholdPieces {
 	private static Class strongComponentType;
 	static int totalWeight = 0;
 	private static final StructureStrongholdStones strongholdStones = new StructureStrongholdStones(
-			(StructureStrongholdPieceWeight2) null);
+			null);
 
 	/**
 	 * sets up Arrays with the Structure pieces and their weights

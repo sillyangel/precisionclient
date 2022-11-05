@@ -20,8 +20,7 @@ public class BiomeEndDecorator extends BiomeDecorator {
 			int var3 = this.currentWorld.getTopSolidOrLiquidBlock(var1, var2);
 
 			if (var3 > 0) {
-				;
-			}
+            }
 
 			this.spikeGen.generate(this.currentWorld, this.randomGenerator, var1, var3, var2);
 		}

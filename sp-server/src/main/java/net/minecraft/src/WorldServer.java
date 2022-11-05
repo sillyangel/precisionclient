@@ -40,13 +40,13 @@ public class WorldServer extends World {
 	private int _tu = 0;
 	private int _lu = 0;
 	
-	private long rwgtuluTimer = 0l;
+	private long rwgtuluTimer = 0L;
 	
 	/**
 	 * Double buffer of ServerBlockEventList[] for holding pending BlockEventData's
 	 */
-	private ServerBlockEventList[] blockEventCache = new ServerBlockEventList[] {
-			new ServerBlockEventList((ServerBlockEvent) null), new ServerBlockEventList((ServerBlockEvent) null) };
+	private final ServerBlockEventList[] blockEventCache = new ServerBlockEventList[] {
+			new ServerBlockEventList(null), new ServerBlockEventList(null) };
 
 	/**
 	 * The index into the blockEventCache; either 0, or 1, toggled in
@@ -64,7 +64,7 @@ public class WorldServer extends World {
 			new WeightedRandomChestContent(Item.pickaxeWood.itemID, 0, 1, 1, 5),
 			new WeightedRandomChestContent(Item.appleRed.itemID, 0, 2, 3, 5),
 			new WeightedRandomChestContent(Item.bread.itemID, 0, 2, 3, 3) };
-	private ArrayList field_94579_S = new ArrayList();
+	private final ArrayList field_94579_S = new ArrayList();
 
 	/** An IntHashMap of entity IDs (integers) to their Entity objects. */
 	private IntHashMap entityIdMap;
@@ -119,7 +119,6 @@ public class WorldServer extends World {
 			boolean var1 = false;
 
 			if (this.spawnHostileMobs && this.difficultySetting >= 1) {
-				;
 			}
 
 			if (!var1) {
@@ -167,7 +166,7 @@ public class WorldServer extends World {
 		Chunk.totalBlockLightUpdates = 0;
 		
 		long millis = System.currentTimeMillis();
-		if(millis - rwgtuluTimer >= 1000l) {
+		if(millis - rwgtuluTimer >= 1000L) {
 			rwgtuluTimer = millis;
 			r = _r; _r = 0;
 			w = _w; _w = 0;
@@ -300,7 +299,7 @@ public class WorldServer extends World {
 				var11 = this.getPrecipitationHeight(var9, var10);
 
 				if (this.canLightningStrikeAt(var9, var11, var10)) {
-					this.addWeatherEffect(new EntityLightningBolt(this, (double) var9, (double) var11, (double) var10));
+					this.addWeatherEffect(new EntityLightningBolt(this, var9, var11, var10));
 				}
 			}
 
@@ -861,8 +860,8 @@ public class WorldServer extends World {
 				BlockEventData var3 = (BlockEventData) var2.next();
 
 				if (this.onBlockEventReceived(var3)) {
-					this.mcServer.getConfigurationManager().sendPacketToPlayersAroundPoint((double) var3.getX(),
-							(double) var3.getY(), (double) var3.getZ(), 64.0D, this.provider.dimensionId,
+					this.mcServer.getConfigurationManager().sendPacketToPlayersAroundPoint(var3.getX(),
+							var3.getY(), var3.getZ(), 64.0D, this.provider.dimensionId,
 							new Packet54PlayNoteBlock(var3.getX(), var3.getY(), var3.getZ(), var3.getBlockID(),
 									var3.getEventID(), var3.getEventParameter()));
 				}
@@ -877,9 +876,9 @@ public class WorldServer extends World {
 	 */
 	private boolean onBlockEventReceived(BlockEventData par1BlockEventData) {
 		int var2 = this.getBlockId(par1BlockEventData.getX(), par1BlockEventData.getY(), par1BlockEventData.getZ());
-		return var2 == par1BlockEventData.getBlockID() ? Block.blocksList[var2].onBlockEventReceived(this,
+		return var2 == par1BlockEventData.getBlockID() && Block.blocksList[var2].onBlockEventReceived(this,
 				par1BlockEventData.getX(), par1BlockEventData.getY(), par1BlockEventData.getZ(),
-				par1BlockEventData.getEventID(), par1BlockEventData.getEventParameter()) : false;
+				par1BlockEventData.getEventID(), par1BlockEventData.getEventParameter());
 	}
 
 	/**

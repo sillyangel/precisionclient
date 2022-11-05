@@ -14,10 +14,9 @@ class SlotBeacon extends Slot {
 	 * armor slots.
 	 */
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		return par1ItemStack == null ? false
-				: par1ItemStack.itemID == Item.emerald.itemID || par1ItemStack.itemID == Item.diamond.itemID
-						|| par1ItemStack.itemID == Item.ingotGold.itemID
-						|| par1ItemStack.itemID == Item.ingotIron.itemID;
+		return par1ItemStack != null && (par1ItemStack.itemID == Item.emerald.itemID || par1ItemStack.itemID == Item.diamond.itemID
+                || par1ItemStack.itemID == Item.ingotGold.itemID
+                || par1ItemStack.itemID == Item.ingotIron.itemID);
 	}
 
 	/**

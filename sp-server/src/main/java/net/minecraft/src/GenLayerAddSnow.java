@@ -22,7 +22,7 @@ public class GenLayerAddSnow extends GenLayer {
 		for (int var11 = 0; var11 < par4; ++var11) {
 			for (int var12 = 0; var12 < par3; ++var12) {
 				int var13 = var9[var12 + 1 + (var11 + 1) * var7];
-				this.initChunkSeed((long) (var12 + par1), (long) (var11 + par2));
+				this.initChunkSeed(var12 + par1, var11 + par2);
 
 				if (var13 == 0) {
 					var10[var12 + var11 * par3] = 0;

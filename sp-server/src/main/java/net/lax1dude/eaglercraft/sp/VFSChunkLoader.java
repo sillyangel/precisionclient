@@ -98,7 +98,7 @@ public class VFSChunkLoader implements IChunkLoader {
 		VFile file = new VFile(chunkDirectory, getChunkPath(var2.xPosition, var2.zPosition) + ".dat");
 		
 		if(!file.setAllBytes(save)) {
-			System.err.println("Corrupted chunk could not be written: [" + var2.xPosition + ", " + var2.zPosition + "] to file \"" + file.toString() + "\")");
+			System.err.println("Corrupted chunk could not be written: [" + var2.xPosition + ", " + var2.zPosition + "] to file \"" + file + "\")");
 		}
 		
 	}

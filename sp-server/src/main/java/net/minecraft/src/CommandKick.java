@@ -14,22 +14,22 @@ public class CommandKick extends CommandBase {
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
 		if (par2ArrayOfStr.length == 0) {
-			throw new WrongUsageException("commands.kick.usage", new Object[0]);
+			throw new WrongUsageException("commands.kick.usage");
 		}
 		EntityPlayerMP target = func_82359_c(par1ICommandSender, par2ArrayOfStr[0]);
 		if (target.mcServer.getServerOwner().equals(target.username)) {
-			throw new SyntaxErrorException("commands.kick.owner", new Object[0]);
+			throw new SyntaxErrorException("commands.kick.owner");
 		}
 		if (par2ArrayOfStr.length == 1) {
 			target.playerNetServerHandler.kickPlayer("Kicked.");
 			notifyAdmins(par1ICommandSender, "commands.kick.success",
-					new Object[] { target.getEntityName() });
+					target.getEntityName());
 		} else {
 			String message = String.join(" ", par2ArrayOfStr);
 			message = message.substring(message.indexOf(' ') + 1).trim();
 			target.playerNetServerHandler.kickPlayer(message);
 			notifyAdmins(par1ICommandSender, "commands.kick.success.reason",
-					new Object[] { target.getEntityName(), message });
+					target.getEntityName(), message);
 		}
 	}
 }

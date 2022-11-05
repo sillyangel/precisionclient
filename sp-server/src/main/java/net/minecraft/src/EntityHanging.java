@@ -83,11 +83,11 @@ public abstract class EntityHanging extends Entity {
 		}
 
 		var6 += this.func_70517_b(this.func_82330_g());
-		this.setPosition((double) var5, (double) var6, (double) var7);
+		this.setPosition(var5, var6, var7);
 		float var9 = -0.03125F;
-		this.boundingBox.setBounds((double) (var5 - var2 - var9), (double) (var6 - var3 - var9),
-				(double) (var7 - var4 - var9), (double) (var5 + var2 + var9), (double) (var6 + var3 + var9),
-				(double) (var7 + var4 + var9));
+		this.boundingBox.setBounds(var5 - var2 - var9, var6 - var3 - var9,
+				var7 - var4 - var9, var5 + var2 + var9, var6 + var3 + var9,
+				var7 + var4 + var9);
 	}
 
 	private float func_70517_b(int par1) {
@@ -180,9 +180,7 @@ public abstract class EntityHanging extends Entity {
 	}
 
 	public boolean func_85031_j(Entity par1Entity) {
-		return par1Entity instanceof EntityPlayer
-				? this.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) par1Entity), 0)
-				: false;
+		return par1Entity instanceof EntityPlayer && this.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) par1Entity), 0);
 	}
 
 	/**

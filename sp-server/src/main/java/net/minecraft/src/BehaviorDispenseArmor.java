@@ -11,8 +11,8 @@ final class BehaviorDispenseArmor extends BehaviorDefaultDispenseItem {
 		int var4 = par1IBlockSource.getXInt() + var3.getFrontOffsetX();
 		int var5 = par1IBlockSource.getYInt() + var3.getFrontOffsetY();
 		int var6 = par1IBlockSource.getZInt() + var3.getFrontOffsetZ();
-		AxisAlignedBB var7 = AxisAlignedBB.getAABBPool().getAABB((double) var4, (double) var5, (double) var6,
-				(double) (var4 + 1), (double) (var5 + 1), (double) (var6 + 1));
+		AxisAlignedBB var7 = AxisAlignedBB.getAABBPool().getAABB(var4, var5, var6,
+				var4 + 1, var5 + 1, var6 + 1);
 		List var8 = par1IBlockSource.getWorld().selectEntitiesWithinAABB(EntityLiving.class, var7,
 				new EntitySelectorArmoredMob(par2ItemStack));
 

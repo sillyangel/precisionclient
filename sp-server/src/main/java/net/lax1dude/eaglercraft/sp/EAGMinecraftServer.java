@@ -45,7 +45,7 @@ public class EAGMinecraftServer extends MinecraftServer {
 		long delta = ctm - lastTick;
 		
 		if (delta > 2000L && ctm - this.timeOfLastWarning >= 15000L) {
-			this.getLogAgent().func_98236_b("Can\'t keep up! Did the system time change, or is the server overloaded? Skipping " + ((delta - 2000l) / 50l) + " ticks");
+			this.getLogAgent().func_98236_b("Can't keep up! Did the system time change, or is the server overloaded? Skipping " + ((delta - 2000L) / 50L) + " ticks");
 			delta = 2000L;
 			this.timeOfLastWarning = ctm;
 		}
@@ -63,7 +63,7 @@ public class EAGMinecraftServer extends MinecraftServer {
 			while (delta >= 50L) {
 				if(mustYield) {
 					try {
-						Thread.sleep(1l); // allow some async
+						Thread.sleep(1L); // allow some async
 					}catch(InterruptedException e) {
 						System.err.println("you eagler");
 					}
@@ -92,7 +92,7 @@ public class EAGMinecraftServer extends MinecraftServer {
 	protected boolean startServer() throws IOException {
 		SkinsPlugin.reset();
 		VoiceChatPlugin.reset();
-		this.loadAllWorlds(folderName, 0l, newWorldSettings);
+		this.loadAllWorlds(folderName, 0L, newWorldSettings);
 		this.lastTick = System.currentTimeMillis();
 		return true;
 	}

@@ -5,7 +5,7 @@ package net.lax1dude.eaglercraft.sp;
  * "Handbook of Applied Cryptography", pages 344 - 347.
  */
 public abstract class GeneralDigest {
-    private byte[]  xBuf;
+    private final byte[]  xBuf;
     private int     xBufOff;
 
     private long    byteCount;

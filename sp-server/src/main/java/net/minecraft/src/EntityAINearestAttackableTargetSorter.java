@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.Comparator;
 
 public class EntityAINearestAttackableTargetSorter implements Comparator {
-	private Entity theEntity;
+	private final Entity theEntity;
 
 	final EntityAINearestAttackableTarget parent;
 

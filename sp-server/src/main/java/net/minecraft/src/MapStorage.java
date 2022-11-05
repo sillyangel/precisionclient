@@ -13,19 +13,19 @@ import java.util.function.Function;
 import net.lax1dude.eaglercraft.sp.VFile;
 
 public class MapStorage {
-	private ISaveHandler saveHandler;
+	private final ISaveHandler saveHandler;
 
 	/** Map of item data String id to loaded MapDataBases */
-	private Map loadedDataMap = new HashMap();
+	private final Map loadedDataMap = new HashMap();
 
 	/** List of loaded MapDataBases. */
-	private List loadedDataList = new ArrayList();
+	private final List loadedDataList = new ArrayList();
 
 	/**
 	 * Map of MapDataBase id String prefixes ('map' etc) to max known unique Short
 	 * id (the 0 part etc) for that prefix
 	 */
-	private Map idCounts = new HashMap();
+	private final Map idCounts = new HashMap();
 
 	public MapStorage(ISaveHandler par1ISaveHandler) {
 		this.saveHandler = par1ISaveHandler;
@@ -49,7 +49,7 @@ public class MapStorage {
 
 					if (var4 != null && var4.exists()) {
 						try {
-							var3 = (WorldSavedData) par1Class.apply(par2Str);
+							var3 = par1Class.apply(par2Str);
 						} catch (Exception var7) {
 							throw new RuntimeException("Failed to instantiate " + par1Class.toString(), var7);
 						}
@@ -77,7 +77,7 @@ public class MapStorage {
 	 */
 	public void setData(String par1Str, WorldSavedData par2WorldSavedData) {
 		if (par2WorldSavedData == null) {
-			throw new RuntimeException("Can\'t set null data");
+			throw new RuntimeException("Can't set null data");
 		} else {
 			if (this.loadedDataMap.containsKey(par1Str)) {
 				this.loadedDataList.remove(this.loadedDataMap.remove(par1Str));

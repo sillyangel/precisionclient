@@ -118,7 +118,7 @@ public class EntityFallingSand extends Entity {
 
 						if (!this.isBreakingAnvil
 								&& this.worldObj.canPlaceEntityOnSide(this.blockID, var1, var2, var3, true, 1,
-										(Entity) null, (ItemStack) null)
+								null, null)
 								&& !BlockSand.canFallBelow(this.worldObj, var1, var2 - 1, var3)
 								&& this.worldObj.setBlock(var1, var2, var3, this.blockID, this.metadata, 3)) {
 							if (Block.blocksList[this.blockID] instanceof BlockSand) {

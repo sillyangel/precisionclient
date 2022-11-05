@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class NoiseGeneratorPerlin extends NoiseGenerator {
-	private int[] permutations;
+	private final int[] permutations;
 	public double xCoord;
 	public double yCoord;
 	public double zCoord;
@@ -20,7 +20,6 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 		int var2;
 
 		for (var2 = 0; var2 < 256; this.permutations[var2] = var2++) {
-			;
 		}
 
 		for (var2 = 0; var2 < 256; ++var2) {
@@ -88,7 +87,7 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 				}
 
 				int var34 = var78 & 255;
-				var31 -= (double) var78;
+				var31 -= var78;
 				var35 = var31 * var31 * var31 * (var31 * (var31 * 6.0D - 15.0D) + 10.0D);
 
 				for (var37 = 0; var37 < par10; ++var37) {
@@ -100,11 +99,11 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 					}
 
 					var41 = var40 & 255;
-					var38 -= (double) var40;
+					var38 -= var40;
 					var42 = var38 * var38 * var38 * (var38 * (var38 * 6.0D - 15.0D) + 10.0D);
-					var19 = this.permutations[var34] + 0;
+					var19 = this.permutations[var34];
 					int var66 = this.permutations[var19] + var41;
-					int var67 = this.permutations[var34 + 1] + 0;
+					int var67 = this.permutations[var34 + 1];
 					var22 = this.permutations[var67] + var41;
 					var70 = this.lerp(var35, this.func_76309_a(this.permutations[var66], var31, var38),
 							this.grad(this.permutations[var22], var31 - 1.0D, 0.0D, var38));
@@ -139,7 +138,7 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 				}
 
 				var41 = var40 & 255;
-				var38 -= (double) var40;
+				var38 -= var40;
 				var42 = var38 * var38 * var38 * (var38 * (var38 * 6.0D - 15.0D) + 10.0D);
 
 				for (int var44 = 0; var44 < par10; ++var44) {
@@ -151,7 +150,7 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 					}
 
 					int var48 = var47 & 255;
-					var45 -= (double) var47;
+					var45 -= var47;
 					double var49 = var45 * var45 * var45 * (var45 * (var45 * 6.0D - 15.0D) + 10.0D);
 
 					for (int var51 = 0; var51 < par9; ++var51) {
@@ -163,7 +162,7 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 						}
 
 						int var55 = var54 & 255;
-						var52 -= (double) var54;
+						var52 -= var54;
 						double var56 = var52 * var52 * var52 * (var52 * (var52 * 6.0D - 15.0D) + 10.0D);
 
 						if (var51 == 0 || var55 != var22) {

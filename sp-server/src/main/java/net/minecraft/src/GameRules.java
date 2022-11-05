@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 public class GameRules {
-	private TreeMap theGameRules = new TreeMap();
+	private final TreeMap theGameRules = new TreeMap();
 
 	public GameRules() {
 		this.addGameRule("doFireTick", "true");
@@ -47,7 +47,7 @@ public class GameRules {
 	 */
 	public boolean getGameRuleBooleanValue(String par1Str) {
 		GameRuleValue var2 = (GameRuleValue) this.theGameRules.get(par1Str);
-		return var2 != null ? var2.getGameRuleBooleanValue() : false;
+		return var2 != null && var2.getGameRuleBooleanValue();
 	}
 
 	/**

@@ -239,14 +239,10 @@ public class TileEntityFurnace extends TileEntity implements ISidedInventory {
 			return false;
 		} else {
 			ItemStack var1 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0].getItem().itemID);
-			return var1 == null ? false
-					: (this.furnaceItemStacks[2] == null ? true
-							: (!this.furnaceItemStacks[2].isItemEqual(var1) ? false
-									: (this.furnaceItemStacks[2].stackSize < this.getInventoryStackLimit()
-											&& this.furnaceItemStacks[2].stackSize < this.furnaceItemStacks[2]
-													.getMaxStackSize() ? true
-															: this.furnaceItemStacks[2].stackSize < var1
-																	.getMaxStackSize())));
+			return var1 != null && (this.furnaceItemStacks[2] == null || (this.furnaceItemStacks[2].isItemEqual(var1) && (this.furnaceItemStacks[2].stackSize < this.getInventoryStackLimit()
+					&& this.furnaceItemStacks[2].stackSize < this.furnaceItemStacks[2]
+					.getMaxStackSize() || this.furnaceItemStacks[2].stackSize < var1
+					.getMaxStackSize())));
 		}
 	}
 
@@ -318,9 +314,8 @@ public class TileEntityFurnace extends TileEntity implements ISidedInventory {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false
-				: par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-						(double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) == this && par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
+				(double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	public void openChest() {
@@ -334,7 +329,7 @@ public class TileEntityFurnace extends TileEntity implements ISidedInventory {
 	 * stack size) into the given slot.
 	 */
 	public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) {
-		return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
+		return par1 != 2 && (par1 != 1 || isItemFuel(par2ItemStack));
 	}
 
 	/**

@@ -8,7 +8,7 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ComponentMineshaftRoom extends StructureComponent {
 	/** List of other Mineshaft components linked to this room. */
-	private List roomsLinkedToTheRoom = new LinkedList();
+	private final List roomsLinkedToTheRoom = new LinkedList();
 
 	public ComponentMineshaftRoom(int par1, EaglercraftRandom par2Random, int par3, int par4) {
 		super(par1);

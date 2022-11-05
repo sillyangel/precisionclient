@@ -87,10 +87,7 @@ public abstract class BlockFluid extends Block {
 	 */
 	public boolean isBlockSolid(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
 		Material var6 = par1IBlockAccess.getBlockMaterial(par2, par3, par4);
-		return var6 == this.blockMaterial ? false
-				: (par5 == 1 ? true
-						: (var6 == Material.ice ? false
-								: super.isBlockSolid(par1IBlockAccess, par2, par3, par4, par5)));
+		return var6 != this.blockMaterial && (par5 == 1 || (var6 != Material.ice && super.isBlockSolid(par1IBlockAccess, par2, par3, par4, par5)));
 	}
 
 	/**
@@ -158,14 +155,14 @@ public abstract class BlockFluid extends Block {
 
 					if (var11 >= 0) {
 						var12 = var11 - (var6 - 8);
-						var5 = var5.addVector((double) ((var8 - par2) * var12), (double) ((par3 - par3) * var12),
-								(double) ((var10 - par4) * var12));
+						var5 = var5.addVector((var8 - par2) * var12, (0) * var12,
+								(var10 - par4) * var12);
 					}
 				}
 			} else if (var11 >= 0) {
 				var12 = var11 - var6;
-				var5 = var5.addVector((double) ((var8 - par2) * var12), (double) ((par3 - par3) * var12),
-						(double) ((var10 - par4) * var12));
+				var5 = var5.addVector((var8 - par2) * var12, (0) * var12,
+						(var10 - par4) * var12);
 			}
 		}
 
@@ -297,8 +294,8 @@ public abstract class BlockFluid extends Block {
 	 * with water.
 	 */
 	protected void triggerLavaMixEffects(World par1World, int par2, int par3, int par4) {
-		par1World.playSoundEffect((double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F),
-				(double) ((float) par4 + 0.5F), "random.fizz", 0.5F,
+		par1World.playSoundEffect((float) par2 + 0.5F, (float) par3 + 0.5F,
+				(float) par4 + 0.5F, "random.fizz", 0.5F,
 				2.6F + (par1World.rand.nextFloat() - par1World.rand.nextFloat()) * 0.8F);
 
 		for (int var5 = 0; var5 < 8; ++var5) {

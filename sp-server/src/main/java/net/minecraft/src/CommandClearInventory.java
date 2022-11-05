@@ -10,7 +10,7 @@ public class CommandClearInventory extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.clear.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.clear.usage");
 	}
 
 	/**
@@ -29,10 +29,10 @@ public class CommandClearInventory extends CommandBase {
 		var3.inventoryContainer.detectAndSendChanges();
 
 		if (var6 == 0) {
-			throw new CommandException("commands.clear.failure", new Object[] { var3.getEntityName() });
+			throw new CommandException("commands.clear.failure", var3.getEntityName());
 		} else {
 			notifyAdmins(par1ICommandSender, "commands.clear.success",
-					new Object[] { var3.getEntityName(), Integer.valueOf(var6) });
+					var3.getEntityName(), Integer.valueOf(var6));
 		}
 	}
 

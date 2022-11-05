@@ -29,9 +29,9 @@ public class EntityXPOrb extends Entity {
 		this.yOffset = this.height / 2.0F;
 		this.setPosition(par2, par4, par6);
 		this.rotationYaw = (float) (Math.random() * 360.0D);
-		this.motionX = (double) ((float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F);
-		this.motionY = (double) ((float) (Math.random() * 0.2D) * 2.0F);
-		this.motionZ = (double) ((float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F);
+		this.motionX = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F;
+		this.motionY = (float) (Math.random() * 0.2D) * 2.0F;
+		this.motionZ = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D) * 2.0F;
 		this.xpValue = par8;
 	}
 
@@ -70,8 +70,8 @@ public class EntityXPOrb extends Entity {
 		if (this.worldObj.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY),
 				MathHelper.floor_double(this.posZ)) == Material.lava) {
 			this.motionY = 0.20000000298023224D;
-			this.motionX = (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
-			this.motionZ = (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+			this.motionX = (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F;
+			this.motionZ = (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F;
 			this.playSound("random.fizz", 0.4F, 2.0F + this.rand.nextFloat() * 0.4F);
 		}
 
@@ -114,9 +114,9 @@ public class EntityXPOrb extends Entity {
 			}
 		}
 
-		this.motionX *= (double) var13;
+		this.motionX *= var13;
 		this.motionY *= 0.9800000190734863D;
-		this.motionZ *= (double) var13;
+		this.motionZ *= var13;
 
 		if (this.onGround) {
 			this.motionY *= -0.8999999761581421D;
@@ -168,7 +168,7 @@ public class EntityXPOrb extends Entity {
 	 * (abstract) Protected helper method to write subclass entity data to NBT.
 	 */
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		par1NBTTagCompound.setShort("Health", (short) ((byte) this.xpOrbHealth));
+		par1NBTTagCompound.setShort("Health", (byte) this.xpOrbHealth);
 		par1NBTTagCompound.setShort("Age", (short) this.xpOrbAge);
 		par1NBTTagCompound.setShort("Value", (short) this.xpValue);
 	}

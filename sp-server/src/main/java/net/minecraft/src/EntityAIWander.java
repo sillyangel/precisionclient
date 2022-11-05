@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
 public class EntityAIWander extends EntityAIBase {
-	private EntityCreature entity;
+	private final EntityCreature entity;
 	private double xPosition;
 	private double yPosition;
 	private double zPosition;
-	private float speed;
+	private final float speed;
 
 	public EntityAIWander(EntityCreature par1EntityCreature, float par2) {
 		this.entity = par1EntityCreature;

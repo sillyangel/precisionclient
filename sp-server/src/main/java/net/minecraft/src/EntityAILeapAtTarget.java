@@ -26,9 +26,7 @@ public class EntityAILeapAtTarget extends EntityAIBase {
 			return false;
 		} else {
 			double var1 = this.leaper.getDistanceSqToEntity(this.leapTarget);
-			return var1 >= 4.0D && var1 <= 16.0D
-					? (!this.leaper.onGround ? false : this.leaper.getRNG().nextInt(5) == 0)
-					: false;
+			return var1 >= 4.0D && var1 <= 16.0D && (this.leaper.onGround && this.leaper.getRNG().nextInt(5) == 0);
 		}
 	}
 
@@ -50,6 +48,6 @@ public class EntityAILeapAtTarget extends EntityAIBase {
 				+ this.leaper.motionX * 0.20000000298023224D;
 		this.leaper.motionZ += var3 / (double) var5 * 0.5D * 0.800000011920929D
 				+ this.leaper.motionZ * 0.20000000298023224D;
-		this.leaper.motionY = (double) this.leapMotionY;
+		this.leaper.motionY = this.leapMotionY;
 	}
 }

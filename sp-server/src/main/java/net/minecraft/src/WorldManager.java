@@ -6,10 +6,10 @@ import net.minecraft.server.MinecraftServer;
 
 public class WorldManager implements IWorldAccess {
 	/** Reference to the MinecraftServer object. */
-	private MinecraftServer mcServer;
+	private final MinecraftServer mcServer;
 
 	/** The WorldServer object. */
-	private WorldServer theWorldServer;
+	private final WorldServer theWorldServer;
 
 	public WorldManager(MinecraftServer par1MinecraftServer, WorldServer par2WorldServer) {
 		this.mcServer = par1MinecraftServer;
@@ -94,8 +94,8 @@ public class WorldManager implements IWorldAccess {
 	 * one-shot behaviour (particles, etc).
 	 */
 	public void playAuxSFX(EntityPlayer par1EntityPlayer, int par2, int par3, int par4, int par5, int par6) {
-		this.mcServer.getConfigurationManager().sendToAllNearExcept(par1EntityPlayer, (double) par3, (double) par4,
-				(double) par5, 64.0D, this.theWorldServer.provider.dimensionId,
+		this.mcServer.getConfigurationManager().sendToAllNearExcept(par1EntityPlayer, par3, par4,
+				par5, 64.0D, this.theWorldServer.provider.dimensionId,
 				new Packet61DoorChange(par2, par3, par4, par5, par6, false));
 	}
 

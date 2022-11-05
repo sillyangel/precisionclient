@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class ContainerChest extends Container {
-	private IInventory lowerChestInventory;
-	private int numRows;
+	private final IInventory lowerChestInventory;
+	private final int numRows;
 
 	public ContainerChest(IInventory par1IInventory, IInventory par2IInventory) {
 		this.lowerChestInventory = par2IInventory;
@@ -54,7 +54,7 @@ public class ContainerChest extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

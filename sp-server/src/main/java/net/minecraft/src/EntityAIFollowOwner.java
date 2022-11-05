@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
 public class EntityAIFollowOwner extends EntityAIBase {
-	private EntityTameable thePet;
+	private final EntityTameable thePet;
 	private EntityLiving theOwner;
 	World theWorld;
-	private float field_75336_f;
-	private PathNavigate petPathfinder;
+	private final float field_75336_f;
+	private final PathNavigate petPathfinder;
 	private int field_75343_h;
 	float maxDist;
 	float minDist;
@@ -90,8 +90,8 @@ public class EntityAIFollowOwner extends EntityAIBase {
 												var2 + var5)
 										&& !this.theWorld.isBlockNormalCube(var1 + var4, var3, var2 + var5)
 										&& !this.theWorld.isBlockNormalCube(var1 + var4, var3 + 1, var2 + var5)) {
-									this.thePet.setLocationAndAngles((double) ((float) (var1 + var4) + 0.5F),
-											(double) var3, (double) ((float) (var2 + var5) + 0.5F),
+									this.thePet.setLocationAndAngles((float) (var1 + var4) + 0.5F,
+											var3, (float) (var2 + var5) + 0.5F,
 											this.thePet.rotationYaw, this.thePet.rotationPitch);
 									this.petPathfinder.clearPathEntity();
 									return;

@@ -39,7 +39,7 @@ public class Packet51MapChunk extends Packet {
 	private int tempLength;
 
 	/** A temporary storage for the compressed chunk data byte array. */
-	private static byte[] temp = new byte[196864];
+	private static final byte[] temp = new byte[196864];
 
 	public Packet51MapChunk() {
 		this.isChunkDataPacket = true;

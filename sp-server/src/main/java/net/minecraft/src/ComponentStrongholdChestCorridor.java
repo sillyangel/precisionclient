@@ -88,7 +88,7 @@ public class ComponentStrongholdChestCorridor extends ComponentStronghold {
 					this.hasMadeChest = true;
 					this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 3, 2, 3,
 							WeightedRandomChestContent.func_92080_a(strongholdChestContents,
-									new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+									Item.enchantedBook.func_92114_b(par2Random)),
 							2 + par2Random.nextInt(2));
 				}
 			}

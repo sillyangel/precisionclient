@@ -6,7 +6,7 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class BlockPistonExtension extends Block {
 	/** The texture for the 'head' of the piston. Sticky or normal. */
-	private Icon headTexture = null;
+	private final Icon headTexture = null;
 
 	public BlockPistonExtension(int par1) {
 		super(par1, Material.piston);

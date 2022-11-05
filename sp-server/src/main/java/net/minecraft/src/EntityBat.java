@@ -15,7 +15,7 @@ public class EntityBat extends EntityAmbientCreature {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataWatcher.addObject(16, Byte.valueOf((byte) 0));
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class EntityBat extends EntityAmbientCreature {
 			if (!this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), (int) this.posY + 1,
 					MathHelper.floor_double(this.posZ))) {
 				this.setIsBatHanging(false);
-				this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, (int) this.posX, (int) this.posY,
+				this.worldObj.playAuxSFXAtEntity(null, 1015, (int) this.posX, (int) this.posY,
 						(int) this.posZ, 0);
 			} else {
 				if (this.rand.nextInt(200) == 0) {
@@ -122,7 +122,7 @@ public class EntityBat extends EntityAmbientCreature {
 
 				if (this.worldObj.getClosestPlayerToEntity(this, 4.0D) != null) {
 					this.setIsBatHanging(false);
-					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, (int) this.posX, (int) this.posY,
+					this.worldObj.playAuxSFXAtEntity(null, 1015, (int) this.posX, (int) this.posY,
 							(int) this.posZ, 0);
 				}
 			}
@@ -241,7 +241,7 @@ public class EntityBat extends EntityAmbientCreature {
 				var5 = 7;
 			}
 
-			return var4 > this.rand.nextInt(var5) ? false : super.getCanSpawnHere();
+			return var4 <= this.rand.nextInt(var5) && super.getCanSpawnHere();
 		}
 	}
 

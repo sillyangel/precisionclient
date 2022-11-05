@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class ContainerDispenser extends Container {
-	private TileEntityDispenser tileEntityDispenser;
+	private final TileEntityDispenser tileEntityDispenser;
 
 	public ContainerDispenser(IInventory par1IInventory, TileEntityDispenser par2TileEntityDispenser) {
 		this.tileEntityDispenser = par2TileEntityDispenser;
@@ -50,7 +50,7 @@ public class ContainerDispenser extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

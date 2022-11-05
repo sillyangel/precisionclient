@@ -13,7 +13,7 @@ public class ComponentMineshaftCorridor extends StructureComponent {
 	 * A count of the different sections of this mine. The space between ceiling
 	 * supports.
 	 */
-	private int sectionCount;
+	private final int sectionCount;
 
 	public ComponentMineshaftCorridor(int par1, EaglercraftRandom par2Random, StructureBoundingBox par3StructureBoundingBox,
 			int par4) {
@@ -189,8 +189,8 @@ public class ComponentMineshaftCorridor extends StructureComponent {
 		if (par2StructureBoundingBox.isVecInside(var9, var10, var11) && par1World.getBlockId(var9, var10, var11) == 0) {
 			par1World.setBlock(var9, var10, var11, Block.rail.blockID,
 					this.getMetadataWithOffset(Block.rail.blockID, par3Random.nextBoolean() ? 1 : 0), 2);
-			EntityMinecartChest var12 = new EntityMinecartChest(par1World, (double) ((float) var9 + 0.5F),
-					(double) ((float) var10 + 0.5F), (double) ((float) var11 + 0.5F));
+			EntityMinecartChest var12 = new EntityMinecartChest(par1World, (float) var9 + 0.5F,
+					(float) var10 + 0.5F, (float) var11 + 0.5F);
 			WeightedRandomChestContent.generateChestContents(par3Random, par7ArrayOfWeightedRandomChestContent, var12,
 					par8);
 			par1World.spawnEntityInWorld(var12);
@@ -265,7 +265,7 @@ public class ComponentMineshaftCorridor extends StructureComponent {
 					this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 2, 0,
 							var10 - 1,
 							WeightedRandomChestContent.func_92080_a(StructureMineshaftPieces.func_78816_a(),
-									new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+									Item.enchantedBook.func_92114_b(par2Random)),
 							3 + par2Random.nextInt(4));
 				}
 
@@ -273,7 +273,7 @@ public class ComponentMineshaftCorridor extends StructureComponent {
 					this.generateStructureChestContents(par1World, par3StructureBoundingBox, par2Random, 0, 0,
 							var10 + 1,
 							WeightedRandomChestContent.func_92080_a(StructureMineshaftPieces.func_78816_a(),
-									new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+									Item.enchantedBook.func_92114_b(par2Random)),
 							3 + par2Random.nextInt(4));
 				}
 

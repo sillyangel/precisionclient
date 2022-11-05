@@ -19,7 +19,7 @@ public class BlockSilverfish extends Block {
 	public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5) {
 		if (!par1World.isRemote) {
 			EntitySilverfish var6 = new EntitySilverfish(par1World);
-			var6.setLocationAndAngles((double) par2 + 0.5D, (double) par3, (double) par4 + 0.5D, 0.0F, 0.0F);
+			var6.setLocationAndAngles((double) par2 + 0.5D, par3, (double) par4 + 0.5D, 0.0F, 0.0F);
 			par1World.spawnEntityInWorld(var6);
 			var6.spawnExplosionParticle();
 		}

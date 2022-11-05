@@ -52,7 +52,7 @@ public abstract class MobSpawnerBaseLogic {
 	public boolean canRun() {
 		return this.getSpawnerWorld().getClosestPlayer((double) this.getSpawnerX() + 0.5D,
 				(double) this.getSpawnerY() + 0.5D, (double) this.getSpawnerZ() + 0.5D,
-				(double) this.activatingRangeFromPlayer) != null;
+				this.activatingRangeFromPlayer) != null;
 	}
 
 	public void updateSpawner() {
@@ -60,9 +60,9 @@ public abstract class MobSpawnerBaseLogic {
 			double var5;
 
 			if (this.getSpawnerWorld().isRemote) {
-				double var1 = (double) ((float) this.getSpawnerX() + this.getSpawnerWorld().rand.nextFloat());
-				double var3 = (double) ((float) this.getSpawnerY() + this.getSpawnerWorld().rand.nextFloat());
-				var5 = (double) ((float) this.getSpawnerZ() + this.getSpawnerWorld().rand.nextFloat());
+				double var1 = (float) this.getSpawnerX() + this.getSpawnerWorld().rand.nextFloat();
+				double var3 = (float) this.getSpawnerY() + this.getSpawnerWorld().rand.nextFloat();
+				var5 = (float) this.getSpawnerZ() + this.getSpawnerWorld().rand.nextFloat();
 				this.getSpawnerWorld().spawnParticle("smoke", var1, var3, var5, 0.0D, 0.0D, 0.0D);
 				this.getSpawnerWorld().spawnParticle("flame", var1, var3, var5, 0.0D, 0.0D, 0.0D);
 
@@ -94,10 +94,10 @@ public abstract class MobSpawnerBaseLogic {
 
 					int var4 = this.getSpawnerWorld()
 							.getEntitiesWithinAABB(var13.getClass(), AxisAlignedBB.getAABBPool()
-									.getAABB((double) this.getSpawnerX(), (double) this.getSpawnerY(),
-											(double) this.getSpawnerZ(), (double) (this.getSpawnerX() + 1),
-											(double) (this.getSpawnerY() + 1), (double) (this.getSpawnerZ() + 1))
-									.expand((double) (this.spawnRange * 2), 4.0D, (double) (this.spawnRange * 2)))
+									.getAABB(this.getSpawnerX(), this.getSpawnerY(),
+											this.getSpawnerZ(), this.getSpawnerX() + 1,
+											this.getSpawnerY() + 1, this.getSpawnerZ() + 1)
+									.expand(this.spawnRange * 2, 4.0D, this.spawnRange * 2))
 							.size();
 
 					if (var4 >= this.maxNearbyEntities) {
@@ -108,7 +108,7 @@ public abstract class MobSpawnerBaseLogic {
 					var5 = (double) this.getSpawnerX()
 							+ (this.getSpawnerWorld().rand.nextDouble() - this.getSpawnerWorld().rand.nextDouble())
 									* (double) this.spawnRange;
-					double var7 = (double) (this.getSpawnerY() + this.getSpawnerWorld().rand.nextInt(3) - 1);
+					double var7 = this.getSpawnerY() + this.getSpawnerWorld().rand.nextInt(3) - 1;
 					double var9 = (double) this.getSpawnerZ()
 							+ (this.getSpawnerWorld().rand.nextDouble() - this.getSpawnerWorld().rand.nextDouble())
 									* (double) this.spawnRange;
@@ -220,7 +220,7 @@ public abstract class MobSpawnerBaseLogic {
 			this.setRandomMinecart(
 					new WeightedRandomMinecart(this, par1NBTTagCompound.getCompoundTag("SpawnData"), this.mobID));
 		} else {
-			this.setRandomMinecart((WeightedRandomMinecart) null);
+			this.setRandomMinecart(null);
 		}
 
 		if (par1NBTTagCompound.hasKey("MinSpawnDelay")) {

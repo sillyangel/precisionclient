@@ -11,12 +11,12 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 public class MapGenVillage extends MapGenStructure {
 	/** A list of all the biomes villages can spawn in. */
 	public static final List villageSpawnBiomes = Arrays
-			.asList(new BiomeGenBase[] { BiomeGenBase.plains, BiomeGenBase.desert });
+			.asList(BiomeGenBase.plains, BiomeGenBase.desert);
 
 	/** World terrain type, 0 for normal, 1 for flat map */
 	private int terrainType;
 	private int field_82665_g;
-	private int field_82666_h;
+	private final int field_82666_h;
 
 	public MapGenVillage() {
 		this.terrainType = 0;
@@ -31,9 +31,9 @@ public class MapGenVillage extends MapGenStructure {
 		while (var2.hasNext()) {
 			Entry var3 = (Entry) var2.next();
 
-			if (((String) var3.getKey()).equals("size")) {
+			if (var3.getKey().equals("size")) {
 				this.terrainType = MathHelper.parseIntWithDefaultAndMax((String) var3.getValue(), this.terrainType, 0);
-			} else if (((String) var3.getKey()).equals("distance")) {
+			} else if (var3.getKey().equals("distance")) {
 				this.field_82665_g = MathHelper.parseIntWithDefaultAndMax((String) var3.getValue(), this.field_82665_g,
 						this.field_82666_h + 1);
 			}
@@ -64,9 +64,7 @@ public class MapGenVillage extends MapGenStructure {
 			boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0,
 					villageSpawnBiomes);
 
-			if (var8) {
-				return true;
-			}
+			return var8;
 		}
 
 		return false;

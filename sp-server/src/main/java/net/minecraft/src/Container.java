@@ -13,7 +13,7 @@ public abstract class Container {
 	/** the list of all slots in the inventory */
 	public List inventorySlots = new ArrayList();
 	public int windowId = 0;
-	private short transactionID = 0;
+	private final short transactionID = 0;
 	private int field_94535_f = -1;
 	private int field_94536_g = 0;
 	private final Set field_94537_h = new HashSet();
@@ -22,7 +22,7 @@ public abstract class Container {
 	 * list of all people that need to be notified when this craftinventory changes
 	 */
 	protected List crafters = new ArrayList();
-	private Set playerList = new HashSet();
+	private final Set playerList = new HashSet();
 
 	/**
 	 * Adds an item slot to this container
@@ -30,7 +30,7 @@ public abstract class Container {
 	protected Slot addSlotToContainer(Slot par1Slot) {
 		par1Slot.slotNumber = this.inventorySlots.size();
 		this.inventorySlots.add(par1Slot);
-		this.inventoryItemStacks.add((Object) null);
+		this.inventoryItemStacks.add(null);
 		return par1Slot;
 	}
 
@@ -194,14 +194,14 @@ public abstract class Container {
 					if (var6.getItemStack() != null && par1 == -999) {
 						if (par2 == 0) {
 							par4EntityPlayer.dropPlayerItem(var6.getItemStack());
-							var6.setItemStack((ItemStack) null);
+							var6.setItemStack(null);
 						}
 
 						if (par2 == 1) {
 							par4EntityPlayer.dropPlayerItem(var6.getItemStack().splitStack(1));
 
 							if (var6.getItemStack().stackSize == 0) {
-								var6.setItemStack((ItemStack) null);
+								var6.setItemStack(null);
 							}
 						}
 					}
@@ -250,7 +250,7 @@ public abstract class Container {
 								var16.putStack(var20.splitStack(var19));
 
 								if (var20.stackSize == 0) {
-									var6.setItemStack((ItemStack) null);
+									var6.setItemStack(null);
 								}
 							}
 						} else if (var16.canTakeStack(par4EntityPlayer)) {
@@ -260,7 +260,7 @@ public abstract class Container {
 								var6.setItemStack(var22);
 
 								if (var17.stackSize == 0) {
-									var16.putStack((ItemStack) null);
+									var16.putStack(null);
 								}
 
 								var16.onPickupFromSlot(par4EntityPlayer, var6.getItemStack());
@@ -280,7 +280,7 @@ public abstract class Container {
 									var20.splitStack(var19);
 
 									if (var20.stackSize == 0) {
-										var6.setItemStack((ItemStack) null);
+										var6.setItemStack(null);
 									}
 
 									var17.stackSize += var19;
@@ -298,7 +298,7 @@ public abstract class Container {
 									var17 = var16.decrStackSize(var19);
 
 									if (var17.stackSize == 0) {
-										var16.putStack((ItemStack) null);
+										var16.putStack(null);
 									}
 
 									var16.onPickupFromSlot(par4EntityPlayer, var6.getItemStack());
@@ -330,7 +330,7 @@ public abstract class Container {
 							if (var19 > -1) {
 								var6.addItemStackToInventory(var17);
 								var16.decrStackSize(var22.stackSize);
-								var16.putStack((ItemStack) null);
+								var16.putStack(null);
 								var16.onPickupFromSlot(par4EntityPlayer, var22);
 							}
 						} else {
@@ -339,7 +339,7 @@ public abstract class Container {
 							var16.onPickupFromSlot(par4EntityPlayer, var22);
 						}
 					} else if (!var16.getHasStack() && var17 != null && var16.isItemValid(var17)) {
-						var6.setInventorySlotContents(par2, (ItemStack) null);
+						var6.setInventorySlotContents(par2, null);
 						var16.putStack(var17);
 					}
 				}
@@ -383,7 +383,7 @@ public abstract class Container {
 								var17.stackSize += var14;
 
 								if (var15.stackSize <= 0) {
-									var24.putStack((ItemStack) null);
+									var24.putStack(null);
 								}
 
 								var24.onPickupFromSlot(par4EntityPlayer, var15);
@@ -415,7 +415,7 @@ public abstract class Container {
 
 		if (var2.getItemStack() != null) {
 			par1EntityPlayer.dropPlayerItem(var2.getItemStack());
-			var2.setItemStack((ItemStack) null);
+			var2.setItemStack(null);
 		}
 	}
 

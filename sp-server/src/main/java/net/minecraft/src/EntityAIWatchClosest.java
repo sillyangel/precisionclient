@@ -1,14 +1,14 @@
 package net.minecraft.src;
 
 public class EntityAIWatchClosest extends EntityAIBase {
-	private EntityLiving theWatcher;
+	private final EntityLiving theWatcher;
 
 	/** The closest entity which is being watched by this one. */
 	protected Entity closestEntity;
-	private float field_75333_c;
+	private final float field_75333_c;
 	private int lookTime;
-	private float field_75331_e;
-	private Class watchedClass;
+	private final float field_75331_e;
+	private final Class watchedClass;
 
 	public EntityAIWatchClosest(EntityLiving par1EntityLiving, Class par2Class, float par3) {
 		this.theWatcher = par1EntityLiving;
@@ -35,11 +35,11 @@ public class EntityAIWatchClosest extends EntityAIBase {
 		} else {
 			if (this.watchedClass == EntityPlayer.class) {
 				this.closestEntity = this.theWatcher.worldObj.getClosestPlayerToEntity(this.theWatcher,
-						(double) this.field_75333_c);
+						this.field_75333_c);
 			} else {
 				this.closestEntity = this.theWatcher.worldObj.findNearestEntityWithinAABB(this.watchedClass,
-						this.theWatcher.boundingBox.expand((double) this.field_75333_c, 3.0D,
-								(double) this.field_75333_c),
+						this.theWatcher.boundingBox.expand(this.field_75333_c, 3.0D,
+								this.field_75333_c),
 						this.theWatcher);
 			}
 
@@ -51,11 +51,8 @@ public class EntityAIWatchClosest extends EntityAIBase {
 	 * Returns whether an in-progress EntityAIBase should continue executing
 	 */
 	public boolean continueExecuting() {
-		return !this.closestEntity.isEntityAlive() ? false
-				: (this.theWatcher
-						.getDistanceSqToEntity(this.closestEntity) > (double) (this.field_75333_c * this.field_75333_c)
-								? false
-								: this.lookTime > 0);
+		return this.closestEntity.isEntityAlive() && (!(this.theWatcher
+				.getDistanceSqToEntity(this.closestEntity) > (double) (this.field_75333_c * this.field_75333_c)) && this.lookTime > 0);
 	}
 
 	/**

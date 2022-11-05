@@ -81,7 +81,7 @@ public class ComponentScatteredFeatureSwampHut extends ComponentScatteredFeature
 				if (par3StructureBoundingBox.isVecInside(var8, var9, var10)) {
 					this.hasWitch = true;
 					EntityWitch var11 = new EntityWitch(par1World);
-					var11.setLocationAndAngles((double) var8 + 0.5D, (double) var9, (double) var10 + 0.5D, 0.0F, 0.0F);
+					var11.setLocationAndAngles((double) var8 + 0.5D, var9, (double) var10 + 0.5D, 0.0F, 0.0F);
 					var11.initCreature();
 					par1World.spawnEntityInWorld(var11);
 				}

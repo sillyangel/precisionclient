@@ -10,7 +10,7 @@ public class EntitySpider extends EntityMob {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataWatcher.addObject(16, Byte.valueOf((byte) 0));
 	}
 
 	/**
@@ -145,7 +145,7 @@ public class EntitySpider extends EntityMob {
 	}
 
 	public boolean isPotionApplicable(PotionEffect par1PotionEffect) {
-		return par1PotionEffect.getPotionID() == Potion.poison.id ? false : super.isPotionApplicable(par1PotionEffect);
+		return par1PotionEffect.getPotionID() != Potion.poison.id && super.isPotionApplicable(par1PotionEffect);
 	}
 
 	/**

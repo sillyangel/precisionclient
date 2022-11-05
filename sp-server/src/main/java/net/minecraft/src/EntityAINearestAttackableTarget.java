@@ -11,7 +11,7 @@ public class EntityAINearestAttackableTarget extends EntityAITarget {
 	private final IEntitySelector field_82643_g;
 
 	/** Instance of EntityAINearestAttackableTargetSorter. */
-	private EntityAINearestAttackableTargetSorter theNearestAttackableTargetSorter;
+	private final EntityAINearestAttackableTargetSorter theNearestAttackableTargetSorter;
 
 	public EntityAINearestAttackableTarget(EntityLiving par1EntityLiving, Class par2Class, float par3, int par4,
 			boolean par5) {
@@ -20,7 +20,7 @@ public class EntityAINearestAttackableTarget extends EntityAITarget {
 
 	public EntityAINearestAttackableTarget(EntityLiving par1EntityLiving, Class par2Class, float par3, int par4,
 			boolean par5, boolean par6) {
-		this(par1EntityLiving, par2Class, par3, par4, par5, par6, (IEntitySelector) null);
+		this(par1EntityLiving, par2Class, par3, par4, par5, par6, null);
 	}
 
 	public EntityAINearestAttackableTarget(EntityLiving par1, Class par2, float par3, int par4, boolean par5,
@@ -43,7 +43,7 @@ public class EntityAINearestAttackableTarget extends EntityAITarget {
 		} else {
 			if (this.targetClass == EntityPlayer.class) {
 				EntityPlayer var1 = this.taskOwner.worldObj.getClosestVulnerablePlayerToEntity(this.taskOwner,
-						(double) this.targetDistance);
+						this.targetDistance);
 
 				if (this.isSuitableTarget(var1, false)) {
 					this.targetEntity = var1;
@@ -51,8 +51,8 @@ public class EntityAINearestAttackableTarget extends EntityAITarget {
 				}
 			} else {
 				List var5 = this.taskOwner.worldObj.selectEntitiesWithinAABB(this.targetClass,
-						this.taskOwner.boundingBox.expand((double) this.targetDistance, 4.0D,
-								(double) this.targetDistance),
+						this.taskOwner.boundingBox.expand(this.targetDistance, 4.0D,
+								this.targetDistance),
 						this.field_82643_g);
 				Collections.sort(var5, this.theNearestAttackableTargetSorter);
 				Iterator var2 = var5.iterator();

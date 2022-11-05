@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
 public class EntityAIBeg extends EntityAIBase {
-	private EntityWolf theWolf;
+	private final EntityWolf theWolf;
 	private EntityPlayer thePlayer;
-	private World worldObject;
-	private float minPlayerDistance;
+	private final World worldObject;
+	private final float minPlayerDistance;
 	private int field_75384_e;
 
 	public EntityAIBeg(EntityWolf par1EntityWolf, float par2) {
@@ -18,18 +18,16 @@ public class EntityAIBeg extends EntityAIBase {
 	 * Returns whether the EntityAIBase should begin execution.
 	 */
 	public boolean shouldExecute() {
-		this.thePlayer = this.worldObject.getClosestPlayerToEntity(this.theWolf, (double) this.minPlayerDistance);
-		return this.thePlayer == null ? false : this.hasPlayerGotBoneInHand(this.thePlayer);
+		this.thePlayer = this.worldObject.getClosestPlayerToEntity(this.theWolf, this.minPlayerDistance);
+		return this.thePlayer != null && this.hasPlayerGotBoneInHand(this.thePlayer);
 	}
 
 	/**
 	 * Returns whether an in-progress EntityAIBase should continue executing
 	 */
 	public boolean continueExecuting() {
-		return !this.thePlayer.isEntityAlive() ? false
-				: (this.theWolf.getDistanceSqToEntity(
-						this.thePlayer) > (double) (this.minPlayerDistance * this.minPlayerDistance) ? false
-								: this.field_75384_e > 0 && this.hasPlayerGotBoneInHand(this.thePlayer));
+		return this.thePlayer.isEntityAlive() && (!(this.theWolf.getDistanceSqToEntity(
+				this.thePlayer) > (double) (this.minPlayerDistance * this.minPlayerDistance)) && this.field_75384_e > 0 && this.hasPlayerGotBoneInHand(this.thePlayer));
 	}
 
 	/**
@@ -63,8 +61,6 @@ public class EntityAIBeg extends EntityAIBase {
 	 */
 	private boolean hasPlayerGotBoneInHand(EntityPlayer par1EntityPlayer) {
 		ItemStack var2 = par1EntityPlayer.inventory.getCurrentItem();
-		return var2 == null ? false
-				: (!this.theWolf.isTamed() && var2.itemID == Item.bone.itemID ? true
-						: this.theWolf.isBreedingItem(var2));
+		return var2 != null && (!this.theWolf.isTamed() && var2.itemID == Item.bone.itemID || this.theWolf.isBreedingItem(var2));
 	}
 }

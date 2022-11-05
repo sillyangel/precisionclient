@@ -134,13 +134,9 @@ public abstract class BlockRailBase extends Block {
 				var7 = var6 & 7;
 			}
 
-			boolean var8 = false;
+			boolean var8 = !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4);
 
-			if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) {
-				var8 = true;
-			}
-
-			if (var7 == 2 && !par1World.doesBlockHaveSolidTopSurface(par2 + 1, par3, par4)) {
+            if (var7 == 2 && !par1World.doesBlockHaveSolidTopSurface(par2 + 1, par3, par4)) {
 				var8 = true;
 			}
 

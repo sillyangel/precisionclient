@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenLakes extends WorldGenerator {
-	private int blockIndex;
+	private final int blockIndex;
 
 	public WorldGenLakes(int par1) {
 		this.blockIndex = par1;
@@ -13,7 +13,6 @@ public class WorldGenLakes extends WorldGenerator {
 		par3 -= 8;
 
 		for (par5 -= 8; par4 > 5 && par1World.isAirBlock(par3, par4, par5); --par4) {
-			;
 		}
 
 		if (par4 <= 4) {

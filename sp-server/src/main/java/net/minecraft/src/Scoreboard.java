@@ -30,10 +30,10 @@ public class Scoreboard {
 		ScoreObjective var3 = this.getObjective(par1Str);
 
 		if (var3 != null) {
-			throw new IllegalArgumentException("An objective with the name \'" + par1Str + "\' already exists!");
+			throw new IllegalArgumentException("An objective with the name '" + par1Str + "' already exists!");
 		} else {
 			var3 = new ScoreObjective(this, par1Str, par2ScoreObjectiveCriteria);
-			Object var4 = (List) this.field_96543_b.get(par2ScoreObjectiveCriteria);
+			Object var4 = this.field_96543_b.get(par2ScoreObjectiveCriteria);
 
 			if (var4 == null) {
 				var4 = new ArrayList();
@@ -53,7 +53,7 @@ public class Scoreboard {
 	}
 
 	public Score func_96529_a(String par1Str, ScoreObjective par2ScoreObjective) {
-		Object var3 = (Map) this.field_96544_c.get(par1Str);
+		Object var3 = this.field_96544_c.get(par1Str);
 
 		if (var3 == null) {
 			var3 = new HashMap();
@@ -120,7 +120,7 @@ public class Scoreboard {
 	}
 
 	public Map func_96510_d(String par1Str) {
-		Object var2 = (Map) this.field_96544_c.get(par1Str);
+		Object var2 = this.field_96544_c.get(par1Str);
 
 		if (var2 == null) {
 			var2 = new HashMap();
@@ -134,7 +134,7 @@ public class Scoreboard {
 
 		for (int var2 = 0; var2 < 3; ++var2) {
 			if (this.func_96539_a(var2) == par1ScoreObjective) {
-				this.func_96530_a(var2, (ScoreObjective) null);
+				this.func_96530_a(var2, null);
 			}
 		}
 
@@ -170,7 +170,7 @@ public class Scoreboard {
 		ScorePlayerTeam var2 = this.func_96508_e(par1Str);
 
 		if (var2 != null) {
-			throw new IllegalArgumentException("An objective with the name \'" + par1Str + "\' already exists!");
+			throw new IllegalArgumentException("An objective with the name '" + par1Str + "' already exists!");
 		} else {
 			var2 = new ScorePlayerTeam(this, par1Str);
 			this.field_96542_e.put(par1Str, var2);
@@ -218,8 +218,8 @@ public class Scoreboard {
 	public void removePlayerFromTeam(String par1Str, ScorePlayerTeam par2ScorePlayerTeam) {
 		if (this.getPlayersTeam(par1Str) != par2ScorePlayerTeam) {
 			throw new IllegalStateException(
-					"Player is either on another team or not on any team. Cannot remove from team \'"
-							+ par2ScorePlayerTeam.func_96661_b() + "\'.");
+					"Player is either on another team or not on any team. Cannot remove from team '"
+							+ par2ScorePlayerTeam.func_96661_b() + "'.");
 		} else {
 			this.teamMemberships.remove(par1Str);
 			par2ScorePlayerTeam.getMembershipCollection().remove(par1Str);

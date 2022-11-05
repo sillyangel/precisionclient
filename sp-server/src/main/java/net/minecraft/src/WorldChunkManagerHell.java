@@ -7,11 +7,11 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldChunkManagerHell extends WorldChunkManager {
 	/** The biome generator object. */
-	private BiomeGenBase biomeGenerator;
-	private float hellTemperature;
+	private final BiomeGenBase biomeGenerator;
+	private final float hellTemperature;
 
 	/** The rainfall in the world */
-	private float rainfall;
+	private final float rainfall;
 
 	public WorldChunkManagerHell(BiomeGenBase par1BiomeGenBase, float par2, float par3) {
 		this.biomeGenerator = par1BiomeGenBase;

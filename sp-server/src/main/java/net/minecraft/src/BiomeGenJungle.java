@@ -16,10 +16,10 @@ public class BiomeGenJungle extends BiomeGenBase {
 	 * Gets a WorldGen appropriate for this biome.
 	 */
 	public WorldGenerator getRandomWorldGenForTrees(EaglercraftRandom par1Random) {
-		return (WorldGenerator) (par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree
+		return par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree
 				: (par1Random.nextInt(2) == 0 ? new WorldGenShrub(3, 0)
 						: (par1Random.nextInt(3) == 0 ? new WorldGenHugeTrees(false, 10 + par1Random.nextInt(20), 3, 3)
-								: new WorldGenTrees(false, 4 + par1Random.nextInt(7), 3, 3, true))));
+								: new WorldGenTrees(false, 4 + par1Random.nextInt(7), 3, 3, true)));
 	}
 
 	/**

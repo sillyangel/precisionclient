@@ -4,10 +4,10 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenSand extends WorldGenerator {
 	/** Stores ID for WorldGenSand */
-	private int sandID;
+	private final int sandID;
 
 	/** The maximum radius used when generating a patch of blocks. */
-	private int radius;
+	private final int radius;
 
 	public WorldGenSand(int par1, int par2) {
 		this.sandID = par2;

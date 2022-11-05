@@ -20,11 +20,11 @@ public class CommandHelp extends CommandBase {
 	}
 
 	public String getCommandUsage(ICommandSender par1ICommandSender) {
-		return par1ICommandSender.translateString("commands.help.usage", new Object[0]);
+		return par1ICommandSender.translateString("commands.help.usage");
 	}
 
 	public List getCommandAliases() {
-		return Arrays.asList(new String[] { "?" });
+		return Arrays.asList("?");
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
@@ -43,7 +43,7 @@ public class CommandHelp extends CommandBase {
 			var9 = (ICommand) var8.get(par2ArrayOfStr[0]);
 
 			if (var9 != null) {
-				throw new WrongUsageException(var9.getCommandUsage(par1ICommandSender), new Object[0]);
+				throw new WrongUsageException(var9.getCommandUsage(par1ICommandSender));
 			}
 
 			throw new CommandNotFoundException();

@@ -183,9 +183,8 @@ public class TileEntityChest extends TileEntity implements IInventory {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false
-				: par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-						(double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) == this && par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
+				(double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	/**
@@ -283,8 +282,7 @@ public class TileEntityChest extends TileEntity implements IInventory {
 
 	private boolean func_94044_a(int par1, int par2, int par3) {
 		Block var4 = Block.blocksList[this.worldObj.getBlockId(par1, par2, par3)];
-		return var4 != null && var4 instanceof BlockChest ? ((BlockChest) var4).isTrapped == this.func_98041_l()
-				: false;
+		return var4 != null && var4 instanceof BlockChest && ((BlockChest) var4).isTrapped == this.func_98041_l();
 	}
 
 	/**
@@ -303,10 +301,10 @@ public class TileEntityChest extends TileEntity implements IInventory {
 			this.numUsingPlayers = 0;
 			var1 = 5.0F;
 			List var2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
-					AxisAlignedBB.getAABBPool().getAABB((double) ((float) this.xCoord - var1),
-							(double) ((float) this.yCoord - var1), (double) ((float) this.zCoord - var1),
-							(double) ((float) (this.xCoord + 1) + var1), (double) ((float) (this.yCoord + 1) + var1),
-							(double) ((float) (this.zCoord + 1) + var1)));
+					AxisAlignedBB.getAABBPool().getAABB((float) this.xCoord - var1,
+							(float) this.yCoord - var1, (float) this.zCoord - var1,
+							(float) (this.xCoord + 1) + var1, (float) (this.yCoord + 1) + var1,
+							(float) (this.zCoord + 1) + var1));
 			Iterator var3 = var2.iterator();
 
 			while (var3.hasNext()) {

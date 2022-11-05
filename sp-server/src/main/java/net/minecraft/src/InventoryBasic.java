@@ -3,11 +3,11 @@ package net.minecraft.src;
 import java.util.List;
 
 public class InventoryBasic implements IInventory {
-	private String inventoryTitle;
-	private int slotsCount;
-	private ItemStack[] inventoryContents;
+	private final String inventoryTitle;
+	private final int slotsCount;
+	private final ItemStack[] inventoryContents;
 	private List field_70480_d;
-	private boolean field_94051_e;
+	private final boolean field_94051_e;
 
 	public InventoryBasic(String par1Str, boolean par2, int par3) {
 		this.inventoryTitle = par1Str;

@@ -18,14 +18,14 @@ public class EnchantmentHelper {
 	 * player.
 	 */
 	private static final EnchantmentModifierDamage enchantmentModifierDamage = new EnchantmentModifierDamage(
-			(Empty3) null);
+			null);
 
 	/**
 	 * Used to calculate the (magic) extra damage done by enchantments on current
 	 * equipped item of player.
 	 */
 	private static final EnchantmentModifierLiving enchantmentModifierLiving = new EnchantmentModifierLiving(
-			(Empty3) null);
+			null);
 
 	/**
 	 * Returns the level of enchantment on the ItemStack passed.

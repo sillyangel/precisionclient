@@ -85,7 +85,7 @@ public abstract class MapGenStructure extends MapGenBase {
 		long var9 = (long) (par2 >> 4) * var5;
 		long var11 = (long) (par4 >> 4) * var7;
 		this.rand.setSeed(var9 ^ var11 ^ par1World.getSeed());
-		this.recursiveGenerate(par1World, par2 >> 4, par4 >> 4, 0, 0, (byte[]) null);
+		this.recursiveGenerate(par1World, par2 >> 4, par4 >> 4, 0, 0, null);
 		double var13 = Double.MAX_VALUE;
 		ChunkPosition var15 = null;
 		Iterator var16 = this.structureMap.values().iterator();
@@ -104,7 +104,7 @@ public abstract class MapGenStructure extends MapGenBase {
 				var20 = var19.x - par2;
 				var21 = var19.y - par3;
 				var22 = var19.z - par4;
-				var23 = (double) (var20 + var20 * var21 * var21 + var22 * var22);
+				var23 = var20 + var20 * var21 * var21 + var22 * var22;
 
 				if (var23 < var13) {
 					var13 = var23;
@@ -127,7 +127,7 @@ public abstract class MapGenStructure extends MapGenBase {
 					var20 = var19.x - par2;
 					var21 = var19.y - par3;
 					var22 = var19.z - par4;
-					var23 = (double) (var20 + var20 * var21 * var21 + var22 * var22);
+					var23 = var20 + var20 * var21 * var21 + var22 * var22;
 
 					if (var23 < var13) {
 						var13 = var23;

@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class EntityAIPanic extends EntityAIBase {
-	private EntityCreature theEntityCreature;
-	private float speed;
+	private final EntityCreature theEntityCreature;
+	private final float speed;
 	private double randPosX;
 	private double randPosY;
 	private double randPosZ;

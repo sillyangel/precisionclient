@@ -21,7 +21,7 @@ public class EntityBlaze extends EntityMob {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataWatcher.addObject(16, Byte.valueOf((byte) 0));
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class EntityBlaze extends EntityMob {
 
 				if (this.field_70846_g > 1) {
 					float var9 = MathHelper.sqrt_float(par2) * 0.5F;
-					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1009, (int) this.posX, (int) this.posY,
+					this.worldObj.playAuxSFXAtEntity(null, 1009, (int) this.posX, (int) this.posY,
 							(int) this.posZ, 0);
 
 					for (int var10 = 0; var10 < 1; ++var10) {

@@ -35,7 +35,7 @@ public class EntityItemFrame extends EntityHanging {
 
 		if (var1 != null && this.rand.nextFloat() < this.itemDropChance) {
 			var1 = var1.copy();
-			var1.setItemFrame((EntityItemFrame) null);
+			var1.setItemFrame(null);
 			this.entityDropItem(var1, 0.0F);
 		}
 	}
@@ -107,7 +107,7 @@ public class EntityItemFrame extends EntityHanging {
 
 				if (!par1EntityPlayer.capabilities.isCreativeMode && --var2.stackSize <= 0) {
 					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem,
-							(ItemStack) null);
+							null);
 				}
 			}
 		} else if (!this.worldObj.isRemote) {

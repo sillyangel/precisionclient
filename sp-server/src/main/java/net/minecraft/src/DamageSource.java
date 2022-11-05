@@ -170,9 +170,9 @@ public class DamageSource {
 		String var4 = var3 + ".player";
 		return var2 != null && StatCollector.func_94522_b(var4)
 				? StatCollector.translateToLocalFormatted(var4,
-						new Object[] { par1EntityLiving.getTranslatedEntityName(), var2.getTranslatedEntityName() })
+				par1EntityLiving.getTranslatedEntityName(), var2.getTranslatedEntityName())
 				: StatCollector.translateToLocalFormatted(var3,
-						new Object[] { par1EntityLiving.getTranslatedEntityName() });
+				par1EntityLiving.getTranslatedEntityName());
 	}
 
 	/**

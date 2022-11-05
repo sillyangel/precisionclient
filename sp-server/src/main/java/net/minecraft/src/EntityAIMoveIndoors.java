@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityAIMoveIndoors extends EntityAIBase {
-	private EntityCreature entityObj;
+	private final EntityCreature entityObj;
 	private VillageDoorInfo doorInfo;
 	private int insidePosX = -1;
 	private int insidePosZ = -1;
@@ -19,8 +19,8 @@ public class EntityAIMoveIndoors extends EntityAIBase {
 				&& !this.entityObj.worldObj.provider.hasNoSky) {
 			if (this.entityObj.getRNG().nextInt(50) != 0) {
 				return false;
-			} else if (this.insidePosX != -1 && this.entityObj.getDistanceSq((double) this.insidePosX,
-					this.entityObj.posY, (double) this.insidePosZ) < 4.0D) {
+			} else if (this.insidePosX != -1 && this.entityObj.getDistanceSq(this.insidePosX,
+					this.entityObj.posY, this.insidePosZ) < 4.0D) {
 				return false;
 			} else {
 				Village var1 = this.entityObj.worldObj.villageCollectionObj.findNearestVillage(
@@ -53,11 +53,11 @@ public class EntityAIMoveIndoors extends EntityAIBase {
 	public void startExecuting() {
 		this.insidePosX = -1;
 
-		if (this.entityObj.getDistanceSq((double) this.doorInfo.getInsidePosX(), (double) this.doorInfo.posY,
-				(double) this.doorInfo.getInsidePosZ()) > 256.0D) {
+		if (this.entityObj.getDistanceSq(this.doorInfo.getInsidePosX(), this.doorInfo.posY,
+				this.doorInfo.getInsidePosZ()) > 256.0D) {
 			Vec3 var1 = RandomPositionGenerator.findRandomTargetBlockTowards(this.entityObj, 14, 3,
 					this.entityObj.worldObj.getWorldVec3Pool().getVecFromPool(
-							(double) this.doorInfo.getInsidePosX() + 0.5D, (double) this.doorInfo.getInsidePosY(),
+							(double) this.doorInfo.getInsidePosX() + 0.5D, this.doorInfo.getInsidePosY(),
 							(double) this.doorInfo.getInsidePosZ() + 0.5D));
 
 			if (var1 != null) {
@@ -65,7 +65,7 @@ public class EntityAIMoveIndoors extends EntityAIBase {
 			}
 		} else {
 			this.entityObj.getNavigator().tryMoveToXYZ((double) this.doorInfo.getInsidePosX() + 0.5D,
-					(double) this.doorInfo.getInsidePosY(), (double) this.doorInfo.getInsidePosZ() + 0.5D, 0.3F);
+					this.doorInfo.getInsidePosY(), (double) this.doorInfo.getInsidePosZ() + 0.5D, 0.3F);
 		}
 	}
 

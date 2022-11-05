@@ -10,13 +10,13 @@ public class TileEntity {
 	 * A HashMap storing string names of classes mapping to the actual
 	 * java.lang.Class type.
 	 */
-	private static Map nameToClassMap = new HashMap();
+	private static final Map nameToClassMap = new HashMap();
 
 	/**
 	 * A HashMap storing the classes and mapping to the string names (reverse of
 	 * nameToClassMap).
 	 */
-	private static Map classToNameMap = new HashMap();
+	private static final Map classToNameMap = new HashMap();
 
 	/** The reference to the world. */
 	protected World worldObj;

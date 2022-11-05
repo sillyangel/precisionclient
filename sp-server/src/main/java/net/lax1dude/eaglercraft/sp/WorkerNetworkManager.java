@@ -20,12 +20,12 @@ import net.minecraft.src.Packet204ClientInfo;
 public class WorkerNetworkManager implements INetworkManager {
 	
 	private NetHandler theNetHandler;
-	private MinecraftServer minecraftServer;
-	private String ipcChannel;
+	private final MinecraftServer minecraftServer;
+	private final String ipcChannel;
 	private boolean isAlive;
-	private WorkerListenThread listenThread;
+	private final WorkerListenThread listenThread;
 	
-	private LinkedList<byte[]> frags = new LinkedList();
+	private final LinkedList<byte[]> frags = new LinkedList();
 	
 	public WorkerNetworkManager(String ipcChannel, MinecraftServer srv, WorkerListenThread th) {
 		this.ipcChannel = ipcChannel;
@@ -54,7 +54,6 @@ public class WorkerNetworkManager implements INetworkManager {
 		}catch(IOException e) {
 			System.err.println("Failed to serialize minecraft packet '" + var1.getPacketId() + "' for IPC channel 'NET|" + ipcChannel + "'");
 			e.printStackTrace();
-			return;
 		}
 	}
 	
@@ -103,7 +102,7 @@ public class WorkerNetworkManager implements INetworkManager {
 				}
 				
 			}catch(IOException ex) {
-				System.err.println("Could not deserialize a " + pktBytes.length + " byte long minecraft packet of type '" + (pktBytes.length <= 0 ? -1 : (int)(pktBytes[0] & 0xFF)) + "' on channel 'NET|" + ipcChannel + "'");
+				System.err.println("Could not deserialize a " + pktBytes.length + " byte long minecraft packet of type '" + (pktBytes.length <= 0 ? -1 : (pktBytes[0] & 0xFF)) + "' on channel 'NET|" + ipcChannel + "'");
 			}
 		}
 		

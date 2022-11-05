@@ -11,7 +11,7 @@ class PlayerInstance {
 	private final ChunkCoordIntPair currentChunk;
 
 	/** array of blocks to update this tick */
-	private short[] blocksToUpdate;
+	private final short[] blocksToUpdate;
 
 	/** the number of blocks that need to be updated next tick */
 	private int numBlocksToUpdate;

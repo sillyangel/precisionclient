@@ -70,11 +70,11 @@ public abstract class EntityMinecart extends Entity {
 	}
 
 	protected void entityInit() {
-		this.dataWatcher.addObject(17, new Integer(0));
-		this.dataWatcher.addObject(18, new Integer(1));
-		this.dataWatcher.addObject(19, new Integer(0));
-		this.dataWatcher.addObject(20, new Integer(0));
-		this.dataWatcher.addObject(21, new Integer(6));
+		this.dataWatcher.addObject(17, Integer.valueOf(0));
+		this.dataWatcher.addObject(18, Integer.valueOf(1));
+		this.dataWatcher.addObject(19, Integer.valueOf(0));
+		this.dataWatcher.addObject(20, Integer.valueOf(0));
+		this.dataWatcher.addObject(21, Integer.valueOf(6));
 		this.dataWatcher.addObject(22, Byte.valueOf((byte) 0));
 	}
 
@@ -304,7 +304,7 @@ public abstract class EntityMinecart extends Entity {
 				}
 			}
 
-			double var13 = (double) MathHelper.wrapAngleTo180_float(this.rotationYaw - this.prevRotationYaw);
+			double var13 = MathHelper.wrapAngleTo180_float(this.rotationYaw - this.prevRotationYaw);
 
 			if (var13 < -170.0D || var13 >= 170.0D) {
 				this.rotationYaw += 180.0F;
@@ -377,7 +377,7 @@ public abstract class EntityMinecart extends Entity {
 	protected void updateOnTrack(int par1, int par2, int par3, double par4, double par6, int par8, int par9) {
 		this.fallDistance = 0.0F;
 		Vec3 var10 = this.func_70489_a(this.posX, this.posY, this.posZ);
-		this.posY = (double) par2;
+		this.posY = par2;
 		boolean var11 = false;
 		boolean var12 = false;
 
@@ -391,7 +391,7 @@ public abstract class EntityMinecart extends Entity {
 		}
 
 		if (par9 >= 2 && par9 <= 5) {
-			this.posY = (double) (par2 + 1);
+			this.posY = par2 + 1;
 		}
 
 		if (par9 == 2) {
@@ -411,8 +411,8 @@ public abstract class EntityMinecart extends Entity {
 		}
 
 		int[][] var13 = matrix[par9];
-		double var14 = (double) (var13[1][0] - var13[0][0]);
-		double var16 = (double) (var13[1][2] - var13[0][2]);
+		double var14 = var13[1][0] - var13[0][0];
+		double var16 = var13[1][2] - var13[0][2];
 		double var18 = Math.sqrt(var14 * var14 + var16 * var16);
 		double var20 = this.motionX * var14 + this.motionZ * var16;
 
@@ -589,14 +589,14 @@ public abstract class EntityMinecart extends Entity {
 
 		if (BlockRailBase.isRailBlock(var10)) {
 			int var11 = this.worldObj.getBlockMetadata(var7, var8, var9);
-			par3 = (double) var8;
+			par3 = var8;
 
 			if (((BlockRailBase) Block.blocksList[var10]).isPowered()) {
 				var11 &= 7;
 			}
 
 			if (var11 >= 2 && var11 <= 5) {
-				par3 = (double) (var8 + 1);
+				par3 = var8 + 1;
 			}
 
 			int[][] var12 = matrix[var11];
@@ -692,7 +692,7 @@ public abstract class EntityMinecart extends Entity {
 				double var6 = var2 * var2 + var4 * var4;
 
 				if (var6 >= 9.999999747378752E-5D) {
-					var6 = (double) MathHelper.sqrt_double(var6);
+					var6 = MathHelper.sqrt_double(var6);
 					var2 /= var6;
 					var4 /= var6;
 					double var8 = 1.0D / var6;
@@ -705,8 +705,8 @@ public abstract class EntityMinecart extends Entity {
 					var4 *= var8;
 					var2 *= 0.10000000149011612D;
 					var4 *= 0.10000000149011612D;
-					var2 *= (double) (1.0F - this.entityCollisionReduction);
-					var4 *= (double) (1.0F - this.entityCollisionReduction);
+					var2 *= 1.0F - this.entityCollisionReduction;
+					var4 *= 1.0F - this.entityCollisionReduction;
 					var2 *= 0.5D;
 					var4 *= 0.5D;
 
@@ -715,8 +715,8 @@ public abstract class EntityMinecart extends Entity {
 						double var12 = par1Entity.posZ - this.posZ;
 						Vec3 var14 = this.worldObj.getWorldVec3Pool().getVecFromPool(var10, 0.0D, var12).normalize();
 						Vec3 var15 = this.worldObj.getWorldVec3Pool()
-								.getVecFromPool((double) MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F),
-										0.0D, (double) MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F))
+								.getVecFromPool(MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F),
+										0.0D, MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F))
 								.normalize();
 						double var16 = Math.abs(var14.dotProduct(var15));
 

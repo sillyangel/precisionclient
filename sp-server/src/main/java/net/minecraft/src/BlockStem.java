@@ -12,7 +12,7 @@ public class BlockStem extends BlockFlower {
 		this.setTickRandomly(true);
 		float var3 = 0.125F;
 		this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.25F, 0.5F + var3);
-		this.setCreativeTab((CreativeTabs) null);
+		this.setCreativeTab(null);
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class BlockStem extends BlockFlower {
 	 * Updates the blocks bounds based on its current state. Args: world, x, y, z
 	 */
 	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
-		this.maxY = (double) ((float) (par1IBlockAccess.getBlockMetadata(par2, par3, par4) * 2 + 2) / 16.0F);
+		this.maxY = (float) (par1IBlockAccess.getBlockMetadata(par2, par3, par4) * 2 + 2) / 16.0F;
 		float var5 = 0.125F;
 		this.setBlockBounds(0.5F - var5, 0.0F, 0.5F - var5, 0.5F + var5, (float) this.maxY, 0.5F + var5);
 	}

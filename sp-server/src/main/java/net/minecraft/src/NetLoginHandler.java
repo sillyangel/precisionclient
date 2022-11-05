@@ -11,7 +11,7 @@ import net.minecraft.server.MinecraftServer;
 
 public class NetLoginHandler extends NetHandler {
 	/** The Random object used to generate serverId hex strings. */
-	private static EaglercraftRandom rand = new EaglercraftRandom();
+	private static final EaglercraftRandom rand = new EaglercraftRandom();
 
 	/** Reference to the MinecraftServer object. */
 	private final MinecraftServer mcServer;
@@ -168,9 +168,9 @@ public class NetLoginHandler extends NetHandler {
 			String var3 = null;
 
 			if (par1Packet254ServerPing.readSuccessfully == 1) {
-				List var4 = Arrays.asList(new Serializable[] { Integer.valueOf(1), Integer.valueOf(61),
+				List var4 = Arrays.asList(Integer.valueOf(1), Integer.valueOf(61),
 						this.mcServer.getMinecraftVersion(), this.mcServer.getMOTD(),
-						Integer.valueOf(var2.getCurrentPlayerCount()), Integer.valueOf(var2.getMaxPlayers()) });
+						Integer.valueOf(var2.getCurrentPlayerCount()), Integer.valueOf(var2.getMaxPlayers()));
 				Object var6;
 
 				for (Iterator var5 = var4.iterator(); var5

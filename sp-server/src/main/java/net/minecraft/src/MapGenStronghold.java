@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class MapGenStronghold extends MapGenStructure {
-	private BiomeGenBase[] allowedBiomeGenBases;
+	private final BiomeGenBase[] allowedBiomeGenBases;
 
 	/**
 	 * is spawned false and set true once the defined BiomeGenBases were compared
@@ -44,12 +44,12 @@ public class MapGenStronghold extends MapGenStructure {
 		while (var2.hasNext()) {
 			Entry var3 = (Entry) var2.next();
 
-			if (((String) var3.getKey()).equals("distance")) {
+			if (var3.getKey().equals("distance")) {
 				this.field_82671_h = MathHelper.func_82713_a((String) var3.getValue(), this.field_82671_h, 1.0D);
-			} else if (((String) var3.getKey()).equals("count")) {
+			} else if (var3.getKey().equals("count")) {
 				this.structureCoords = new ChunkCoordIntPair[MathHelper
 						.parseIntWithDefaultAndMax((String) var3.getValue(), this.structureCoords.length, 1)];
-			} else if (((String) var3.getKey()).equals("spread")) {
+			} else if (var3.getKey().equals("spread")) {
 				this.field_82672_i = MathHelper.parseIntWithDefaultAndMax((String) var3.getValue(), this.field_82672_i,
 						1);
 			}
@@ -130,7 +130,6 @@ public class MapGenStronghold extends MapGenStructure {
 				|| ((ComponentStrongholdStairs2) var3.getComponents()
 						.get(0)).strongholdPortalRoom == null; var3 = new StructureStrongholdStart(this.worldObj,
 								this.rand, par1, par2)) {
-			;
 		}
 
 		return var3;

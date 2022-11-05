@@ -2,8 +2,8 @@ package net.minecraft.src;
 
 public class EntityAITempt extends EntityAIBase {
 	/** The entity using this AI that is tempted by the player. */
-	private EntityCreature temptedEntity;
-	private float field_75282_b;
+	private final EntityCreature temptedEntity;
+	private final float field_75282_b;
 	private double field_75283_c;
 	private double field_75280_d;
 	private double field_75281_e;
@@ -25,13 +25,13 @@ public class EntityAITempt extends EntityAIBase {
 	 * This field saves the ID of the items that can be used to breed entities with
 	 * this behaviour.
 	 */
-	private int breedingFood;
+	private final int breedingFood;
 
 	/**
 	 * Whether the entity using this AI will be scared by the tempter's sudden
 	 * movement.
 	 */
-	private boolean scaredByPlayerMovement;
+	private final boolean scaredByPlayerMovement;
 	private boolean field_75286_m;
 
 	public EntityAITempt(EntityCreature par1EntityCreature, float par2, int par3, boolean par4) {
@@ -56,7 +56,7 @@ public class EntityAITempt extends EntityAIBase {
 				return false;
 			} else {
 				ItemStack var1 = this.temptingPlayer.getCurrentEquippedItem();
-				return var1 == null ? false : var1.itemID == this.breedingFood;
+				return var1 != null && var1.itemID == this.breedingFood;
 			}
 		}
 	}
@@ -82,8 +82,8 @@ public class EntityAITempt extends EntityAIBase {
 				this.field_75281_e = this.temptingPlayer.posZ;
 			}
 
-			this.field_75278_f = (double) this.temptingPlayer.rotationPitch;
-			this.field_75279_g = (double) this.temptingPlayer.rotationYaw;
+			this.field_75278_f = this.temptingPlayer.rotationPitch;
+			this.field_75279_g = this.temptingPlayer.rotationYaw;
 		}
 
 		return this.shouldExecute();

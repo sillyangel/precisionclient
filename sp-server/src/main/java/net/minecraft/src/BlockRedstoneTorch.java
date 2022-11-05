@@ -12,7 +12,7 @@ public class BlockRedstoneTorch extends BlockTorch {
 	private boolean torchActive = false;
 
 	/** Map of ArrayLists of RedstoneUpdateInfo. Key of map is World. */
-	private static Map redstoneUpdateInfoCache = new HashMap();
+	private static final Map redstoneUpdateInfoCache = new HashMap();
 
 	private boolean checkForBurnout(World par1World, int par2, int par3, int par4, boolean par5) {
 		if (!redstoneUpdateInfoCache.containsKey(par1World)) {
@@ -46,7 +46,7 @@ public class BlockRedstoneTorch extends BlockTorch {
 		super(par1);
 		this.torchActive = par2;
 		this.setTickRandomly(true);
-		this.setCreativeTab((CreativeTabs) null);
+		this.setCreativeTab(null);
 	}
 
 	/**
@@ -114,11 +114,7 @@ public class BlockRedstoneTorch extends BlockTorch {
 	 */
 	private boolean isIndirectlyPowered(World par1World, int par2, int par3, int par4) {
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
-		return var5 == 5 && par1World.getIndirectPowerOutput(par2, par3 - 1, par4, 0) ? true
-				: (var5 == 3 && par1World.getIndirectPowerOutput(par2, par3, par4 - 1, 2) ? true
-						: (var5 == 4 && par1World.getIndirectPowerOutput(par2, par3, par4 + 1, 3) ? true
-								: (var5 == 1 && par1World.getIndirectPowerOutput(par2 - 1, par3, par4, 4) ? true
-										: var5 == 2 && par1World.getIndirectPowerOutput(par2 + 1, par3, par4, 5))));
+		return var5 == 5 && par1World.getIndirectPowerOutput(par2, par3 - 1, par4, 0) || (var5 == 3 && par1World.getIndirectPowerOutput(par2, par3, par4 - 1, 2) || (var5 == 4 && par1World.getIndirectPowerOutput(par2, par3, par4 + 1, 3) || (var5 == 1 && par1World.getIndirectPowerOutput(par2 - 1, par3, par4, 4) || var5 == 2 && par1World.getIndirectPowerOutput(par2 + 1, par3, par4, 5))));
 	}
 
 	/**
@@ -139,8 +135,8 @@ public class BlockRedstoneTorch extends BlockTorch {
 						par1World.getBlockMetadata(par2, par3, par4), 3);
 
 				if (this.checkForBurnout(par1World, par2, par3, par4, true)) {
-					par1World.playSoundEffect((double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F),
-							(double) ((float) par4 + 0.5F), "random.fizz", 0.5F,
+					par1World.playSoundEffect((float) par2 + 0.5F, (float) par3 + 0.5F,
+							(float) par4 + 0.5F, "random.fizz", 0.5F,
 							2.6F + (par1World.rand.nextFloat() - par1World.rand.nextFloat()) * 0.8F);
 
 					for (int var8 = 0; var8 < 5; ++var8) {

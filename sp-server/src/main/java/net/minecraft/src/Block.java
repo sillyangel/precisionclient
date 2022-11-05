@@ -493,8 +493,7 @@ public class Block {
 
 	public static boolean isNormalCube(int par0) {
 		Block var1 = blocksList[par0];
-		return var1 == null ? false
-				: var1.blockMaterial.isOpaque() && var1.renderAsNormalBlock() && !var1.canProvidePower();
+		return var1 != null && var1.blockMaterial.isOpaque() && var1.renderAsNormalBlock() && !var1.canProvidePower();
 	}
 
 	/**
@@ -570,12 +569,12 @@ public class Block {
 	 * Sets the bounds of the block. minX, minY, minZ, maxX, maxY, maxZ
 	 */
 	protected final void setBlockBounds(float par1, float par2, float par3, float par4, float par5, float par6) {
-		this.minX = (double) par1;
-		this.minY = (double) par2;
-		this.minZ = (double) par3;
-		this.maxX = (double) par4;
-		this.maxY = (double) par5;
-		this.maxZ = (double) par6;
+		this.minX = par1;
+		this.minY = par2;
+		this.minZ = par3;
+		this.maxX = par4;
+		this.maxY = par5;
+		this.maxZ = par6;
 	}
 
 	/**
@@ -783,8 +782,8 @@ public class Block {
 	public MovingObjectPosition collisionRayTrace(World par1World, int par2, int par3, int par4, Vec3 par5Vec3,
 			Vec3 par6Vec3) {
 		this.setBlockBoundsBasedOnState(par1World, par2, par3, par4);
-		par5Vec3 = par5Vec3.addVector((double) (-par2), (double) (-par3), (double) (-par4));
-		par6Vec3 = par6Vec3.addVector((double) (-par2), (double) (-par3), (double) (-par4));
+		par5Vec3 = par5Vec3.addVector(-par2, -par3, -par4);
+		par6Vec3 = par6Vec3.addVector(-par2, -par3, -par4);
 		Vec3 var7 = par5Vec3.getIntermediateWithXValue(par6Vec3, this.minX);
 		Vec3 var8 = par5Vec3.getIntermediateWithXValue(par6Vec3, this.maxX);
 		Vec3 var9 = par5Vec3.getIntermediateWithYValue(par6Vec3, this.minY);
@@ -872,7 +871,7 @@ public class Block {
 			}
 
 			return new MovingObjectPosition(par2, par3, par4, var14,
-					var13.addVector((double) par2, (double) par3, (double) par4));
+					var13.addVector(par2, par3, par4));
 		}
 	}
 
@@ -880,27 +879,24 @@ public class Block {
 	 * Checks if a vector is within the Y and Z bounds of the block.
 	 */
 	private boolean isVecInsideYZBounds(Vec3 par1Vec3) {
-		return par1Vec3 == null ? false
-				: par1Vec3.yCoord >= this.minY && par1Vec3.yCoord <= this.maxY && par1Vec3.zCoord >= this.minZ
-						&& par1Vec3.zCoord <= this.maxZ;
+		return par1Vec3 != null && par1Vec3.yCoord >= this.minY && par1Vec3.yCoord <= this.maxY && par1Vec3.zCoord >= this.minZ
+				&& par1Vec3.zCoord <= this.maxZ;
 	}
 
 	/**
 	 * Checks if a vector is within the X and Z bounds of the block.
 	 */
 	private boolean isVecInsideXZBounds(Vec3 par1Vec3) {
-		return par1Vec3 == null ? false
-				: par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.zCoord >= this.minZ
-						&& par1Vec3.zCoord <= this.maxZ;
+		return par1Vec3 != null && par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.zCoord >= this.minZ
+				&& par1Vec3.zCoord <= this.maxZ;
 	}
 
 	/**
 	 * Checks if a vector is within the X and Y bounds of the block.
 	 */
 	private boolean isVecInsideXYBounds(Vec3 par1Vec3) {
-		return par1Vec3 == null ? false
-				: par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.yCoord >= this.minY
-						&& par1Vec3.yCoord <= this.maxY;
+		return par1Vec3 != null && par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.yCoord >= this.minY
+				&& par1Vec3.yCoord <= this.maxY;
 	}
 
 	/**
@@ -1247,10 +1243,7 @@ public class Block {
 	 * Static version of isAssociatedBlockID.
 	 */
 	public static boolean isAssociatedBlockID(int par0, int par1) {
-		return par0 == par1 ? true
-				: (par0 != 0 && par1 != 0 && blocksList[par0] != null && blocksList[par1] != null
-						? blocksList[par0].isAssociatedBlockID(par1)
-						: false);
+		return par0 == par1 || (par0 != 0 && par1 != 0 && blocksList[par0] != null && blocksList[par1] != null && blocksList[par0].isAssociatedBlockID(par1));
 	}
 
 	/**
@@ -1314,11 +1307,7 @@ public class Block {
 					blocksList[var0].initializeBlock();
 				}
 
-				boolean var1 = false;
-
-				if (var0 > 0 && blocksList[var0].getRenderType() == 10) {
-					var1 = true;
-				}
+				boolean var1 = var0 > 0 && blocksList[var0].getRenderType() == 10;
 
 				if (var0 > 0 && blocksList[var0] instanceof BlockHalfSlab) {
 					var1 = true;

@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class ComponentScatteredFeatureDesertPyramid extends ComponentScatteredFeature {
-	private boolean[] field_74940_h = new boolean[4];
+	private final boolean[] field_74940_h = new boolean[4];
 
 	/** List of items to generate in chests of Temples. */
 	private static final WeightedRandomChestContent[] itemsToGenerateInTemple = new WeightedRandomChestContent[] {
@@ -313,7 +313,7 @@ public class ComponentScatteredFeatureDesertPyramid extends ComponentScatteredFe
 				this.field_74940_h[var10] = this.generateStructureChestContents(par1World, par3StructureBoundingBox,
 						par2Random, 10 + var11, -11, 10 + var12,
 						WeightedRandomChestContent.func_92080_a(itemsToGenerateInTemple,
-								new WeightedRandomChestContent[] { Item.enchantedBook.func_92114_b(par2Random) }),
+								Item.enchantedBook.func_92114_b(par2Random)),
 						2 + par2Random.nextInt(5));
 			}
 		}

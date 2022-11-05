@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenDeadBush extends WorldGenerator {
 	/** stores the ID for WorldGenDeadBush */
-	private int deadBushID;
+	private final int deadBushID;
 
 	public WorldGenDeadBush(int par1) {
 		this.deadBushID = par1;
@@ -15,8 +15,7 @@ public class WorldGenDeadBush extends WorldGenerator {
 
 		for (boolean var6 = false; ((var11 = par1World.getBlockId(par3, par4, par5)) == 0
 				|| var11 == Block.leaves.blockID) && par4 > 0; --par4) {
-			;
-		}
+        }
 
 		for (int var7 = 0; var7 < 4; ++var7) {
 			int var8 = par3 + par2Random.nextInt(8) - par2Random.nextInt(8);

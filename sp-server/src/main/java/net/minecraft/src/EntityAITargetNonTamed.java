@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityAITargetNonTamed extends EntityAINearestAttackableTarget {
-	private EntityTameable theTameable;
+	private final EntityTameable theTameable;
 
 	public EntityAITargetNonTamed(EntityTameable par1EntityTameable, Class par2Class, float par3, int par4,
 			boolean par5) {
@@ -13,6 +13,6 @@ public class EntityAITargetNonTamed extends EntityAINearestAttackableTarget {
 	 * Returns whether the EntityAIBase should begin execution.
 	 */
 	public boolean shouldExecute() {
-		return this.theTameable.isTamed() ? false : super.shouldExecute();
+		return !this.theTameable.isTamed() && super.shouldExecute();
 	}
 }

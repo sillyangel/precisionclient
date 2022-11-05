@@ -57,10 +57,7 @@ public class ItemArmor extends Item {
 	 * Return whether the specified armor ItemStack has a color.
 	 */
 	public boolean hasColor(ItemStack par1ItemStack) {
-		return this.material != EnumArmorMaterial.CLOTH ? false
-				: (!par1ItemStack.hasTagCompound() ? false
-						: (!par1ItemStack.getTagCompound().hasKey("display") ? false
-								: par1ItemStack.getTagCompound().getCompoundTag("display").hasKey("color")));
+		return this.material == EnumArmorMaterial.CLOTH && (par1ItemStack.hasTagCompound() && (par1ItemStack.getTagCompound().hasKey("display") && par1ItemStack.getTagCompound().getCompoundTag("display").hasKey("color")));
 	}
 
 	/**
@@ -100,7 +97,7 @@ public class ItemArmor extends Item {
 
 	public void func_82813_b(ItemStack par1ItemStack, int par2) {
 		if (this.material != EnumArmorMaterial.CLOTH) {
-			throw new UnsupportedOperationException("Can\'t dye non-leather!");
+			throw new UnsupportedOperationException("Can't dye non-leather!");
 		} else {
 			NBTTagCompound var3 = par1ItemStack.getTagCompound();
 
@@ -123,8 +120,7 @@ public class ItemArmor extends Item {
 	 * Return whether this item is repairable in an anvil.
 	 */
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return this.material.getArmorCraftingMaterial() == par2ItemStack.itemID ? true
-				: super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.material.getArmorCraftingMaterial() == par2ItemStack.itemID || super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 
 	/**

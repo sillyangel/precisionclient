@@ -6,7 +6,7 @@ public enum EnumGameType {
 	int id;
 	String name;
 
-	private EnumGameType(int par3, String par4Str) {
+	EnumGameType(int par3, String par4Str) {
 		this.id = par3;
 		this.name = par4Str;
 	}

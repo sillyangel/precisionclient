@@ -31,7 +31,7 @@ public class IPCInputStream extends InputStream {
 	}
 	
 	@Override
-	public int read(byte b[], int off, int len) throws IOException {
+	public int read(byte[] b, int off, int len) throws IOException {
 		if(idx + len > currentBuffer.length) {
 			throw new IOException("IPCInputStream buffer underflow" + (errorName == null ? "," : (" (while deserializing '" + errorName + "')")) + " tried to read " + len + " when there are only " + (currentBuffer.length - idx) + " bytes remaining", new ArrayIndexOutOfBoundsException(idx + len - 1));
 		}

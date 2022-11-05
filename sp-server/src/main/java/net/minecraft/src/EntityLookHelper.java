@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class EntityLookHelper {
-	private EntityLiving entity;
+	private final EntityLiving entity;
 
 	/**
 	 * The amount of change that is made each update for an entity facing a
@@ -66,7 +66,7 @@ public class EntityLookHelper {
 			double var1 = this.posX - this.entity.posX;
 			double var3 = this.posY - (this.entity.posY + (double) this.entity.getEyeHeight());
 			double var5 = this.posZ - this.entity.posZ;
-			double var7 = (double) MathHelper.sqrt_double(var1 * var1 + var5 * var5);
+			double var7 = MathHelper.sqrt_double(var1 * var1 + var5 * var5);
 			float var9 = (float) (Math.atan2(var5, var1) * 180.0D / Math.PI) - 90.0F;
 			float var10 = (float) (-(Math.atan2(var3, var7) * 180.0D / Math.PI));
 			this.entity.rotationPitch = this.updateRotation(this.entity.rotationPitch, var10, this.deltaLookPitch);

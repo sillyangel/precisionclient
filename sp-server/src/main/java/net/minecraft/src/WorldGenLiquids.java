@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenLiquids extends WorldGenerator {
 	/** The ID of the liquid block used in this liquid generator. */
-	private int liquidBlockId;
+	private final int liquidBlockId;
 
 	public WorldGenLiquids(int par1) {
 		this.liquidBlockId = par1;

@@ -201,7 +201,7 @@ public abstract class EntityAnimal extends EntityAgeable implements IAnimals {
 
 			if (this.inLove > 0) {
 				var2 = this.worldObj.getEntitiesWithinAABB(this.getClass(),
-						this.boundingBox.expand((double) var1, (double) var1, (double) var1));
+						this.boundingBox.expand(var1, var1, var1));
 
 				for (var3 = 0; var3 < var2.size(); ++var3) {
 					var4 = (EntityAnimal) var2.get(var3);
@@ -212,7 +212,7 @@ public abstract class EntityAnimal extends EntityAgeable implements IAnimals {
 				}
 			} else if (this.getGrowingAge() == 0) {
 				var2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
-						this.boundingBox.expand((double) var1, (double) var1, (double) var1));
+						this.boundingBox.expand(var1, var1, var1));
 
 				for (var3 = 0; var3 < var2.size(); ++var3) {
 					EntityPlayer var5 = (EntityPlayer) var2.get(var3);
@@ -223,7 +223,7 @@ public abstract class EntityAnimal extends EntityAgeable implements IAnimals {
 				}
 			} else if (this.getGrowingAge() > 0) {
 				var2 = this.worldObj.getEntitiesWithinAABB(this.getClass(),
-						this.boundingBox.expand((double) var1, (double) var1, (double) var1));
+						this.boundingBox.expand(var1, var1, var1));
 
 				for (var3 = 0; var3 < var2.size(); ++var3) {
 					var4 = (EntityAnimal) var2.get(var3);
@@ -292,7 +292,7 @@ public abstract class EntityAnimal extends EntityAgeable implements IAnimals {
 
 				if (var2.stackSize <= 0) {
 					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem,
-							(ItemStack) null);
+							null);
 				}
 			}
 
@@ -331,8 +331,6 @@ public abstract class EntityAnimal extends EntityAgeable implements IAnimals {
 	 * Returns true if the mob is currently able to mate with the specified mob.
 	 */
 	public boolean canMateWith(EntityAnimal par1EntityAnimal) {
-		return par1EntityAnimal == this ? false
-				: (par1EntityAnimal.getClass() != this.getClass() ? false
-						: this.isInLove() && par1EntityAnimal.isInLove());
+		return par1EntityAnimal != this && (par1EntityAnimal.getClass() == this.getClass() && this.isInLove() && par1EntityAnimal.isInLove());
 	}
 }

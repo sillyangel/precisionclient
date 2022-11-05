@@ -10,8 +10,8 @@ final class DispenserBehaviorTNT extends BehaviorDefaultDispenseItem {
 		int var5 = par1IBlockSource.getXInt() + var3.getFrontOffsetX();
 		int var6 = par1IBlockSource.getYInt() + var3.getFrontOffsetY();
 		int var7 = par1IBlockSource.getZInt() + var3.getFrontOffsetZ();
-		EntityTNTPrimed var8 = new EntityTNTPrimed(var4, (double) ((float) var5 + 0.5F), (double) ((float) var6 + 0.5F),
-				(double) ((float) var7 + 0.5F), (EntityLiving) null);
+		EntityTNTPrimed var8 = new EntityTNTPrimed(var4, (float) var5 + 0.5F, (float) var6 + 0.5F,
+				(float) var7 + 0.5F, null);
 		var4.spawnEntityInWorld(var8);
 		--par2ItemStack.stackSize;
 		return par2ItemStack;

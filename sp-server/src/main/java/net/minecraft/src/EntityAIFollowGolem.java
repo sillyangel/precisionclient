@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EntityAIFollowGolem extends EntityAIBase {
-	private EntityVillager theVillager;
+	private final EntityVillager theVillager;
 	private EntityIronGolem theGolem;
 	private int takeGolemRoseTick;
 	private boolean tookGolemRose = false;

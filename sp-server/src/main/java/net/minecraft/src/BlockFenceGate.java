@@ -11,8 +11,7 @@ public class BlockFenceGate extends BlockDirectional {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return !par1World.getBlockMaterial(par2, par3 - 1, par4).isSolid() ? false
-				: super.canPlaceBlockAt(par1World, par2, par3, par4);
+		return par1World.getBlockMaterial(par2, par3 - 1, par4).isSolid() && super.canPlaceBlockAt(par1World, par2, par3, par4);
 	}
 
 	/**
@@ -23,12 +22,12 @@ public class BlockFenceGate extends BlockDirectional {
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
 		return isFenceGateOpen(var5) ? null
 				: (var5 != 2 && var5 != 0
-						? AxisAlignedBB.getAABBPool().getAABB((double) ((float) par2 + 0.375F), (double) par3,
-								(double) par4, (double) ((float) par2 + 0.625F), (double) ((float) par3 + 1.5F),
-								(double) (par4 + 1))
-						: AxisAlignedBB.getAABBPool().getAABB((double) par2, (double) par3,
-								(double) ((float) par4 + 0.375F), (double) (par2 + 1), (double) ((float) par3 + 1.5F),
-								(double) ((float) par4 + 0.625F)));
+						? AxisAlignedBB.getAABBPool().getAABB((float) par2 + 0.375F, par3,
+				par4, (float) par2 + 0.625F, (float) par3 + 1.5F,
+				par4 + 1)
+						: AxisAlignedBB.getAABBPool().getAABB(par2, par3,
+				(float) par4 + 0.375F, par2 + 1, (float) par3 + 1.5F,
+				(float) par4 + 0.625F));
 	}
 
 	/**
@@ -119,10 +118,10 @@ public class BlockFenceGate extends BlockDirectional {
 			if (var7 || par5 > 0 && Block.blocksList[par5].canProvidePower()) {
 				if (var7 && !isFenceGateOpen(var6)) {
 					par1World.setBlockMetadata(par2, par3, par4, var6 | 4, 2);
-					par1World.playAuxSFXAtEntity((EntityPlayer) null, 1003, par2, par3, par4, 0);
+					par1World.playAuxSFXAtEntity(null, 1003, par2, par3, par4, 0);
 				} else if (!var7 && isFenceGateOpen(var6)) {
 					par1World.setBlockMetadata(par2, par3, par4, var6 & -5, 2);
-					par1World.playAuxSFXAtEntity((EntityPlayer) null, 1003, par2, par3, par4, 0);
+					par1World.playAuxSFXAtEntity(null, 1003, par2, par3, par4, 0);
 				}
 			}
 		}

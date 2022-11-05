@@ -15,8 +15,8 @@ public class BlockFarmland extends Block {
 	 * can change after the pool has been cleared to be reused)
 	 */
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
-		return AxisAlignedBB.getAABBPool().getAABB((double) (par2 + 0), (double) (par3 + 0), (double) (par4 + 0),
-				(double) (par2 + 1), (double) (par3 + 1), (double) (par4 + 1));
+		return AxisAlignedBB.getAABBPool().getAABB(par2, par3, par4,
+				par2 + 1, par3 + 1, par4 + 1);
 	}
 
 	/**

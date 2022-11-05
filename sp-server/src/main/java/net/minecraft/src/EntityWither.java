@@ -3,12 +3,12 @@ package net.minecraft.src;
 import java.util.List;
 
 public class EntityWither extends EntityMob implements IRangedAttackMob {
-	private float[] field_82220_d = new float[2];
-	private float[] field_82221_e = new float[2];
-	private float[] field_82217_f = new float[2];
-	private float[] field_82218_g = new float[2];
-	private int[] field_82223_h = new int[2];
-	private int[] field_82224_i = new int[2];
+	private final float[] field_82220_d = new float[2];
+	private final float[] field_82221_e = new float[2];
+	private final float[] field_82217_f = new float[2];
+	private final float[] field_82218_g = new float[2];
+	private final int[] field_82223_h = new int[2];
+	private final int[] field_82224_i = new int[2];
 	private int field_82222_j;
 
 	/** Selector used to determine the entities a wither boss should attack. */
@@ -35,11 +35,11 @@ public class EntityWither extends EntityMob implements IRangedAttackMob {
 
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Integer(100));
-		this.dataWatcher.addObject(17, new Integer(0));
-		this.dataWatcher.addObject(18, new Integer(0));
-		this.dataWatcher.addObject(19, new Integer(0));
-		this.dataWatcher.addObject(20, new Integer(0));
+		this.dataWatcher.addObject(16, Integer.valueOf(100));
+		this.dataWatcher.addObject(17, Integer.valueOf(0));
+		this.dataWatcher.addObject(18, Integer.valueOf(0));
+		this.dataWatcher.addObject(19, Integer.valueOf(0));
+		this.dataWatcher.addObject(20, Integer.valueOf(0));
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class EntityWither extends EntityMob implements IRangedAttackMob {
 				var6 = var2 * var2 + var4 * var4;
 
 				if (var6 > 9.0D) {
-					var8 = (double) MathHelper.sqrt_double(var6);
+					var8 = MathHelper.sqrt_double(var6);
 					this.motionX += (var2 / var8 * 0.5D - this.motionX) * 0.6000000238418579D;
 					this.motionZ += (var4 / var8 * 0.5D - this.motionZ) * 0.6000000238418579D;
 				}
@@ -148,7 +148,7 @@ public class EntityWither extends EntityMob implements IRangedAttackMob {
 				double var10 = var3.posX - var4;
 				double var12 = var3.posY + (double) var3.getEyeHeight() - var6;
 				double var14 = var3.posZ - var8;
-				double var16 = (double) MathHelper.sqrt_double(var10 * var10 + var14 * var14);
+				double var16 = MathHelper.sqrt_double(var10 * var10 + var14 * var14);
 				float var18 = (float) (Math.atan2(var14, var10) * 180.0D / Math.PI) - 90.0F;
 				float var19 = (float) (-(Math.atan2(var12, var16) * 180.0D / Math.PI));
 				this.field_82220_d[var20] = this.func_82204_b(this.field_82220_d[var20], var19, 40.0F);
@@ -178,9 +178,9 @@ public class EntityWither extends EntityMob implements IRangedAttackMob {
 
 		if (this.func_82212_n() > 0) {
 			for (var21 = 0; var21 < 3; ++var21) {
-				this.worldObj.spawnParticle("mobSpell", this.posX + this.rand.nextGaussian() * 1.0D,
+				this.worldObj.spawnParticle("mobSpell", this.posX + this.rand.nextGaussian(),
 						this.posY + (double) (this.rand.nextFloat() * 3.3F),
-						this.posZ + this.rand.nextGaussian() * 1.0D, 0.699999988079071D, 0.699999988079071D,
+						this.posZ + this.rand.nextGaussian(), 0.699999988079071D, 0.699999988079071D,
 						0.8999999761581421D);
 			}
 		}
@@ -300,7 +300,7 @@ public class EntityWither extends EntityMob implements IRangedAttackMob {
 					}
 
 					if (var17) {
-						this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1012, (int) this.posX, (int) this.posY,
+						this.worldObj.playAuxSFXAtEntity(null, 1012, (int) this.posX, (int) this.posY,
 								(int) this.posZ, 0);
 					}
 				}
@@ -376,7 +376,7 @@ public class EntityWither extends EntityMob implements IRangedAttackMob {
 	}
 
 	private void func_82209_a(int par1, double par2, double par4, double par6, boolean par8) {
-		this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1014, (int) this.posX, (int) this.posY, (int) this.posZ,
+		this.worldObj.playAuxSFXAtEntity(null, 1014, (int) this.posX, (int) this.posY, (int) this.posZ,
 				0);
 		double var9 = this.func_82214_u(par1);
 		double var11 = this.func_82208_v(par1);

@@ -53,7 +53,7 @@ public class NBTTagList extends NBTBase {
 		this.tagList = new ArrayList();
 
 		for (int var3 = 0; var3 < var2; ++var3) {
-			NBTBase var4 = NBTBase.newTag(this.tagType, (String) null);
+			NBTBase var4 = NBTBase.newTag(this.tagType, null);
 			var4.load(par1DataInput);
 			this.tagList.add(var4);
 		}

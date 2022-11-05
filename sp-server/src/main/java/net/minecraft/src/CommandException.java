@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class CommandException extends RuntimeException {
-	private Object[] errorObjects;
+	private final Object[] errorObjects;
 
 	public CommandException(String par1Str, Object... par2ArrayOfObj) {
 		super(par1Str);

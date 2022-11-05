@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class BiomeGenHills extends BiomeGenBase {
-	private WorldGenerator theWorldGenerator;
+	private final WorldGenerator theWorldGenerator;
 
 	protected BiomeGenHills(int par1) {
 		super(par1);

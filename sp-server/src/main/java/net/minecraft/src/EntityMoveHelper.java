@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class EntityMoveHelper {
 	/** The EntityLiving that is being moved */
-	private EntityLiving entity;
+	private final EntityLiving entity;
 	private double posX;
 	private double posY;
 	private double posZ;

@@ -4,11 +4,11 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenMinable extends WorldGenerator {
 	/** The block ID of the ore to be placed using this generator. */
-	private int minableBlockId;
+	private final int minableBlockId;
 
 	/** The number of blocks to generate. */
-	private int numberOfBlocks;
-	private int field_94523_c;
+	private final int numberOfBlocks;
+	private final int field_94523_c;
 
 	public WorldGenMinable(int par1, int par2) {
 		this(par1, par2, Block.stone.blockID);
@@ -22,12 +22,12 @@ public class WorldGenMinable extends WorldGenerator {
 
 	public boolean generate(World par1World, EaglercraftRandom par2Random, int par3, int par4, int par5) {
 		float var6 = par2Random.nextFloat() * (float) Math.PI;
-		double var7 = (double) ((float) (par3 + 8) + MathHelper.sin(var6) * (float) this.numberOfBlocks / 8.0F);
-		double var9 = (double) ((float) (par3 + 8) - MathHelper.sin(var6) * (float) this.numberOfBlocks / 8.0F);
-		double var11 = (double) ((float) (par5 + 8) + MathHelper.cos(var6) * (float) this.numberOfBlocks / 8.0F);
-		double var13 = (double) ((float) (par5 + 8) - MathHelper.cos(var6) * (float) this.numberOfBlocks / 8.0F);
-		double var15 = (double) (par4 + par2Random.nextInt(3) - 2);
-		double var17 = (double) (par4 + par2Random.nextInt(3) - 2);
+		double var7 = (float) (par3 + 8) + MathHelper.sin(var6) * (float) this.numberOfBlocks / 8.0F;
+		double var9 = (float) (par3 + 8) - MathHelper.sin(var6) * (float) this.numberOfBlocks / 8.0F;
+		double var11 = (float) (par5 + 8) + MathHelper.cos(var6) * (float) this.numberOfBlocks / 8.0F;
+		double var13 = (float) (par5 + 8) - MathHelper.cos(var6) * (float) this.numberOfBlocks / 8.0F;
+		double var15 = par4 + par2Random.nextInt(3) - 2;
+		double var17 = par4 + par2Random.nextInt(3) - 2;
 
 		for (int var19 = 0; var19 <= this.numberOfBlocks; ++var19) {
 			double var20 = var7 + (var9 - var7) * (double) var19 / (double) this.numberOfBlocks;

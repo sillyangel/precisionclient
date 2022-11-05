@@ -72,7 +72,7 @@ public abstract class EntityCreature extends EntityLiving {
 		if (this.pathToEntity != null && this.rand.nextInt(100) != 0) {
 			this.worldObj.theProfiler.startSection("followpath");
 			Vec3 var5 = this.pathToEntity.getPosition(this);
-			double var6 = (double) (this.width * 2.0F);
+			double var6 = this.width * 2.0F;
 
 			while (var5 != null && var5.squareDistanceTo(this.posX, var5.yCoord, this.posZ) < var6 * var6) {
 				this.pathToEntity.incrementPathIndex();

@@ -16,7 +16,7 @@ public class MapGenMineshaft extends MapGenStructure {
 		while (var2.hasNext()) {
 			Entry var3 = (Entry) var2.next();
 
-			if (((String) var3.getKey()).equals("chance")) {
+			if (var3.getKey().equals("chance")) {
 				this.field_82673_e = MathHelper.parseDoubleWithDefault((String) var3.getValue(), this.field_82673_e);
 			}
 		}

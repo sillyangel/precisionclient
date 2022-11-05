@@ -4,8 +4,8 @@ import net.lax1dude.eaglercraft.sp.EaglercraftRandom;
 
 public class WorldGenTallGrass extends WorldGenerator {
 	/** Stores ID for WorldGenTallGrass */
-	private int tallGrassID;
-	private int tallGrassMetadata;
+	private final int tallGrassID;
+	private final int tallGrassMetadata;
 
 	public WorldGenTallGrass(int par1, int par2) {
 		this.tallGrassID = par1;
@@ -17,8 +17,7 @@ public class WorldGenTallGrass extends WorldGenerator {
 
 		for (boolean var6 = false; ((var11 = par1World.getBlockId(par3, par4, par5)) == 0
 				|| var11 == Block.leaves.blockID) && par4 > 0; --par4) {
-			;
-		}
+        }
 
 		for (int var7 = 0; var7 < 128; ++var7) {
 			int var8 = par3 + par2Random.nextInt(8) - par2Random.nextInt(8);

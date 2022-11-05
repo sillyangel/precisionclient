@@ -12,10 +12,10 @@ public class WorldChunkManager {
 	private GenLayer biomeIndexLayer;
 
 	/** The biome list. */
-	private BiomeCache biomeCache;
+	private final BiomeCache biomeCache;
 
 	/** A list of biomes that the player can spawn in. */
-	private List biomesToSpawnIn;
+	private final List biomesToSpawnIn;
 
 	protected WorldChunkManager() {
 		this.biomeCache = new BiomeCache(this);

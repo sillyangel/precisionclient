@@ -3,7 +3,7 @@ package net.lax1dude.eaglercraft.sp;
 import java.util.zip.Checksum;
 
 public class CRC32 implements Checksum {
-	private com.jcraft.jzlib.CRC32 impl = new com.jcraft.jzlib.CRC32();
+	private final com.jcraft.jzlib.CRC32 impl = new com.jcraft.jzlib.CRC32();
 	long tbytes;
 
 	@Override

@@ -15,13 +15,13 @@ public abstract class Packet {
 	public static IntHashMap packetIdToClassMap = new IntHashMap();
 
 	/** Maps packet class to packet id */
-	private static Map packetClassToIdMap = new HashMap();
+	private static final Map packetClassToIdMap = new HashMap();
 
 	/** List of the client's packet IDs. */
-	private static Set clientPacketIdList = new HashSet();
+	private static final Set clientPacketIdList = new HashSet();
 
 	/** List of the server's packet IDs. */
-	private static Set serverPacketIdList = new HashSet();
+	private static final Set serverPacketIdList = new HashSet();
 	public ILogAgent field_98193_m;
 
 	/** the system time in milliseconds when this packet was created. */
@@ -142,15 +142,15 @@ public abstract class Packet {
 
 			var5.readPacketData(par1DataInputStream);
 			++receivedID;
-			receivedSize += (long) var5.getPacketSize();
+			receivedSize += var5.getPacketSize();
 		} catch (EOFException var8) {
 			par0ILogAgent.logSevere("Reached end of stream");
 			return null;
 		}
 
-		PacketCount.countPacket(var9, (long) var5.getPacketSize());
+		PacketCount.countPacket(var9, var5.getPacketSize());
 		++receivedID;
-		receivedSize += (long) var5.getPacketSize();
+		receivedSize += var5.getPacketSize();
 		par3Socket.setSoTimeout(var6);
 		return var5;
 	}
@@ -162,7 +162,7 @@ public abstract class Packet {
 		par1DataOutputStream.write(par0Packet.getPacketId());
 		par0Packet.writePacketData(par1DataOutputStream);
 		++sentID;
-		sentSize += (long) par0Packet.getPacketSize();
+		sentSize += par0Packet.getPacketSize();
 	}
 
 	/**

@@ -12,10 +12,10 @@ public class EntityTracker {
 	/**
 	 * List of tracked entities, used for iteration operations on tracked entities.
 	 */
-	private Set trackedEntities = new HashSet();
+	private final Set trackedEntities = new HashSet();
 
 	/** Used for identity lookup of tracked entities. */
-	private IntHashMap trackedEntityHashTable = new IntHashMap();
+	private final IntHashMap trackedEntityHashTable = new IntHashMap();
 	private int maxTrackingDistanceThreshold;
 
 	public EntityTracker(WorldServer par1WorldServer) {
@@ -158,7 +158,7 @@ public class EntityTracker {
 			var3.updatePlayerList(this.theWorld.playerEntities);
 
 			if (var3.playerEntitiesUpdated && var3.trackedEntity instanceof EntityPlayerMP) {
-				var1.add((EntityPlayerMP) var3.trackedEntity);
+				var1.add(var3.trackedEntity);
 			}
 		}
 
