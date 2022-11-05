@@ -20,10 +20,14 @@
 
 - [Reimagined Night Panorama](https://www.planetminecraft.com/texture-pack/reimagined-night-panorama)
 - [Vanilla Tweaks](https://vanillatweaks.net/)
-- [Miami Private](https://www.youtube.com/watch?v=Jj3izxG1Mf4)
-- [RiceFault](https://discord.com/invite/B6gYvUNvZm)
-- [Bombies 180k](https://www.youtube.com/watch?v=Y3tbXdp2MXg)
 - [Bare Bones](https://www.planetminecraft.com/texture-pack/bare-bones/)
+- [Bombies 180k](https://www.youtube.com/watch?v=Y3tbXdp2MXg)
+- [Miami Private](https://www.youtube.com/watch?v=Jj3izxG1Mf4)
+- [Nebula 16x](https://www.youtube.com/watch?v=Bijo4lzp31k) + [32x](https://www.youtube.com/watch?v=mCxuobFmvQ0)
+- [RiceFault](https://discord.com/invite/B6gYvUNvZm)
+- [TightFault]
+- [WaliFault](https://www.youtube.com/watch?v=2olMdzgQ4tE)
+- [Rhedd](https://discord.gg/cS2rryhHBz)
 
 ## Features
 
