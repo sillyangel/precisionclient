@@ -41,7 +41,7 @@ public class GameSettings {
     /**
      * Smooth Lighting
      */
-    public int ambientOcclusion = 0;
+    public int ambientOcclusion = 2;
 
     /**
      * Clouds flag
@@ -78,7 +78,7 @@ public class GameSettings {
      */
     public boolean showCape = true;
     public boolean touchscreen = false;
-    public int antialiasMode = 1;
+    public int antialiasMode = 0;
     public int overrideWidth = 0;
     public int overrideHeight = 0;
     public boolean heldItemTooltips = true;
