@@ -6,58 +6,58 @@ import org.teavm.jso.typedarrays.ArrayBuffer;
 
 public interface EaglercraftLANClient extends JSObject {
 
-	int READYSTATE_INIT_FAILED = -2;
-	int READYSTATE_FAILED = -1;
-	int READYSTATE_DISCONNECTED = 0;
-	int READYSTATE_CONNECTING = 1;
-	int READYSTATE_CONNECTED = 2;
+    int READYSTATE_INIT_FAILED = -2;
+    int READYSTATE_FAILED = -1;
+    int READYSTATE_DISCONNECTED = 0;
+    int READYSTATE_CONNECTING = 1;
+    int READYSTATE_CONNECTED = 2;
 
-	boolean LANClientSupported();
-	
-	void initializeClient();
-	
-	void setICEServers(String[] urls);
-	
-	void setICECandidateHandler(ICECandidateHandler callback);
+    boolean LANClientSupported();
 
-	void setDescriptionHandler(DescriptionHandler callback);
-	
-	void setRemoteDataChannelHandler(ClientSignalHandler cb);
-	
-	void setRemoteDisconnectHandler(ClientSignalHandler cb);
-	
-	void setRemotePacketHandler(RemotePacketHandler cb);
-	
-	int getReadyState();
-	
-	void sendPacketToServer(ArrayBuffer buffer);
-	
-	void signalRemoteConnect();
-	
-	void signalRemoteDescription(String descJSON);
-	
-	void signalRemoteICECandidate(String candidate);
+    void initializeClient();
 
-	void signalRemoteDisconnect(boolean quiet);
+    void setICEServers(String[] urls);
 
-	@JSFunctor
+    void setICECandidateHandler(ICECandidateHandler callback);
+
+    void setDescriptionHandler(DescriptionHandler callback);
+
+    void setRemoteDataChannelHandler(ClientSignalHandler cb);
+
+    void setRemoteDisconnectHandler(ClientSignalHandler cb);
+
+    void setRemotePacketHandler(RemotePacketHandler cb);
+
+    int getReadyState();
+
+    void sendPacketToServer(ArrayBuffer buffer);
+
+    void signalRemoteConnect();
+
+    void signalRemoteDescription(String descJSON);
+
+    void signalRemoteICECandidate(String candidate);
+
+    void signalRemoteDisconnect(boolean quiet);
+
+    @JSFunctor
     interface ICECandidateHandler extends JSObject {
-		void call(String candidate);
-	}
-	
-	@JSFunctor
+        void call(String candidate);
+    }
+
+    @JSFunctor
     interface DescriptionHandler extends JSObject {
-		void call(String description);
-	}
-	
-	@JSFunctor
+        void call(String description);
+    }
+
+    @JSFunctor
     interface ClientSignalHandler extends JSObject {
-		void call();
-	}
-	
-	@JSFunctor
+        void call();
+    }
+
+    @JSFunctor
     interface RemotePacketHandler extends JSObject {
-		void call(ArrayBuffer buffer);
-	}
-	
+        void call(ArrayBuffer buffer);
+    }
+
 }

@@ -1,15 +1,15 @@
 package net.minecraft.src;
 
 public interface IBossDisplayData {
-	int getMaxHealth();
+    int getMaxHealth();
 
-	/**
-	 * Returns the health points of the dragon.
-	 */
-	int getBossHealth();
+    /**
+     * Returns the health points of the dragon.
+     */
+    int getBossHealth();
 
-	/**
-	 * Gets the username of the entity.
-	 */
-	String getEntityName();
+    /**
+     * Gets the username of the entity.
+     */
+    String getEntityName();
 }

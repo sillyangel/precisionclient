@@ -5,75 +5,75 @@ import org.teavm.jso.JSObject;
 import org.teavm.jso.webaudio.MediaStream;
 
 public interface EaglercraftVoiceClient extends JSObject {
-	
-	int READYSTATE_NONE = 0;
-	int READYSTATE_ABORTED = -1;
-	int READYSTATE_DEVICE_INITIALIZED = 1;
 
-	int PEERSTATE_FAILED = 0;
-	int PEERSTATE_SUCCESS = 1;
-	int PEERSTATE_LOADING = 2;
+    int READYSTATE_NONE = 0;
+    int READYSTATE_ABORTED = -1;
+    int READYSTATE_DEVICE_INITIALIZED = 1;
 
-	boolean voiceClientSupported();
-	
-	void initializeDevices();
+    int PEERSTATE_FAILED = 0;
+    int PEERSTATE_SUCCESS = 1;
+    int PEERSTATE_LOADING = 2;
 
-	void setICEServers(String[] urls);
+    boolean voiceClientSupported();
 
-	void setICECandidateHandler(ICECandidateHandler callback);
+    void initializeDevices();
 
-	void setDescriptionHandler(DescriptionHandler callback);
+    void setICEServers(String[] urls);
 
-	void setPeerTrackHandler(PeerTrackHandler callback);
+    void setICECandidateHandler(ICECandidateHandler callback);
 
-	void setPeerDisconnectHandler(PeerDisconnectHandler callback);
-	
-	void activateVoice(boolean active);
-	
-	void setMicVolume(float volume);
+    void setDescriptionHandler(DescriptionHandler callback);
 
-	void mutePeer(String peerId, boolean muted);
+    void setPeerTrackHandler(PeerTrackHandler callback);
 
-	void resetPeerStates();
+    void setPeerDisconnectHandler(PeerDisconnectHandler callback);
 
-	int getPeerState();
+    void activateVoice(boolean active);
 
-	int getPeerStateConnect();
+    void setMicVolume(float volume);
 
-	int getPeerStateInitial();
+    void mutePeer(String peerId, boolean muted);
 
-	int getPeerStateDesc();
+    void resetPeerStates();
 
-	int getPeerStateIce();
-	
-	int getReadyState();
-	
-	int signalConnect(String peerId, boolean offer);
-	
-	int signalDescription(String peerId, String description);
-	
-	int signalDisconnect(String peerId, boolean quiet);
-	
-	int signalICECandidate(String peerId, String candidate);
-	
-	@JSFunctor
+    int getPeerState();
+
+    int getPeerStateConnect();
+
+    int getPeerStateInitial();
+
+    int getPeerStateDesc();
+
+    int getPeerStateIce();
+
+    int getReadyState();
+
+    int signalConnect(String peerId, boolean offer);
+
+    int signalDescription(String peerId, String description);
+
+    int signalDisconnect(String peerId, boolean quiet);
+
+    int signalICECandidate(String peerId, String candidate);
+
+    @JSFunctor
     interface ICECandidateHandler extends JSObject {
-		void call(String peerId, String candidate);
-	}
-	
-	@JSFunctor
+        void call(String peerId, String candidate);
+    }
+
+    @JSFunctor
     interface DescriptionHandler extends JSObject {
-		void call(String peerId, String candidate);
-	}
-	
-	@JSFunctor
+        void call(String peerId, String candidate);
+    }
+
+    @JSFunctor
     interface PeerTrackHandler extends JSObject {
-		void call(String peerId, MediaStream audioNode);
-	}
-	
-	@JSFunctor
+        void call(String peerId, MediaStream audioNode);
+    }
+
+    @JSFunctor
     interface PeerDisconnectHandler extends JSObject {
-		void call(String peerId, boolean quiet);
-	}
+        void call(String peerId, boolean quiet);
+    }
 
 }

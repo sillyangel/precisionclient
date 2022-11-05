@@ -8,13 +8,16 @@ import java.util.List;
 
 public interface RelayWorldsQuery {
 
-	boolean isQueryOpen();
-	boolean isQueryFailed();
-	RateLimit isQueryRateLimit();
-	void close();
-	
-	List<LocalWorld> getWorlds();
-	
-	VersionMismatch getCompatible();
-	
+    boolean isQueryOpen();
+
+    boolean isQueryFailed();
+
+    RateLimit isQueryRateLimit();
+
+    void close();
+
+    List<LocalWorld> getWorlds();
+
+    VersionMismatch getCompatible();
+
 }

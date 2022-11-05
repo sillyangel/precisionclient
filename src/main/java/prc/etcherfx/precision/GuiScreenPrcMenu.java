@@ -1,10 +1,9 @@
 package prc.etcherfx.precision;
 
-import net.minecraft.src.GameSettings;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.StringTranslate;
 import net.minecraft.src.GuiSmallButton;
+import net.minecraft.src.StringTranslate;
 
 public class GuiScreenPrcMenu extends GuiScreen {
 
@@ -41,7 +40,7 @@ public class GuiScreenPrcMenu extends GuiScreen {
                 mc.displayGuiScreen(new GuiScreenMods(this));
             }
             if (par1GuiButton.id == 102) {
-               mc.displayGuiScreen(new GuiScreenOptions(this, mc.gameSettings));
+                mc.displayGuiScreen(new GuiScreenOptions(this, mc.gameSettings));
             }
             if (par1GuiButton.id == 200) {
                 mc.displayGuiScreen(parentScreen);

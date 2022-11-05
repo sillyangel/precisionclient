@@ -1,9 +1,11 @@
 package prc.etcherfx.precision;
 
-import net.minecraft.src.*;
-import prc.etcherfx.precision.mods.*;
-
-import java.util.Objects;
+import net.minecraft.src.GuiButton;
+import net.minecraft.src.GuiScreen;
+import net.minecraft.src.GuiSmallButton;
+import net.minecraft.src.StringTranslate;
+import prc.etcherfx.precision.mods.GuiScreenFullbrightOptions;
+import prc.etcherfx.precision.mods.GuiScreenKeystrokesOptions;
 
 public class GuiScreenMods extends GuiScreen {
     /**

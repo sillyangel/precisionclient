@@ -22,51 +22,49 @@
 package javazoom.jl.decoder;
 
 /**
- * This interface describes all error codes that can be thrown 
+ * This interface describes all error codes that can be thrown
  * in <code>BistreamException</code>s.
- * 
+ *
+ * @author MDM        12/12/99
+ * @since 0.0.6
  * @see BitstreamException
- * 
- * @author	MDM		12/12/99
- * @since	0.0.6
  */
 
-public interface BitstreamErrors extends JavaLayerErrors
-{
-	
-	/**
-	 * An undetermined error occurred. 
-	 */
-	public static final int UNKNOWN_ERROR = BITSTREAM_ERROR + 0;
-	
-	/**
-	 * The header describes an unknown sample rate.
-	 */
-	public static final int UNKNOWN_SAMPLE_RATE = BITSTREAM_ERROR + 1;
+public interface BitstreamErrors extends JavaLayerErrors {
 
-	/**
-	 * A problem occurred reading from the stream.
-	 */
-	public static final int STREAM_ERROR = BITSTREAM_ERROR + 2;
-	
-	/**
-	 * The end of the stream was reached prematurely. 
-	 */
-	public static final int UNEXPECTED_EOF = BITSTREAM_ERROR + 3;
-	
-	/**
-	 * The end of the stream was reached. 
-	 */
-	public static final int STREAM_EOF = BITSTREAM_ERROR + 4;
-	
-	/**
-	 * Frame data are missing. 
-	 */
-	public static final int INVALIDFRAME = BITSTREAM_ERROR + 5;
+    /**
+     * An undetermined error occurred.
+     */
+    public static final int UNKNOWN_ERROR = BITSTREAM_ERROR + 0;
 
-	/**
-	 * 
-	 */
-	public static final int BITSTREAM_LAST = 0x1ff;
-	
+    /**
+     * The header describes an unknown sample rate.
+     */
+    public static final int UNKNOWN_SAMPLE_RATE = BITSTREAM_ERROR + 1;
+
+    /**
+     * A problem occurred reading from the stream.
+     */
+    public static final int STREAM_ERROR = BITSTREAM_ERROR + 2;
+
+    /**
+     * The end of the stream was reached prematurely.
+     */
+    public static final int UNEXPECTED_EOF = BITSTREAM_ERROR + 3;
+
+    /**
+     * The end of the stream was reached.
+     */
+    public static final int STREAM_EOF = BITSTREAM_ERROR + 4;
+
+    /**
+     * Frame data are missing.
+     */
+    public static final int INVALIDFRAME = BITSTREAM_ERROR + 5;
+
+    /**
+     *
+     */
+    public static final int BITSTREAM_LAST = 0x1ff;
+
 }
