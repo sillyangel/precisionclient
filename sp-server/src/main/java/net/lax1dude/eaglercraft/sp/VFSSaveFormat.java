@@ -5,35 +5,35 @@ import net.minecraft.src.ISaveFormat;
 import net.minecraft.src.ISaveHandler;
 
 public class VFSSaveFormat implements ISaveFormat {
-	
-	private final VFSSaveHandler folder;
-	
-	public VFSSaveFormat(VFSSaveHandler dir) {
-		folder = dir;
-	}
 
-	@Override
-	public ISaveHandler getSaveLoader(String var1, boolean var2) {
-		return folder;
-	}
+    private final VFSSaveHandler folder;
 
-	@Override
-	public void flushCache() {
-	}
+    public VFSSaveFormat(VFSSaveHandler dir) {
+        folder = dir;
+    }
 
-	@Override
-	public boolean deleteWorldDirectory(String var1) {
-		return true;
-	}
+    @Override
+    public ISaveHandler getSaveLoader(String var1, boolean var2) {
+        return folder;
+    }
 
-	@Override
-	public boolean isOldMapFormat(String var1) {
-		return false;
-	}
+    @Override
+    public void flushCache() {
+    }
 
-	@Override
-	public boolean convertMapFormat(String var1, IProgressUpdate var2) {
-		return false;
-	}
+    @Override
+    public boolean deleteWorldDirectory(String var1) {
+        return true;
+    }
+
+    @Override
+    public boolean isOldMapFormat(String var1) {
+        return false;
+    }
+
+    @Override
+    public boolean convertMapFormat(String var1, IProgressUpdate var2) {
+        return false;
+    }
 
 }

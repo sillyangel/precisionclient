@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
 public interface IMerchant {
-	void setCustomer(EntityPlayer var1);
+    void setCustomer(EntityPlayer var1);
 
-	EntityPlayer getCustomer();
+    EntityPlayer getCustomer();
 
-	MerchantRecipeList getRecipes(EntityPlayer var1);
+    MerchantRecipeList getRecipes(EntityPlayer var1);
 
-	void useRecipe(MerchantRecipe var1);
+    void useRecipe(MerchantRecipe var1);
 }
