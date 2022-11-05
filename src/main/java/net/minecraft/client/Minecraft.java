@@ -350,7 +350,7 @@ public class Minecraft implements Runnable {
 
             EaglerAdapter.glClear(EaglerAdapter.GL_COLOR_BUFFER_BIT | EaglerAdapter.GL_DEPTH_BUFFER_BIT);
             EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, MathHelper.clamp_float(1.0f - f, 0.0F, 1.0F));
-            this.renderEngine.bindTexture("%clamp%/title/eagtek.png");
+            this.renderEngine.bindTexture("%clamp%/precision/precision.png");
             EaglerAdapter.glPushMatrix();
             float f1 = 1.0f + 0.025f * f * f;
             EaglerAdapter.glTranslatef((var1.getScaledWidth() - 256) / 2, (var1.getScaledHeight() - 256) / 2, 0.0f);
@@ -387,7 +387,7 @@ public class Minecraft implements Runnable {
 
             EaglerAdapter.glClear(EaglerAdapter.GL_COLOR_BUFFER_BIT | EaglerAdapter.GL_DEPTH_BUFFER_BIT);
             EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, MathHelper.clamp_float(f, 0.0F, 1.0F));
-            this.renderEngine.bindTexture("%blur%/title/mojang.png");
+            this.renderEngine.bindTexture("%blur%/precision/precision2.png");
             EaglerAdapter.glPushMatrix();
             float f1 = 0.875f + 0.025f * (float) Math.sqrt(f);
             EaglerAdapter.glTranslatef((var1.getScaledWidth() - 256) / 2, (var1.getScaledHeight() - 256) / 2, 0.0f);
@@ -426,7 +426,7 @@ public class Minecraft implements Runnable {
 
             EaglerAdapter.glClear(EaglerAdapter.GL_COLOR_BUFFER_BIT | EaglerAdapter.GL_DEPTH_BUFFER_BIT);
             EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, MathHelper.clamp_float((1.0f - f), 0.0F, 1.0F));
-            this.renderEngine.bindTexture("%blur%/title/mojang.png");
+            this.renderEngine.bindTexture("%blur%/precision/precision2.png");
             EaglerAdapter.glPushMatrix();
             float f1 = 0.9f + 0.025f * f * f;
             EaglerAdapter.glTranslatef((var1.getScaledWidth() - 256) / 2, (var1.getScaledHeight() - 256) / 2, 0.0f);
@@ -488,7 +488,7 @@ public class Minecraft implements Runnable {
         EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
         EaglerAdapter.glDisable(EaglerAdapter.GL_FOG);
         EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.renderEngine.bindTexture("%clamp%/title/eagtek.png");
+        this.renderEngine.bindTexture("%clamp%/precision/precision.png");
         short var3 = 256;
         short var4 = 256;
         this.scaledTessellator((var1.getScaledWidth() - var3) / 2, (var1.getScaledHeight() - var4) / 2, 0, 0, var3, var4);

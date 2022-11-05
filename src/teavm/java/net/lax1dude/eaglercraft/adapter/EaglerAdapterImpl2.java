@@ -343,17 +343,6 @@ public class EaglerAdapterImpl2 {
             e.printStackTrace();
         }
 
-        if (mouseEvents.isEmpty() && keyEvents.isEmpty() && !hasBeenActive()) {
-            EarlyLoadScreen.paintEnable();
-
-            while (mouseEvents.isEmpty() && keyEvents.isEmpty()) {
-                try {
-                    Thread.sleep(100L);
-                } catch (InterruptedException e) {
-                }
-            }
-        }
-
         audioctx = AudioContext.create();
         masterVolumeNode = audioctx.createGain();
         masterVolumeNode.getGain().setValue(1.0f);
