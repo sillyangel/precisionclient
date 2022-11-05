@@ -13,8 +13,8 @@ import java.util.Map;
 public class SoundManager {
 	
 	private static class EntitySoundEvent {
-		private Entity e;
-		private int id;
+		private final Entity e;
+		private final int id;
 		public EntitySoundEvent(Entity e, int id) {
 			this.e = e;
 			this.id = id;
@@ -22,12 +22,12 @@ public class SoundManager {
 	}
 	
 	private static class QueuedSoundEvent {
-		private String sound;
-		private float x;
-		private float y;
-		private float z;
-		private float volume;
-		private float pitch;
+		private final String sound;
+		private final float x;
+		private final float y;
+		private final float z;
+		private final float volume;
+		private final float pitch;
 		private int timer;
 		public QueuedSoundEvent(String sound, float x, float y, float z, float volume, float pitch, int timer) {
 			this.sound = sound;
@@ -42,10 +42,10 @@ public class SoundManager {
 	
 	private GameSettings options;
 	private ArrayList<EntitySoundEvent> soundevents;
-	private ArrayList<QueuedSoundEvent> queuedsoundevents;
-	private ArrayList<Integer> activerecords;
+	private final ArrayList<QueuedSoundEvent> queuedsoundevents;
+	private final ArrayList<Integer> activerecords;
 	private HashMap<String,Integer> sounddefinitions;
-	private EaglercraftRandom soundrandom;
+	private final EaglercraftRandom soundrandom;
 
 	public SoundManager() {
 		this.soundevents = new ArrayList();

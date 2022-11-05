@@ -59,7 +59,7 @@ public class Profiler {
 			}
 
 			if (var5 > 100000000L) {
-				System.out.println("Something\'s taking too long! \'" + this.profilingSection + "\' took aprox " + (double) var5 / 1000000.0D + " ms");
+				System.out.println("Something's taking too long! '" + this.profilingSection + "' took aprox " + (double) var5 / 1000000.0D + " ms");
 			}
 
 			this.profilingSection = !this.sectionList.isEmpty() ? (String) this.sectionList.get(this.sectionList.size() - 1) : "";

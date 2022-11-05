@@ -84,11 +84,7 @@ public class EntityBoat extends Entity {
 	 * Called when the entity is attacked.
 	 */
 	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
-		if (this.isEntityInvulnerable()) {
-			return false;
-		} else {
-			return true;
-		}
+        return !this.isEntityInvulnerable();
 	}
 
 	/**
@@ -132,8 +128,8 @@ public class EntityBoat extends Entity {
 		this.boatX = par1;
 		this.boatY = par3;
 		this.boatZ = par5;
-		this.boatYaw = (double) par7;
-		this.boatPitch = (double) par8;
+		this.boatYaw = par7;
+		this.boatPitch = par8;
 		this.motionX = this.velocityX;
 		this.motionY = this.velocityY;
 		this.motionZ = this.velocityZ;
@@ -169,7 +165,7 @@ public class EntityBoat extends Entity {
 		double var2 = 0.0D;
 
 		for (int var4 = 0; var4 < var1; ++var4) {
-			double var5 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double) (var4 + 0) / (double) var1 - 0.125D;
+			double var5 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double) (var4) / (double) var1 - 0.125D;
 			double var7 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double) (var4 + 1) / (double) var1 - 0.125D;
 			AxisAlignedBB var9 = AxisAlignedBB.getAABBPool().getAABB(this.boundingBox.minX, var5, this.boundingBox.minZ, this.boundingBox.maxX, var7, this.boundingBox.maxZ);
 
@@ -187,7 +183,7 @@ public class EntityBoat extends Entity {
 			var8 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D);
 
 			for (int var10 = 0; (double) var10 < 1.0D + var23 * 60.0D; ++var10) {
-				double var11 = (double) (this.rand.nextFloat() * 2.0F - 1.0F);
+				double var11 = this.rand.nextFloat() * 2.0F - 1.0F;
 				double var13 = (double) (this.rand.nextInt(2) * 2 - 1) * 0.7D;
 				double var15;
 				double var17;
@@ -289,12 +285,12 @@ public class EntityBoat extends Entity {
 			}
 
 			this.rotationPitch = 0.0F;
-			var8 = (double) this.rotationYaw;
+			var8 = this.rotationYaw;
 			var25 = this.prevPosX - this.posX;
 			var12 = this.prevPosZ - this.posZ;
 
 			if (var25 * var25 + var12 * var12 > 0.001D) {
-				var8 = (double) ((float) (Math.atan2(var12, var25) * 180.0D / Math.PI));
+				var8 = (float) (Math.atan2(var12, var25) * 180.0D / Math.PI);
 			}
 
 			double var14 = MathHelper.wrapAngleTo180_double(var8 - (double) this.rotationYaw);

@@ -12,16 +12,16 @@ public enum EnumChatFormatting {
 
 	private static final Map field_96321_w = new HashMap();
 	private static final Map field_96331_x = new HashMap();
-	private static final Pattern field_96330_y = Pattern.compile("(?i)" + String.valueOf((char)0x00a7) + "[0-9A-FK-OR]");
+	private static final Pattern field_96330_y = Pattern.compile("(?i)" + (char) 0x00a7 + "[0-9A-FK-OR]");
 	private final char field_96329_z;
 	private final boolean field_96303_A;
 	private final String field_96304_B;
 
-	private EnumChatFormatting(char par3) {
+	EnumChatFormatting(char par3) {
 		this(par3, false);
 	}
 
-	private EnumChatFormatting(char par3, boolean par4) {
+	EnumChatFormatting(char par3, boolean par4) {
 		this.field_96329_z = par3;
 		this.field_96303_A = par4;
 		this.field_96304_B = "" + (char)0x00a7 + par3;

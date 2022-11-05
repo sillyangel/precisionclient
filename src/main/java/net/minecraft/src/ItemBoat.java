@@ -40,7 +40,7 @@ public class ItemBoat extends Item {
 			boolean var26 = false;
 			float var27 = 1.0F;
 			List var28 = par2World.getEntitiesWithinAABBExcludingEntity(par3EntityPlayer,
-					par3EntityPlayer.boundingBox.addCoord(var25.xCoord * var21, var25.yCoord * var21, var25.zCoord * var21).expand((double) var27, (double) var27, (double) var27));
+					par3EntityPlayer.boundingBox.addCoord(var25.xCoord * var21, var25.yCoord * var21, var25.zCoord * var21).expand(var27, var27, var27));
 			int var29;
 
 			for (var29 = 0; var29 < var28.size(); ++var29) {
@@ -48,7 +48,7 @@ public class ItemBoat extends Item {
 
 				if (var30.canBeCollidedWith()) {
 					float var31 = var30.getCollisionBorderSize();
-					AxisAlignedBB var32 = var30.boundingBox.expand((double) var31, (double) var31, (double) var31);
+					AxisAlignedBB var32 = var30.boundingBox.expand(var31, var31, var31);
 
 					if (var32.isVecInside(var13)) {
 						var26 = true;
@@ -68,7 +68,7 @@ public class ItemBoat extends Item {
 						--var33;
 					}
 
-					EntityBoat var35 = new EntityBoat(par2World, (double) ((float) var29 + 0.5F), (double) ((float) var33 + 1.0F), (double) ((float) var34 + 0.5F));
+					EntityBoat var35 = new EntityBoat(par2World, (float) var29 + 0.5F, (float) var33 + 1.0F, (float) var34 + 0.5F);
 					var35.rotationYaw = (float) (((MathHelper.floor_double((double) (par3EntityPlayer.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3) - 1) * 90);
 
 					if (!par2World.getCollidingBoundingBoxes(var35, var35.boundingBox.expand(-0.1D, -0.1D, -0.1D)).isEmpty()) {

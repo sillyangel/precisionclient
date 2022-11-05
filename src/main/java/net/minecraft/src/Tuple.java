@@ -2,10 +2,10 @@ package net.minecraft.src;
 
 public class Tuple {
 	/** First Object in the Tuple */
-	private Object first;
+	private final Object first;
 
 	/** Second Object in the Tuple */
-	private Object second;
+	private final Object second;
 
 	public Tuple(Object par1Obj, Object par2Obj) {
 		this.first = par1Obj;

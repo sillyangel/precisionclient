@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class GuiDownloadTerrain extends GuiScreen {
 	/** Network object that downloads the terrain data. */
-	private NetClientHandler netHandler;
+	private final NetClientHandler netHandler;
 
 	/** Counts the number of screen updates. */
 	private int updateCounter = 0;

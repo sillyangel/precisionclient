@@ -7,9 +7,9 @@ import net.minecraft.client.Minecraft;
 import java.util.List;
 
 public class GuiRepair extends GuiContainer implements ICrafting {
-	private ContainerRepair repairContainer;
+	private final ContainerRepair repairContainer;
 	private GuiTextField itemNameField;
-	private InventoryPlayer field_82325_q;
+	private final InventoryPlayer field_82325_q;
 
 	public GuiRepair(InventoryPlayer par1, World par2World, int par3, int par4, int par5) {
 		super(new ContainerRepair(par1, par2World, par3, par4, par5, Minecraft.getMinecraft().thePlayer));
@@ -54,7 +54,7 @@ public class GuiRepair extends GuiContainer implements ICrafting {
 		if (this.repairContainer.maximumCost > 0) {
 			int var3 = 8453920;
 			boolean var4 = true;
-			String var5 = StatCollector.translateToLocalFormatted("container.repair.cost", new Object[] { Integer.valueOf(this.repairContainer.maximumCost) });
+			String var5 = StatCollector.translateToLocalFormatted("container.repair.cost", Integer.valueOf(this.repairContainer.maximumCost));
 
 			if (this.repairContainer.maximumCost >= 40 && !this.mc.thePlayer.capabilities.isCreativeMode) {
 				var5 = StatCollector.translateToLocal("container.repair.expensive");

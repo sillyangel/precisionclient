@@ -39,7 +39,7 @@ public class BlockDragonEgg extends Block {
 			byte var5 = 32;
 
 			if (!BlockSand.fallInstantly && par1World.checkChunksExist(par2 - var5, par3 - var5, par4 - var5, par2 + var5, par3 + var5, par4 + var5)) {
-				EntityFallingSand var6 = new EntityFallingSand(par1World, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), this.blockID);
+				EntityFallingSand var6 = new EntityFallingSand(par1World, (float) par2 + 0.5F, (float) par3 + 0.5F, (float) par4 + 0.5F, this.blockID);
 				par1World.spawnEntityInWorld(var6);
 			} else {
 				par1World.setBlockToAir(par2, par3, par4);
@@ -89,10 +89,10 @@ public class BlockDragonEgg extends Block {
 						float var13 = (par1World.rand.nextFloat() - 0.5F) * 0.2F;
 						float var14 = (par1World.rand.nextFloat() - 0.5F) * 0.2F;
 						float var15 = (par1World.rand.nextFloat() - 0.5F) * 0.2F;
-						double var16 = (double) var6 + (double) (par2 - var6) * var11 + (par1World.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;
-						double var18 = (double) var7 + (double) (par3 - var7) * var11 + par1World.rand.nextDouble() * 1.0D - 0.5D;
-						double var20 = (double) var8 + (double) (par4 - var8) * var11 + (par1World.rand.nextDouble() - 0.5D) * 1.0D + 0.5D;
-						par1World.spawnParticle("portal", var16, var18, var20, (double) var13, (double) var14, (double) var15);
+						double var16 = (double) var6 + (double) (par2 - var6) * var11 + (par1World.rand.nextDouble() - 0.5D) + 0.5D;
+						double var18 = (double) var7 + (double) (par3 - var7) * var11 + par1World.rand.nextDouble() - 0.5D;
+						double var20 = (double) var8 + (double) (par4 - var8) * var11 + (par1World.rand.nextDouble() - 0.5D) + 0.5D;
+						par1World.spawnParticle("portal", var16, var18, var20, var13, var14, var15);
 					}
 					return;
 				}

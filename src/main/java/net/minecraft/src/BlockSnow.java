@@ -27,7 +27,7 @@ public class BlockSnow extends Block {
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		int var5 = par1World.getBlockMetadata(par2, par3, par4) & 7;
 		float var6 = 0.125F;
-		return AxisAlignedBB.getAABBPool().getAABB((double) par2 + this.minX, (double) par3 + this.minY, (double) par4 + this.minZ, (double) par2 + this.maxX, (double) ((float) par3 + (float) var5 * var6), (double) par4 + this.maxZ);
+		return AxisAlignedBB.getAABBPool().getAABB((double) par2 + this.minX, (double) par3 + this.minY, (double) par4 + this.minZ, (double) par2 + this.maxX, (float) par3 + (float) var5 * var6, (double) par4 + this.maxZ);
 	}
 
 	/**
@@ -77,9 +77,7 @@ public class BlockSnow extends Block {
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
 		int var5 = par1World.getBlockId(par2, par3 - 1, par4);
-		return var5 == 0 ? false
-				: (var5 == this.blockID && (par1World.getBlockMetadata(par2, par3 - 1, par4) & 7) == 7 ? true
-						: (var5 != Block.leaves.blockID && !Block.blocksList[var5].isOpaqueCube() ? false : par1World.getBlockMaterial(par2, par3 - 1, par4).blocksMovement()));
+		return var5 != 0 && (var5 == this.blockID && (par1World.getBlockMetadata(par2, par3 - 1, par4) & 7) == 7 || ((var5 == Block.leaves.blockID || Block.blocksList[var5].isOpaqueCube()) && par1World.getBlockMaterial(par2, par3 - 1, par4).blocksMovement()));
 	}
 
 	/**
@@ -144,6 +142,6 @@ public class BlockSnow extends Block {
 	 * adjacent block is at the given coordinates. Args: blockAccess, x, y, z, side
 	 */
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return par5 == 1 ? true : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+		return par5 == 1 || super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
 	}
 }

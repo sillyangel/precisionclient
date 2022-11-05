@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class ItemSword extends Item {
-	private int weaponDamage;
+	private final int weaponDamage;
 	private final EnumToolMaterial toolMaterial;
 
 	public ItemSword(int par1, EnumToolMaterial par2EnumToolMaterial) {
@@ -111,6 +111,6 @@ public class ItemSword extends Item {
 	 * Return whether this item is repairable in an anvil.
 	 */
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID || super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 }

@@ -154,7 +154,7 @@ public class ServerList {
 		this.servers.clear();
 		this.allServers.clear();
 		for(ServerData dat : forcedServers) {
-			dat.pingSentTime = -1l;
+			dat.pingSentTime = -1L;
 			dat.hasPing = false;
 			this.servers.add(dat);
 			this.allServers.add(dat);
@@ -174,7 +174,7 @@ public class ServerList {
 	public void saveServerList() {
 		NBTTagList servers = new NBTTagList();
 		for(int i = forcedServers.size(); i < this.allServers.size(); ++i) {
-			servers.appendTag(((ServerData) this.allServers.get(i)).getNBTCompound());
+			servers.appendTag(this.allServers.get(i).getNBTCompound());
 		}
 		LocalStorageManager.gameSettingsStorage.setTag("servers", servers);
 		LocalStorageManager.saveStorageG();
@@ -184,7 +184,7 @@ public class ServerList {
 	 * Gets the ServerData instance stored for the given index in the list.
 	 */
 	public ServerData getServerData(int par1) {
-		return (ServerData) this.servers.get(par1);
+		return this.servers.get(par1);
 	}
 
 	/**
@@ -202,7 +202,7 @@ public class ServerList {
 	 * Adds the given ServerData instance to the list.
 	 */
 	public void addServerData(ServerData par1ServerData) {
-		par1ServerData.pingSentTime = -1l;
+		par1ServerData.pingSentTime = -1L;
 		par1ServerData.hasPing = false;
 		this.allServers.add(par1ServerData);
 		refreshServerPing();
@@ -253,7 +253,7 @@ public class ServerList {
 				dat.currentQuery.close();
 			}
 			dat.hasPing = false;
-			dat.pingSentTime = -1l;
+			dat.pingSentTime = -1L;
 		}
 	}
 	
@@ -262,8 +262,8 @@ public class ServerList {
 		Iterator<ServerData> itr = servers.iterator();
 		while(itr.hasNext()) {
 			ServerData dat = itr.next();
-			if(dat.pingSentTime <= 0l) {
-				dat.pingToServer = -2l;
+			if(dat.pingSentTime <= 0L) {
+				dat.pingToServer = -2L;
 				String addr = dat.serverIP;
 				if(!addr.startsWith("ws://") && !addr.startsWith("wss://")) {
 					if(EaglerAdapter.isSSLPage()) {
@@ -295,7 +295,7 @@ public class ServerList {
 							dat.setRateLimitError(false, pkt.rateLimitIsTCP);
 						}
 						dat.currentQuery.close();
-						dat.pingToServer = -1l;
+						dat.pingToServer = -1L;
 						dat.hasPing = true;
 					}else {
 						if(pkt.responseType.equalsIgnoreCase("MOTD") && pkt.isResponseJSON()) {
@@ -322,11 +322,11 @@ public class ServerList {
 						dat.serverIconDirty = true;
 					}
 				}
-				if(!dat.currentQuery.isQueryOpen() && dat.pingSentTime > 0l && !dat.hasPing) {
-					dat.pingToServer = -1l;
+				if(!dat.currentQuery.isQueryOpen() && dat.pingSentTime > 0L && !dat.hasPing) {
+					dat.pingToServer = -1L;
 					dat.hasPing = true;
 				}
-				if(ServerList.hideDownDefaultServers && dat.isDefault && dat.pingToServer == -1l && dat.hasPing == true) {
+				if(ServerList.hideDownDefaultServers && dat.isDefault && dat.pingToServer == -1L && dat.hasPing) {
 					itr.remove();
 				}
 			}

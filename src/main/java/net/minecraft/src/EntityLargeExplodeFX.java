@@ -9,8 +9,8 @@ public class EntityLargeExplodeFX extends EntityFX {
 	private int field_70584_aq = 0;
 
 	/** The Rendering Engine. */
-	private RenderEngine theRenderEngine;
-	private float field_70582_as;
+	private final RenderEngine theRenderEngine;
+	private final float field_70582_as;
 
 	public EntityLargeExplodeFX(RenderEngine par1RenderEngine, World par2World, double par3, double par5, double par7, double par9, double par11, double par13) {
 		super(par2World, par3, par5, par7, 0.0D, 0.0D, 0.0D);
@@ -41,10 +41,10 @@ public class EntityLargeExplodeFX extends EntityFX {
 			par1Tessellator.setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, 1.0F);
 			par1Tessellator.setNormal(0.0F, 1.0F, 0.0F);
 			par1Tessellator.setBrightness(240);
-			par1Tessellator.addVertexWithUV((double) (var14 - par3 * var13 - par6 * var13), (double) (var15 - par4 * var13), (double) (var16 - par5 * var13 - par7 * var13), (double) var10, (double) var12);
-			par1Tessellator.addVertexWithUV((double) (var14 - par3 * var13 + par6 * var13), (double) (var15 + par4 * var13), (double) (var16 - par5 * var13 + par7 * var13), (double) var10, (double) var11);
-			par1Tessellator.addVertexWithUV((double) (var14 + par3 * var13 + par6 * var13), (double) (var15 + par4 * var13), (double) (var16 + par5 * var13 + par7 * var13), (double) var9, (double) var11);
-			par1Tessellator.addVertexWithUV((double) (var14 + par3 * var13 - par6 * var13), (double) (var15 - par4 * var13), (double) (var16 + par5 * var13 - par7 * var13), (double) var9, (double) var12);
+			par1Tessellator.addVertexWithUV(var14 - par3 * var13 - par6 * var13, var15 - par4 * var13, var16 - par5 * var13 - par7 * var13, var10, var12);
+			par1Tessellator.addVertexWithUV(var14 - par3 * var13 + par6 * var13, var15 + par4 * var13, var16 - par5 * var13 + par7 * var13, var10, var11);
+			par1Tessellator.addVertexWithUV(var14 + par3 * var13 + par6 * var13, var15 + par4 * var13, var16 + par5 * var13 + par7 * var13, var9, var11);
+			par1Tessellator.addVertexWithUV(var14 + par3 * var13 - par6 * var13, var15 - par4 * var13, var16 + par5 * var13 - par7 * var13, var9, var12);
 			par1Tessellator.draw();
 			EaglerAdapter.glPolygonOffset(0.0F, 0.0F);
 			EaglerAdapter.glEnable(EaglerAdapter.GL_LIGHTING);

@@ -4,7 +4,7 @@ package net.minecraft.src;
 
 public class ItemBucket extends Item {
 	/** field for checking if the bucket has been filled. */
-	private int isFull;
+	private final int isFull;
 
 	public ItemBucket(int par1, int par2) {
 		super(par1);

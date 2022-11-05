@@ -21,7 +21,7 @@ public class SelfDefence {
 	private static boolean ignoreNextWindow = false;
 	
 	@JSFunctor
-	private static interface NewWindowCallback extends JSObject {
+	private interface NewWindowCallback extends JSObject {
 		void call(Window newWindow);
 	}
 	
@@ -37,14 +37,14 @@ public class SelfDefence {
 
 				@Override
 				public void onTimer() {
-					Window.setTimeout(this, (long)(Math.random() * 25000l));
+					Window.setTimeout(this, (long)(Math.random() * 25000L));
 					run(Window.current());
 					for(int i = 0, l = capturedChildWindows.size(); i < l; ++i) {
 						run(capturedChildWindows.get(i));
 					}
 				}
 				
-			}, (long)(Math.random() * 25000l));
+			}, (long)(Math.random() * 25000L));
 		}
 		injectWindowCapture(new NewWindowCallback() {
 			@Override

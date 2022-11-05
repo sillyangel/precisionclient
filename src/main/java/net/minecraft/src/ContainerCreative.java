@@ -46,7 +46,7 @@ class ContainerCreative extends Container {
 				if (var6 >= 0 && var6 < this.itemList.size()) {
 					GuiContainerCreative.getInventory().setInventorySlotContents(var5 + var4 * 9, (ItemStack) this.itemList.get(var6));
 				} else {
-					GuiContainerCreative.getInventory().setInventorySlotContents(var5 + var4 * 9, (ItemStack) null);
+					GuiContainerCreative.getInventory().setInventorySlotContents(var5 + var4 * 9, null);
 				}
 			}
 		}
@@ -71,7 +71,7 @@ class ContainerCreative extends Container {
 			Slot var3 = (Slot) this.inventorySlots.get(par2);
 
 			if (var3 != null && var3.getHasStack()) {
-				var3.putStack((ItemStack) null);
+				var3.putStack(null);
 			}
 		}
 

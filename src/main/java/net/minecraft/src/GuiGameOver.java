@@ -50,12 +50,12 @@ public class GuiGameOver extends GuiScreen {
 		switch (par1GuiButton.id) {
 		case 1:
 			this.mc.thePlayer.respawnPlayer();
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 			break;
 
 		case 2:
 			this.mc.theWorld.sendQuittingDisconnectingPacket();
-			this.mc.loadWorld((WorldClient) null);
+			this.mc.loadWorld(null);
 			this.mc.stopServerAndDisplayGuiScreen(new GuiMainMenu());
 		}
 	}

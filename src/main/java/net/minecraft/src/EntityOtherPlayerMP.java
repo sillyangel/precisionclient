@@ -49,8 +49,8 @@ public class EntityOtherPlayerMP extends EntityPlayer {
 		this.otherPlayerMPX = par1;
 		this.otherPlayerMPY = par3;
 		this.otherPlayerMPZ = par5;
-		this.otherPlayerMPYaw = (double) par7;
-		this.otherPlayerMPPitch = (double) par8;
+		this.otherPlayerMPYaw = par7;
+		this.otherPlayerMPPitch = par8;
 		this.otherPlayerMPPosRotationIncrements = par9;
 	}
 
@@ -105,8 +105,7 @@ public class EntityOtherPlayerMP extends EntityPlayer {
 			double var7;
 
 			for (var7 = this.otherPlayerMPYaw - (double) this.rotationYaw; var7 < -180.0D; var7 += 360.0D) {
-				;
-			}
+            }
 
 			while (var7 >= 180.0D) {
 				var7 -= 360.0D;

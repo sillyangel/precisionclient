@@ -4,15 +4,15 @@ import java.util.Comparator;
 
 public class EntitySorter implements Comparator {
 	/** Entity position X */
-	private double entityPosX;
+	private final double entityPosX;
 
 	/** Entity position Y */
-	private double entityPosY;
+	private final double entityPosY;
 
 	/** Entity position Z */
-	private double entityPosZ;
+	private final double entityPosZ;
 	
-	private boolean reverse;
+	private final boolean reverse;
 
 	public EntitySorter(Entity par1Entity) {
 		this.entityPosX = -par1Entity.posX;

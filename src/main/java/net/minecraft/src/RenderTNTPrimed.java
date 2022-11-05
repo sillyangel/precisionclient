@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderTNTPrimed extends Render {
-	private RenderBlocks blockRenderer = new RenderBlocks();
+	private final RenderBlocks blockRenderer = new RenderBlocks();
 
 	public RenderTNTPrimed() {
 		this.shadowSize = 0.5F;

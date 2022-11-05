@@ -64,7 +64,7 @@ public class EarlyLoadScreen {
 		_wglDeleteShader(frag);
 		
 		try {
-			Thread.sleep(50l);
+			Thread.sleep(50L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -125,7 +125,7 @@ public class EarlyLoadScreen {
 		_wglTexImage2D(_wGL_TEXTURE_2D, 0, _wGL_RGBA, 128, 128, 0, _wGL_RGBA, _wGL_UNSIGNED_BYTE, upload);
 		
 		try {
-			Thread.sleep(50l);
+			Thread.sleep(50L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

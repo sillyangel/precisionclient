@@ -375,16 +375,16 @@ public class FixedFunctionShader {
 		
 	}
 
-	private float[] modelBuffer = new float[16];
-	private float[] projectionBuffer = new float[16];
-	private float[] textureBuffer = new float[16];
+	private final float[] modelBuffer = new float[16];
+	private final float[] projectionBuffer = new float[16];
+	private final float[] textureBuffer = new float[16];
 
-	private Matrix4f modelMatrix = (Matrix4f) new Matrix4f().setZero();
-	private Matrix4f projectionMatrix = (Matrix4f) new Matrix4f().setZero();
-	private Matrix4f textureMatrix = (Matrix4f) new Matrix4f().setZero();
-	private Vector4f light0Pos = new Vector4f();
-	private Vector4f light1Pos = new Vector4f();
-	private Vector2f anisotropicFix = new Vector2f(0.0f, 0.0f);
+	private final Matrix4f modelMatrix = (Matrix4f) new Matrix4f().setZero();
+	private final Matrix4f projectionMatrix = (Matrix4f) new Matrix4f().setZero();
+	private final Matrix4f textureMatrix = (Matrix4f) new Matrix4f().setZero();
+	private final Vector4f light0Pos = new Vector4f();
+	private final Vector4f light1Pos = new Vector4f();
+	private final Vector2f anisotropicFix = new Vector2f(0.0f, 0.0f);
 	
 	public void setAnisotropicFix(float x, float y) {
 		if(anisotropicFix.x != x || anisotropicFix.y != y) {

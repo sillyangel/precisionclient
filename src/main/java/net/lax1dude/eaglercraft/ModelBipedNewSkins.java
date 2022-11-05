@@ -25,9 +25,9 @@ public class ModelBipedNewSkins extends ModelBiped {
 	 * jacket
 	 */
 	public ModelRenderer field_178730_v;
-	private ModelRenderer field_178729_w;
-	private ModelRenderer field_178736_x;
-	private boolean isAlex;
+	private final ModelRenderer field_178729_w;
+	private final ModelRenderer field_178736_x;
+	private final boolean isAlex;
 
 	public ModelBipedNewSkins(float p_i46304_1_, boolean p_i46304_2_)
     {

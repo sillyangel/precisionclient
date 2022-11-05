@@ -20,7 +20,7 @@ public class EntityRenderer {
 	public static int anaglyphField;
 
 	/** A reference to the Minecraft object. */
-	private Minecraft mc;
+	private final Minecraft mc;
 	private float farPlaneDistance = 0.0F;
 	public ItemRenderer itemRenderer;
 
@@ -29,27 +29,27 @@ public class EntityRenderer {
 
 	/** Pointed entity */
 	private Entity pointedEntity = null;
-	private MouseFilter mouseFilterXAxis = new MouseFilter();
-	private MouseFilter mouseFilterYAxis = new MouseFilter();
+	private final MouseFilter mouseFilterXAxis = new MouseFilter();
+	private final MouseFilter mouseFilterYAxis = new MouseFilter();
 
 	/** Mouse filter dummy 1 */
-	private MouseFilter mouseFilterDummy1 = new MouseFilter();
+	private final MouseFilter mouseFilterDummy1 = new MouseFilter();
 
 	/** Mouse filter dummy 2 */
-	private MouseFilter mouseFilterDummy2 = new MouseFilter();
+	private final MouseFilter mouseFilterDummy2 = new MouseFilter();
 
 	/** Mouse filter dummy 3 */
-	private MouseFilter mouseFilterDummy3 = new MouseFilter();
+	private final MouseFilter mouseFilterDummy3 = new MouseFilter();
 
 	/** Mouse filter dummy 4 */
-	private MouseFilter mouseFilterDummy4 = new MouseFilter();
-	private float thirdPersonDistance = 4.0F;
+	private final MouseFilter mouseFilterDummy4 = new MouseFilter();
+	private final float thirdPersonDistance = 4.0F;
 
 	/** Third person distance temp */
 	private float thirdPersonDistanceTemp = 4.0F;
-	private float debugCamYaw = 0.0F;
+	private final float debugCamYaw = 0.0F;
 	private float prevDebugCamYaw = 0.0F;
-	private float debugCamPitch = 0.0F;
+	private final float debugCamPitch = 0.0F;
 	private float prevDebugCamPitch = 0.0F;
 
 	/** Smooth cam yaw */
@@ -66,9 +66,9 @@ public class EntityRenderer {
 
 	/** Smooth cam partial ticks */
 	private float smoothCamPartialTicks;
-	private float debugCamFOV = 0.0F;
+	private final float debugCamFOV = 0.0F;
 	private float prevDebugCamFOV = 0.0F;
-	private float camRoll = 0.0F;
+	private final float camRoll = 0.0F;
 	private float prevCamRoll = 0.0F;
 
 	/**
@@ -79,7 +79,7 @@ public class EntityRenderer {
 	/**
 	 * Colors computed in updateLightmap() and loaded into the lightmap emptyTexture
 	 */
-	private int[] lightmapColors;
+	private final int[] lightmapColors;
 
 	/** FOV modifier hand */
 	private float fovModifierHand;
@@ -94,9 +94,9 @@ public class EntityRenderer {
 
 	/** Cloud fog mode */
 	private boolean cloudFog = false;
-	private double cameraZoom = 1.0D;
-	private double cameraYaw = 0.0D;
-	private double cameraPitch = 0.0D;
+	private final double cameraZoom = 1.0D;
+	private final double cameraYaw = 0.0D;
+	private final double cameraPitch = 0.0D;
 
 	/** Previous frame time in milliseconds */
 	private long prevFrameTime = Minecraft.getSystemTime();
@@ -121,7 +121,7 @@ public class EntityRenderer {
 
 	/** Torch flicker DY */
 	float torchFlickerDY = 0.0F;
-	private EaglercraftRandom random = new EaglercraftRandom();
+	private final EaglercraftRandom random = new EaglercraftRandom();
 
 	/** Rain sound counter */
 	private int rainSoundCounter = 0;
@@ -227,7 +227,7 @@ public class EntityRenderer {
 		if (this.mc.renderViewEntity != null) {
 			if (this.mc.theWorld != null) {
 				this.mc.pointedEntityLiving = null;
-				double var2 = (double) this.mc.playerController.getBlockReachDistance();
+				double var2 = this.mc.playerController.getBlockReachDistance();
 				this.mc.objectMouseOver = this.mc.renderViewEntity.rayTrace(var2, par1);
 				double var4 = var2;
 				Vec3 var6 = this.mc.renderViewEntity.getPosition(par1);
@@ -252,7 +252,7 @@ public class EntityRenderer {
 				this.pointedEntity = null;
 				float var9 = 1.0F;
 				List var10 = this.mc.theWorld.getEntitiesWithinAABBExcludingEntity(this.mc.renderViewEntity,
-						this.mc.renderViewEntity.boundingBox.addCoord(var7.xCoord * var2, var7.yCoord * var2, var7.zCoord * var2).expand((double) var9, (double) var9, (double) var9));
+						this.mc.renderViewEntity.boundingBox.addCoord(var7.xCoord * var2, var7.yCoord * var2, var7.zCoord * var2).expand(var9, var9, var9));
 				double var11 = var4;
 
 				for (int var13 = 0; var13 < var10.size(); ++var13) {
@@ -260,7 +260,7 @@ public class EntityRenderer {
 
 					if (var14.canBeCollidedWith()) {
 						float var15 = var14.getCollisionBorderSize();
-						AxisAlignedBB var16 = var14.boundingBox.expand((double) var15, (double) var15, (double) var15);
+						AxisAlignedBB var16 = var14.boundingBox.expand(var15, var15, var15);
 						MovingObjectPosition var17 = var16.calculateIntercept(var6, var8);
 
 						if (var16.isVecInside(var6)) {
@@ -406,7 +406,7 @@ public class EntityRenderer {
 				EaglerAdapter.glRotatef(var2.prevRotationPitch + (var2.rotationPitch - var2.prevRotationPitch) * par1, -1.0F, 0.0F, 0.0F);
 			}
 		} else if (this.mc.gameSettings.thirdPersonView > 0) {
-			double var27 = (double) (this.thirdPersonDistanceTemp + (this.thirdPersonDistance - this.thirdPersonDistanceTemp) * par1);
+			double var27 = this.thirdPersonDistanceTemp + (this.thirdPersonDistance - this.thirdPersonDistanceTemp) * par1;
 			float var13;
 			float var28;
 
@@ -498,7 +498,7 @@ public class EntityRenderer {
 		if(i < 0.0f) i = 0.0f;
 		float i2 = i * i;
 		if(i2 > 0.0f) {
-			float f = (float)((System.currentTimeMillis() % 10000000l) * 0.0002);
+			float f = (float)((System.currentTimeMillis() % 10000000L) * 0.0002);
 			f += MathHelper.sin(f * 5.0f) * 0.2f;
 			i2 *= MathHelper.sin(f) + MathHelper.sin(f * 1.5f + 0.6f) + MathHelper.sin(f * 0.7f + 1.7f) +
 					MathHelper.sin(f * 3.0f + 3.0f) + MathHelper.sin(f * 5.25f + 1.2f);
@@ -527,7 +527,7 @@ public class EntityRenderer {
 		i2 = i * i;
 		if(i > 0.0f) {
 			
-			float f = (float)((System.currentTimeMillis() % 10000000l) * 0.00012);
+			float f = (float)((System.currentTimeMillis() % 10000000L) * 0.00012);
 			f += MathHelper.sin(f * 3.0f) * 0.2f;
 			i2 *= MathHelper.sin(f * 1.2f + 1.0f) + MathHelper.sin(f * 1.5f + 0.8f) * 3.0f + MathHelper.sin(f * 0.6f + 3.0f) +
 					MathHelper.sin(f * 4.3f) + MathHelper.sin(f * 5.25f + 0.5f);
@@ -605,7 +605,7 @@ public class EntityRenderer {
 			if(i < 0.0f) i = 0.0f;
 			float i2 = i * i;
 			if(i2 > 0.0f) {
-				float f = (float)((System.currentTimeMillis() % 10000000l) * 0.0003);
+				float f = (float)((System.currentTimeMillis() % 10000000L) * 0.0003);
 				f += MathHelper.sin(f * 3.0f) * 0.2f;
 				i2 *= MathHelper.sin(f * 1.2f + 1.0f) + MathHelper.sin(f * 1.5f + 0.8f) * 3.0f + MathHelper.sin(f * 0.6f + 3.0f) +
 						MathHelper.sin(f * 4.3f) + MathHelper.sin(f * 5.25f + 0.5f);
@@ -653,9 +653,9 @@ public class EntityRenderer {
 			}
 
 			if (this.mc.gameSettings.thirdPersonView == 0 && !this.mc.renderViewEntity.isPlayerSleeping() && !this.mc.gameSettings.hideGUI && !this.mc.playerController.enableEverythingIsScrewedUpMode()) {
-				this.enableLightmap((double) par1);
+				this.enableLightmap(par1);
 				this.itemRenderer.renderItemInFirstPerson(par1);
-				this.disableLightmap((double) par1);
+				this.disableLightmap(par1);
 			}
 
 			EaglerAdapter.glPopMatrix();
@@ -1067,7 +1067,7 @@ public class EntityRenderer {
 			}
 			EaglerAdapter.glAlphaFunc(EaglerAdapter.GL_GREATER, 0.6f);
 			this.mc.mcProfiler.endStartSection("terrain");
-			var5.sortAndRender(var4, 0, (double) par1);
+			var5.sortAndRender(var4, 0, par1);
 			EaglerAdapter.glShadeModel(EaglerAdapter.GL_FLAT);
 			EntityPlayer var17;
 
@@ -1075,14 +1075,14 @@ public class EntityRenderer {
 				RenderHelper.enableStandardItemLighting();
 				this.mc.mcProfiler.endStartSection("entities");
 				var5.renderEntities(var4.getPosition(par1), var14, par1);
-				this.enableLightmap((double) par1);
+				this.enableLightmap(par1);
 				this.mc.mcProfiler.endStartSection("litParticles");
 				var6.renderLitParticles(var4, par1);
 				RenderHelper.disableStandardItemLighting();
 				this.setupFog(0, par1);
 				this.mc.mcProfiler.endStartSection("particles");
 				var6.renderParticles(var4, par1);
-				this.disableLightmap((double) par1);
+				this.disableLightmap(par1);
 
 				if (this.mc.objectMouseOver != null && var4.isInsideOfMaterial(Material.water) && var4 instanceof EntityPlayer && !this.mc.gameSettings.hideGUI) {
 					var17 = (EntityPlayer) var4;
@@ -1108,7 +1108,7 @@ public class EntityRenderer {
 				this.mc.mcProfiler.endStartSection("water");
 
 				EaglerAdapter.glColorMask(false, false, false, false);
-				int var18 = var5.sortAndRender(var4, 1, (double) par1);
+				int var18 = var5.sortAndRender(var4, 1, par1);
 
 				if (this.mc.gameSettings.anaglyph) {
 					if (anaglyphField == 0) {
@@ -1122,7 +1122,7 @@ public class EntityRenderer {
 				
 				if (var18 > 0) {
 					EaglerAdapter.glDepthFunc(EaglerAdapter.GL_EQUAL);
-					var5.renderSortedRenderers(0, var5.sortedWorldRenderers.length, 1, (double) par1);
+					var5.renderSortedRenderers(0, var5.sortedWorldRenderers.length, 1, par1);
 					EaglerAdapter.glDepthFunc(EaglerAdapter.GL_LEQUAL);
 				}
 				
@@ -1200,7 +1200,7 @@ public class EntityRenderer {
 	}
 
 	private int updateCounter = 0;
-	private int randomOffset = (int)(System.currentTimeMillis() % 100000l);
+	private final int randomOffset = (int)(System.currentTimeMillis() % 100000L);
 
 	public boolean asdfghjkl = false;
 
@@ -1247,17 +1247,17 @@ public class EntityRenderer {
 					if (var20 > 0) {
 						if (Block.blocksList[var20].blockMaterial == Material.lava) {
 							this.mc.effectRenderer
-									.addEffect(new EntitySmokeFX(var3, (double) ((float) var17 + var22), (double) ((float) var19 + 0.1F) - Block.blocksList[var20].getBlockBoundsMinY(), (double) ((float) var18 + var23), 0.0D, 0.0D, 0.0D));
+									.addEffect(new EntitySmokeFX(var3, (float) var17 + var22, (double) ((float) var19 + 0.1F) - Block.blocksList[var20].getBlockBoundsMinY(), (float) var18 + var23, 0.0D, 0.0D, 0.0D));
 						} else {
 							++var14;
 
 							if (this.random.nextInt(var14) == 0) {
-								var8 = (double) ((float) var17 + var22);
+								var8 = (float) var17 + var22;
 								var10 = (double) ((float) var19 + 0.1F) - Block.blocksList[var20].getBlockBoundsMinY();
-								var12 = (double) ((float) var18 + var23);
+								var12 = (float) var18 + var23;
 							}
 
-							this.mc.effectRenderer.addEffect(new EntityRainFX(var3, (double) ((float) var17 + var22), (double) ((float) var19 + 0.1F) - Block.blocksList[var20].getBlockBoundsMinY(), (double) ((float) var18 + var23)));
+							this.mc.effectRenderer.addEffect(new EntityRainFX(var3, (float) var17 + var22, (double) ((float) var19 + 0.1F) - Block.blocksList[var20].getBlockBoundsMinY(), (float) var18 + var23));
 						}
 					}
 				}
@@ -1288,12 +1288,12 @@ public class EntityRenderer {
 			if(++updateCounter % k == 0) {
 				long time = this.mc.theWorld.getWorldTime();
 				int j = var2.getBrightnessForRender(0.0f);
-				float intensity = Math.max(MathHelper.clamp_float((float)Math.abs(6000l - ((time % 24000l) - 12000l)), 0.15f, 1.0f),
+				float intensity = Math.max(MathHelper.clamp_float((float)Math.abs(6000L - ((time % 24000L) - 12000L)), 0.15f, 1.0f),
 						Math.max(1.0f - ((j / 65536) / 256.0f), 1.0f - ((j % 65536) / 256.0f)));
 				int rad = (int)((1.0f - ((j / 65536) / 256.0f)) * 6.0f) - 2;
 				if(rad < 0) rad = 0;
-				int effect = (int)((time + randomOffset) / 7432l % 5l);
-				int effect2 = (int)((time + randomOffset + 1290348l) / 4432l % 5l);
+				int effect = (int)((time + randomOffset) / 7432L % 5L);
+				int effect2 = (int)((time + randomOffset + 1290348L) / 4432L % 5L);
 				if(effect == 4) rad = 8;
 				int d = 1;
 				if(effect == 4) d = 2;
@@ -1444,7 +1444,7 @@ public class EntityRenderer {
 		float var2 = this.mc.theWorld.getRainStrength(par1) * 0.5f;
 
 		if (var2 > 0.0F) {
-			this.enableLightmap((double) par1);
+			this.enableLightmap(par1);
 
 			if (this.rainXCoords == null) {
 				this.rainXCoords = new float[1024];
@@ -1522,7 +1522,7 @@ public class EntityRenderer {
 						}
 
 						if (var27 != var28) {
-							this.random.setSeed((long) (var21 * var21 * 3121 + var21 * 45238971 ^ var20 * var20 * 418711 + var20 * 13761));
+							this.random.setSeed((long) var21 * var21 * 3121 + var21 * 45238971L ^ (long) var20 * var20 * 418711 + var20 * 13761L);
 							float var31 = var25.getFloatTemperature();
 							float var32;
 							double var35;
@@ -1545,11 +1545,11 @@ public class EntityRenderer {
 								float var38 = 1.0F;
 								var8.setBrightness(var42.getLightBrightnessForSkyBlocks(var21, var30, var20, 0));
 								var8.setColorRGBA_F(var38, var38, var38, ((1.0F - var37 * var37) * 0.5F + 0.5F) * var2);
-								var8.setTranslation(-var9 * 1.0D, -var11 * 1.0D, -var13 * 1.0D);
-								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, (double) var27, (double) ((float) var20 - var24) + 0.5D, (double) (0.0F * var29), (double) ((float) var27 * var29 / 4.0F + var32 * var29));
-								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, (double) var27, (double) ((float) var20 + var24) + 0.5D, (double) (1.0F * var29), (double) ((float) var27 * var29 / 4.0F + var32 * var29));
-								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, (double) var28, (double) ((float) var20 + var24) + 0.5D, (double) (1.0F * var29), (double) ((float) var28 * var29 / 4.0F + var32 * var29));
-								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, (double) var28, (double) ((float) var20 - var24) + 0.5D, (double) (0.0F * var29), (double) ((float) var28 * var29 / 4.0F + var32 * var29));
+								var8.setTranslation(-var9, -var11, -var13);
+								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, var27, (double) ((float) var20 - var24) + 0.5D, 0.0F * var29, (float) var27 * var29 / 4.0F + var32 * var29);
+								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, var27, (double) ((float) var20 + var24) + 0.5D, var29, (float) var27 * var29 / 4.0F + var32 * var29);
+								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, var28, (double) ((float) var20 + var24) + 0.5D, var29, (float) var28 * var29 / 4.0F + var32 * var29);
+								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, var28, (double) ((float) var20 - var24) + 0.5D, 0.0F * var29, (float) var28 * var29 / 4.0F + var32 * var29);
 								var8.setTranslation(0.0D, 0.0D, 0.0D);
 							} else {
 								if (var18 != 1) {
@@ -1571,11 +1571,11 @@ public class EntityRenderer {
 								float var40 = 1.0F;
 								var8.setBrightness((var42.getLightBrightnessForSkyBlocks(var21, var30, var20, 0) * 3 + 15728880) / 4);
 								var8.setColorRGBA_F(var40, var40, var40, ((1.0F - var39 * var39) * 0.3F + 0.5F) * var2);
-								var8.setTranslation(-var9 * 1.0D, -var11 * 1.0D, -var13 * 1.0D);
-								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, (double) var27, (double) ((float) var20 - var24) + 0.5D, (double) (0.0F * var29 + var46), (double) ((float) var27 * var29 / 4.0F + var32 * var29 + var34));
-								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, (double) var27, (double) ((float) var20 + var24) + 0.5D, (double) (1.0F * var29 + var46), (double) ((float) var27 * var29 / 4.0F + var32 * var29 + var34));
-								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, (double) var28, (double) ((float) var20 + var24) + 0.5D, (double) (1.0F * var29 + var46), (double) ((float) var28 * var29 / 4.0F + var32 * var29 + var34));
-								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, (double) var28, (double) ((float) var20 - var24) + 0.5D, (double) (0.0F * var29 + var46), (double) ((float) var28 * var29 / 4.0F + var32 * var29 + var34));
+								var8.setTranslation(-var9, -var11, -var13);
+								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, var27, (double) ((float) var20 - var24) + 0.5D, 0.0F * var29 + var46, (float) var27 * var29 / 4.0F + var32 * var29 + var34);
+								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, var27, (double) ((float) var20 + var24) + 0.5D, var29 + var46, (float) var27 * var29 / 4.0F + var32 * var29 + var34);
+								var8.addVertexWithUV((double) ((float) var21 + var23) + 0.5D, var28, (double) ((float) var20 + var24) + 0.5D, var29 + var46, (float) var28 * var29 / 4.0F + var32 * var29 + var34);
+								var8.addVertexWithUV((double) ((float) var21 - var23) + 0.5D, var28, (double) ((float) var20 - var24) + 0.5D, 0.0F * var29 + var46, (float) var28 * var29 / 4.0F + var32 * var29 + var34);
 								var8.setTranslation(0.0D, 0.0D, 0.0D);
 							}
 						}
@@ -1590,7 +1590,7 @@ public class EntityRenderer {
 			EaglerAdapter.glEnable(EaglerAdapter.GL_CULL_FACE);
 			EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
 			EaglerAdapter.glAlphaFunc(EaglerAdapter.GL_GREATER, 0.1F);
-			this.disableLightmap((double) par1);
+			this.disableLightmap(par1);
 		}
 	}
 	}
@@ -1616,7 +1616,7 @@ public class EntityRenderer {
 		WorldClient var2 = this.mc.theWorld;
 		EntityLiving var3 = this.mc.renderViewEntity;
 		float var4 = 1.0F / (float) (4 - this.mc.gameSettings.renderDistance);
-		var4 = 1.0F - (float) Math.pow((double) var4, 0.25D);
+		var4 = 1.0F - (float) Math.pow(var4, 0.25D);
 		Vec3 var5 = var2.getSkyColor(this.mc.renderViewEntity, par1);
 		float var6 = (float) var5.xCoord;
 		float var7 = (float) var5.yCoord;
@@ -1697,7 +1697,7 @@ public class EntityRenderer {
 			int var16 = var3.getActivePotionEffect(Potion.blindness).getDuration();
 
 			if (var16 < 20) {
-				var14 *= (double) (1.0F - (float) var16 / 20.0F);
+				var14 *= 1.0F - (float) var16 / 20.0F;
 			} else {
 				var14 = 0.0D;
 			}

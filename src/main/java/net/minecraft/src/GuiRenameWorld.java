@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.GuiScreenSingleplayerLoading;
 import net.lax1dude.eaglercraft.IntegratedServer;
 
 public class GuiRenameWorld extends GuiScreen {
-	private GuiScreen parentGuiScreen;
+	private final GuiScreen parentGuiScreen;
 	private GuiTextField theGuiTextField;
 	private final String worldName;
 	private final boolean duplicate;

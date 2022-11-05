@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ItemPotion extends Item {
 	/** maps potion damage values to lists of effect names */
-	private HashMap effectCache = new HashMap();
+	private final HashMap effectCache = new HashMap();
 	private static final Map field_77835_b = new LinkedHashMap();
 	private Icon field_94591_c;
 	private Icon field_94590_d;

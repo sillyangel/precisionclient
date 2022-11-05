@@ -10,7 +10,7 @@ public class AchievementMap {
 	public static AchievementMap instance = new AchievementMap();
 
 	/** Maps a achievement id with it's unique GUID. */
-	private Map guidMap = new HashMap();
+	private final Map guidMap = new HashMap();
 
 	private AchievementMap() {
 		try {

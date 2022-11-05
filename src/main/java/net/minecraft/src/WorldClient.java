@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class WorldClient extends World {
 	/** The packets that need to be sent to the server. */
-	private NetClientHandler sendQueue;
+	private final NetClientHandler sendQueue;
 
 	/** The ChunkProviderClient instance */
 	private ChunkProviderClient clientChunkProvider;
@@ -18,17 +18,17 @@ public class WorldClient extends World {
 	 * The hash set of entities handled by this client. Uses the entity's ID as the
 	 * hash set's key.
 	 */
-	private IntHashMap entityHashSet = new IntHashMap();
+	private final IntHashMap entityHashSet = new IntHashMap();
 
 	/** Contains all entities for this client, both spawned and non-spawned. */
-	private Set entityList = new HashSet();
+	private final Set entityList = new HashSet();
 
 	/**
 	 * Contains all entities for this client that were not spawned due to a
 	 * non-present chunk. The game will attempt to spawn up to 10 pending entities
 	 * with each subsequent tick until the spawn queue is empty.
 	 */
-	private Set entitySpawnQueue = new HashSet();
+	private final Set entitySpawnQueue = new HashSet();
 	public final Minecraft mc = Minecraft.getMinecraft();
 	private final Set previousActiveChunkSet = new HashSet();
 	public int ghostEntityId = Integer.MAX_VALUE;
@@ -162,9 +162,7 @@ public class WorldClient extends World {
 	protected void obtainEntitySkin(Entity par1Entity) {
 		super.obtainEntitySkin(par1Entity);
 
-		if (this.entitySpawnQueue.contains(par1Entity)) {
-			this.entitySpawnQueue.remove(par1Entity);
-		}
+        this.entitySpawnQueue.remove(par1Entity);
 	}
 
 	/**
@@ -207,7 +205,7 @@ public class WorldClient extends World {
 	 * World.
 	 */
 	public Entity getEntityByID(int par1) {
-		return (Entity) (par1 == this.mc.thePlayer.entityId ? this.mc.thePlayer : (Entity) this.entityHashSet.lookup(par1));
+		return par1 == this.mc.thePlayer.entityId ? this.mc.thePlayer : (Entity) this.entityHashSet.lookup(par1);
 	}
 
 	public Entity removeEntityFromWorld(int par1) {
@@ -287,7 +285,7 @@ public class WorldClient extends World {
 			int var10 = this.getBlockId(var7, var8, var9);
 
 			if (var10 == 0 && this.rand.nextInt(8) > var8 && this.provider.getWorldHasVoidParticles()) {
-				this.spawnParticle("depthsuspend", (double) ((float) var7 + this.rand.nextFloat()), (double) ((float) var8 + this.rand.nextFloat()), (double) ((float) var9 + this.rand.nextFloat()), 0.0D, 0.0D, 0.0D);
+				this.spawnParticle("depthsuspend", (float) var7 + this.rand.nextFloat(), (float) var8 + this.rand.nextFloat(), (float) var9 + this.rand.nextFloat(), 0.0D, 0.0D, 0.0D);
 			} else if (var10 > 0) {
 				Block.blocksList[var10].randomDisplayTick(this, var7, var8, var9, var5);
 			}

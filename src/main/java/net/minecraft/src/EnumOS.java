@@ -1,5 +1,5 @@
 package net.minecraft.src;
 
 public enum EnumOS {
-	LINUX, SOLARIS, WINDOWS, MACOS, UNKNOWN;
+	LINUX, SOLARIS, WINDOWS, MACOS, UNKNOWN
 }

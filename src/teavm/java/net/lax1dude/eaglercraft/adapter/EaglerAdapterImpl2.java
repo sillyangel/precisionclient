@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -152,7 +153,7 @@ public class EaglerAdapterImpl2 {
 		if(contents == null) {
 			return null;
 		}else {
-			return new String(contents, Charset.forName("UTF-8"));
+			return new String(contents, StandardCharsets.UTF_8);
 		}
 	}
 	
@@ -237,7 +238,7 @@ public class EaglerAdapterImpl2 {
 	private static EventListener keyup = null;
 	private static EventListener keypress = null;
 	private static EventListener wheel = null;
-	private static String[] identifier = new String[0];
+	private static final String[] identifier = new String[0];
 	private static String integratedServerScript = "worker_bootstrap.js";
 	private static boolean anisotropicFilteringSupported = false;
 	
@@ -422,9 +423,8 @@ public class EaglerAdapterImpl2 {
 			
 			while(mouseEvents.isEmpty() && keyEvents.isEmpty()) {
 				try {
-					Thread.sleep(100l);
+					Thread.sleep(100L);
 				} catch (InterruptedException e) {
-					;
 				}
 			}
 		}
@@ -514,15 +514,15 @@ public class EaglerAdapterImpl2 {
 		}
 	}
 
-	private static LinkedList<MouseEvent> mouseEvents = new LinkedList();
-	private static LinkedList<KeyboardEvent> keyEvents = new LinkedList();
+	private static final LinkedList<MouseEvent> mouseEvents = new LinkedList();
+	private static final LinkedList<KeyboardEvent> keyEvents = new LinkedList();
 
 	private static int mouseX = 0;
 	private static int mouseY = 0;
 	private static double mouseDX = 0.0D;
 	private static double mouseDY = 0.0D;
-	private static int width = 0;
-	private static int height = 0;
+	private static final int width = 0;
+	private static final int height = 0;
 	private static boolean enableRepeatEvents = false;
 	private static boolean isWindowFocused = true;
 	
@@ -621,65 +621,65 @@ public class EaglerAdapterImpl2 {
 	public static final int _wGL_POLYGON_OFFSET_FILL = POLYGON_OFFSET_FILL;
 	
 	public static final class TextureGL { 
-		protected final WebGLTexture obj;
+		private final WebGLTexture obj;
 		public int w = -1;
 		public int h = -1;
 		public boolean nearest = true;
 		public boolean anisotropic = false;
-		protected TextureGL(WebGLTexture obj) { 
+		private TextureGL(WebGLTexture obj) {
 			this.obj = obj; 
 		} 
 	} 
 	public static final class BufferGL { 
-		protected final WebGLBuffer obj; 
-		protected BufferGL(WebGLBuffer obj) { 
+		private final WebGLBuffer obj;
+		private BufferGL(WebGLBuffer obj) {
 			this.obj = obj; 
 		} 
 	} 
 	public static final class ShaderGL { 
-		protected final WebGLShader obj; 
-		protected ShaderGL(WebGLShader obj) { 
+		private final WebGLShader obj;
+		private ShaderGL(WebGLShader obj) {
 			this.obj = obj; 
 		} 
 	}
 	private static int progId = 0;
 	public static final class ProgramGL { 
-		protected final WebGLProgram obj; 
-		protected final int hashcode; 
-		protected ProgramGL(WebGLProgram obj) { 
+		private final WebGLProgram obj;
+		private final int hashcode;
+		private ProgramGL(WebGLProgram obj) {
 			this.obj = obj; 
 			this.hashcode = ++progId;
 		} 
 	} 
 	public static final class UniformGL { 
-		protected final WebGLUniformLocation obj; 
-		protected UniformGL(WebGLUniformLocation obj) { 
+		private final WebGLUniformLocation obj;
+		private UniformGL(WebGLUniformLocation obj) {
 			this.obj = obj; 
 		} 
 	} 
 	public static final class BufferArrayGL { 
-		protected final WebGLVertexArray obj; 
+		private final WebGLVertexArray obj;
 		public boolean isQuadBufferBound; 
-		protected BufferArrayGL(WebGLVertexArray obj) { 
+		private BufferArrayGL(WebGLVertexArray obj) {
 			this.obj = obj; 
 			this.isQuadBufferBound = false; 
 		} 
 	} 
 	public static final class FramebufferGL { 
-		protected final WebGLFramebuffer obj; 
-		protected FramebufferGL(WebGLFramebuffer obj) { 
+		private final WebGLFramebuffer obj;
+		private FramebufferGL(WebGLFramebuffer obj) {
 			this.obj = obj; 
 		} 
 	} 
 	public static final class RenderbufferGL { 
-		protected final WebGLRenderbuffer obj; 
-		protected RenderbufferGL(WebGLRenderbuffer obj) { 
+		private final WebGLRenderbuffer obj;
+		private RenderbufferGL(WebGLRenderbuffer obj) {
 			this.obj = obj; 
 		} 
 	} 
 	public static final class QueryGL { 
-		protected final WebGLQuery obj; 
-		protected QueryGL(WebGLQuery obj) { 
+		private final WebGLQuery obj;
+		private QueryGL(WebGLQuery obj) {
 			this.obj = obj; 
 		} 
 	}
@@ -699,7 +699,7 @@ public class EaglerAdapterImpl2 {
 	public static final void _wglCullFace(int p1) {
 		webgl.cullFace(p1);
 	}
-	private static int[] viewportCache = new int[4];
+	private static final int[] viewportCache = new int[4];
 	public static final void _wglViewport(int p1, int p2, int p3, int p4) {
 		viewportCache[0] = p1; viewportCache[1] = p2;
 		viewportCache[2] = p3; viewportCache[3] = p4;
@@ -720,7 +720,7 @@ public class EaglerAdapterImpl2 {
 	public static final void _wglFlush() {
 		//webgl.flush();
 	}
-	private static Uint8Array uploadBuffer = Uint8Array.create(ArrayBuffer.create(4 * 1024 * 1024));
+	private static final Uint8Array uploadBuffer = Uint8Array.create(ArrayBuffer.create(4 * 1024 * 1024));
 	public static final void _wglTexImage2D(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, ByteBuffer p9) {
 		if(p9 == null) {
 			webgl.texImage2D(p1, p2, p3, p4, p5, p6, p7, p8, null);
@@ -912,9 +912,9 @@ public class EaglerAdapterImpl2 {
 	public static final void _wglUniform4i(UniformGL p1, int p2, int p3, int p4, int p5) {
 		if(p1 != null) webgl.uniform4i(p1.obj, p2, p3, p4, p5);
 	}
-	private static Float32Array mat2 = Float32Array.create(4);
-	private static Float32Array mat3 = Float32Array.create(9);
-	private static Float32Array mat4 = Float32Array.create(16);
+	private static final Float32Array mat2 = Float32Array.create(4);
+	private static final Float32Array mat3 = Float32Array.create(9);
+	private static final Float32Array mat4 = Float32Array.create(16);
 	public static final void _wglUniformMat2fv(UniformGL p1, float[] mat) {
 		mat2.set(mat);
 		if(p1 != null) webgl.uniformMatrix2fv(p1.obj, false, mat2);
@@ -1109,7 +1109,7 @@ public class EaglerAdapterImpl2 {
 	private static boolean videoIsLoaded = false;
 	private static boolean videoTexIsInitialized = false;
 	private static int frameRate = 33;
-	private static long frameTimer = 0l;
+	private static long frameTimer = 0L;
 	
 	public static final boolean isVideoSupported() {
 		return true;
@@ -1410,8 +1410,8 @@ public class EaglerAdapterImpl2 {
 	private static TextureGL imageTexture = null;
 	private static boolean imageIsLoaded = false;
 	private static boolean imageTexIsInitialized = false;
-	private static int imageFrameRate = 33;
-	private static long imageFrameTimer = 0l;
+	private static final int imageFrameRate = 33;
+	private static long imageFrameTimer = 0L;
 
 	public static final boolean isImageSupported() {
 		return true;
@@ -1573,8 +1573,8 @@ public class EaglerAdapterImpl2 {
 	
 	private static MouseEvent currentEvent = null;
 	private static KeyboardEvent currentEventK = null;
-	private static boolean[] buttonStates = new boolean[8];
-	private static boolean[] keyStates = new boolean[256];
+	private static final boolean[] buttonStates = new boolean[8];
+	private static final boolean[] keyStates = new boolean[256];
 	public static final boolean mouseNext() {
 		currentEvent = null;
 		return !mouseEvents.isEmpty() && (currentEvent = mouseEvents.remove(0)) != null;
@@ -1585,7 +1585,7 @@ public class EaglerAdapterImpl2 {
 		return b == 1 ? 2 : (b == 2 ? 1 : b);
 	}
 	public static final boolean mouseGetEventButtonState() {
-		return currentEvent == null ? false : currentEvent.getType().equals(MouseEvent.MOUSEDOWN);
+		return currentEvent != null && currentEvent.getType().equals(MouseEvent.MOUSEDOWN);
 	}
 	public static final boolean mouseIsButtonDown(int p1) {
 		return buttonStates[p1];
@@ -1596,7 +1596,7 @@ public class EaglerAdapterImpl2 {
 	public static final void mouseSetCursorPosition(int x, int y) {
 		
 	}
-	private static long mouseUngrabTimer = 0l;
+	private static long mouseUngrabTimer = 0L;
 	private static int mouseUngrabTimeout = 0;
 	public static final void mouseSetGrabbed(boolean grabbed) {
 		if(grabbed) {
@@ -1604,7 +1604,7 @@ public class EaglerAdapterImpl2 {
 			long t = System.currentTimeMillis();
 			if(mouseUngrabTimeout != 0) Window.clearTimeout(mouseUngrabTimeout);
 			mouseUngrabTimeout = 0;
-			if(t - mouseUngrabTimer < 3000l) {
+			if(t - mouseUngrabTimer < 3000L) {
 				mouseUngrabTimeout = Window.setTimeout(new TimerHandler() {
 					@Override
 					public void onTimer() {
@@ -1662,10 +1662,10 @@ public class EaglerAdapterImpl2 {
 	public static final char getEventChar() {
 		if(currentEventK == null) return '\0';
 		String s = currentEventK.getKey();
-		return currentEventK == null ? ' ' : (char) (s.length() > 1 ? '\0' : s.charAt(0));
+		return currentEventK == null ? ' ' : (s.length() > 1 ? '\0' : s.charAt(0));
 	}
 	public static final boolean getEventKeyState() {
-		return currentEventK == null? false : !currentEventK.getType().equals("keyup");
+		return currentEventK != null && !currentEventK.getType().equals("keyup");
 	}
 	public static final boolean isKeyDown(int p1) {
 		if(unpressCTRL) { //un-press ctrl after copy/paste permission
@@ -1711,9 +1711,8 @@ public class EaglerAdapterImpl2 {
 			renderingCanvas.setHeight(h2);
 		}
 		try {
-			Thread.sleep(1l);
+			Thread.sleep(1L);
 		} catch (InterruptedException e) {
-			;
 		}
 	}
 	public static final float getContentScaling() {
@@ -1762,14 +1761,14 @@ public class EaglerAdapterImpl2 {
 	
 	private static final DateFormat dateFormatSS = new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss");
 	public static final void saveScreenshot() {
-		saveScreenshot("screenshot_" + dateFormatSS.format(new Date()).toString() + ".png", canvas);
+		saveScreenshot("screenshot_" + dateFormatSS.format(new Date()) + ".png", canvas);
 	}
 	
 	@JSBody(params = { "name", "cvs" }, script = "var a=document.createElement(\"a\");a.href=cvs.toDataURL(\"image/png\");a.download=name;a.click();")
 	private static native void saveScreenshot(String name, HTMLCanvasElement cvs);
 
-	public static enum RateLimit {
-		NONE, FAILED, BLOCKED, FAILED_POSSIBLY_LOCKED, LOCKED, NOW_LOCKED;
+	public enum RateLimit {
+		NONE, FAILED, BLOCKED, FAILED_POSSIBLY_LOCKED, LOCKED, NOW_LOCKED
 	}
 
 	private static final Set<String> rateLimitedAddresses = new HashSet();
@@ -1779,7 +1778,7 @@ public class EaglerAdapterImpl2 {
 	private static boolean sockIsConnecting = false;
 	private static boolean sockIsConnected = false;
 	private static boolean sockIsAlive = false;
-	private static LinkedList<byte[]> readPackets = new LinkedList();
+	private static final LinkedList<byte[]> readPackets = new LinkedList();
 	private static RateLimit rateLimitStatus = null;
 	private static String currentSockURI = null;
 	
@@ -2009,7 +2008,7 @@ public class EaglerAdapterImpl2 {
 	}
 	
 	private static int playbackId = 0;
-	private static int audioElementId = 0;
+	private static final int audioElementId = 0;
 	private static final HashMap<String,AudioBufferX> loadedSoundFiles = new HashMap();
 	private static AudioContext audioctx = null;
 	private static GainNode masterVolumeNode = null;
@@ -2680,7 +2679,7 @@ public class EaglerAdapterImpl2 {
 		return 1024*1024*1024;
 	}
 	public static final long freeMemory() {
-		return 0l;
+		return 0L;
 	}
 	public static final void exit() {
 		
@@ -2689,9 +2688,9 @@ public class EaglerAdapterImpl2 {
 	@JSBody(params = { }, script = "return window.navigator.userAgent;")
 	public static native String getUserAgent();
 	
-	private static String[] LWJGLKeyNames = new String[] {"NONE", "ESCAPE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "MINUS", "EQUALS", "BACK", "TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "LBRACKET", "RBRACKET", "RETURN", "LCONTROL", "A", "S", "D", "F", "G", "H", "J", "K", "L", "SEMICOLON", "APOSTROPHE", "GRAVE", "LSHIFT", "BACKSLASH", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD", "SLASH", "RSHIFT", "MULTIPLY", "LMENU", "SPACE", "CAPITAL", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "NUMLOCK", "SCROLL", "NUMPAD7", "NUMPAD8", "NUMPAD9", "SUBTRACT", "NUMPAD4", "NUMPAD5", "NUMPAD6", "ADD", "NUMPAD1", "NUMPAD2", "NUMPAD3", "NUMPAD0", "DECIMAL", "null", "null", "null", "F11", "F12", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "F13", "F14", "F15", "F16", "F17", "F18", "null", "null", "null", "null", "null", "null", "KANA", "F19", "null", "null", "null", "null", "null", "null", "null", "CONVERT", "null", "NOCONVERT", "null", "YEN", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "NUMPADEQUALS", "null", "null", "CIRCUMFLEX", "AT", "COLON", "UNDERLINE", "KANJI", "STOP", "AX", "UNLABELED", "null", "null", "null", "null", "NUMPADENTER", "RCONTROL", "null", "null", "null", "null", "null", "null", "null", "null", "null", "SECTION", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "NUMPADCOMMA", "null", "DIVIDE", "null", "SYSRQ", "RMENU", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "FUNCTION", "PAUSE", "null", "HOME", "UP", "PRIOR", "null", "LEFT", "null", "RIGHT", "null", "END", "DOWN", "NEXT", "INSERT", "DELETE", "null", "null", "null", "null", "null", "null", "CLEAR", "LMETA", "RMETA", "APPS", "POWER", "SLEEP", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
+	private static final String[] LWJGLKeyNames = new String[] {"NONE", "ESCAPE", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "MINUS", "EQUALS", "BACK", "TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "LBRACKET", "RBRACKET", "RETURN", "LCONTROL", "A", "S", "D", "F", "G", "H", "J", "K", "L", "SEMICOLON", "APOSTROPHE", "GRAVE", "LSHIFT", "BACKSLASH", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD", "SLASH", "RSHIFT", "MULTIPLY", "LMENU", "SPACE", "CAPITAL", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "NUMLOCK", "SCROLL", "NUMPAD7", "NUMPAD8", "NUMPAD9", "SUBTRACT", "NUMPAD4", "NUMPAD5", "NUMPAD6", "ADD", "NUMPAD1", "NUMPAD2", "NUMPAD3", "NUMPAD0", "DECIMAL", "null", "null", "null", "F11", "F12", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "F13", "F14", "F15", "F16", "F17", "F18", "null", "null", "null", "null", "null", "null", "KANA", "F19", "null", "null", "null", "null", "null", "null", "null", "CONVERT", "null", "NOCONVERT", "null", "YEN", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "NUMPADEQUALS", "null", "null", "CIRCUMFLEX", "AT", "COLON", "UNDERLINE", "KANJI", "STOP", "AX", "UNLABELED", "null", "null", "null", "null", "NUMPADENTER", "RCONTROL", "null", "null", "null", "null", "null", "null", "null", "null", "null", "SECTION", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "NUMPADCOMMA", "null", "DIVIDE", "null", "SYSRQ", "RMENU", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "FUNCTION", "PAUSE", "null", "HOME", "UP", "PRIOR", "null", "LEFT", "null", "RIGHT", "null", "END", "DOWN", "NEXT", "INSERT", "DELETE", "null", "null", "null", "null", "null", "null", "CLEAR", "LMETA", "RMETA", "APPS", "POWER", "SLEEP", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
 	
-	private static int[] LWJGLKeyCodes = new int[] {
+	private static final int[] LWJGLKeyCodes = new int[] {
 			/* 0 */ -1, /* 1 */ -1, /* 2 */ -1, /* 3 */ -1, /* 4 */ -1,
 			/* 5 */ -1, /* 6 */ -1, /* 7 */ -1, /* 8 */ 14, /* 9 */ 15,
 			/* 10 */ -1, /* 11 */ -1, /* 12 */ -1, /* 13 */ 28, /* 14 */ -1,
@@ -2748,7 +2747,7 @@ public class EaglerAdapterImpl2 {
 	}
 	
 	private static int appendbufferindex = 0;
-	private static Int32Array appendbuffer = Int32Array.create(ArrayBuffer.create(525000*4));
+	private static final Int32Array appendbuffer = Int32Array.create(ArrayBuffer.create(525000*4));
 
 	public static final void _wAppendLowLevelBuffer(Object arr) {
 		Int32Array a = ((Int32Array)arr);
@@ -2773,8 +2772,8 @@ public class EaglerAdapterImpl2 {
 	}
 	
 	@JSFunctor
-	private static interface WorkerBinaryPacketHandler extends JSObject {
-		public void onMessage(String channel, ArrayBuffer buf);
+	private interface WorkerBinaryPacketHandler extends JSObject {
+		void onMessage(String channel, ArrayBuffer buf);
 	}
 	
 	private static final HashMap<String,List<PKT>> workerMessageQueue = new HashMap();
@@ -2913,7 +2912,7 @@ public class EaglerAdapterImpl2 {
 	}
 	
 	@JSFunctor
-	private static interface StupidFunctionResolveString extends JSObject {
+	private interface StupidFunctionResolveString extends JSObject {
 		void resolveStr(String s);
 	}
 	
@@ -2927,7 +2926,7 @@ public class EaglerAdapterImpl2 {
 		getClipboard0(new StupidFunctionResolveString() {
 			@Override
 			public void resolveStr(String s) {
-				if(System.currentTimeMillis() - start > 500l) {
+				if(System.currentTimeMillis() - start > 500L) {
 					unpressCTRL = true;
 				}
 				cb.complete(s);
@@ -2951,7 +2950,7 @@ public class EaglerAdapterImpl2 {
 		private final String type;
 		private boolean open;
 		private boolean alive;
-		private String uriString;
+		private final String uriString;
 		private long pingStart;
 		private long pingTimer;
 		
@@ -2961,8 +2960,8 @@ public class EaglerAdapterImpl2 {
 			type = type_;
 			uriString = uri;
 			alive = false;
-			pingStart = -1l;
-			pingTimer = -1l;
+			pingStart = -1L;
+			pingTimer = -1L;
 			WebSocket s = null;
 			try {
 				s = WebSocket.create(uri);
@@ -2971,9 +2970,9 @@ public class EaglerAdapterImpl2 {
 			}catch(Throwable t) {
 				open = false;
 				if(EaglerAdapterImpl2.blockedAddresses.contains(uriString)) {
-					queryResponses.add(new QueryResponse(true, -1l));
+					queryResponses.add(new QueryResponse(true, -1L));
 				}else if(EaglerAdapterImpl2.rateLimitedAddresses.contains(uriString)) {
-					queryResponses.add(new QueryResponse(false, -1l));
+					queryResponses.add(new QueryResponse(false, -1L));
 				}
 				sock = null;
 				return;
@@ -3014,12 +3013,10 @@ public class EaglerAdapterImpl2 {
 									EaglerAdapterImpl2.rateLimitedAddresses.add(uriString);
 									queryResponses.add(new QueryResponse(false, pingTimer));
 									sock.close();
-									return;
 								}else if(str.equalsIgnoreCase("LOCKED")) {
 									EaglerAdapterImpl2.blockedAddresses.add(uriString);
 									queryResponses.add(new QueryResponse(true, pingTimer));
 									sock.close();
-									return;
 								}else {
 									QueryResponse q = new QueryResponse(new JSONObject(str), pingTimer);
 									if(q.rateLimitStatus != null) {
@@ -3033,7 +3030,7 @@ public class EaglerAdapterImpl2 {
 									queryResponses.add(q);
 								}
 							}catch(Throwable t) {
-								System.err.println("Query response could not be parsed: " + t.toString());
+								System.err.println("Query response could not be parsed: " + t);
 							}
 						}else {
 							Uint8Array a = Uint8Array.create(evt.getDataAsArray());
@@ -3055,7 +3052,7 @@ public class EaglerAdapterImpl2 {
 							open = false;
 						}
 					}
-				}, 5000l);
+				}, 5000L);
 			}
 		}
 
@@ -3126,28 +3123,16 @@ public class EaglerAdapterImpl2 {
 			
 			bufW.set(0, checkIntegerA);
 
-			boolean knownBig1 = false;
-			if(bufR.get(0) == (short)0xFF && bufR.get(1) == (short)0 && bufR.get(2) == (short)0 && bufR.get(3) == (short)0) {
-				knownBig1 = true;
-			}
-			
-			boolean knownLittle1 = false;
-			if(bufR.get(0) == (short)0 && bufR.get(1) == (short)0 && bufR.get(2) == (short)0 && bufR.get(3) == (short)0xFF) {
-				knownLittle1 = true;
-			}
-			
+			boolean knownBig1 = bufR.get(0) == (short) 0xFF && bufR.get(1) == (short) 0 && bufR.get(2) == (short) 0 && bufR.get(3) == (short) 0;
+
+			boolean knownLittle1 = bufR.get(0) == (short) 0 && bufR.get(1) == (short) 0 && bufR.get(2) == (short) 0 && bufR.get(3) == (short) 0xFF;
+
 			bufW.set(0, checkIntegerB);
 			
-			boolean knownBig2 = false;
-			if(bufR.get(0) == (short)0 && bufR.get(1) == (short)0 && bufR.get(2) == (short)0 && bufR.get(3) == (short)0xFF) {
-				knownBig2 = true;
-			}
+			boolean knownBig2 = bufR.get(0) == (short) 0 && bufR.get(1) == (short) 0 && bufR.get(2) == (short) 0 && bufR.get(3) == (short) 0xFF;
 
-			boolean knownLittle2 = false;
-			if(bufR.get(0) == (short)0xFF && bufR.get(1) == (short)0 && bufR.get(2) == (short)0 && bufR.get(3) == (short)0) {
-				knownLittle2 = true;
-			}
-			
+			boolean knownLittle2 = bufR.get(0) == (short) 0xFF && bufR.get(1) == (short) 0 && bufR.get(2) == (short) 0 && bufR.get(3) == (short) 0;
+
 			if(knownBig1 == knownBig2 && knownLittle1 == knownLittle2 && knownBig1 != knownLittle1) {
 				isBigEndian = knownBig1;
 				isLittleEndian = knownLittle1;
@@ -3211,7 +3196,7 @@ public class EaglerAdapterImpl2 {
 				open = true;
 				failed = false;
 			}catch(Throwable t) {
-				connectionOpenedAt = 0l;
+				connectionOpenedAt = 0L;
 				sock = null;
 				open = false;
 				failed = true;
@@ -3227,7 +3212,7 @@ public class EaglerAdapterImpl2 {
 								IPacket.writePacket(new IPacket00Handshake(0x03, IntegratedServer.preferredRelayVersion, ""))
 						));
 					} catch (IOException e) {
-						System.err.println(e.toString());
+						System.err.println(e);
 						sock.close();
 						failed = true;
 					}
@@ -3296,7 +3281,7 @@ public class EaglerAdapterImpl2 {
 										throw new IOException("Unexpected packet '" + pkt.getClass().getSimpleName() + "'");
 									}
 								} catch (IOException e) {
-									System.err.println("Relay Query Error: " + e.toString());
+									System.err.println("Relay Query Error: " + e);
 									e.printStackTrace();
 									open = false;
 									failed = true;
@@ -3315,16 +3300,15 @@ public class EaglerAdapterImpl2 {
 						failed = true;
 						Long l = relayQueryBlocked.get(uri);
 						if(l != null) {
-							if(System.currentTimeMillis() - l.longValue() < 400000l) {
+							if(System.currentTimeMillis() - l.longValue() < 400000L) {
 								rateLimitStatus = RateLimit.LOCKED;
 								return;
 							}
 						}
 						l = relayQueryLimited.get(uri);
 						if(l != null) {
-							if(System.currentTimeMillis() - l.longValue() < 900000l) {
+							if(System.currentTimeMillis() - l.longValue() < 900000L) {
 								rateLimitStatus = RateLimit.BLOCKED;
-								return;
 							}
 						}
 					}
@@ -3426,7 +3410,7 @@ public class EaglerAdapterImpl2 {
 
 		@Override
 		public long getPing() {
-			return 0l;
+			return 0L;
 		}
 
 		@Override
@@ -3440,12 +3424,12 @@ public class EaglerAdapterImpl2 {
 		long millis = System.currentTimeMillis();
 		
 		Long l = relayQueryBlocked.get(addr);
-		if(l != null && millis - l.longValue() < 60000l) {
+		if(l != null && millis - l.longValue() < 60000L) {
 			return new RelayQueryRatelimitDummy(RateLimit.LOCKED);
 		}
 		
 		l = relayQueryLimited.get(addr);
-		if(l != null && millis - l.longValue() < 10000l) {
+		if(l != null && millis - l.longValue() < 10000L) {
 			return new RelayQueryRatelimitDummy(RateLimit.BLOCKED);
 		}
 		
@@ -3490,7 +3474,7 @@ public class EaglerAdapterImpl2 {
 								IPacket.writePacket(new IPacket00Handshake(0x04, IntegratedServer.preferredRelayVersion, ""))
 						));
 					} catch (IOException e) {
-						System.err.println(e.toString());
+						System.err.println(e);
 						sock.close();
 						open = false;
 						failed = true;
@@ -3553,7 +3537,7 @@ public class EaglerAdapterImpl2 {
 										throw new IOException("Unexpected packet '" + pkt.getClass().getSimpleName() + "'");
 									}
 								} catch (IOException e) {
-									System.err.println("Relay World Query Error: " + e.toString());
+									System.err.println("Relay World Query Error: " + e);
 									e.printStackTrace();
 									open = false;
 									failed = true;
@@ -3572,16 +3556,15 @@ public class EaglerAdapterImpl2 {
 						failed = true;
 						Long l = relayQueryBlocked.get(uri);
 						if(l != null) {
-							if(System.currentTimeMillis() - l.longValue() < 400000l) {
+							if(System.currentTimeMillis() - l.longValue() < 400000L) {
 								rateLimitStatus = RateLimit.LOCKED;
 								return;
 							}
 						}
 						l = relayQueryLimited.get(uri);
 						if(l != null) {
-							if(System.currentTimeMillis() - l.longValue() < 900000l) {
+							if(System.currentTimeMillis() - l.longValue() < 900000L) {
 								rateLimitStatus = RateLimit.BLOCKED;
-								return;
 							}
 						}
 					}
@@ -3666,12 +3649,12 @@ public class EaglerAdapterImpl2 {
 		long millis = System.currentTimeMillis();
 		
 		Long l = relayQueryBlocked.get(addr);
-		if(l != null && millis - l.longValue() < 60000l) {
+		if(l != null && millis - l.longValue() < 60000L) {
 			return new RelayWorldsQueryRatelimitDummy(RateLimit.LOCKED);
 		}
 		
 		l = relayQueryLimited.get(addr);
-		if(l != null && millis - l.longValue() < 10000l) {
+		if(l != null && millis - l.longValue() < 10000L) {
 			return new RelayWorldsQueryRatelimitDummy(RateLimit.BLOCKED);
 		}
 		
@@ -3730,7 +3713,7 @@ public class EaglerAdapterImpl2 {
 							packets.add(IPacket.readPacket(new DataInputStream(new ByteArrayInputStream(arr))));
 						} catch (IOException e) {
 							exceptions.add(e);
-							System.err.println("Relay Socket Error: " + e.toString());
+							System.err.println("Relay Socket Error: " + e);
 							e.printStackTrace();
 							open = false;
 							failed = true;
@@ -3801,7 +3784,7 @@ public class EaglerAdapterImpl2 {
 			try {
 				nativeBinarySend(sock, convertToArrayBuffer(IPacket.writePacket(pkt)));
 			} catch (Throwable e) {
-				System.err.println("Relay connection error: " + e.toString());
+				System.err.println("Relay connection error: " + e);
 				e.printStackTrace();
 				exceptions.add(e);
 				failed = true;
@@ -3909,12 +3892,12 @@ public class EaglerAdapterImpl2 {
 		long millis = System.currentTimeMillis();
 		
 		Long l = relayQueryBlocked.get(addr);
-		if(l != null && millis - l.longValue() < 60000l) {
+		if(l != null && millis - l.longValue() < 60000L) {
 			return new RelayServerSocketRatelimitDummy(RateLimit.LOCKED);
 		}
 		
 		l = relayQueryLimited.get(addr);
-		if(l != null && millis - l.longValue() < 10000l) {
+		if(l != null && millis - l.longValue() < 10000L) {
 			return new RelayServerSocketRatelimitDummy(RateLimit.BLOCKED);
 		}
 		

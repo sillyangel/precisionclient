@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class TextureLocation {
 
-	private String path;
+	private final String path;
 	private int glObject;
 	
 	public TextureLocation(String path) {

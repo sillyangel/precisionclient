@@ -5,10 +5,10 @@ public class ChestItemRenderHelper {
 	public static ChestItemRenderHelper instance = new ChestItemRenderHelper();
 
 	/** Instance of Chest's Tile Entity. */
-	private TileEntityChest theChest = new TileEntityChest();
+	private final TileEntityChest theChest = new TileEntityChest();
 
 	/** Instance of Ender Chest's Tile Entity. */
-	private TileEntityEnderChest theEnderChest = new TileEntityEnderChest();
+	private final TileEntityEnderChest theEnderChest = new TileEntityEnderChest();
 
 	/**
 	 * Renders a chest at 0,0,0 - used for item rendering

@@ -44,9 +44,7 @@ public class ItemDye extends Item {
 			return false;
 		} else {
 			if (par1ItemStack.getItemDamage() == 15) {
-				if (func_96604_a(par1ItemStack, par3World, par4, par5, par6)) {
-					return true;
-				}
+                return func_96604_a(par1ItemStack, par3World, par4, par5, par6);
 			} else if (par1ItemStack.getItemDamage() == 3) {
 				int var11 = par3World.getBlockId(par4, par5, par6);
 				int var12 = par3World.getBlockMetadata(par4, par5, par6);
@@ -101,11 +99,7 @@ public class ItemDye extends Item {
 		} else if (var5 != Block.mushroomBrown.blockID && var5 != Block.mushroomRed.blockID) {
 			if (var5 != Block.melonStem.blockID && var5 != Block.pumpkinStem.blockID) {
 				if (var5 > 0 && Block.blocksList[var5] instanceof BlockCrops) {
-					if (par1World.getBlockMetadata(par2, par3, par4) == 7) {
-						return false;
-					} else {
-						return true;
-					}
+                    return par1World.getBlockMetadata(par2, par3, par4) != 7;
 				} else {
 					int var6;
 					int var7;
@@ -116,22 +110,10 @@ public class ItemDye extends Item {
 						var7 = BlockDirectional.getDirection(var6);
 						var8 = BlockCocoa.func_72219_c(var6);
 
-						if (var8 >= 2) {
-							return false;
-						} else {
-							return true;
-						}
-					} else if (var5 != Block.grass.blockID) {
-						return false;
-					} else {
-						return true;
-					}
+                        return var8 < 2;
+					} else return var5 == Block.grass.blockID;
 				}
-			} else if (par1World.getBlockMetadata(par2, par3, par4) == 7) {
-				return false;
-			} else {
-				return true;
-			}
+			} else return par1World.getBlockMetadata(par2, par3, par4) != 7;
 		} else {
 			return true;
 		}
@@ -153,7 +135,7 @@ public class ItemDye extends Item {
 				double var8 = itemRand.nextGaussian() * 0.02D;
 				double var10 = itemRand.nextGaussian() * 0.02D;
 				double var12 = itemRand.nextGaussian() * 0.02D;
-				par0World.spawnParticle("happyVillager", (double) ((float) par1 + itemRand.nextFloat()), (double) par2 + (double) itemRand.nextFloat() * var6.getBlockBoundsMaxY(), (double) ((float) par3 + itemRand.nextFloat()), var8, var10,
+				par0World.spawnParticle("happyVillager", (float) par1 + itemRand.nextFloat(), (double) par2 + (double) itemRand.nextFloat() * var6.getBlockBoundsMaxY(), (float) par3 + itemRand.nextFloat(), var8, var10,
 						var12);
 			}
 		}

@@ -6,11 +6,11 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiEnchantment extends GuiContainer {
 	/** The book model used on the GUI. */
-	private static ModelBook bookModel = new ModelBook();
-	private EaglercraftRandom rand = new EaglercraftRandom();
+	private static final ModelBook bookModel = new ModelBook();
+	private final EaglercraftRandom rand = new EaglercraftRandom();
 
 	/** ContainerEnchantment object associated with this gui */
-	private ContainerEnchantment containerEnchantment;
+	private final ContainerEnchantment containerEnchantment;
 	public int field_74214_o;
 	public float field_74213_p;
 	public float field_74212_q;
@@ -19,7 +19,7 @@ public class GuiEnchantment extends GuiContainer {
 	public float field_74209_t;
 	public float field_74208_u;
 	ItemStack theItemStack;
-	private String field_94079_C;
+	private final String field_94079_C;
 
 	public GuiEnchantment(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5, String par6Str) {
 		super(new ContainerEnchantment(par1InventoryPlayer, par2World, par3, par4, par5));
@@ -99,8 +99,8 @@ public class GuiEnchantment extends GuiContainer {
 		EaglerAdapter.glRotatef(180.0F, 1.0F, 0.0F, 0.0F);
 		float var10 = this.field_74212_q + (this.field_74213_p - this.field_74212_q) * par1 + 0.25F;
 		float var11 = this.field_74212_q + (this.field_74213_p - this.field_74212_q) * par1 + 0.75F;
-		var10 = (var10 - (float) MathHelper.truncateDoubleToInt((double) var10)) * 1.6F - 0.3F;
-		var11 = (var11 - (float) MathHelper.truncateDoubleToInt((double) var11)) * 1.6F - 0.3F;
+		var10 = (var10 - (float) MathHelper.truncateDoubleToInt(var10)) * 1.6F - 0.3F;
+		var11 = (var11 - (float) MathHelper.truncateDoubleToInt(var11)) * 1.6F - 0.3F;
 
 		if (var10 < 0.0F) {
 			var10 = 0.0F;
@@ -119,7 +119,7 @@ public class GuiEnchantment extends GuiContainer {
 		}
 
 		EaglerAdapter.glEnable(EaglerAdapter.GL_RESCALE_NORMAL);
-		bookModel.render((Entity) null, 0.0F, var10, var11, var9, 0.0F, 0.0625F);
+		bookModel.render(null, 0.0F, var10, var11, var9, 0.0F, 0.0625F);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_RESCALE_NORMAL);
 		RenderHelper.disableStandardItemLighting();
 		EaglerAdapter.glMatrixMode(EaglerAdapter.GL_PROJECTION);
@@ -189,9 +189,10 @@ public class GuiEnchantment extends GuiContainer {
 		boolean var2 = false;
 
 		for (int var3 = 0; var3 < 3; ++var3) {
-			if (this.containerEnchantment.enchantLevels[var3] != 0) {
-				var2 = true;
-			}
+            if (this.containerEnchantment.enchantLevels[var3] != 0) {
+                var2 = true;
+                break;
+            }
 		}
 
 		if (var2) {

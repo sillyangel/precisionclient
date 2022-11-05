@@ -10,7 +10,7 @@ public class TileEntityRenderer {
 	/**
 	 * A mapping of TileEntitySpecialRenderers used for each TileEntity that has one
 	 */
-	private Map specialRendererMap = new HashMap();
+	private final Map specialRendererMap = new HashMap();
 
 	/** The static instance of TileEntityRenderer */
 	public static TileEntityRenderer instance = new TileEntityRenderer();
@@ -123,7 +123,7 @@ public class TileEntityRenderer {
 			int var3 = this.worldObj.getLightBrightnessForSkyBlocks(par1TileEntity.xCoord, par1TileEntity.yCoord, par1TileEntity.zCoord, 0);
 			int var4 = var3 % 65536;
 			int var5 = var3 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var4 / 1.0F, (float) var5 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var4, (float) var5);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			this.renderTileEntityAt(par1TileEntity, (double) par1TileEntity.xCoord - staticPlayerX, (double) par1TileEntity.yCoord - staticPlayerY, (double) par1TileEntity.zCoord - staticPlayerZ, par2);
 		}

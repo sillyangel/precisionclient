@@ -246,7 +246,7 @@ public abstract class Entity {
 	}
 
 	public boolean equals(Object par1Obj) {
-		return par1Obj instanceof Entity ? ((Entity) par1Obj).entityId == this.entityId : false;
+		return par1Obj instanceof Entity && ((Entity) par1Obj).entityId == this.entityId;
 	}
 
 	public int hashCode() {
@@ -461,7 +461,7 @@ public abstract class Entity {
 	public boolean isOffsetPositionInLiquid(double par1, double par3, double par5) {
 		AxisAlignedBB var7 = this.boundingBox.getOffsetBoundingBox(par1, par3, par5);
 		List var8 = this.worldObj.getCollidingBoundingBoxes(this, var7);
-		return !var8.isEmpty() ? false : !this.worldObj.isAnyLiquid(var7);
+		return var8.isEmpty() && !this.worldObj.isAnyLiquid(var7);
 	}
 
 	/**
@@ -592,7 +592,7 @@ public abstract class Entity {
 				var25 = par3;
 				var27 = par5;
 				par1 = var13;
-				par3 = (double) this.stepHeight;
+				par3 = this.stepHeight;
 				par5 = var17;
 				AxisAlignedBB var29 = this.boundingBox.copy();
 				this.boundingBox.setBB(var19);
@@ -639,7 +639,7 @@ public abstract class Entity {
 					par3 = 0.0D;
 					par1 = 0.0D;
 				} else {
-					par3 = (double) (-this.stepHeight);
+					par3 = -this.stepHeight;
 
 					for (var30 = 0; var30 < var34.size(); ++var30) {
 						par3 = ((AxisAlignedBB) var34.get(var30)).calculateYOffset(this.boundingBox, par3);
@@ -886,13 +886,13 @@ public abstract class Entity {
 				for (var3 = 0; (float) var3 < 1.0F + this.width * 20.0F; ++var3) {
 					var4 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
 					var5 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-					this.worldObj.spawnParticle("bubble", this.posX + (double) var4, (double) (var2 + 1.0F), this.posZ + (double) var5, this.motionX, this.motionY - (double) (this.rand.nextFloat() * 0.2F), this.motionZ);
+					this.worldObj.spawnParticle("bubble", this.posX + (double) var4, var2 + 1.0F, this.posZ + (double) var5, this.motionX, this.motionY - (double) (this.rand.nextFloat() * 0.2F), this.motionZ);
 				}
 
 				for (var3 = 0; (float) var3 < 1.0F + this.width * 20.0F; ++var3) {
 					var4 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
 					var5 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-					this.worldObj.spawnParticle("splash", this.posX + (double) var4, (double) (var2 + 1.0F), this.posZ + (double) var5, this.motionX, this.motionY, this.motionZ);
+					this.worldObj.spawnParticle("splash", this.posX + (double) var4, var2 + 1.0F, this.posZ + (double) var5, this.motionX, this.motionY, this.motionZ);
 				}
 			}
 
@@ -955,8 +955,8 @@ public abstract class Entity {
 			par2 *= var4;
 			float var5 = MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F);
 			float var6 = MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F);
-			this.motionX += (double) (par1 * var6 - par2 * var5);
-			this.motionZ += (double) (par2 * var6 + par1 * var5);
+			this.motionX += par1 * var6 - par2 * var5;
+			this.motionZ += par2 * var6 + par1 * var5;
 		}
 	}
 
@@ -1011,7 +1011,7 @@ public abstract class Entity {
 		this.prevRotationYaw = this.rotationYaw = par7;
 		this.prevRotationPitch = this.rotationPitch = par8;
 		this.ySize = 0.0F;
-		double var9 = (double) (this.prevRotationYaw - par7);
+		double var9 = this.prevRotationYaw - par7;
 
 		if (var9 < -180.0D) {
 			this.prevRotationYaw += 360.0F;
@@ -1064,7 +1064,7 @@ public abstract class Entity {
 		double var7 = this.posX - par1;
 		double var9 = this.posY - par3;
 		double var11 = this.posZ - par5;
-		return (double) MathHelper.sqrt_double(var7 * var7 + var9 * var9 + var11 * var11);
+		return MathHelper.sqrt_double(var7 * var7 + var9 * var9 + var11 * var11);
 	}
 
 	/**
@@ -1094,7 +1094,7 @@ public abstract class Entity {
 			double var6 = MathHelper.abs_max(var2, var4);
 
 			if (var6 >= 0.009999999776482582D) {
-				var6 = (double) MathHelper.sqrt_double(var6);
+				var6 = MathHelper.sqrt_double(var6);
 				var2 /= var6;
 				var4 /= var6;
 				double var8 = 1.0D / var6;
@@ -1107,8 +1107,8 @@ public abstract class Entity {
 				var4 *= var8;
 				var2 *= 0.05000000074505806D;
 				var4 *= 0.05000000074505806D;
-				var2 *= (double) (1.0F - this.entityCollisionReduction);
-				var4 *= (double) (1.0F - this.entityCollisionReduction);
+				var2 *= 1.0F - this.entityCollisionReduction;
+				var4 *= 1.0F - this.entityCollisionReduction;
 				this.addVelocity(-var2, 0.0D, -var4);
 				par1Entity.addVelocity(var2, 0.0D, var4);
 			}
@@ -1221,9 +1221,9 @@ public abstract class Entity {
 	 * Save the entity to NBT (calls an abstract helper method to write extra data)
 	 */
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
-		par1NBTTagCompound.setTag("Pos", this.newDoubleNBTList(new double[] { this.posX, this.posY + (double) this.ySize, this.posZ }));
-		par1NBTTagCompound.setTag("Motion", this.newDoubleNBTList(new double[] { this.motionX, this.motionY, this.motionZ }));
-		par1NBTTagCompound.setTag("Rotation", this.newFloatNBTList(new float[] { this.rotationYaw, this.rotationPitch }));
+		par1NBTTagCompound.setTag("Pos", this.newDoubleNBTList(this.posX, this.posY + (double) this.ySize, this.posZ));
+		par1NBTTagCompound.setTag("Motion", this.newDoubleNBTList(this.motionX, this.motionY, this.motionZ));
+		par1NBTTagCompound.setTag("Rotation", this.newFloatNBTList(this.rotationYaw, this.rotationPitch));
 		par1NBTTagCompound.setFloat("FallDistance", this.fallDistance);
 		par1NBTTagCompound.setShort("Fire", (short) this.fire);
 		par1NBTTagCompound.setShort("Air", (short) this.getAir());
@@ -1311,7 +1311,7 @@ public abstract class Entity {
 
 		for (int var5 = 0; var5 < var4; ++var5) {
 			double var6 = var3[var5];
-			var2.appendTag(new NBTTagDouble((String) null, var6));
+			var2.appendTag(new NBTTagDouble(null, var6));
 		}
 
 		return var2;
@@ -1327,7 +1327,7 @@ public abstract class Entity {
 
 		for (int var5 = 0; var5 < var4; ++var5) {
 			float var6 = var3[var5];
-			var2.appendTag(new NBTTagFloat((String) null, var6));
+			var2.appendTag(new NBTTagFloat(null, var6));
 		}
 
 		return var2;
@@ -1419,11 +1419,10 @@ public abstract class Entity {
 
 			if (this.ridingEntity != null) {
 				this.ridingEntity.updateRiderPosition();
-				this.entityRiderYawDelta += (double) (this.ridingEntity.rotationYaw - this.ridingEntity.prevRotationYaw);
+				this.entityRiderYawDelta += this.ridingEntity.rotationYaw - this.ridingEntity.prevRotationYaw;
 
-				for (this.entityRiderPitchDelta += (double) (this.ridingEntity.rotationPitch - this.ridingEntity.prevRotationPitch); this.entityRiderYawDelta >= 180.0D; this.entityRiderYawDelta -= 360.0D) {
-					;
-				}
+				for (this.entityRiderPitchDelta += this.ridingEntity.rotationPitch - this.ridingEntity.prevRotationPitch; this.entityRiderYawDelta >= 180.0D; this.entityRiderYawDelta -= 360.0D) {
+                }
 
 				while (this.entityRiderYawDelta < -180.0D) {
 					this.entityRiderYawDelta += 360.0D;
@@ -1442,19 +1441,19 @@ public abstract class Entity {
 				float var5 = 10.0F;
 
 				if (var1 > (double) var5) {
-					var1 = (double) var5;
+					var1 = var5;
 				}
 
 				if (var1 < (double) (-var5)) {
-					var1 = (double) (-var5);
+					var1 = -var5;
 				}
 
 				if (var3 > (double) var5) {
-					var3 = (double) var5;
+					var3 = var5;
 				}
 
 				if (var3 < (double) (-var5)) {
-					var3 = (double) (-var5);
+					var3 = -var5;
 				}
 
 				this.entityRiderYawDelta -= var1;
@@ -1481,7 +1480,7 @@ public abstract class Entity {
 	 * Returns the Y Offset of this entity.
 	 */
 	public double getYOffset() {
-		return (double) this.yOffset;
+		return this.yOffset;
 	}
 
 	/**
@@ -1808,27 +1807,27 @@ public abstract class Entity {
 			float var26 = this.rand.nextFloat() * 0.2F + 0.1F;
 
 			if (var23 == 0) {
-				this.motionX = (double) (-var26);
+				this.motionX = -var26;
 			}
 
 			if (var23 == 1) {
-				this.motionX = (double) var26;
+				this.motionX = var26;
 			}
 
 			if (var23 == 2) {
-				this.motionY = (double) (-var26);
+				this.motionY = -var26;
 			}
 
 			if (var23 == 3) {
-				this.motionY = (double) var26;
+				this.motionY = var26;
 			}
 
 			if (var23 == 4) {
-				this.motionZ = (double) (-var26);
+				this.motionZ = -var26;
 			}
 
 			if (var23 == 5) {
-				this.motionZ = (double) var26;
+				this.motionZ = var26;
 			}
 
 			return true;
@@ -1892,8 +1891,8 @@ public abstract class Entity {
 	}
 
 	public String toString() {
-		return String.format("%s[\'%s\'/%d, l=\'%s\', x=%.2f, y=%.2f, z=%.2f]", new Object[] { this.getClass().getSimpleName(), this.getEntityName(), Integer.valueOf(this.entityId),
-				this.worldObj == null ? "~NULL~" : this.worldObj.getWorldInfo().getWorldName(), Double.valueOf(this.posX), Double.valueOf(this.posY), Double.valueOf(this.posZ) });
+		return String.format("%s['%s'/%d, l='%s', x=%.2f, y=%.2f, z=%.2f]", this.getClass().getSimpleName(), this.getEntityName(), Integer.valueOf(this.entityId),
+                this.worldObj == null ? "~NULL~" : this.worldObj.getWorldInfo().getWorldName(), Double.valueOf(this.posX), Double.valueOf(this.posY), Double.valueOf(this.posZ));
 	}
 
 	/**

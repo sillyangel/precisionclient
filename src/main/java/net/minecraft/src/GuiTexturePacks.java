@@ -7,14 +7,14 @@ public class GuiTexturePacks extends GuiScreen {
 	private int refreshTimer = -1;
 
 	/** the absolute location of this texture pack */
-	private String fileLocation = "";
+	private final String fileLocation = "";
 
 	/**
 	 * the GuiTexturePackSlot that contains all the texture packs and their
 	 * descriptions
 	 */
 	private GuiTexturePackSlot guiTexturePackSlot;
-	private GameSettings field_96146_n;
+	private final GameSettings field_96146_n;
 
 	public GuiTexturePacks(GuiScreen par1, GameSettings par2) {
 		this.guiScreen = par1;

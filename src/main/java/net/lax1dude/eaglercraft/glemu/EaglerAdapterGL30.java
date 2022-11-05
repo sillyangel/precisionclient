@@ -510,10 +510,10 @@ public class EaglerAdapterGL30 extends EaglerAdapterImpl2 {
 
 	}
 
-	private static Vector4f lightPos0vec0 = new Vector4f();
-	private static Vector4f lightPos1vec0 = new Vector4f();
-	private static Vector4f lightPos0vec = new Vector4f();
-	private static Vector4f lightPos1vec = new Vector4f();
+	private static final Vector4f lightPos0vec0 = new Vector4f();
+	private static final Vector4f lightPos1vec0 = new Vector4f();
+	private static final Vector4f lightPos0vec = new Vector4f();
+	private static final Vector4f lightPos1vec = new Vector4f();
 
 	public static final void copyModelToLightMatrix() {
 		lightPos0vec0.set(lightPos0vec);
@@ -789,7 +789,7 @@ public class EaglerAdapterGL30 extends EaglerAdapterImpl2 {
 		try {
 			return HighPolyMesh.loadMeshData(EaglerAdapter.loadResourceBytes(path));
 		} catch (IOException ex) {
-			System.err.println("Could not load HighPolyMesh! " + ex.toString());
+			System.err.println("Could not load HighPolyMesh! " + ex);
 			ex.printStackTrace();
 			return null;
 		}
@@ -1051,7 +1051,7 @@ public class EaglerAdapterGL30 extends EaglerAdapterImpl2 {
 		shader.unuseProgram();
 	}
 
-	private static Object blankUploadArray = _wCreateLowLevelIntBuffer(525000);
+	private static final Object blankUploadArray = _wCreateLowLevelIntBuffer(525000);
 
 	public static final void glDrawArrays(int p1, int p2, int p3, Object buffer) {
 		if (isCompilingDisplayList) {
@@ -1217,8 +1217,8 @@ public class EaglerAdapterGL30 extends EaglerAdapterImpl2 {
 	}
 
 	private static final Matrix4f cachedOcclusionP = (Matrix4f) (new Matrix4f()).setZero();
-	private static float[] occlusionModel = new float[16];
-	private static float[] occlusionProj = new float[16];
+	private static final float[] occlusionModel = new float[16];
+	private static final float[] occlusionProj = new float[16];
 
 	public static final void glBindOcclusionBB() {
 		if (occlusion_vao == null)
@@ -1380,9 +1380,9 @@ public class EaglerAdapterGL30 extends EaglerAdapterImpl2 {
 		}
 	}
 
-	private static Matrix4f unprojA = new Matrix4f();
-	private static Matrix4f unprojB = new Matrix4f();
-	private static Vector4f unprojC = new Vector4f();
+	private static final Matrix4f unprojA = new Matrix4f();
+	private static final Matrix4f unprojB = new Matrix4f();
+	private static final Vector4f unprojC = new Vector4f();
 
 	public static final void gluUnProject(float p1, float p2, float p3, FloatBuffer p4, FloatBuffer p5, int[] p6,
 			FloatBuffer p7) {
@@ -1457,7 +1457,7 @@ public class EaglerAdapterGL30 extends EaglerAdapterImpl2 {
 		}
 	}
 
-	private static long lastBandwidthReset = 0l;
+	private static long lastBandwidthReset = 0L;
 	private static int lastBandwidth = 0;
 
 	public static final int getBitsPerSecond() {

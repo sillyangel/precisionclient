@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderEnchantmentTable extends TileEntitySpecialRenderer {
-	private ModelBook enchantmentBook = new ModelBook();
+	private final ModelBook enchantmentBook = new ModelBook();
 	
 	private static final TextureLocation tex_book = new TextureLocation("/item/book.png");
 
@@ -16,8 +16,7 @@ public class RenderEnchantmentTable extends TileEntitySpecialRenderer {
 		float var10;
 
 		for (var10 = par1TileEntityEnchantmentTable.bookRotation2 - par1TileEntityEnchantmentTable.bookRotationPrev; var10 >= (float) Math.PI; var10 -= ((float) Math.PI * 2F)) {
-			;
-		}
+        }
 
 		while (var10 < -(float) Math.PI) {
 			var10 += ((float) Math.PI * 2F);
@@ -29,8 +28,8 @@ public class RenderEnchantmentTable extends TileEntitySpecialRenderer {
 		tex_book.bindTexture();
 		float var12 = par1TileEntityEnchantmentTable.pageFlipPrev + (par1TileEntityEnchantmentTable.pageFlip - par1TileEntityEnchantmentTable.pageFlipPrev) * par8 + 0.25F;
 		float var13 = par1TileEntityEnchantmentTable.pageFlipPrev + (par1TileEntityEnchantmentTable.pageFlip - par1TileEntityEnchantmentTable.pageFlipPrev) * par8 + 0.75F;
-		var12 = (var12 - (float) MathHelper.truncateDoubleToInt((double) var12)) * 1.6F - 0.3F;
-		var13 = (var13 - (float) MathHelper.truncateDoubleToInt((double) var13)) * 1.6F - 0.3F;
+		var12 = (var12 - (float) MathHelper.truncateDoubleToInt(var12)) * 1.6F - 0.3F;
+		var13 = (var13 - (float) MathHelper.truncateDoubleToInt(var13)) * 1.6F - 0.3F;
 
 		if (var12 < 0.0F) {
 			var12 = 0.0F;
@@ -50,7 +49,7 @@ public class RenderEnchantmentTable extends TileEntitySpecialRenderer {
 
 		float var14 = par1TileEntityEnchantmentTable.bookSpreadPrev + (par1TileEntityEnchantmentTable.bookSpread - par1TileEntityEnchantmentTable.bookSpreadPrev) * par8;
 		EaglerAdapter.glEnable(EaglerAdapter.GL_CULL_FACE);
-		this.enchantmentBook.render((Entity) null, var9, var12, var13, var14, 0.0F, 0.0625F);
+		this.enchantmentBook.render(null, var9, var12, var13, var14, 0.0F, 0.0625F);
 		EaglerAdapter.glPopMatrix();
 	}
 

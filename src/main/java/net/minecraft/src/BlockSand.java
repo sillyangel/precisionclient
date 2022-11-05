@@ -75,7 +75,7 @@ public class BlockSand extends Block {
 			return true;
 		} else {
 			Material var5 = Block.blocksList[var4].blockMaterial;
-			return var5 == Material.water ? true : var5 == Material.lava;
+			return var5 == Material.water || var5 == Material.lava;
 		}
 	}
 

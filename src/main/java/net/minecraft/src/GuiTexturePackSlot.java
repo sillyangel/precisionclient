@@ -63,10 +63,10 @@ class GuiTexturePackSlot extends GuiSlot {
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		par5Tessellator.startDrawingQuads();
 		par5Tessellator.setColorOpaque_I(16777215);
-		par5Tessellator.addVertexWithUV((double) par2, (double) (par3 + par4), 0.0D, 0.0D, 1.0D);
-		par5Tessellator.addVertexWithUV((double) (par2 + 32), (double) (par3 + par4), 0.0D, 1.0D, 1.0D);
-		par5Tessellator.addVertexWithUV((double) (par2 + 32), (double) par3, 0.0D, 1.0D, 0.0D);
-		par5Tessellator.addVertexWithUV((double) par2, (double) par3, 0.0D, 0.0D, 0.0D);
+		par5Tessellator.addVertexWithUV(par2, par3 + par4, 0.0D, 0.0D, 1.0D);
+		par5Tessellator.addVertexWithUV(par2 + 32, par3 + par4, 0.0D, 1.0D, 1.0D);
+		par5Tessellator.addVertexWithUV(par2 + 32, par3, 0.0D, 1.0D, 0.0D);
+		par5Tessellator.addVertexWithUV(par2, par3, 0.0D, 0.0D, 0.0D);
 		par5Tessellator.draw();
 		String var7 = var6.getTexturePackFileName();
 

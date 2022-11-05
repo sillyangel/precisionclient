@@ -38,11 +38,7 @@ public class RenderWither extends RenderLiving {
 
 	protected int func_82417_a(EntityWither par1EntityWither, int par2, float par3) {
 		if (par1EntityWither.isArmored()) {
-			if (par1EntityWither.isInvisible()) {
-				EaglerAdapter.glDepthMask(false);
-			} else {
-				EaglerAdapter.glDepthMask(true);
-			}
+            EaglerAdapter.glDepthMask(!par1EntityWither.isInvisible());
 
 			if (par2 == 1) {
 				float var4 = (float) par1EntityWither.ticksExisted + par3;

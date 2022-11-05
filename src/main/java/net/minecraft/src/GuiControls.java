@@ -5,13 +5,13 @@ public class GuiControls extends GuiScreen {
 	 * A reference to the screen object that created this. Used for navigating
 	 * between screens.
 	 */
-	private GuiScreen parentScreen;
+	private final GuiScreen parentScreen;
 
 	/** The title string that is displayed in the top-center of the screen. */
 	protected String screenTitle = "Controls";
 
 	/** Reference to the GameSettings object. */
-	private GameSettings options;
+	private final GameSettings options;
 
 	/** The ID of the button that has been pressed. */
 	private int buttonId = -1;

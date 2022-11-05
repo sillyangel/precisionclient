@@ -6,9 +6,9 @@ import org.teavm.jso.typedarrays.ArrayBuffer;
 
 public interface EaglercraftLANServer extends JSObject {
 
-	final int PEERSTATE_FAILED = 0;
-	final int PEERSTATE_SUCCESS = 1;
-	final int PEERSTATE_LOADING = 2;
+	int PEERSTATE_FAILED = 0;
+	int PEERSTATE_SUCCESS = 1;
+	int PEERSTATE_LOADING = 2;
 	
 	boolean LANServerSupported();
 	
@@ -51,22 +51,22 @@ public interface EaglercraftLANServer extends JSObject {
 	int countPeers();
 
 	@JSFunctor
-	public static interface ICECandidateHandler extends JSObject {
+    interface ICECandidateHandler extends JSObject {
 		void call(String peerId, String candidate);
 	}
 	
 	@JSFunctor
-	public static interface DescriptionHandler extends JSObject {
+    interface DescriptionHandler extends JSObject {
 		void call(String peerId, String candidate);
 	}
 	
 	@JSFunctor
-	public static interface ClientSignalHandler extends JSObject {
+    interface ClientSignalHandler extends JSObject {
 		void call(String peerId);
 	}
 	
 	@JSFunctor
-	public static interface PeerPacketHandler extends JSObject {
+    interface PeerPacketHandler extends JSObject {
 		void call(String peerId, ArrayBuffer buffer);
 	}
 	

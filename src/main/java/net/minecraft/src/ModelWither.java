@@ -3,8 +3,8 @@ package net.minecraft.src;
 
 
 public class ModelWither extends ModelBase {
-	private ModelRenderer[] field_82905_a;
-	private ModelRenderer[] field_82904_b;
+	private final ModelRenderer[] field_82905_a;
+	private final ModelRenderer[] field_82904_b;
 
 	public ModelWither() {
 		this.textureWidth = 64;

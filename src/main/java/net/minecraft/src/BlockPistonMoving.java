@@ -169,21 +169,21 @@ public class BlockPistonMoving extends BlockContainer {
 				return null;
 			} else {
 				if (Facing.offsetsXForSide[par7] < 0) {
-					var8.minX -= (double) ((float) Facing.offsetsXForSide[par7] * par6);
+					var8.minX -= (float) Facing.offsetsXForSide[par7] * par6;
 				} else {
-					var8.maxX -= (double) ((float) Facing.offsetsXForSide[par7] * par6);
+					var8.maxX -= (float) Facing.offsetsXForSide[par7] * par6;
 				}
 
 				if (Facing.offsetsYForSide[par7] < 0) {
-					var8.minY -= (double) ((float) Facing.offsetsYForSide[par7] * par6);
+					var8.minY -= (float) Facing.offsetsYForSide[par7] * par6;
 				} else {
-					var8.maxY -= (double) ((float) Facing.offsetsYForSide[par7] * par6);
+					var8.maxY -= (float) Facing.offsetsYForSide[par7] * par6;
 				}
 
 				if (Facing.offsetsZForSide[par7] < 0) {
-					var8.minZ -= (double) ((float) Facing.offsetsZForSide[par7] * par6);
+					var8.minZ -= (float) Facing.offsetsZForSide[par7] * par6;
 				} else {
-					var8.maxZ -= (double) ((float) Facing.offsetsZForSide[par7] * par6);
+					var8.maxZ -= (float) Facing.offsetsZForSide[par7] * par6;
 				}
 
 				return var8;

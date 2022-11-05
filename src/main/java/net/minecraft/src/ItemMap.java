@@ -272,7 +272,7 @@ public class ItemMap extends ItemMapBase {
 			
 			var3.readAyunamiMapPacket(new ByteArrayInputStream(data));
 		}catch(IOException e) {
-			System.err.println("Failed to read AyunamiMap packet! " + e.toString());
+			System.err.println("Failed to read AyunamiMap packet! " + e);
 			e.printStackTrace();
 		}
 	}
@@ -356,7 +356,7 @@ public class ItemMap extends ItemMapBase {
 				EaglerAdapter.setVideoPaused(dat.readBoolean());
 			}
 		}catch(IOException e) {
-			System.err.println("Failed to read video map packet! " + e.toString());
+			System.err.println("Failed to read video map packet! " + e);
 			e.printStackTrace();
 		}
 	}
@@ -416,7 +416,7 @@ public class ItemMap extends ItemMapBase {
 				}
 			}
 		}catch(IOException e) {
-			System.err.println("Failed to read image map packet! " + e.toString());
+			System.err.println("Failed to read image map packet! " + e);
 			e.printStackTrace();
 		}
 	}

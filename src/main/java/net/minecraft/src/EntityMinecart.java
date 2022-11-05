@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public abstract class EntityMinecart extends Entity {
-	private boolean isInReverse;
+	private final boolean isInReverse;
 	private IUpdatePlayerListBox field_82344_g;
 	private String entityName;
 
@@ -250,7 +250,7 @@ public abstract class EntityMinecart extends Entity {
 	protected void updateOnTrack(int par1, int par2, int par3, double par4, double par6, int par8, int par9) {
 		this.fallDistance = 0.0F;
 		Vec3 var10 = this.func_70489_a(this.posX, this.posY, this.posZ);
-		this.posY = (double) par2;
+		this.posY = par2;
 		boolean var11 = false;
 		boolean var12 = false;
 
@@ -264,7 +264,7 @@ public abstract class EntityMinecart extends Entity {
 		}
 
 		if (par9 >= 2 && par9 <= 5) {
-			this.posY = (double) (par2 + 1);
+			this.posY = par2 + 1;
 		}
 
 		if (par9 == 2) {
@@ -284,8 +284,8 @@ public abstract class EntityMinecart extends Entity {
 		}
 
 		int[][] var13 = matrix[par9];
-		double var14 = (double) (var13[1][0] - var13[0][0]);
-		double var16 = (double) (var13[1][2] - var13[0][2]);
+		double var14 = var13[1][0] - var13[0][0];
+		double var16 = var13[1][2] - var13[0][2];
 		double var18 = Math.sqrt(var14 * var14 + var16 * var16);
 		double var20 = this.motionX * var14 + this.motionZ * var16;
 
@@ -466,15 +466,15 @@ public abstract class EntityMinecart extends Entity {
 				var13 &= 7;
 			}
 
-			par3 = (double) var10;
+			par3 = var10;
 
 			if (var13 >= 2 && var13 <= 5) {
-				par3 = (double) (var10 + 1);
+				par3 = var10 + 1;
 			}
 
 			int[][] var14 = matrix[var13];
-			double var15 = (double) (var14[1][0] - var14[0][0]);
-			double var17 = (double) (var14[1][2] - var14[0][2]);
+			double var15 = var14[1][0] - var14[0][0];
+			double var17 = var14[1][2] - var14[0][2];
 			double var19 = Math.sqrt(var15 * var15 + var17 * var17);
 			var15 /= var19;
 			var17 /= var19;
@@ -482,9 +482,9 @@ public abstract class EntityMinecart extends Entity {
 			par5 += var17 * par7;
 
 			if (var14[0][1] != 0 && MathHelper.floor_double(par1) - var9 == var14[0][0] && MathHelper.floor_double(par5) - var11 == var14[0][2]) {
-				par3 += (double) var14[0][1];
+				par3 += var14[0][1];
 			} else if (var14[1][1] != 0 && MathHelper.floor_double(par1) - var9 == var14[1][0] && MathHelper.floor_double(par5) - var11 == var14[1][2]) {
-				par3 += (double) var14[1][1];
+				par3 += var14[1][1];
 			}
 
 			return this.func_70489_a(par1, par3, par5);
@@ -504,14 +504,14 @@ public abstract class EntityMinecart extends Entity {
 
 		if (BlockRailBase.isRailBlock(var10)) {
 			int var11 = this.worldObj.getBlockMetadata(var7, var8, var9);
-			par3 = (double) var8;
+			par3 = var8;
 
 			if (((BlockRailBase) Block.blocksList[var10]).isPowered()) {
 				var11 &= 7;
 			}
 
 			if (var11 >= 2 && var11 <= 5) {
-				par3 = (double) (var8 + 1);
+				par3 = var8 + 1;
 			}
 
 			int[][] var12 = matrix[var11];
@@ -606,8 +606,8 @@ public abstract class EntityMinecart extends Entity {
 		this.minecartX = par1;
 		this.minecartY = par3;
 		this.minecartZ = par5;
-		this.minecartYaw = (double) par7;
-		this.minecartPitch = (double) par8;
+		this.minecartYaw = par7;
+		this.minecartPitch = par8;
 		this.turnProgress = par9 + 2;
 		this.motionX = this.velocityX;
 		this.motionY = this.velocityY;

@@ -5,11 +5,11 @@ import net.lax1dude.eaglercraft.glemu.vector.Matrix4f;
 import net.minecraft.client.Minecraft;
 
 public class RenderPlayer extends RenderLiving {
-	private ModelBiped modelBipedMain;
-	private ModelBiped modelBipedMainNewSkin;
-	private ModelBiped modelBipedMainNewSkinSlim;
-	private ModelBiped modelArmorChestplate;
-	private ModelBiped modelArmor;
+	private final ModelBiped modelBipedMain;
+	private final ModelBiped modelBipedMainNewSkin;
+	private final ModelBiped modelBipedMainNewSkinSlim;
+	private final ModelBiped modelArmorChestplate;
+	private final ModelBiped modelArmor;
 	private static final String[] armorFilenamePrefix = new String[] { "cloth", "chain", "iron", "diamond", "gold" };
 
 	public RenderPlayer() {
@@ -103,7 +103,7 @@ public class RenderPlayer extends RenderLiving {
 		}
 	}
 	
-	private boolean renderPass2 = false;
+	private final boolean renderPass2 = false;
 	private final Matrix4f tmpMatrix = new Matrix4f();
 
 	public void renderPlayer(EntityPlayer par1EntityPlayer, double par2, double par4, double par6, float par8, float par9) {
@@ -382,7 +382,7 @@ public class RenderPlayer extends RenderLiving {
 				int brightness = par1EntityPlayer.getBrightnessForRender(0.0f);
 				float blockLight = (brightness % 65536) * f;
 				float skyLight = (brightness / 65536) * f;
-				float sunCurve = (float)((par1EntityPlayer.worldObj.getWorldTime() + 4400l) % 24000) / 24000.0f;
+				float sunCurve = (float)((par1EntityPlayer.worldObj.getWorldTime() + 4400L) % 24000) / 24000.0f;
 				sunCurve = MathHelper.clamp_float(9.8f - MathHelper.abs(sunCurve * 5.0f + sunCurve * sunCurve * 45.0f - 14.3f) * 0.7f, 0.0f, 1.0f);
 				skyLight = skyLight * (sunCurve * 0.85f + 0.15f);
 				blockLight = blockLight * (sunCurve * 0.3f + 0.7f);
@@ -513,7 +513,7 @@ public class RenderPlayer extends RenderLiving {
 					int var6 = var5 % 65536;
 					int var7 = var5 / 65536;
 					EaglerAdapter.glColor4f(2.3F, 2.3F, 2.3F, par1EntityPlayer.isInvisible() ? 0.3f : 1.0f);
-					OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+					OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6, (float) var7);
 					DefaultSkinRenderer.endermanRenderer.render(null, 0f, 0f, var13, var11 - var10, var12, 0.0625f);
 					EaglerAdapter.glDisable(EaglerAdapter.GL_RESCALE_NORMAL);
 					EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
@@ -628,8 +628,8 @@ public class RenderPlayer extends RenderLiving {
 						double var9 = par1EntityPlayer.field_71097_bO + (par1EntityPlayer.field_71085_bR - par1EntityPlayer.field_71097_bO) * (double) par2
 								- (par1EntityPlayer.prevPosZ + (par1EntityPlayer.posZ - par1EntityPlayer.prevPosZ) * (double) par2);
 						var11 = par1EntityPlayer.prevRenderYawOffset + (par1EntityPlayer.renderYawOffset - par1EntityPlayer.prevRenderYawOffset) * par2;
-						double var12 = (double) MathHelper.sin(var11 * (float) Math.PI / 180.0F);
-						double var14 = (double) (-MathHelper.cos(var11 * (float) Math.PI / 180.0F));
+						double var12 = MathHelper.sin(var11 * (float) Math.PI / 180.0F);
+						double var14 = -MathHelper.cos(var11 * (float) Math.PI / 180.0F);
 						float var16 = (float) var24 * 10.0F;
 			
 						if (var16 < -6.0F) {
@@ -783,7 +783,7 @@ public class RenderPlayer extends RenderLiving {
 					this.renderLivingLabel(par1EntityPlayer, var14.func_96652_c() + " " + var13.getDisplayName(), par2, par4, par6, 64);
 				}
 
-				par4 += (double) ((float) this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par9);
+				par4 += (float) this.getFontRendererFromRenderManager().FONT_HEIGHT * 1.15F * par9;
 			}
 		}
 
@@ -882,7 +882,7 @@ public class RenderPlayer extends RenderLiving {
 						int var4 = p.getBrightnessForRender(par2);
 						int var5 = var4 % 65536;
 						int var6 = var4 / 65536;
-						OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5 / 1.0F, (float) var6 / 1.0F);
+						OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5, (float) var6);
 						EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 						terrain.bindTexture();
 						EaglerAdapter.flipLightMatrix();

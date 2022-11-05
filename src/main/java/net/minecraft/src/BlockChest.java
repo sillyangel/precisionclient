@@ -171,9 +171,7 @@ public class BlockChest extends BlockContainer {
 			++var5;
 		}
 
-		return var5 > 1 ? false
-				: (this.isThereANeighborChest(par1World, par2 - 1, par3, par4) ? false
-						: (this.isThereANeighborChest(par1World, par2 + 1, par3, par4) ? false : (this.isThereANeighborChest(par1World, par2, par3, par4 - 1) ? false : !this.isThereANeighborChest(par1World, par2, par3, par4 + 1))));
+		return var5 <= 1 && (!this.isThereANeighborChest(par1World, par2 - 1, par3, par4) && (!this.isThereANeighborChest(par1World, par2 + 1, par3, par4) && (!this.isThereANeighborChest(par1World, par2, par3, par4 - 1) && !this.isThereANeighborChest(par1World, par2, par3, par4 + 1))));
 	}
 
 	/**
@@ -181,9 +179,7 @@ public class BlockChest extends BlockContainer {
 	 * y, z
 	 */
 	private boolean isThereANeighborChest(World par1World, int par2, int par3, int par4) {
-		return par1World.getBlockId(par2, par3, par4) != this.blockID ? false
-				: (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID ? true
-						: (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID ? true : (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID ? true : par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)));
+		return par1World.getBlockId(par2, par3, par4) == this.blockID && (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID || (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)));
 	}
 
 	/**
@@ -224,11 +220,11 @@ public class BlockChest extends BlockContainer {
 						}
 
 						var9.stackSize -= var13;
-						var14 = new EntityItem(par1World, (double) ((float) par2 + var10), (double) ((float) par3 + var11), (double) ((float) par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+						var14 = new EntityItem(par1World, (float) par2 + var10, (float) par3 + var11, (float) par4 + var12, new ItemStack(var9.itemID, var13, var9.getItemDamage()));
 						float var15 = 0.05F;
-						var14.motionX = (double) ((float) this.random.nextGaussian() * var15);
-						var14.motionY = (double) ((float) this.random.nextGaussian() * var15 + 0.2F);
-						var14.motionZ = (double) ((float) this.random.nextGaussian() * var15);
+						var14.motionX = (float) this.random.nextGaussian() * var15;
+						var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
+						var14.motionZ = (float) this.random.nextGaussian() * var15;
 
 						if (var9.hasTagCompound()) {
 							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
@@ -255,7 +251,7 @@ public class BlockChest extends BlockContainer {
 	 * blocks or ocelots on top of the chest, and double chests.
 	 */
 	public IInventory getInventory(World par1World, int par2, int par3, int par4) {
-		Object var5 = (TileEntityChest) par1World.getBlockTileEntity(par2, par3, par4);
+		Object var5 = par1World.getBlockTileEntity(par2, par3, par4);
 
 		if (var5 == null) {
 			return null;
@@ -339,7 +335,7 @@ public class BlockChest extends BlockContainer {
 	 * considered to be blocking access to the chest.
 	 */
 	private static boolean isOcelotBlockingChest(World par0World, int par1, int par2, int par3) {
-		Iterator var4 = par0World.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double) par1, (double) (par2 + 1), (double) par3, (double) (par1 + 1), (double) (par2 + 2), (double) (par3 + 1))).iterator();
+		Iterator var4 = par0World.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB(par1, par2 + 1, par3, par1 + 1, par2 + 2, par3 + 1)).iterator();
 		EntityOcelot var6;
 
 		do {
@@ -348,7 +344,7 @@ public class BlockChest extends BlockContainer {
 			}
 
 			EntityOcelot var5 = (EntityOcelot) var4.next();
-			var6 = (EntityOcelot) var5;
+			var6 = var5;
 		} while (!var6.isSitting());
 
 		return true;

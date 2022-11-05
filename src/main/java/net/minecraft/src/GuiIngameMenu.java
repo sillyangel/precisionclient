@@ -6,7 +6,7 @@ import prc.etcherfx.precision.*;
 
 public class GuiIngameMenu extends GuiScreen {
 
-	private GuiVoiceMenu voiceMenu;
+	private final GuiVoiceMenu voiceMenu;
 
 	private GuiButton lanButton;
 
@@ -48,7 +48,7 @@ public class GuiIngameMenu extends GuiScreen {
 		case 1:
 			par1GuiButton.enabled = false;
 			this.mc.theWorld.sendQuittingDisconnectingPacket();
-			this.mc.loadWorld((WorldClient) null);
+			this.mc.loadWorld(null);
 			this.mc.stopServerAndDisplayGuiScreen(new GuiMainMenu());
 
 		case 2:
@@ -57,7 +57,7 @@ public class GuiIngameMenu extends GuiScreen {
 			break;
 
 		case 4:
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 			this.mc.setIngameFocus();
 			this.mc.sndManager.resumeAllSounds();
 			break;

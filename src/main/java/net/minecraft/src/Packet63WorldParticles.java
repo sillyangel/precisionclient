@@ -82,21 +82,21 @@ public class Packet63WorldParticles extends Packet {
 	 * Gets the X position of the particle.
 	 */
 	public double getPositionX() {
-		return (double) this.posX;
+		return this.posX;
 	}
 
 	/**
 	 * Gets the Y position of the particle.
 	 */
 	public double getPositionY() {
-		return (double) this.posY;
+		return this.posY;
 	}
 
 	/**
 	 * Gets the Z position of the particle.
 	 */
 	public double getPositionZ() {
-		return (double) this.posZ;
+		return this.posZ;
 	}
 
 	/**

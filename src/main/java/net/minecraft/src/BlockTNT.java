@@ -61,7 +61,7 @@ public class BlockTNT extends Block {
 	 * metaData
 	 */
 	public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5) {
-		this.func_94391_a(par1World, par2, par3, par4, par5, (EntityLiving) null);
+		this.func_94391_a(par1World, par2, par3, par4, par5, null);
 	}
 
 	public void func_94391_a(World par1World, int par2, int par3, int par4, int par5, EntityLiving par6EntityLiving) {

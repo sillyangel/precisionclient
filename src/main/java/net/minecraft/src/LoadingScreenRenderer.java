@@ -9,7 +9,7 @@ public class LoadingScreenRenderer implements IProgressUpdate {
 	private String field_73727_a = "";
 
 	/** A reference to the Minecraft object. */
-	private Minecraft mc;
+	private final Minecraft mc;
 
 	/**
 	 * The text currently displayed (i.e. the argument to the last call to printText
@@ -108,9 +108,9 @@ public class LoadingScreenRenderer implements IProgressUpdate {
 				float var8 = 32.0F;
 				var7.startDrawingQuads();
 				var7.setColorOpaque_I(4210752);
-				var7.addVertexWithUV(0.0D, (double) var6, 0.0D, 0.0D, (double) ((float) var6 / var8));
-				var7.addVertexWithUV((double) var5, (double) var6, 0.0D, (double) ((float) var5 / var8), (double) ((float) var6 / var8));
-				var7.addVertexWithUV((double) var5, 0.0D, 0.0D, (double) ((float) var5 / var8), 0.0D);
+				var7.addVertexWithUV(0.0D, var6, 0.0D, 0.0D, (float) var6 / var8);
+				var7.addVertexWithUV(var5, var6, 0.0D, (float) var5 / var8, (float) var6 / var8);
+				var7.addVertexWithUV(var5, 0.0D, 0.0D, (float) var5 / var8, 0.0D);
 				var7.addVertexWithUV(0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 				var7.draw();
 
@@ -122,15 +122,15 @@ public class LoadingScreenRenderer implements IProgressUpdate {
 					EaglerAdapter.glDisable(EaglerAdapter.GL_TEXTURE_2D);
 					var7.startDrawingQuads();
 					var7.setColorOpaque_I(8421504);
-					var7.addVertex((double) var11, (double) var12, 0.0D);
-					var7.addVertex((double) var11, (double) (var12 + var10), 0.0D);
-					var7.addVertex((double) (var11 + var9), (double) (var12 + var10), 0.0D);
-					var7.addVertex((double) (var11 + var9), (double) var12, 0.0D);
+					var7.addVertex(var11, var12, 0.0D);
+					var7.addVertex(var11, var12 + var10, 0.0D);
+					var7.addVertex(var11 + var9, var12 + var10, 0.0D);
+					var7.addVertex(var11 + var9, var12, 0.0D);
 					var7.setColorOpaque_I(8454016);
-					var7.addVertex((double) var11, (double) var12, 0.0D);
-					var7.addVertex((double) var11, (double) (var12 + var10), 0.0D);
-					var7.addVertex((double) (var11 + par1), (double) (var12 + var10), 0.0D);
-					var7.addVertex((double) (var11 + par1), (double) var12, 0.0D);
+					var7.addVertex(var11, var12, 0.0D);
+					var7.addVertex(var11, var12 + var10, 0.0D);
+					var7.addVertex(var11 + par1, var12 + var10, 0.0D);
+					var7.addVertex(var11 + par1, var12, 0.0D);
 					var7.draw();
 					EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
 				}

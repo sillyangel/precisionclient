@@ -4,13 +4,13 @@ import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class BlockFire extends Block {
 	/** The chance this block will encourage nearby blocks to catch on fire */
-	private int[] chanceToEncourageFire = new int[256];
+	private final int[] chanceToEncourageFire = new int[256];
 
 	/**
 	 * This is an array indexed by block ID the larger the number in the array the
 	 * more likely a block type will catch fires
 	 */
-	private int[] abilityToCatchFire = new int[256];
+	private final int[] abilityToCatchFire = new int[256];
 	private Icon[] iconArray;
 
 	protected BlockFire(int par1) {
@@ -217,10 +217,7 @@ public class BlockFire extends Block {
 	 * Returns true if at least one block next to this one can burn.
 	 */
 	private boolean canNeighborBurn(World par1World, int par2, int par3, int par4) {
-		return this.canBlockCatchFire(par1World, par2 + 1, par3, par4) ? true
-				: (this.canBlockCatchFire(par1World, par2 - 1, par3, par4) ? true
-						: (this.canBlockCatchFire(par1World, par2, par3 - 1, par4) ? true
-								: (this.canBlockCatchFire(par1World, par2, par3 + 1, par4) ? true : (this.canBlockCatchFire(par1World, par2, par3, par4 - 1) ? true : this.canBlockCatchFire(par1World, par2, par3, par4 + 1)))));
+		return this.canBlockCatchFire(par1World, par2 + 1, par3, par4) || (this.canBlockCatchFire(par1World, par2 - 1, par3, par4) || (this.canBlockCatchFire(par1World, par2, par3 - 1, par4) || (this.canBlockCatchFire(par1World, par2, par3 + 1, par4) || (this.canBlockCatchFire(par1World, par2, par3, par4 - 1) || this.canBlockCatchFire(par1World, par2, par3, par4 + 1)))));
 	}
 
 	/**
@@ -307,7 +304,7 @@ public class BlockFire extends Block {
 	 */
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, EaglercraftRandom par5Random) {
 		if (par5Random.nextInt(24) == 0) {
-			par1World.playSound((double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), "fire.fire", 1.0F + par5Random.nextFloat(), par5Random.nextFloat() * 0.7F + 0.3F, false);
+			par1World.playSound((float) par2 + 0.5F, (float) par3 + 0.5F, (float) par4 + 0.5F, "fire.fire", 1.0F + par5Random.nextFloat(), par5Random.nextFloat() * 0.7F + 0.3F, false);
 		}
 
 		int var6;
@@ -321,7 +318,7 @@ public class BlockFire extends Block {
 					var7 = (float) par2 + par5Random.nextFloat() * 0.1F;
 					var8 = (float) par3 + par5Random.nextFloat();
 					var9 = (float) par4 + par5Random.nextFloat();
-					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.0D, 0.0D);
+					par1World.spawnParticle("largesmoke", var7, var8, var9, 0.0D, 0.0D, 0.0D);
 				}
 			}
 
@@ -330,7 +327,7 @@ public class BlockFire extends Block {
 					var7 = (float) (par2 + 1) - par5Random.nextFloat() * 0.1F;
 					var8 = (float) par3 + par5Random.nextFloat();
 					var9 = (float) par4 + par5Random.nextFloat();
-					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.0D, 0.0D);
+					par1World.spawnParticle("largesmoke", var7, var8, var9, 0.0D, 0.0D, 0.0D);
 				}
 			}
 
@@ -339,7 +336,7 @@ public class BlockFire extends Block {
 					var7 = (float) par2 + par5Random.nextFloat();
 					var8 = (float) par3 + par5Random.nextFloat();
 					var9 = (float) par4 + par5Random.nextFloat() * 0.1F;
-					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.0D, 0.0D);
+					par1World.spawnParticle("largesmoke", var7, var8, var9, 0.0D, 0.0D, 0.0D);
 				}
 			}
 
@@ -348,7 +345,7 @@ public class BlockFire extends Block {
 					var7 = (float) par2 + par5Random.nextFloat();
 					var8 = (float) par3 + par5Random.nextFloat();
 					var9 = (float) (par4 + 1) - par5Random.nextFloat() * 0.1F;
-					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.0D, 0.0D);
+					par1World.spawnParticle("largesmoke", var7, var8, var9, 0.0D, 0.0D, 0.0D);
 				}
 			}
 
@@ -357,7 +354,7 @@ public class BlockFire extends Block {
 					var7 = (float) par2 + par5Random.nextFloat();
 					var8 = (float) (par3 + 1) - par5Random.nextFloat() * 0.1F;
 					var9 = (float) par4 + par5Random.nextFloat();
-					par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.0D, 0.0D);
+					par1World.spawnParticle("largesmoke", var7, var8, var9, 0.0D, 0.0D, 0.0D);
 				}
 			}
 		} else {
@@ -365,7 +362,7 @@ public class BlockFire extends Block {
 				var7 = (float) par2 + par5Random.nextFloat();
 				var8 = (float) par3 + par5Random.nextFloat() * 0.5F + 0.5F;
 				var9 = (float) par4 + par5Random.nextFloat();
-				par1World.spawnParticle("largesmoke", (double) var7, (double) var8, (double) var9, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("largesmoke", var7, var8, var9, 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}

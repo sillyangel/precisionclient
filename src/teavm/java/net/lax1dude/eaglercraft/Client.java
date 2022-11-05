@@ -25,7 +25,7 @@ public class Client {
 
 	// avoid inlining of constant
 	private static String crashImageWrapper() {
-		return crashImage.substring(0);
+		return crashImage;
 	}
 	
 	@JSBody(params = { }, script = "if(window.eaglercraftOpts) { return (typeof window.eaglercraftOpts === \"string\") ? window.eaglercraftOpts :"
@@ -41,10 +41,9 @@ public class Client {
 			try {
 				newMain(new JSONObject(newArgs));
 			}catch(JSONException ex) {
-				Window.alert("There's a JSON syntax error in window.eaglercraftOpts:\n" + ex.toString());
+				Window.alert("There's a JSON syntax error in window.eaglercraftOpts:\n" + ex);
 				ex.printStackTrace();
-				return;
-			}
+            }
 		}else {
 			oldMain();
 		}
@@ -66,7 +65,7 @@ public class Client {
 		String assetsURI = conf.getString("assetsURI");
 		if(assetsURI.length() > 256) {
 			conf.put("assetsURI", assetsURI.substring(0, 256) + " ... ");
-			crashScreenOptsDump = "window.eaglercraftOpts = " + conf.toString();
+			crashScreenOptsDump = "window.eaglercraftOpts = " + conf;
 		}
 		String serverWorkerURI = conf.optString("serverWorkerURI", null);
 		EaglerAdapterImpl2.setWorldDatabaseName(conf.optString("worldsFolder", "MAIN"));
@@ -84,9 +83,8 @@ public class Client {
 			run0();
 			
 		}catch(Throwable t) {
-			showCrashScreen(t.toString() + "\n\n" + getStackTrace(t));
-			return;
-		}
+			showCrashScreen(t + "\n\n" + getStackTrace(t));
+        }
 	}
 
 	private static void oldMain() {
@@ -118,9 +116,8 @@ public class Client {
 			run0();
 			
 		}catch(Throwable t) {
-			showCrashScreen(t.toString() + "\n\n" + getStackTrace(t));
-			return;
-		}
+			showCrashScreen(t + "\n\n" + getStackTrace(t));
+        }
 	}
 	
 	private static String getStackTrace(Throwable t) {
@@ -178,7 +175,7 @@ public class Client {
 	}
 
 	@JSFunctor
-	private static interface WindowErrorHandler extends JSObject {
+	private interface WindowErrorHandler extends JSObject {
 		void call(String message, String file, int line, int col, JSError error);
 	}
 	

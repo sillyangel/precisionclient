@@ -30,7 +30,7 @@ public class EffectPipelineFXAA {
 	public static int width = -1;
 	public static int height = -1;
 
-	private static int[] originalViewport = new int[4];
+	private static final int[] originalViewport = new int[4];
 
 	private static int state = 1;
 	private static int newState = -1;
@@ -171,7 +171,7 @@ public class EffectPipelineFXAA {
 			originalViewport[2] = width;
 			originalViewport[3] = height;
 			if(state == 1) {
-				if(isUsingFXAA == false) {
+				if(!isUsingFXAA) {
 					initFXAA();
 				}else {
 					_wglBindTexture(_wGL_TEXTURE_2D, fxaaSourceTexture);
@@ -180,7 +180,7 @@ public class EffectPipelineFXAA {
 					_wglRenderbufferStorage(_wGL_DEPTH_COMPONENT32F, width, height);
 				}
 			}else if(state == 2 || state == 3) {
-				if(msaaInit == false) {
+				if(!msaaInit) {
 					initMSAA();
 				}else {
 					_wglBindRenderbuffer(framebuffer_color);

@@ -12,7 +12,7 @@ public class BlockRedstoneWire extends Block {
 	 * Used internally during updateCurrentStrength.
 	 */
 	private boolean wiresProvidePower = true;
-	private Set blocksNeedingUpdate = new HashSet();
+	private final Set blocksNeedingUpdate = new HashSet();
 	private Icon field_94413_c;
 	private Icon field_94410_cO;
 	private Icon field_94411_cP;
@@ -251,7 +251,7 @@ public class BlockRedstoneWire extends Block {
 
 		if (var6 > 0) {
 			double var7 = (double) par2 + 0.5D + ((double) par5Random.nextFloat() - 0.5D) * 0.2D;
-			double var9 = (double) ((float) par3 + 0.0625F);
+			double var9 = (float) par3 + 0.0625F;
 			double var11 = (double) par4 + 0.5D + ((double) par5Random.nextFloat() - 0.5D) * 0.2D;
 			float var13 = (float) var6 / 15.0F;
 			float var14 = var13 * 0.6F + 0.4F;
@@ -271,7 +271,7 @@ public class BlockRedstoneWire extends Block {
 				var16 = 0.0F;
 			}
 
-			par1World.spawnParticle("reddust", var7, var9, var11, (double) var14, (double) var15, (double) var16);
+			par1World.spawnParticle("reddust", var7, var9, var11, var14, var15, var16);
 		}
 	}
 

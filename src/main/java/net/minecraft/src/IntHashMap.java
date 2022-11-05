@@ -20,7 +20,7 @@ public class IntHashMap {
 	private transient volatile int versionStamp;
 
 	/** The set of all the keys stored in this MCHash object */
-	private Set keySet = new HashSet();
+	private final Set keySet = new HashSet();
 
 	/**
 	 * Makes the passed in integer suitable for hashing by a number of shifts

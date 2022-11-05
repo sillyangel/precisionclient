@@ -4,8 +4,8 @@ package net.minecraft.src;
 
 public class ModelWitch extends ModelVillager {
 	public boolean field_82900_g = false;
-	private ModelRenderer field_82901_h = (new ModelRenderer(this)).setTextureSize(64, 128);
-	private ModelRenderer witchHat;
+	private final ModelRenderer field_82901_h = (new ModelRenderer(this)).setTextureSize(64, 128);
+	private final ModelRenderer witchHat;
 
 	public ModelWitch(float par1) {
 		super(par1, 0.0F, 64, 128);

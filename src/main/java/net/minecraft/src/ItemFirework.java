@@ -39,7 +39,7 @@ public class ItemFirework extends Item {
 
 						if (var9.size() > 0) {
 							for (int var10 = 1; var10 < var9.size(); ++var10) {
-								var9.set(var10, "  " + (String) var9.get(var10));
+								var9.set(var10, "  " + var9.get(var10));
 							}
 
 							par3List.addAll(var9);

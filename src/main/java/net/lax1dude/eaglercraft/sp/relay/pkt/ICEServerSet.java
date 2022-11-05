@@ -2,9 +2,9 @@ package net.lax1dude.eaglercraft.sp.relay.pkt;
 
 public class ICEServerSet {
 
-	public static enum RelayType {
-		STUN, TURN;
-	}
+	public enum RelayType {
+		STUN, TURN
+    }
 
 	public static class RelayServer {
 		

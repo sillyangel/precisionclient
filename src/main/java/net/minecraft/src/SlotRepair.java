@@ -41,7 +41,7 @@ class SlotRepair extends Slot {
 			par1EntityPlayer.addExperienceLevel(-this.anvil.maximumCost);
 		}
 
-		ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(0, (ItemStack) null);
+		ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(0, null);
 
 		if (ContainerRepair.getStackSizeUsedInRepair(this.anvil) > 0) {
 			ItemStack var3 = ContainerRepair.getRepairInputInventory(this.anvil).getStackInSlot(1);
@@ -50,10 +50,10 @@ class SlotRepair extends Slot {
 				var3.stackSize -= ContainerRepair.getStackSizeUsedInRepair(this.anvil);
 				ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(1, var3);
 			} else {
-				ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(1, (ItemStack) null);
+				ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(1, null);
 			}
 		} else {
-			ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(1, (ItemStack) null);
+			ContainerRepair.getRepairInputInventory(this.anvil).setInventorySlotContents(1, null);
 		}
 
 		this.anvil.maximumCost = 0;

@@ -20,9 +20,9 @@ public class EntityPlayerSP extends EntityPlayer {
 	public float renderArmPitch;
 	public float prevRenderArmYaw;
 	public float prevRenderArmPitch;
-	private MouseFilter field_71162_ch = new MouseFilter();
-	private MouseFilter field_71160_ci = new MouseFilter();
-	private MouseFilter field_71161_cj = new MouseFilter();
+	private final MouseFilter field_71162_ch = new MouseFilter();
+	private final MouseFilter field_71160_ci = new MouseFilter();
+	private final MouseFilter field_71161_cj = new MouseFilter();
 
 	/** The amount of time an entity has been in a Portal */
 	public float timeInPortal;
@@ -94,7 +94,7 @@ public class EntityPlayerSP extends EntityPlayer {
 
 			if (this.inPortal) {
 				if (this.mc.currentScreen != null) {
-					this.mc.displayGuiScreen((GuiScreen) null);
+					this.mc.displayGuiScreen(null);
 				}
 
 				if (this.timeInPortal == 0.0F) {
@@ -238,7 +238,7 @@ public class EntityPlayerSP extends EntityPlayer {
 	 */
 	public void closeScreen() {
 		super.closeScreen();
-		this.mc.displayGuiScreen((GuiScreen) null);
+		this.mc.displayGuiScreen(null);
 	}
 
 	/**
@@ -385,7 +385,7 @@ public class EntityPlayerSP extends EntityPlayer {
 	 * Add a chat message to the player
 	 */
 	public void addChatMessage(String par1Str) {
-		this.mc.ingameGUI.getChatGUI().addTranslatedMessage(par1Str, new Object[0]);
+		this.mc.ingameGUI.getChatGUI().addTranslatedMessage(par1Str);
 	}
 
 	/**
@@ -445,19 +445,19 @@ public class EntityPlayerSP extends EntityPlayer {
 			float var21 = 0.1F;
 
 			if (var18 == 0) {
-				this.motionX = (double) (-var21);
+				this.motionX = -var21;
 			}
 
 			if (var18 == 1) {
-				this.motionX = (double) var21;
+				this.motionX = var21;
 			}
 
 			if (var18 == 4) {
-				this.motionZ = (double) (-var21);
+				this.motionZ = -var21;
 			}
 
 			if (var18 == 5) {
-				this.motionZ = (double) var21;
+				this.motionZ = var21;
 			}
 		}
 

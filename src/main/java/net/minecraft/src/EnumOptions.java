@@ -32,7 +32,7 @@ public enum EnumOptions {
 		return null;
 	}
 
-	private EnumOptions(String par3Str, boolean par4, boolean par5) {
+	EnumOptions(String par3Str, boolean par4, boolean par5) {
 		this.enumString = par3Str;
 		this.enumFloat = par4;
 		this.enumBoolean = par5;

@@ -15,11 +15,11 @@ public class GuiScreenSingleplayerLoading extends GuiScreen {
 	public final GuiScreen menu;
 	private GuiButton killTask;
 	public final String message;
-	private BooleanSupplier checkTaskComplete;
-	private Runnable taskKill;
+	private final BooleanSupplier checkTaskComplete;
+	private final Runnable taskKill;
 	private String lastStatus;
 	private String currentStatus;
-	private BiConsumer<GuiScreen, IPCPacket15ThrowException[]> onException;
+	private final BiConsumer<GuiScreen, IPCPacket15ThrowException[]> onException;
 	private int areYouSure;
 	
 	private long startStartTime;
@@ -83,7 +83,7 @@ public class GuiScreenSingleplayerLoading extends GuiScreen {
 		
 		String str = StringTranslate.getInstance().translateKey(currentStatus);
 		
-		long dots = (millis / 500l) % 4l;
+		long dots = (millis / 500L) % 4L;
 		this.drawString(fontRenderer, str + (dots > 0 ? "." : "") + (dots > 1 ? "." : "") + (dots > 2 ? "." : ""), (this.width - this.fontRenderer.getStringWidth(str)) / 2, top + 10, 0xFFFFFF);
 		
 		if(areYouSure > 0) {
@@ -94,7 +94,7 @@ public class GuiScreenSingleplayerLoading extends GuiScreen {
 				this.drawCenteredString(fontRenderer, (prog > 1.0f ? ("(" + (prog > 1000000.0f ? "" + (int)(prog / 1000000.0f) + "MB" :
 					(prog > 1000.0f ? "" + (int)(prog / 1000.0f) + "kB" : "" + (int)prog + "B")) + ")") : "" + (int)(prog * 100.0f) + "%"), this.width / 2, top + 25, 0xFFFFFF);
 			}else {
-				long elapsed = (millis - startStartTime) / 1000l;
+				long elapsed = (millis - startStartTime) / 1000L;
 				if(elapsed > 3) {
 					this.drawCenteredString(fontRenderer, "(" + elapsed + "s)", this.width / 2, top + 25, 0xFFFFFF);
 				}
@@ -106,7 +106,7 @@ public class GuiScreenSingleplayerLoading extends GuiScreen {
 	
 	public void updateScreen() {
 		long millis = System.currentTimeMillis();
-		if(millis - startStartTime > 6000l) {
+		if(millis - startStartTime > 6000L) {
 			killTask.enabled = true;
 		}
 		if(IntegratedServer.didLastCallFail()) {

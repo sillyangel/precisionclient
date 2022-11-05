@@ -108,7 +108,7 @@ public class GuiIngame extends Gui {
 			if(i < 0.0f) i = 0.0f;
 			float i2 = i * i;
 			if(i2 > 0.0f) {
-				float f = (float)((System.currentTimeMillis() % 1000000l) * 0.0002);
+				float f = (float)((System.currentTimeMillis() % 1000000L) * 0.0002);
 				f += MathHelper.sin(f * 5.0f) * 0.2f;
 				i2 *= MathHelper.sin(f) + MathHelper.sin(f * 1.5f + 0.6f) + MathHelper.sin(f * 0.7f + 1.7f) +
 						MathHelper.sin(f * 3.0f + 3.0f);
@@ -130,7 +130,7 @@ public class GuiIngame extends Gui {
 
 			var12 = this.mc.thePlayer.getHealth();
 			var13 = this.mc.thePlayer.prevHealth;
-			this.rand.setSeed((long) (this.updateCounter * 312871));
+			this.rand.setSeed(this.updateCounter * 312871L);
 			boolean var14 = false;
 			FoodStats var15 = this.mc.thePlayer.getFoodStats();
 			var16 = var15.getFoodLevel();
@@ -395,7 +395,7 @@ public class GuiIngame extends Gui {
 			if (this.mc.theWorld.getTotalWorldTime() >= 120500L) {
 				var35 = StatCollector.translateToLocal("demo.demoExpired");
 			} else {
-				var35 = String.format(StatCollector.translateToLocal("demo.remainingTime"), new Object[] { StringUtils.ticksToElapsedTime((int) (120500L - this.mc.theWorld.getTotalWorldTime())) });
+				var35 = String.format(StatCollector.translateToLocal("demo.remainingTime"), StringUtils.ticksToElapsedTime((int) (120500L - this.mc.theWorld.getTotalWorldTime())));
 			}
 
 			var12 = var8.getStringWidth(var35);
@@ -518,7 +518,7 @@ public class GuiIngame extends Gui {
 				var8.drawStringWithShadow("LMB", 24, 74, 0xFFFFFF);
 				var8.drawStringWithShadow("RMB", 64, 74, 0xFFFFFF);
 				*/
-				var8.drawStringWithShadow("\u00A7m----", (int) 40, 98, 0xFFFFFF);
+				var8.drawStringWithShadow("\u00A7m----", 40, 98, 0xFFFFFF);
 				var8.drawStringWithShadow("Sneak", 37, 118, 0xFFFFFF);
 				EaglerAdapter.glScalef(0.6f, 0.6f, 0.6f);
 				/* 
@@ -687,7 +687,7 @@ public class GuiIngame extends Gui {
 					}
 
 					this.zLevel += 100.0F;
-					this.drawTexturedModalRect(var47 + var17 - 12, var22, 0 + var54 * 10, 176 + var27 * 8, 10, 8);
+					this.drawTexturedModalRect(var47 + var17 - 12, var22, var54 * 10, 176 + var27 * 8, 10, 8);
 					this.zLevel -= 100.0F;
 				}
 			}
@@ -786,9 +786,9 @@ public class GuiIngame extends Gui {
 		tex_pumpkin.bindTexture();
 		Tessellator var3 = Tessellator.instance;
 		var3.startDrawingQuads();
-		var3.addVertexWithUV(0.0D, (double) par2, -90.0D, 0.0D, 1.0D);
-		var3.addVertexWithUV((double) par1, (double) par2, -90.0D, 1.0D, 1.0D);
-		var3.addVertexWithUV((double) par1, 0.0D, -90.0D, 1.0D, 0.0D);
+		var3.addVertexWithUV(0.0D, par2, -90.0D, 0.0D, 1.0D);
+		var3.addVertexWithUV(par1, par2, -90.0D, 1.0D, 1.0D);
+		var3.addVertexWithUV(par1, 0.0D, -90.0D, 1.0D, 0.0D);
 		var3.addVertexWithUV(0.0D, 0.0D, -90.0D, 0.0D, 0.0D);
 		var3.draw();
 		EaglerAdapter.glDepthMask(true);
@@ -820,9 +820,9 @@ public class GuiIngame extends Gui {
 			tex_vigg.bindTexture();
 			Tessellator var4 = Tessellator.instance;
 			var4.startDrawingQuads();
-			var4.addVertexWithUV(0.0D, (double) par3, -90.0D, 0.0D, 1.0D);
-			var4.addVertexWithUV((double) par2, (double) par3, -90.0D, 1.0D, 1.0D);
-			var4.addVertexWithUV((double) par2, 0.0D, -90.0D, 1.0D, 0.0D);
+			var4.addVertexWithUV(0.0D, par3, -90.0D, 0.0D, 1.0D);
+			var4.addVertexWithUV(par2, par3, -90.0D, 1.0D, 1.0D);
+			var4.addVertexWithUV(par2, 0.0D, -90.0D, 1.0D, 0.0D);
 			var4.addVertexWithUV(0.0D, 0.0D, -90.0D, 0.0D, 0.0D);
 			var4.draw();
 		}
@@ -857,10 +857,10 @@ public class GuiIngame extends Gui {
 		float var8 = var4.getMaxV();
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
-		var9.addVertexWithUV(0.0D, (double) par3, -90.0D, (double) var5, (double) var8);
-		var9.addVertexWithUV((double) par2, (double) par3, -90.0D, (double) var7, (double) var8);
-		var9.addVertexWithUV((double) par2, 0.0D, -90.0D, (double) var7, (double) var6);
-		var9.addVertexWithUV(0.0D, 0.0D, -90.0D, (double) var5, (double) var6);
+		var9.addVertexWithUV(0.0D, par3, -90.0D, var5, var8);
+		var9.addVertexWithUV(par2, par3, -90.0D, var7, var8);
+		var9.addVertexWithUV(par2, 0.0D, -90.0D, var7, var6);
+		var9.addVertexWithUV(0.0D, 0.0D, -90.0D, var5, var6);
 		var9.draw();
 		EaglerAdapter.glDepthMask(true);
 		EaglerAdapter.glEnable(EaglerAdapter.GL_DEPTH_TEST);

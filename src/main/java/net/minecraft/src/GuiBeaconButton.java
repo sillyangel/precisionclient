@@ -34,7 +34,7 @@ class GuiBeaconButton extends GuiButton {
 			if (!this.enabled) {
 				var5 += this.width * 2;
 			} else if (this.field_82256_n) {
-				var5 += this.width * 1;
+				var5 += this.width;
 			} else if (this.field_82253_i) {
 				var5 += this.width * 3;
 			}

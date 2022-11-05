@@ -79,8 +79,7 @@ public abstract class TexturePackImplementation implements ITexturePack {
 			this.firstDescriptionLine = trimStringToGUIWidth(var2.readLine());
 			this.secondDescriptionLine = trimStringToGUIWidth(var2.readLine());
 		} catch (IOException var12) {
-			;
-		} finally {
+        } finally {
 			try {
 				if (var2 != null) {
 					var2.close();
@@ -90,8 +89,7 @@ public abstract class TexturePackImplementation implements ITexturePack {
 					var1.close();
 				}
 			} catch (IOException var11) {
-				;
-			}
+            }
 		}
 	}
 

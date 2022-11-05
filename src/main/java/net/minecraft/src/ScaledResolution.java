@@ -5,8 +5,8 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 public class ScaledResolution {
 	private int scaledWidth;
 	private int scaledHeight;
-	private double scaledWidthD;
-	private double scaledHeightD;
+	private final double scaledWidthD;
+	private final double scaledHeightD;
 	private int scaleFactor;
 
 	public ScaledResolution(GameSettings par1GameSettings, int par2, int par3) {

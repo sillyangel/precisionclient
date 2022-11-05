@@ -78,7 +78,7 @@ public abstract class EntityMob extends EntityCreature implements IMob {
 
 		if (var4) {
 			if (var3 > 0) {
-				par1Entity.addVelocity((double) (-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * (float) var3 * 0.5F), 0.1D, (double) (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * (float) var3 * 0.5F));
+				par1Entity.addVelocity(-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * (float) var3 * 0.5F, 0.1D, MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * (float) var3 * 0.5F);
 				this.motionX *= 0.6D;
 				this.motionZ *= 0.6D;
 			}

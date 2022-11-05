@@ -32,11 +32,11 @@ public class EnchantmentThorns extends Enchantment {
 	}
 
 	public boolean canApply(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() instanceof ItemArmor ? true : super.canApply(par1ItemStack);
+		return par1ItemStack.getItem() instanceof ItemArmor || super.canApply(par1ItemStack);
 	}
 
 	public static boolean func_92094_a(int par0, EaglercraftRandom par1Random) {
-		return par0 <= 0 ? false : par1Random.nextFloat() < 0.15F * (float) par0;
+		return par0 > 0 && par1Random.nextFloat() < 0.15F * (float) par0;
 	}
 
 	public static int func_92095_b(int par0, EaglercraftRandom par1Random) {

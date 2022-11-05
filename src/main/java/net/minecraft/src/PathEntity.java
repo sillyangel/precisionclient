@@ -65,7 +65,7 @@ public class PathEntity {
 	 */
 	public Vec3 getVectorFromIndex(Entity par1Entity, int par2) {
 		double var3 = (double) this.points[par2].xCoord + (double) ((int) (par1Entity.width + 1.0F)) * 0.5D;
-		double var5 = (double) this.points[par2].yCoord;
+		double var5 = this.points[par2].yCoord;
 		double var7 = (double) this.points[par2].zCoord + (double) ((int) (par1Entity.width + 1.0F)) * 0.5D;
 		return par1Entity.worldObj.getWorldVec3Pool().getVecFromPool(var3, var5, var7);
 	}
@@ -102,6 +102,6 @@ public class PathEntity {
 	 */
 	public boolean isDestinationSame(Vec3 par1Vec3) {
 		PathPoint var2 = this.getFinalPathPoint();
-		return var2 == null ? false : var2.xCoord == (int) par1Vec3.xCoord && var2.zCoord == (int) par1Vec3.zCoord;
+		return var2 != null && var2.xCoord == (int) par1Vec3.xCoord && var2.zCoord == (int) par1Vec3.zCoord;
 	}
 }

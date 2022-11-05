@@ -6,7 +6,7 @@ public class EntityRainFX extends EntityFX {
 	public EntityRainFX(World par1World, double par2, double par4, double par6) {
 		super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
 		this.motionX *= 0.30000001192092896D;
-		this.motionY = (double) ((float) Math.random() * 0.2F + 0.1F);
+		this.motionY = (float) Math.random() * 0.2F + 0.1F;
 		this.motionZ *= 0.30000001192092896D;
 		this.particleRed = 1.0F;
 		this.particleGreen = 1.0F;
@@ -25,7 +25,7 @@ public class EntityRainFX extends EntityFX {
 		this.prevPosX = this.posX;
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
-		this.motionY -= (double) this.particleGravity;
+		this.motionY -= this.particleGravity;
 		this.moveEntity(this.motionX, this.motionY, this.motionZ);
 		this.motionX *= 0.9800000190734863D;
 		this.motionY *= 0.9800000190734863D;
@@ -47,8 +47,8 @@ public class EntityRainFX extends EntityFX {
 		Material var1 = this.worldObj.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ));
 
 		if (var1.isLiquid() || var1.isSolid()) {
-			double var2 = (double) ((float) (MathHelper.floor_double(this.posY) + 1)
-					- BlockFluid.getFluidHeightPercent(this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ))));
+			double var2 = (float) (MathHelper.floor_double(this.posY) + 1)
+					- BlockFluid.getFluidHeightPercent(this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)));
 
 			if (this.posY < var2) {
 				this.setDead();

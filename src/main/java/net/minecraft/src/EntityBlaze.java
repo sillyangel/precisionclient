@@ -4,7 +4,7 @@ package net.minecraft.src;
 
 public class EntityBlaze extends EntityMob {
 	/** Random offset used in floating behaviour */
-	private float heightOffset = 0.5F;
+	private final float heightOffset = 0.5F;
 
 	/** ticks until heightOffset is randomized */
 	private int heightOffsetUpdateTime;
@@ -86,7 +86,7 @@ public class EntityBlaze extends EntityMob {
 
 				if (this.field_70846_g > 1) {
 					float var9 = MathHelper.sqrt_float(par2) * 0.5F;
-					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1009, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+					this.worldObj.playAuxSFXAtEntity(null, 1009, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
 
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntitySmallFireball var11 = new EntitySmallFireball(this.worldObj, this, var3 + this.rand.nextGaussian() * (double) var9, var5, var7 + this.rand.nextGaussian() * (double) var9);

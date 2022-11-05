@@ -60,7 +60,7 @@ public class BlockMycelium extends Block {
 		super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
 
 		if (par5Random.nextInt(10) == 0) {
-			par1World.spawnParticle("townaura", (double) ((float) par2 + par5Random.nextFloat()), (double) ((float) par3 + 1.1F), (double) ((float) par4 + par5Random.nextFloat()), 0.0D, 0.0D, 0.0D);
+			par1World.spawnParticle("townaura", (float) par2 + par5Random.nextFloat(), (float) par3 + 1.1F, (float) par4 + par5Random.nextFloat(), 0.0D, 0.0D, 0.0D);
 		}
 	}
 

@@ -4,10 +4,10 @@ public class ItemSeeds extends Item {
 	/**
 	 * The type of block this seed turns into (wheat or pumpkin stems for instance)
 	 */
-	private int blockType;
+	private final int blockType;
 
 	/** BlockID of the block the seeds can be planted on. */
-	private int soilBlockID;
+	private final int soilBlockID;
 
 	public ItemSeeds(int par1, int par2, int par3) {
 		super(par1);

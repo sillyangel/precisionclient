@@ -14,9 +14,9 @@ public class RelayServer {
 	private String queriedComment;
 	private String queriedVendor;
 	private VersionMismatch queriedCompatible;
-	private long ping = 0l;
-	private long workingPing = 0l;
-	public long lastPing = 0l;
+	private long ping = 0L;
+	private long workingPing = 0L;
+	public long lastPing = 0L;
 
 	public RelayServer(String address, String comment, boolean primary) {
 		this.address = address;
@@ -62,9 +62,9 @@ public class RelayServer {
 	
 	public void pingBlocking() {
 		ping();
-		while(getPing() < 0l) {
+		while(getPing() < 0L) {
 			try {
-				Thread.sleep(250l);
+				Thread.sleep(250L);
 			}catch(InterruptedException ex) {
 			}
 			update();
@@ -78,7 +78,7 @@ public class RelayServer {
 		queriedComment = null;
 		queriedVendor = null;
 		queriedCompatible = VersionMismatch.UNKNOWN;
-		ping = -1l;
+		ping = -1L;
 	}
 	
 	public void update() {
@@ -88,7 +88,7 @@ public class RelayServer {
 				queriedComment = null;
 				queriedVendor = null;
 				queriedCompatible = VersionMismatch.UNKNOWN;
-				ping = 0l;
+				ping = 0L;
 			}else {
 				queriedVersion = query.getVersion();
 				queriedComment = query.getComment();
@@ -110,7 +110,7 @@ public class RelayServer {
 			queriedComment = null;
 			queriedVendor = null;
 			queriedCompatible = VersionMismatch.UNKNOWN;
-			ping = 0l;
+			ping = 0L;
 		}
 	}
 	

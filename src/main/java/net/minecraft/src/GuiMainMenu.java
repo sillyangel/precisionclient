@@ -46,9 +46,9 @@ public class GuiMainMenu extends GuiScreen {
 	 * background.
 	 */
 	private static int viewportTexture = -1;
-	private boolean field_96141_q = true;
-	private static boolean field_96140_r = false;
-	private static boolean field_96139_s = false;
+	private final boolean field_96141_q = true;
+	private static final boolean field_96140_r = false;
+	private static final boolean field_96139_s = false;
 	private final Object field_104025_t = new Object();
 	private String field_92025_p;
 	private String field_104024_v;
@@ -74,7 +74,7 @@ public class GuiMainMenu extends GuiScreen {
 	private int dragstart = -1;
 	private int dragstartI = -1;
 
-	private ArrayList<String> ackLines;
+	private final ArrayList<String> ackLines;
 
 	public boolean showAck = false;
 
@@ -89,7 +89,7 @@ public class GuiMainMenu extends GuiScreen {
 			}
 		}
 		this.start = System.currentTimeMillis();
-		this.start += this.start % 10000l;
+		this.start += this.start % 10000L;
 		this.ackLines = new ArrayList();
 
 		if (!LocalStorageManager.gameSettingsStorage.getBoolean("seenAcknowledgements")) {
@@ -150,13 +150,13 @@ public class GuiMainMenu extends GuiScreen {
 		int var12 = this.height - 30;
 
 		if (EaglerAdapter.isIntegratedServerAvailable()) {
-			this.buttonList.add(new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.singleplayer")));
+			this.buttonList.add(new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24, var2.translateKey("menu.singleplayer")));
 			this.buttonList.add(new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
 			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3, var2.translateKey("menu.githubrepo")));
 			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3, var2.translateKey("menu.discordserver")));
 		} else {
 			GuiButton single;
-			this.buttonList.add(single = new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24 * 1, var2.translateKey("menu.singleplayer")));
+			this.buttonList.add(single = new GuiButtonPrc(1, this.width / 2 - 100, var4 + 24, var2.translateKey("menu.singleplayer")));
 			this.buttonList.add(new GuiButtonPrc(2, this.width / 2 - 100, var4 + 24 * 2, var2.translateKey("menu.multiplayer")));
 			this.buttonList.add(new GuiButtonPrcSmall(3, this.width / 2 - 100, var4 + 24 * 3, var2.translateKey("menu.githubrepo")));
 			this.buttonList.add(new GuiButtonPrcSmall(0, this.width / 2 + 2, var4 + 24 * 3, var2.translateKey("menu.discordserver")));
@@ -243,7 +243,6 @@ public class GuiMainMenu extends GuiScreen {
 
 					if (par1 > posX && par1 < posX + (ww / 4 * 3) && par2 > posY && par2 < posY + (hh / 4 * 3)) {
 						EaglerAdapter.openLink(ConfigConstants.mainMenuItemLink);
-						return;
 					}
 				}
 			}
@@ -392,10 +391,10 @@ public class GuiMainMenu extends GuiScreen {
 					var4.setColorRGBA_I(16777215, 255);
 				}
 				float var11 = 0.0F;
-				var4.addVertexWithUV(-1.0D, -1.0D, 1.0D, (double) (0.0F + var11), (double) (0.0F + var11));
-				var4.addVertexWithUV(1.0D, -1.0D, 1.0D, (double) (1.0F - var11), (double) (0.0F + var11));
-				var4.addVertexWithUV(1.0D, 1.0D, 1.0D, (double) (1.0F - var11), (double) (1.0F - var11));
-				var4.addVertexWithUV(-1.0D, 1.0D, 1.0D, (double) (0.0F + var11), (double) (1.0F - var11));
+				var4.addVertexWithUV(-1.0D, -1.0D, 1.0D, 0.0F + var11, 0.0F + var11);
+				var4.addVertexWithUV(1.0D, -1.0D, 1.0D, 1.0F - var11, 0.0F + var11);
+				var4.addVertexWithUV(1.0D, 1.0D, 1.0D, 1.0F - var11, 1.0F - var11);
+				var4.addVertexWithUV(-1.0D, 1.0D, 1.0D, 0.0F + var11, 1.0F - var11);
 				var4.draw();
 				EaglerAdapter.glPopMatrix();
 			}
@@ -437,10 +436,10 @@ public class GuiMainMenu extends GuiScreen {
 			int var5 = this.width;
 			int var6 = this.height;
 			float var7 = (float) (var4 - var3 / 2) / 256.0F;
-			var2.addVertexWithUV((double) var5, (double) var6, (double) this.zLevel, (double) (0.0F + var7), 0.0D);
-			var2.addVertexWithUV((double) var5, 0.0D, (double) this.zLevel, (double) (1.0F + var7), 0.0D);
-			var2.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, (double) (1.0F + var7), 1.0D);
-			var2.addVertexWithUV(0.0D, (double) var6, (double) this.zLevel, (double) (0.0F + var7), 1.0D);
+			var2.addVertexWithUV(var5, var6, this.zLevel, 0.0F + var7, 0.0D);
+			var2.addVertexWithUV(var5, 0.0D, this.zLevel, 1.0F + var7, 0.0D);
+			var2.addVertexWithUV(0.0D, 0.0D, this.zLevel, 1.0F + var7, 1.0D);
+			var2.addVertexWithUV(0.0D, var6, this.zLevel, 0.0F + var7, 1.0D);
 		}
 
 		var2.draw();
@@ -478,13 +477,13 @@ public class GuiMainMenu extends GuiScreen {
 			var4.setColorRGBA_F(1.0F, 1.0F, 1.0F, 1.0F);
 			int var8 = this.width;
 			int var9 = this.height;
-			var4.addVertexWithUV(0.0D, (double) var9, (double) this.zLevel, (double) (0.5F - var6),
-					(double) (0.5F + var7));
-			var4.addVertexWithUV((double) var8, (double) var9, (double) this.zLevel, (double) (0.5F - var6),
-					(double) (0.5F - var7));
-			var4.addVertexWithUV((double) var8, 0.0D, (double) this.zLevel, (double) (0.5F + var6),
-					(double) (0.5F - var7));
-			var4.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, (double) (0.5F + var6), (double) (0.5F + var7));
+			var4.addVertexWithUV(0.0D, var9, this.zLevel, 0.5F - var6,
+					0.5F + var7);
+			var4.addVertexWithUV(var8, var9, this.zLevel, 0.5F - var6,
+					0.5F - var7);
+			var4.addVertexWithUV(var8, 0.0D, this.zLevel, 0.5F + var6,
+					0.5F - var7);
+			var4.addVertexWithUV(0.0D, 0.0D, this.zLevel, 0.5F + var6, 0.5F + var7);
 			var4.draw();
 		} else {
 			EaglerAdapter.glViewport(0, 0, this.mc.displayWidth, this.mc.displayHeight);
@@ -517,11 +516,11 @@ public class GuiMainMenu extends GuiScreen {
 			} else {
 				mclogo.bindTexture();
 			}
-			this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 155, 44);
-			this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);
+			this.drawTexturedModalRect(var6, var7, 0, 0, 155, 44);
+			this.drawTexturedModalRect(var6 + 155, var7, 0, 45, 155, 44);
 		} else {
 			prcLogo.bindTexture();
-			this.drawTexturedModalRect(var6 + 9, 0 + 0, 0, 0, 256, 256);
+			this.drawTexturedModalRect(var6 + 9, 0, 0, 0, 256, 256);
 		}
 
 		this.drawString(this.fontRenderer, ConfigConstants.mainMenuString, 7, this.height - 15, 11184810);
@@ -644,7 +643,7 @@ public class GuiMainMenu extends GuiScreen {
 				EaglerAdapter.glEnable(EaglerAdapter.GL_BLEND);
 				EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
 				EaglerAdapter.glColor4f(0.9f, 0.9f, 0.9f,
-						MathHelper.sin((float) (System.currentTimeMillis() % 1000000l) / 300f) * 0.17f + 0.5f);
+						MathHelper.sin((float) (System.currentTimeMillis() % 1000000L) / 300f) * 0.17f + 0.5f);
 
 				items.bindTexture();
 

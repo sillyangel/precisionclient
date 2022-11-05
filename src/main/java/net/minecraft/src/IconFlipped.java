@@ -52,7 +52,7 @@ public class IconFlipped implements Icon {
 	 * Returns the minimum V coordinate to use when rendering with this icon.
 	 */
 	public float getMinV() {
-		return this.flipV ? this.baseIcon.getMinV() : this.baseIcon.getMinV();
+		return this.baseIcon.getMinV();
 	}
 
 	/**

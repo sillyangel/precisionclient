@@ -1,15 +1,15 @@
 package net.minecraft.src;
 
 public class ContainerBeacon extends Container {
-	private TileEntityBeacon theBeacon;
+	private final TileEntityBeacon theBeacon;
 
 	/**
 	 * This beacon's slot where you put in Emerald, Diamond, Gold or Iron Ingot.
 	 */
 	private final SlotBeacon beaconSlot;
-	private int field_82865_g;
-	private int field_82867_h;
-	private int field_82868_i;
+	private final int field_82865_g;
+	private final int field_82867_h;
+	private final int field_82868_i;
 
 	public ContainerBeacon(InventoryPlayer par1InventoryPlayer, TileEntityBeacon par2TileEntityBeacon) {
 		this.theBeacon = par2TileEntityBeacon;
@@ -107,7 +107,7 @@ public class ContainerBeacon extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

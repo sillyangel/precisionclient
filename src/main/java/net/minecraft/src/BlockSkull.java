@@ -152,7 +152,7 @@ public class BlockSkull extends BlockContainer {
 			return false;
 		} else {
 			TileEntity var6 = par1World.getBlockTileEntity(par2, par3, par4);
-			return var6 != null && var6 instanceof TileEntitySkull ? ((TileEntitySkull) var6).getSkullType() == par5 : false;
+			return var6 != null && var6 instanceof TileEntitySkull && ((TileEntitySkull) var6).getSkullType() == par5;
 		}
 	}
 

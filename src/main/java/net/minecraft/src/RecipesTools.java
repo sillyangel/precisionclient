@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class RecipesTools {
-	private String[][] recipePatterns = new String[][] { { "XXX", " # ", " # " }, { "X", "#", "#" }, { "XX", "X#", " #" }, { "XX", " #", " #" } };
-	private Object[][] recipeItems;
+	private final String[][] recipePatterns = new String[][] { { "XXX", " # ", " # " }, { "X", "#", "#" }, { "XX", "X#", " #" }, { "XX", " #", " #" } };
+	private final Object[][] recipeItems;
 
 	public RecipesTools() {
 		this.recipeItems = new Object[][] { { Block.planks, Block.cobblestone, Item.ingotIron, Item.diamond, Item.ingotGold }, { Item.pickaxeWood, Item.pickaxeStone, Item.pickaxeIron, Item.pickaxeDiamond, Item.pickaxeGold },
@@ -19,10 +19,10 @@ public class RecipesTools {
 
 			for (int var4 = 0; var4 < this.recipeItems.length - 1; ++var4) {
 				Item var5 = (Item) this.recipeItems[var4 + 1][var2];
-				par1CraftingManager.addRecipe(new ItemStack(var5), new Object[] { this.recipePatterns[var4], '#', Item.stick, 'X', var3 });
+				par1CraftingManager.addRecipe(new ItemStack(var5), this.recipePatterns[var4], '#', Item.stick, 'X', var3);
 			}
 		}
 
-		par1CraftingManager.addRecipe(new ItemStack(Item.shears), new Object[] { " #", "# ", '#', Item.ingotIron });
+		par1CraftingManager.addRecipe(new ItemStack(Item.shears), " #", "# ", '#', Item.ingotIron);
 	}
 }

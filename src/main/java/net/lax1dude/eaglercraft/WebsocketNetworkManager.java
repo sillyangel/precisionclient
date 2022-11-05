@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class WebsocketNetworkManager implements INetworkManager {
 	
 	private NetHandler netHandler;
-	private String serverURI;
+	private final String serverURI;
 	
 	public WebsocketNetworkManager(String uri, String eagler, NetHandler netHandler) throws IOException {
 		this.serverURI = uri;
@@ -26,7 +26,7 @@ public class WebsocketNetworkManager implements INetworkManager {
 		this.netHandler = netHandler;
 	}
 
-	private ByteArrayOutputStream sendBuffer = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream sendBuffer = new ByteArrayOutputStream();
 	
 	public void addToSendQueue(Packet var1) {
 		try {
@@ -43,7 +43,7 @@ public class WebsocketNetworkManager implements INetworkManager {
 	}
 	
 	private static class ByteBufferDirectInputStream extends InputStream {
-		private ByteBuffer buf;
+		private final ByteBuffer buf;
 		private ByteBufferDirectInputStream(ByteBuffer b) {
 			this.buf = b;
 		}
@@ -60,7 +60,7 @@ public class WebsocketNetworkManager implements INetworkManager {
 	}
 	
 	private ByteBuffer oldChunkBuffer = null;
-	private LinkedList<ByteBuffer> readChunks = new LinkedList();
+	private final LinkedList<ByteBuffer> readChunks = new LinkedList();
 	
 	public void processReadPackets() {
 		readChunks.clear();

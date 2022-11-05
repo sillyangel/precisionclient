@@ -6,10 +6,10 @@ import net.minecraft.src.StringTranslate;
 
 public class GuiScreenNoRelays extends GuiScreen {
 	
-	private GuiScreen parent;
-	private String title1;
-	private String title2;
-	private String title3;
+	private final GuiScreen parent;
+	private final String title1;
+	private final String title2;
+	private final String title3;
 	
 	public GuiScreenNoRelays(GuiScreen parent, String title) {
 		this.parent = parent;

@@ -22,7 +22,7 @@ public class TileEntityEnchantmentTable extends TileEntity {
 	public float bookRotation2;
 	public float bookRotationPrev;
 	public float bookRotation;
-	private static EaglercraftRandom rand = new EaglercraftRandom();
+	private static final EaglercraftRandom rand = new EaglercraftRandom();
 	private String field_94136_s;
 
 	/**
@@ -56,7 +56,7 @@ public class TileEntityEnchantmentTable extends TileEntity {
 		super.updateEntity();
 		this.bookSpreadPrev = this.bookSpread;
 		this.bookRotationPrev = this.bookRotation2;
-		EntityPlayer var1 = this.worldObj.getClosestPlayer((double) ((float) this.xCoord + 0.5F), (double) ((float) this.yCoord + 0.5F), (double) ((float) this.zCoord + 0.5F), 3.0D);
+		EntityPlayer var1 = this.worldObj.getClosestPlayer((float) this.xCoord + 0.5F, (float) this.yCoord + 0.5F, (float) this.zCoord + 0.5F, 3.0D);
 
 		if (var1 != null) {
 			double var2 = var1.posX - (double) ((float) this.xCoord + 0.5F);
@@ -95,8 +95,7 @@ public class TileEntityEnchantmentTable extends TileEntity {
 		float var7;
 
 		for (var7 = this.bookRotation - this.bookRotation2; var7 >= (float) Math.PI; var7 -= ((float) Math.PI * 2F)) {
-			;
-		}
+        }
 
 		while (var7 < -(float) Math.PI) {
 			var7 += ((float) Math.PI * 2F);

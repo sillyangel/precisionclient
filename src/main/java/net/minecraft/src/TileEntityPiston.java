@@ -18,7 +18,7 @@ public class TileEntityPiston extends TileEntity {
 
 	/** the progress in (de)extending */
 	private float lastProgress;
-	private List pushedObjects = new ArrayList();
+	private final List pushedObjects = new ArrayList();
 
 	public TileEntityPiston() {
 	}
@@ -94,7 +94,7 @@ public class TileEntityPiston extends TileEntity {
 		AxisAlignedBB var3 = Block.pistonMoving.getAxisAlignedBB(this.worldObj, this.xCoord, this.yCoord, this.zCoord, this.storedBlockID, par1, this.storedOrientation);
 
 		if (var3 != null) {
-			List var4 = this.worldObj.getEntitiesWithinAABBExcludingEntity((Entity) null, var3);
+			List var4 = this.worldObj.getEntitiesWithinAABBExcludingEntity(null, var3);
 
 			if (!var4.isEmpty()) {
 				this.pushedObjects.addAll(var4);
@@ -102,8 +102,8 @@ public class TileEntityPiston extends TileEntity {
 
 				while (var5.hasNext()) {
 					Entity var6 = (Entity) var5.next();
-					var6.moveEntity((double) (par2 * (float) Facing.offsetsXForSide[this.storedOrientation]), (double) (par2 * (float) Facing.offsetsYForSide[this.storedOrientation]),
-							(double) (par2 * (float) Facing.offsetsZForSide[this.storedOrientation]));
+					var6.moveEntity(par2 * (float) Facing.offsetsXForSide[this.storedOrientation], par2 * (float) Facing.offsetsYForSide[this.storedOrientation],
+                            par2 * (float) Facing.offsetsZForSide[this.storedOrientation]);
 				}
 
 				this.pushedObjects.clear();

@@ -1,15 +1,15 @@
 package net.minecraft.src;
 
 public class ChunkCache implements IBlockAccess {
-	private int chunkX;
-	private int chunkZ;
-	private Chunk[][] chunkArray;
+	private final int chunkX;
+	private final int chunkZ;
+	private final Chunk[][] chunkArray;
 
 	/** set by !chunk.getAreLevelsEmpty */
 	private boolean hasExtendedLevels;
 
 	/** Reference to the World object. */
-	private World worldObj;
+	private final World worldObj;
 
 	public ChunkCache(World par1World, int par2, int par3, int par4, int par5, int par6, int par7, int par8) {
 		this.worldObj = par1World;
@@ -216,7 +216,7 @@ public class ChunkCache implements IBlockAccess {
 	 */
 	public boolean isBlockOpaqueCube(int par1, int par2, int par3) {
 		Block var4 = Block.blocksList[this.getBlockId(par1, par2, par3)];
-		return var4 == null ? false : var4.isOpaqueCube();
+		return var4 != null && var4.isOpaqueCube();
 	}
 
 	/**
@@ -224,7 +224,7 @@ public class ChunkCache implements IBlockAccess {
 	 */
 	public boolean isBlockNormalCube(int par1, int par2, int par3) {
 		Block var4 = Block.blocksList[this.getBlockId(par1, par2, par3)];
-		return var4 == null ? false : var4.blockMaterial.blocksMovement() && var4.renderAsNormalBlock();
+		return var4 != null && var4.blockMaterial.blocksMovement() && var4.renderAsNormalBlock();
 	}
 
 	/**

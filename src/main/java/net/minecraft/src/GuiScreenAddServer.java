@@ -4,12 +4,12 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 
 public class GuiScreenAddServer extends GuiScreen {
 	/** This GUI's parent GUI. */
-	private GuiScreen parentGui;
+	private final GuiScreen parentGui;
 	private GuiTextField serverAddress;
 	private GuiTextField serverName;
 
 	/** ServerData to be modified by this GUI */
-	private ServerData newServerData;
+	private final ServerData newServerData;
 
 	public GuiScreenAddServer(GuiScreen par1GuiScreen, ServerData par2ServerData) {
 		this.parentGui = par1GuiScreen;

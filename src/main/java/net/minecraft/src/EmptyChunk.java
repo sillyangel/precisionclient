@@ -181,7 +181,7 @@ public class EmptyChunk extends Chunk {
 	}
 
 	public EaglercraftRandom getRandomWithSeed(long par1) {
-		return new EaglercraftRandom(this.worldObj.getSeed() + (long) (this.xPosition * this.xPosition * 4987142) + (long) (this.xPosition * 5947611) + (long) (this.zPosition * this.zPosition) * 4392871L + (long) (this.zPosition * 389711) ^ par1);
+		return new EaglercraftRandom(this.worldObj.getSeed() + (long) ((long) this.xPosition * this.xPosition * 4987142) + (long) (this.xPosition * 5947611L) + (long) ((long) this.zPosition * this.zPosition) * 4392871L + (long) (this.zPosition * 389711L) ^ par1);
 	}
 
 	public boolean isEmpty() {

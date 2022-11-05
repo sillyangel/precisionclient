@@ -4,8 +4,8 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiHopper extends GuiContainer {
-	private IInventory field_94081_r;
-	private IInventory field_94080_s;
+	private final IInventory field_94081_r;
+	private final IInventory field_94080_s;
 
 	public GuiHopper(InventoryPlayer par1InventoryPlayer, IInventory par2IInventory) {
 		super(new ContainerHopper(par1InventoryPlayer, par2IInventory));

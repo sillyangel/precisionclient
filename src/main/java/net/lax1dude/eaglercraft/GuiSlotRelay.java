@@ -50,12 +50,12 @@ class GuiSlotRelay extends GuiSlot {
 			String str = null;
 			int h = 12;
 			long ping = srv.getPing();
-			if(ping == 0l) {
+			if(ping == 0L) {
 				var16 = 5;
 				str = "No Connection";
-			}else if(ping < 0l) {
+			}else if(ping < 0L) {
 				var15 = 1;
-				var16 = (int) (Minecraft.getSystemTime() / 100L + (long) (id * 2) & 7L);
+				var16 = (int) (Minecraft.getSystemTime() / 100L + (long) (id * 2L) & 7L);
 				if (var16 > 4) {
 					var16 = 8 - var16;
 				}
@@ -104,7 +104,7 @@ class GuiSlotRelay extends GuiSlot {
 			}
 			
 			EaglerAdapter.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-			screen.drawTexturedModalRect(xx + 205, yy, 0 + var15 * 10, 176 + var16 * 8, 10, 8);
+			screen.drawTexturedModalRect(xx + 205, yy, var15 * 10, 176 + var16 * 8, 10, 8);
 			if(srv.isPrimary()) {
 				EaglerAdapter.glPushMatrix();
 				EaglerAdapter.glTranslatef(xx + 4, yy + 5, 0.0f);

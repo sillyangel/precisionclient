@@ -9,7 +9,7 @@ public class EntityWitch extends EntityMob implements IRangedAttackMob {
 	 * aggressive and when reaches zero the witch will throw a potion at the target
 	 * entity.
 	 */
-	private int witchAttackTimer = 0;
+	private final int witchAttackTimer = 0;
 
 	public EntityWitch() {
 		super();

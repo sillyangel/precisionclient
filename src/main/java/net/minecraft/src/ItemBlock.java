@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ItemBlock extends Item {
 	/** The block ID of the Block associated with this ItemBlock */
-	private int blockID;
+	private final int blockID;
 	private Icon field_94588_b;
 
 	public ItemBlock(int par1) {
@@ -86,7 +86,7 @@ public class ItemBlock extends Item {
 					Block.blocksList[this.blockID].onPostBlockPlaced(par3World, par4, par5, par6, var14);
 				}
 
-				par3World.playSoundEffect((double) ((float) par4 + 0.5F), (double) ((float) par5 + 0.5F), (double) ((float) par6 + 0.5F), var12.stepSound.getPlaceSound(), (var12.stepSound.getVolume() + 1.0F) / 2.0F,
+				par3World.playSoundEffect((float) par4 + 0.5F, (float) par5 + 0.5F, (float) par6 + 0.5F, var12.stepSound.getPlaceSound(), (var12.stepSound.getVolume() + 1.0F) / 2.0F,
 						var12.stepSound.getPitch() * 0.8F);
 				--par1ItemStack.stackSize;
 			}
@@ -132,7 +132,7 @@ public class ItemBlock extends Item {
 			}
 		}
 
-		return par1World.canPlaceEntityOnSide(this.getBlockID(), par2, par3, par4, false, par5, (Entity) null, par7ItemStack);
+		return par1World.canPlaceEntityOnSide(this.getBlockID(), par2, par3, par4, false, par5, null, par7ItemStack);
 	}
 
 	/**

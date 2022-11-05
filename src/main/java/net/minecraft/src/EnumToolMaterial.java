@@ -27,7 +27,7 @@ public enum EnumToolMaterial {
 	/** Defines the natural enchantability factor of the material. */
 	private final int enchantability;
 
-	private EnumToolMaterial(int par3, int par4, float par5, int par6, int par7) {
+	EnumToolMaterial(int par3, int par4, float par5, int par6, int par7) {
 		this.harvestLevel = par3;
 		this.maxUses = par4;
 		this.efficiencyOnProperMaterial = par5;

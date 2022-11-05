@@ -11,7 +11,7 @@ public class GuiYesNo extends GuiScreen {
 	protected String message1;
 
 	/** Second line of text. */
-	private String message2;
+	private final String message2;
 
 	/** The text shown for the first button in GuiYesNo */
 	protected String buttonText1;

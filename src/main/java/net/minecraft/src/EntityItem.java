@@ -31,9 +31,9 @@ public class EntityItem extends Entity {
 		this.yOffset = this.height / 2.0F;
 		this.setPosition(par2, par4, par6);
 		this.rotationYaw = (float) (Math.random() * 360.0D);
-		this.motionX = (double) ((float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D));
+		this.motionX = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D);
 		this.motionY = 0.20000000298023224D;
-		this.motionZ = (double) ((float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D));
+		this.motionZ = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D);
 	}
 
 	public EntityItem(World par1World, double par2, double par4, double par6, ItemStack par8ItemStack) {
@@ -102,8 +102,8 @@ public class EntityItem extends Entity {
 		if (var1 || this.ticksExisted % 25 == 0) {
 			if (this.worldObj.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) == Material.lava) {
 				this.motionY = 0.20000000298023224D;
-				this.motionX = (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
-				this.motionZ = (double) ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F);
+				this.motionX = (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F;
+				this.motionZ = (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F;
 				this.playSound("random.fizz", 0.4F, 2.0F + this.rand.nextFloat() * 0.4F);
 			}
 		}
@@ -119,9 +119,9 @@ public class EntityItem extends Entity {
 			}
 		}
 
-		this.motionX *= (double) var2;
+		this.motionX *= var2;
 		this.motionY *= 0.9800000190734863D;
-		this.motionZ *= (double) var2;
+		this.motionZ *= var2;
 
 		if (this.onGround) {
 			this.motionY *= -0.5D;
@@ -228,7 +228,7 @@ public class EntityItem extends Entity {
 	 * (abstract) Protected helper method to write subclass entity data to NBT.
 	 */
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		par1NBTTagCompound.setShort("Health", (short) ((byte) this.health));
+		par1NBTTagCompound.setShort("Health", (byte) this.health);
 		par1NBTTagCompound.setShort("Age", (short) this.age);
 
 		if (this.getEntityItem() != null) {

@@ -2,11 +2,11 @@ package net.minecraft.src;
 
 public class GuiConfirmOpenLink extends GuiYesNo {
 	/** Text to warn players from opening unsafe links. */
-	private String openLinkWarning;
+	private final String openLinkWarning;
 
 	/** Label for the Copy to Clipboard button. */
-	private String copyLinkButtonText;
-	private String field_92028_p;
+	private final String copyLinkButtonText;
+	private final String field_92028_p;
 	private boolean field_92027_q = true;
 
 	public GuiConfirmOpenLink(GuiScreen par1GuiScreen, String par2Str, int par3, boolean par4) {

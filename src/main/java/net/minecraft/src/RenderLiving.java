@@ -34,8 +34,7 @@ public abstract class RenderLiving extends Render {
 		float var4;
 
 		for (var4 = par2 - par1; var4 < -180.0F; var4 += 360.0F) {
-			;
-		}
+        }
 
 		while (var4 >= 180.0F) {
 			var4 -= 360.0F;
@@ -283,7 +282,7 @@ public abstract class RenderLiving extends Render {
 
 		if (var3 > 0) {
 			EntityArrow var4 = new EntityArrow(par1EntityLiving.worldObj, par1EntityLiving.posX, par1EntityLiving.posY, par1EntityLiving.posZ);
-			EaglercraftRandom var5 = new EaglercraftRandom((long) par1EntityLiving.entityId);
+			EaglercraftRandom var5 = new EaglercraftRandom(par1EntityLiving.entityId);
 			RenderHelper.disableStandardItemLighting();
 
 			for (int var6 = 0; var6 < var3; ++var6) {
@@ -305,8 +304,8 @@ public abstract class RenderLiving extends Render {
 				var10 *= -1.0F;
 				var11 *= -1.0F;
 				float var15 = MathHelper.sqrt_float(var9 * var9 + var11 * var11);
-				var4.prevRotationYaw = var4.rotationYaw = (float) (Math.atan2((double) var9, (double) var11) * 180.0D / Math.PI);
-				var4.prevRotationPitch = var4.rotationPitch = (float) (Math.atan2((double) var10, (double) var15) * 180.0D / Math.PI);
+				var4.prevRotationYaw = var4.rotationYaw = (float) (Math.atan2(var9, var11) * 180.0D / Math.PI);
+				var4.prevRotationPitch = var4.rotationPitch = (float) (Math.atan2(var10, var15) * 180.0D / Math.PI);
 				double var16 = 0.0D;
 				double var18 = 0.0D;
 				double var20 = 0.0D;
@@ -399,10 +398,10 @@ public abstract class RenderLiving extends Render {
 					var15.startDrawingQuads();
 					int var16 = var14.getStringWidth(var13) / 2;
 					var15.setColorRGBA_F(0.0F, 0.0F, 0.0F, 0.25F);
-					var15.addVertex((double) (-var16 - 1), -1.0D, 0.0D);
-					var15.addVertex((double) (-var16 - 1), 8.0D, 0.0D);
-					var15.addVertex((double) (var16 + 1), 8.0D, 0.0D);
-					var15.addVertex((double) (var16 + 1), -1.0D, 0.0D);
+					var15.addVertex(-var16 - 1, -1.0D, 0.0D);
+					var15.addVertex(-var16 - 1, 8.0D, 0.0D);
+					var15.addVertex(var16 + 1, 8.0D, 0.0D);
+					var15.addVertex(var16 + 1, -1.0D, 0.0D);
 					var15.draw();
 					EaglerAdapter.glEnable(EaglerAdapter.GL_ALPHA_TEST);
 					EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
@@ -460,7 +459,7 @@ public abstract class RenderLiving extends Render {
 			//}
 
 			if(par1EntityLiving instanceof EntityOtherPlayerMP) {
-				if(((EntityOtherPlayerMP)par1EntityLiving).isPlayerSleeping()) {
+				if(par1EntityLiving.isPlayerSleeping()) {
 					var16 = -60;
 				}else {
 					int renderType = DefaultSkinRenderer.getPlayerRenderer((EntityOtherPlayerMP)par1EntityLiving);
@@ -477,10 +476,10 @@ public abstract class RenderLiving extends Render {
 			var15.startDrawingQuads();
 			int var17 = var12.getStringWidth(par2Str) / 2;
 			var15.setColorRGBA_F(0.0F, 0.0F, 0.0F, 0.25F);
-			var15.addVertex((double) (-var17 - 1), (double) (-1 + var16), 0.0D);
-			var15.addVertex((double) (-var17 - 1), (double) (8 + var16), 0.0D);
-			var15.addVertex((double) (var17 + 1), (double) (8 + var16), 0.0D);
-			var15.addVertex((double) (var17 + 1), (double) (-1 + var16), 0.0D);
+			var15.addVertex(-var17 - 1, -1 + var16, 0.0D);
+			var15.addVertex(-var17 - 1, 8 + var16, 0.0D);
+			var15.addVertex(var17 + 1, 8 + var16, 0.0D);
+			var15.addVertex(var17 + 1, -1 + var16, 0.0D);
 			var15.draw();
 			EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
 			EaglerAdapter.glEnable(EaglerAdapter.GL_ALPHA_TEST);
@@ -540,10 +539,10 @@ public abstract class RenderLiving extends Render {
 						}
 						
 						var15.startDrawingQuads();
-						var15.addVertexWithUV(0, 1.0, 0, (double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8));
-						var15.addVertexWithUV(1.0, 1.0, 0, (double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8));
-						var15.addVertexWithUV(1.0, 0, 0, (double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 0.2f) * var8));
-						var15.addVertexWithUV(0, 0, 0, (double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 0.2f) * var8));
+						var15.addVertexWithUV(0, 1.0, 0, (u + 0.2f) * var7, (v + 32 - 0.2f) * var8);
+						var15.addVertexWithUV(1.0, 1.0, 0, (u + 32 - 0.2f) * var7, (v + 32 - 0.2f) * var8);
+						var15.addVertexWithUV(1.0, 0, 0, (u + 32 - 0.2f) * var7, (v + 0.2f) * var8);
+						var15.addVertexWithUV(0, 0, 0, (u + 0.2f) * var7, (v + 0.2f) * var8);
 						var15.draw();
 						
 						EaglerAdapter.glAlphaFunc(EaglerAdapter.GL_GREATER, 0.1f);
@@ -557,10 +556,10 @@ public abstract class RenderLiving extends Render {
 						}
 						
 						var15.startDrawingQuads();
-						var15.addVertexWithUV(0, 1.0, 0, (double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8));
-						var15.addVertexWithUV(1.0, 1.0, 0, (double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 32 - 0.2f) * var8));
-						var15.addVertexWithUV(1.0, 0, 0, (double) ((float) (u + 32 - 0.2f) * var7), (double) ((float) (v + 0.2f) * var8));
-						var15.addVertexWithUV(0, 0, 0, (double) ((float) (u + 0.2f) * var7), (double) ((float) (v + 0.2f) * var8));
+						var15.addVertexWithUV(0, 1.0, 0, (u + 0.2f) * var7, (v + 32 - 0.2f) * var8);
+						var15.addVertexWithUV(1.0, 1.0, 0, (u + 32 - 0.2f) * var7, (v + 32 - 0.2f) * var8);
+						var15.addVertexWithUV(1.0, 0, 0, (u + 32 - 0.2f) * var7, (v + 0.2f) * var8);
+						var15.addVertexWithUV(0, 0, 0, (u + 0.2f) * var7, (v + 0.2f) * var8);
 						var15.draw();
 						
 						EaglerAdapter.glEnable(EaglerAdapter.GL_LIGHTING);

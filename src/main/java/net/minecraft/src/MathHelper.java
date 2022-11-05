@@ -9,7 +9,7 @@ public class MathHelper {
 	 * A table of sin values computed from 0 (inclusive) to 2*pi (exclusive), with
 	 * steps of 2*PI / 65536.
 	 */
-	private static float[] SIN_TABLE = new float[65536];
+	private static final float[] SIN_TABLE = new float[65536];
 
 	/**
 	 * sin looked up in a table
@@ -26,7 +26,7 @@ public class MathHelper {
 	}
 
 	public static final float sqrt_float(float par0) {
-		return (float) Math.sqrt((double) par0);
+		return (float) Math.sqrt(par0);
 	}
 
 	public static final float sqrt_double(double par0) {
@@ -196,8 +196,7 @@ public class MathHelper {
 		try {
 			var2 = Integer.parseInt(par0Str);
 		} catch (Throwable var4) {
-			;
-		}
+        }
 
 		return var2;
 	}
@@ -212,8 +211,7 @@ public class MathHelper {
 		try {
 			var3 = Integer.parseInt(par0Str);
 		} catch (Throwable var5) {
-			;
-		}
+        }
 
 		if (var3 < par2) {
 			var3 = par2;
@@ -231,8 +229,7 @@ public class MathHelper {
 		try {
 			var3 = Double.parseDouble(par0Str);
 		} catch (Throwable var6) {
-			;
-		}
+        }
 
 		return var3;
 	}
@@ -243,8 +240,7 @@ public class MathHelper {
 		try {
 			var5 = Double.parseDouble(par0Str);
 		} catch (Throwable var8) {
-			;
-		}
+        }
 
 		if (var5 < par3) {
 			var5 = par3;

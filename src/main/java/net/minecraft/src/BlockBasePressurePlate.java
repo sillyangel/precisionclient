@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public abstract class BlockBasePressurePlate extends Block {
-	private String pressurePlateIconName;
+	private final String pressurePlateIconName;
 
 	protected BlockBasePressurePlate(int par1, String par2Str, Material par3Material) {
 		super(par1, par3Material);
@@ -79,13 +79,9 @@ public abstract class BlockBasePressurePlate extends Block {
 	 * blockID
 	 */
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		boolean var6 = false;
+		boolean var6 = !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4));
 
-		if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4))) {
-			var6 = true;
-		}
-
-		if (var6) {
+        if (var6) {
 			this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
 			par1World.setBlockToAir(par2, par3, par4);
 		}
@@ -119,7 +115,7 @@ public abstract class BlockBasePressurePlate extends Block {
 
 	protected AxisAlignedBB getSensitiveAABB(int par1, int par2, int par3) {
 		float var4 = 0.125F;
-		return AxisAlignedBB.getAABBPool().getAABB((double) ((float) par1 + var4), (double) par2, (double) ((float) par3 + var4), (double) ((float) (par1 + 1) - var4), (double) par2 + 0.25D, (double) ((float) (par3 + 1) - var4));
+		return AxisAlignedBB.getAABBPool().getAABB((float) par1 + var4, par2, (float) par3 + var4, (float) (par1 + 1) - var4, (double) par2 + 0.25D, (float) (par3 + 1) - var4);
 	}
 
 	/**

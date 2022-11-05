@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class TileEntityEnderChestRenderer extends TileEntitySpecialRenderer {
 	/** The Ender Chest Chest's model. */
-	private ModelChest theEnderChestModel = new ModelChest();
+	private final ModelChest theEnderChestModel = new ModelChest();
 	
 	private static final TextureLocation tex_enderchest = new TextureLocation("/item/enderchest.png");
 	
@@ -44,7 +44,7 @@ public class TileEntityEnderChestRenderer extends TileEntitySpecialRenderer {
 			var10 = -90;
 		}
 
-		EaglerAdapter.glRotatef((float) var10, 0.0F, 1.0F, 0.0F);
+		EaglerAdapter.glRotatef(var10, 0.0F, 1.0F, 0.0F);
 		EaglerAdapter.glTranslatef(-0.5F, -0.5F, -0.5F);
 		float var11 = par1TileEntityEnderChest.prevLidAngle + (par1TileEntityEnderChest.lidAngle - par1TileEntityEnderChest.prevLidAngle) * par8;
 		var11 = 1.0F - var11;

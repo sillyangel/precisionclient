@@ -55,10 +55,10 @@ public class IntegratedServerLAN {
 					}
 				}
 				try {
-					Thread.sleep(50l);
+					Thread.sleep(50L);
 				} catch (InterruptedException e) {
 				}
-			}while(System.currentTimeMillis() - millis < 1000l);
+			}while(System.currentTimeMillis() - millis < 1000L);
 			System.out.println("Relay [" + sock.getURI() + "] relay provide ICE servers timeout");
 			closeLAN();
 			return null;
@@ -178,17 +178,17 @@ public class IntegratedServerLAN {
 
 		private static final int PRE = 0, SENT_ICE_CANDIDATE = 2, SENT_DESCRIPTION = 3, CONNECTED = 4, CLOSED = 5;
 		
-		protected final String clientId;
+		private final String clientId;
 		
-		protected int state = PRE;
-		protected boolean dead = false;
+		private int state = PRE;
+		private boolean dead = false;
 		
-		protected LANClient(String clientId) {
+		private LANClient(String clientId) {
 			this.clientId = clientId;
 			EaglerAdapter.serverLANCreatePeer(clientId);
 		}
 		
-		protected void handleICECandidates(String candidates) {
+		private void handleICECandidates(String candidates) {
 			if(state == SENT_DESCRIPTION) {
 				EaglerAdapter.serverLANPeerICECandidates(clientId, candidates);
 				long millis = System.currentTimeMillis();
@@ -208,10 +208,10 @@ public class IntegratedServerLAN {
 						return;
 					}
 					try {
-						Thread.sleep(20l);
+						Thread.sleep(20L);
 					} catch (InterruptedException e) {
 					}
-				}while(System.currentTimeMillis() - millis < 5000l);
+				}while(System.currentTimeMillis() - millis < 5000L);
 				System.err.println("Getting server ICE candidates for '" + clientId + "' timed out!");
 				disconnect();
 			}else {
@@ -219,7 +219,7 @@ public class IntegratedServerLAN {
 			}
 		}
 		
-		protected void handleDescription(String description) {
+		private void handleDescription(String description) {
 			if(state == PRE) {
 				EaglerAdapter.serverLANPeerDescription(clientId, description);
 				long millis = System.currentTimeMillis();
@@ -239,10 +239,10 @@ public class IntegratedServerLAN {
 						return;
 					}
 					try {
-						Thread.sleep(20l);
+						Thread.sleep(20L);
 					} catch (InterruptedException e) {
 					}
-				}while(System.currentTimeMillis() - millis < 5000l);
+				}while(System.currentTimeMillis() - millis < 5000L);
 				System.err.println("Getting server description for '" + clientId + "' timed out!");
 				disconnect();
 			}else {
@@ -250,7 +250,7 @@ public class IntegratedServerLAN {
 			}
 		}
 		
-		protected void handleSuccess() {
+		private void handleSuccess() {
 			if(state == SENT_ICE_CANDIDATE) {
 				long millis = System.currentTimeMillis();
 				do {
@@ -273,10 +273,10 @@ public class IntegratedServerLAN {
 						return;
 					}
 					try {
-						Thread.sleep(20l);
+						Thread.sleep(20L);
 					} catch (InterruptedException e) {
 					}
-				}while(System.currentTimeMillis() - millis < 5000l);
+				}while(System.currentTimeMillis() - millis < 5000L);
 				System.err.println("Getting server description for '" + clientId + "' timed out!");
 				disconnect();
 			}else {
@@ -284,7 +284,7 @@ public class IntegratedServerLAN {
 			}
 		}
 		
-		protected void handleFailure() {
+		private void handleFailure() {
 			if(state == SENT_ICE_CANDIDATE) {
 				System.err.println("Client '" + clientId + "' failed to connect");
 				disconnect();
@@ -293,7 +293,7 @@ public class IntegratedServerLAN {
 			}
 		}
 		
-		protected void update() {
+		private void update() {
 			if(state == CONNECTED) {
 				PKT pk;
 				while(state == CONNECTED && (pk = EaglerAdapter.recieveFromIntegratedServer("NET|" + clientId)) != null) {
@@ -314,7 +314,7 @@ public class IntegratedServerLAN {
 			}
 		}
 		
-		protected void disconnect() {
+		private void disconnect() {
 			if(!dead) {
 				if(state == CONNECTED) {
 					IntegratedServer.sendIPCPacket(new IPCPacket0CPlayerChannel(clientId, false));

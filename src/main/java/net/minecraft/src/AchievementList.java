@@ -20,7 +20,7 @@ public class AchievementList {
 	public static List<Achievement> achievementList = new ArrayList();
 
 	/** Is the 'open inventory' achievement. */
-	public static Achievement openInventory = (new Achievement(0, "openInventory", 0, 0, Item.book, (Achievement) null)).setIndependent().registerAchievement();
+	public static Achievement openInventory = (new Achievement(0, "openInventory", 0, 0, Item.book, null)).setIndependent().registerAchievement();
 
 	/** Is the 'getting wood' achievement. */
 	public static Achievement mineWood = (new Achievement(1, "mineWood", 2, 1, Block.wood, openInventory)).registerAchievement();

@@ -8,11 +8,11 @@ import java.io.DataOutputStream;
 
 public class GuiMerchant extends GuiContainer {
 	/** Instance of IMerchant interface. */
-	private IMerchant theIMerchant;
+	private final IMerchant theIMerchant;
 	private GuiButtonMerchant nextRecipeButtonIndex;
 	private GuiButtonMerchant previousRecipeButtonIndex;
 	private int currentRecipeIndex = 0;
-	private String field_94082_v;
+	private final String field_94082_v;
 
 	public GuiMerchant(InventoryPlayer par1, IMerchant par2, World par3World, String par4) {
 		super(new ContainerMerchant(par1, par2, par3World));

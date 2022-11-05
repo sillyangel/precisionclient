@@ -6,11 +6,11 @@ import org.teavm.jso.typedarrays.ArrayBuffer;
 
 public interface EaglercraftLANClient extends JSObject {
 
-	final int READYSTATE_INIT_FAILED = -2;
-	final int READYSTATE_FAILED = -1;
-	final int READYSTATE_DISCONNECTED = 0;
-	final int READYSTATE_CONNECTING = 1;
-	final int READYSTATE_CONNECTED = 2;
+	int READYSTATE_INIT_FAILED = -2;
+	int READYSTATE_FAILED = -1;
+	int READYSTATE_DISCONNECTED = 0;
+	int READYSTATE_CONNECTING = 1;
+	int READYSTATE_CONNECTED = 2;
 
 	boolean LANClientSupported();
 	
@@ -41,22 +41,22 @@ public interface EaglercraftLANClient extends JSObject {
 	void signalRemoteDisconnect(boolean quiet);
 
 	@JSFunctor
-	public static interface ICECandidateHandler extends JSObject {
+    interface ICECandidateHandler extends JSObject {
 		void call(String candidate);
 	}
 	
 	@JSFunctor
-	public static interface DescriptionHandler extends JSObject {
+    interface DescriptionHandler extends JSObject {
 		void call(String description);
 	}
 	
 	@JSFunctor
-	public static interface ClientSignalHandler extends JSObject {
+    interface ClientSignalHandler extends JSObject {
 		void call();
 	}
 	
 	@JSFunctor
-	public static interface RemotePacketHandler extends JSObject {
+    interface RemotePacketHandler extends JSObject {
 		void call(ArrayBuffer buffer);
 	}
 	

@@ -15,7 +15,7 @@ public class GuiVoiceOverlay extends Gui {
 	public int width;
 	public int height;
 	
-	private long pttTimer = 0l;
+	private long pttTimer = 0L;
 	
 	public GuiVoiceOverlay(Minecraft mc) {
 		this.mc = mc;
@@ -58,14 +58,14 @@ public class GuiVoiceOverlay extends Gui {
 			
 			if((mc.currentScreen == null || !mc.currentScreen.blockHotKeys()) && EaglerAdapter.isKeyDown(mc.gameSettings.voicePTTKey)) {
 				long millis = System.currentTimeMillis();
-				if(pttTimer == 0l) {
+				if(pttTimer == 0L) {
 					pttTimer = millis;
 				}
 				EaglerAdapter.glColor4f(0.2f, 0.2f, 0.2f, 1.0f);
 				drawTexturedModalRect(0, 0, 0, 32, 32, 32);
 				EaglerAdapter.glTranslatef(-1.5f, -1.5f, 0.0f);
-				if(millis - pttTimer < 1050l) {
-					if((millis - pttTimer) % 300l < 150l) {
+				if(millis - pttTimer < 1050L) {
+					if((millis - pttTimer) % 300L < 150L) {
 						EaglerAdapter.glColor4f(0.9f, 0.2f, 0.2f, 1.0f);
 					}else {
 						EaglerAdapter.glColor4f(0.9f, 0.7f, 0.7f, 1.0f);
@@ -75,7 +75,7 @@ public class GuiVoiceOverlay extends Gui {
 				}
 				drawTexturedModalRect(0, 0, 0, 32, 32, 32);
 			}else {
-				pttTimer = 0l;
+				pttTimer = 0L;
 				EaglerAdapter.glColor4f(0.2f, 0.2f, 0.2f, 1.0f);
 				drawTexturedModalRect(0, 0, 0, 0, 32, 32);
 				EaglerAdapter.glTranslatef(-1.5f, -1.5f, 0.0f);

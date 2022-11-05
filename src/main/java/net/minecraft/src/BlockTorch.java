@@ -58,9 +58,7 @@ public class BlockTorch extends Block {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) ? true
-				: (par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) ? true
-						: (par1World.isBlockNormalCubeDefault(par2, par3, par4 - 1, true) ? true : (par1World.isBlockNormalCubeDefault(par2, par3, par4 + 1, true) ? true : this.canPlaceTorchOn(par1World, par2, par3 - 1, par4))));
+		return par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) || (par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) || (par1World.isBlockNormalCubeDefault(par2, par3, par4 - 1, true) || (par1World.isBlockNormalCubeDefault(par2, par3, par4 + 1, true) || this.canPlaceTorchOn(par1World, par2, par3 - 1, par4))));
 	}
 
 	/**
@@ -137,13 +135,9 @@ public class BlockTorch extends Block {
 	protected boolean func_94397_d(World par1World, int par2, int par3, int par4, int par5) {
 		if (this.dropTorchIfCantStay(par1World, par2, par3, par4)) {
 			int var6 = par1World.getBlockMetadata(par2, par3, par4);
-			boolean var7 = false;
+			boolean var7 = !par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) && var6 == 1;
 
-			if (!par1World.isBlockNormalCubeDefault(par2 - 1, par3, par4, true) && var6 == 1) {
-				var7 = true;
-			}
-
-			if (!par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) && var6 == 2) {
+            if (!par1World.isBlockNormalCubeDefault(par2 + 1, par3, par4, true) && var6 == 2) {
 				var7 = true;
 			}
 
@@ -219,9 +213,9 @@ public class BlockTorch extends Block {
 	 */
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, EaglercraftRandom par5Random) {
 		int var6 = par1World.getBlockMetadata(par2, par3, par4);
-		double var7 = (double) ((float) par2 + 0.5F);
-		double var9 = (double) ((float) par3 + 0.7F);
-		double var11 = (double) ((float) par4 + 0.5F);
+		double var7 = (float) par2 + 0.5F;
+		double var9 = (float) par3 + 0.7F;
+		double var11 = (float) par4 + 0.5F;
 		double var13 = 0.2199999988079071D;
 		double var15 = 0.27000001072883606D;
 

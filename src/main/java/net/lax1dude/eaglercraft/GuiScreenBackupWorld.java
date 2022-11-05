@@ -5,17 +5,17 @@ import net.minecraft.src.*;
 
 public class GuiScreenBackupWorld extends GuiScreen {
 
-	private GuiScreen selectWorld;
+	private final GuiScreen selectWorld;
 
 	private GuiButton worldRecreate = null;
 	private GuiButton worldDuplicate = null;
 	private GuiButton worldExport = null;
 	private GuiButton worldConvert = null;
 	private GuiButton worldBackup = null;
-	private long worldSeed;
-	private NBTTagCompound levelDat;
+	private final long worldSeed;
+	private final NBTTagCompound levelDat;
 	
-	private String worldName;
+	private final String worldName;
 	
 	public GuiScreenBackupWorld(GuiScreen selectWorld, String worldName, NBTTagCompound levelDat) {
 		this.selectWorld = selectWorld;

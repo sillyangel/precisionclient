@@ -1,13 +1,13 @@
 package net.minecraft.src;
 
 public class GuiVideoSettings extends GuiScreen {
-	private GuiScreen parentGuiScreen;
+	private final GuiScreen parentGuiScreen;
 
 	/** The title string that is displayed in the top-center of the screen. */
 	protected String screenTitle = "Video Settings";
 
 	/** GUI game settings */
-	private GameSettings guiGameSettings;
+	private final GameSettings guiGameSettings;
 
 	/**
 	 * True if the system is 64-bit (using a simple indexOf test on a system
@@ -16,7 +16,7 @@ public class GuiVideoSettings extends GuiScreen {
 	private boolean is64bit = false;
 
 	/** An array of all of EnumOption's video options. */
-	private static EnumOptions[] videoOptions = new EnumOptions[] { EnumOptions.GRAPHICS, EnumOptions.RENDER_DISTANCE, EnumOptions.AMBIENT_OCCLUSION, EnumOptions.FRAMERATE_LIMIT, EnumOptions.ANAGLYPH, EnumOptions.VIEW_BOBBING,
+	private static final EnumOptions[] videoOptions = new EnumOptions[] { EnumOptions.GRAPHICS, EnumOptions.RENDER_DISTANCE, EnumOptions.AMBIENT_OCCLUSION, EnumOptions.FRAMERATE_LIMIT, EnumOptions.ANAGLYPH, EnumOptions.VIEW_BOBBING,
 			EnumOptions.GUI_SCALE, EnumOptions.GAMMA, EnumOptions.RENDER_CLOUDS, EnumOptions.ENABLE_FOG, EnumOptions.PARTICLES, EnumOptions.CHUNK_UPDATES, EnumOptions.ADDERALL };
 
 	public GuiVideoSettings(GuiScreen par1GuiScreen, GameSettings par2GameSettings) {

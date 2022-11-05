@@ -247,14 +247,13 @@ public class Vector2f extends Vector implements Serializable, ReadableVector2f, 
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		StringBuilder sb = new StringBuilder(64);
 
-		sb.append("Vector2f[");
-		sb.append(x);
-		sb.append(", ");
-		sb.append(y);
-		sb.append(']');
-		return sb.toString();
+        String sb = "Vector2f[" +
+                x +
+                ", " +
+                y +
+                ']';
+		return sb;
 	}
 
 	/**
@@ -292,10 +291,8 @@ public class Vector2f extends Vector implements Serializable, ReadableVector2f, 
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
 		Vector2f other = (Vector2f)obj;
-		
-		if (x == other.x && y == other.y) return true;
-		
-		return false;
-	}
+
+        return x == other.x && y == other.y;
+    }
 	
 }

@@ -8,16 +8,16 @@ import java.util.Map;
 public class MapStorage {
 
 	/** Map of item data String id to loaded MapDataBases */
-	private Map loadedDataMap = new HashMap();
+	private final Map loadedDataMap = new HashMap();
 
 	/** List of loaded MapDataBases. */
-	private List loadedDataList = new ArrayList();
+	private final List loadedDataList = new ArrayList();
 
 	/**
 	 * Map of MapDataBase id String prefixes ('map' etc) to max known unique Short
 	 * id (the 0 part etc) for that prefix
 	 */
-	private Map idCounts = new HashMap();
+	private final Map idCounts = new HashMap();
 
 	public MapStorage() {
 		this.loadIdCounts();
@@ -38,7 +38,7 @@ public class MapStorage {
 	 */
 	public void setData(String par1Str, WorldSavedData par2WorldSavedData) {
 		if (par2WorldSavedData == null) {
-			throw new RuntimeException("Can\'t set null data");
+			throw new RuntimeException("Can't set null data");
 		} else {
 			if (this.loadedDataMap.containsKey(par1Str)) {
 				this.loadedDataList.remove(this.loadedDataMap.remove(par1Str));

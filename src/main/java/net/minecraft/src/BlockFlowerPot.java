@@ -58,7 +58,7 @@ public class BlockFlowerPot extends Block {
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, var11, 2);
 
 				if (!par5EntityPlayer.capabilities.isCreativeMode && --var10.stackSize <= 0) {
-					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, (ItemStack) null);
+					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 				}
 
 				return true;
@@ -213,10 +213,9 @@ public class BlockFlowerPot extends Block {
 			}
 
 			if (var1 == Block.tallGrass.blockID) {
-				switch (par0ItemStack.getItemDamage()) {
-				case 2:
-					return 11;
-				}
+                if (par0ItemStack.getItemDamage() == 2) {
+                    return 11;
+                }
 			}
 
 			return 0;

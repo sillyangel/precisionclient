@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiBrewingStand extends GuiContainer {
-	private TileEntityBrewingStand brewingStand;
+	private final TileEntityBrewingStand brewingStand;
 
 	public GuiBrewingStand(InventoryPlayer par1InventoryPlayer, TileEntityBrewingStand par2TileEntityBrewingStand) {
 		super(new ContainerBrewingStand(par1InventoryPlayer, par2TileEntityBrewingStand));

@@ -35,7 +35,7 @@ public class TextureStitched implements Icon {
 	protected int tickCounter = 0;
 
 	public static TextureStitched makeTextureStitched(String par0Str) {
-		return (TextureStitched) ("clock".equals(par0Str) ? new TextureClock() : ("compass".equals(par0Str) ? new TextureCompass() : new TextureStitched(par0Str)));
+		return "clock".equals(par0Str) ? new TextureClock() : ("compass".equals(par0Str) ? new TextureCompass() : new TextureStitched(par0Str));
 	}
 
 	protected TextureStitched(String par1) {

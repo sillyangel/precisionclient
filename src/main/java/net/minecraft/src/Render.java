@@ -6,7 +6,7 @@ import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public abstract class Render {
 	protected RenderManager renderManager;
-	private ModelBase modelBase = new ModelBiped();
+	private final ModelBase modelBase = new ModelBiped();
 	protected RenderBlocks renderBlocks = new RenderBlocks();
 	protected float shadowSize = 0.0F;
 
@@ -81,10 +81,10 @@ public abstract class Render {
 				var20 = var24;
 			}
 
-			var12.addVertexWithUV((double) (var13 - var14), (double) (0.0F - var16), (double) var17, (double) var22, (double) var23);
-			var12.addVertexWithUV((double) (-var13 - var14), (double) (0.0F - var16), (double) var17, (double) var20, (double) var23);
-			var12.addVertexWithUV((double) (-var13 - var14), (double) (1.4F - var16), (double) var17, (double) var20, (double) var21);
-			var12.addVertexWithUV((double) (var13 - var14), (double) (1.4F - var16), (double) var17, (double) var22, (double) var21);
+			var12.addVertexWithUV(var13 - var14, 0.0F - var16, var17, var22, var23);
+			var12.addVertexWithUV(-var13 - var14, 0.0F - var16, var17, var20, var23);
+			var12.addVertexWithUV(-var13 - var14, 1.4F - var16, var17, var20, var21);
+			var12.addVertexWithUV(var13 - var14, 1.4F - var16, var17, var22, var21);
 			var15 -= 0.45F;
 			var16 -= 0.45F;
 			var13 *= 0.9F;
@@ -191,10 +191,10 @@ public abstract class Render {
 				float var33 = (float) ((par2 - var24) / 2.0D / (double) par12 + 0.5D);
 				float var34 = (float) ((par6 - var28) / 2.0D / (double) par12 + 0.5D);
 				float var35 = (float) ((par6 - var30) / 2.0D / (double) par12 + 0.5D);
-				var19.addVertexWithUV(var22, var26, var28, (double) var32, (double) var34);
-				var19.addVertexWithUV(var22, var26, var30, (double) var32, (double) var35);
-				var19.addVertexWithUV(var24, var26, var30, (double) var33, (double) var35);
-				var19.addVertexWithUV(var24, var26, var28, (double) var33, (double) var34);
+				var19.addVertexWithUV(var22, var26, var28, var32, var34);
+				var19.addVertexWithUV(var22, var26, var30, var32, var35);
+				var19.addVertexWithUV(var24, var26, var30, var33, var35);
+				var19.addVertexWithUV(var24, var26, var28, var33, var34);
 			}
 		}
 	}

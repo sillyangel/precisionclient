@@ -21,11 +21,7 @@ public class EntityMinecartEmpty extends EntityMinecart {
 	public boolean interact(EntityPlayer par1EntityPlayer) {
 		if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && this.riddenByEntity != par1EntityPlayer) {
 			return true;
-		} else if (this.riddenByEntity != null && this.riddenByEntity != par1EntityPlayer) {
-			return false;
-		} else {
-			return true;
-		}
+		} else return this.riddenByEntity == null || this.riddenByEntity == par1EntityPlayer;
 	}
 
 	public int getMinecartType() {

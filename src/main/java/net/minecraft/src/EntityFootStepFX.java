@@ -7,7 +7,7 @@ import net.lax1dude.eaglercraft.adapter.Tessellator;
 public class EntityFootStepFX extends EntityFX {
 	private int field_70576_a = 0;
 	private int field_70578_aq = 0;
-	private RenderEngine currentFootSteps;
+	private final RenderEngine currentFootSteps;
 
 	public EntityFootStepFX(RenderEngine par1RenderEngine, World par2World, double par3, double par5, double par7) {
 		super(par2World, par3, par5, par7, 0.0D, 0.0D, 0.0D);
@@ -39,10 +39,10 @@ public class EntityFootStepFX extends EntityFX {
 		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
 		par1Tessellator.startDrawingQuads();
 		par1Tessellator.setColorRGBA_F(var14, var14, var14, var9);
-		par1Tessellator.addVertexWithUV((double) (var11 - var10), (double) var12, (double) (var13 + var10), 0.0D, 1.0D);
-		par1Tessellator.addVertexWithUV((double) (var11 + var10), (double) var12, (double) (var13 + var10), 1.0D, 1.0D);
-		par1Tessellator.addVertexWithUV((double) (var11 + var10), (double) var12, (double) (var13 - var10), 1.0D, 0.0D);
-		par1Tessellator.addVertexWithUV((double) (var11 - var10), (double) var12, (double) (var13 - var10), 0.0D, 0.0D);
+		par1Tessellator.addVertexWithUV(var11 - var10, var12, var13 + var10, 0.0D, 1.0D);
+		par1Tessellator.addVertexWithUV(var11 + var10, var12, var13 + var10, 1.0D, 1.0D);
+		par1Tessellator.addVertexWithUV(var11 + var10, var12, var13 - var10, 1.0D, 0.0D);
+		par1Tessellator.addVertexWithUV(var11 - var10, var12, var13 - var10, 0.0D, 0.0D);
 		par1Tessellator.draw();
 		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
 		EaglerAdapter.glEnable(EaglerAdapter.GL_LIGHTING);

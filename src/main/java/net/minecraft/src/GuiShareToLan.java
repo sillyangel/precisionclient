@@ -114,7 +114,7 @@ public class GuiShareToLan extends GuiScreen {
 			if(worldName.length() >= 252) {
 				worldName = worldName.substring(0, 252);
 			}
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 			LoadingScreenRenderer ls = mc.loadingScreen;
 			String code = IntegratedServerLAN.shareToLAN((str) -> ls.resetProgresAndWorkingMessage(str), worldName, hiddenToggle);
 			if (code != null) {

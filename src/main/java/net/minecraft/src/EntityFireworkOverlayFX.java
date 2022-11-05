@@ -20,9 +20,9 @@ public class EntityFireworkOverlayFX extends EntityFX {
 		float var14 = (float) (this.prevPosY + (this.posY - this.prevPosY) * (double) par2 - interpPosY);
 		float var15 = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * (double) par2 - interpPosZ);
 		par1Tessellator.setColorRGBA_F(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha);
-		par1Tessellator.addVertexWithUV((double) (var13 - par3 * var12 - par6 * var12), (double) (var14 - par4 * var12), (double) (var15 - par5 * var12 - par7 * var12), (double) var9, (double) var11);
-		par1Tessellator.addVertexWithUV((double) (var13 - par3 * var12 + par6 * var12), (double) (var14 + par4 * var12), (double) (var15 - par5 * var12 + par7 * var12), (double) var9, (double) var10);
-		par1Tessellator.addVertexWithUV((double) (var13 + par3 * var12 + par6 * var12), (double) (var14 + par4 * var12), (double) (var15 + par5 * var12 + par7 * var12), (double) var8, (double) var10);
-		par1Tessellator.addVertexWithUV((double) (var13 + par3 * var12 - par6 * var12), (double) (var14 - par4 * var12), (double) (var15 + par5 * var12 - par7 * var12), (double) var8, (double) var11);
+		par1Tessellator.addVertexWithUV(var13 - par3 * var12 - par6 * var12, var14 - par4 * var12, var15 - par5 * var12 - par7 * var12, var9, var11);
+		par1Tessellator.addVertexWithUV(var13 - par3 * var12 + par6 * var12, var14 + par4 * var12, var15 - par5 * var12 + par7 * var12, var9, var10);
+		par1Tessellator.addVertexWithUV(var13 + par3 * var12 + par6 * var12, var14 + par4 * var12, var15 + par5 * var12 + par7 * var12, var8, var10);
+		par1Tessellator.addVertexWithUV(var13 + par3 * var12 - par6 * var12, var14 - par4 * var12, var15 + par5 * var12 - par7 * var12, var8, var11);
 	}
 }

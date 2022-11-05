@@ -15,7 +15,7 @@ public class StatStringFormatKeyInv implements IStatStringFormat {
 	 */
 	public String formatString(String par1Str) {
 		try {
-			return String.format(par1Str, new Object[] { GameSettings.getKeyDisplayString(this.mc.gameSettings.keyBindInventory.keyCode) });
+			return String.format(par1Str, GameSettings.getKeyDisplayString(this.mc.gameSettings.keyBindInventory.keyCode));
 		} catch (Exception var3) {
 			return "Error: " + var3.getLocalizedMessage();
 		}

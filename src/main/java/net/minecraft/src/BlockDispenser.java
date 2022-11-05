@@ -137,16 +137,16 @@ public class BlockDispenser extends BlockContainer {
 						}
 
 						var9.stackSize -= var13;
-						EntityItem var14 = new EntityItem(par1World, (double) ((float) par2 + var10), (double) ((float) par3 + var11), (double) ((float) par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+						EntityItem var14 = new EntityItem(par1World, (float) par2 + var10, (float) par3 + var11, (float) par4 + var12, new ItemStack(var9.itemID, var13, var9.getItemDamage()));
 
 						if (var9.hasTagCompound()) {
 							var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 						}
 
 						float var15 = 0.05F;
-						var14.motionX = (double) ((float) this.random.nextGaussian() * var15);
-						var14.motionY = (double) ((float) this.random.nextGaussian() * var15 + 0.2F);
-						var14.motionZ = (double) ((float) this.random.nextGaussian() * var15);
+						var14.motionX = (float) this.random.nextGaussian() * var15;
+						var14.motionY = (float) this.random.nextGaussian() * var15 + 0.2F;
+						var14.motionZ = (float) this.random.nextGaussian() * var15;
 						par1World.spawnEntityInWorld(var14);
 					}
 				}

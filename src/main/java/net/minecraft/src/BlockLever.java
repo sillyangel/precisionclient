@@ -43,11 +43,7 @@ public class BlockLever extends Block {
 	 * block: BlockLever overrides
 	 */
 	public boolean canPlaceBlockOnSide(World par1World, int par2, int par3, int par4, int par5) {
-		return par5 == 0 && par1World.isBlockNormalCube(par2, par3 + 1, par4) ? true
-				: (par5 == 1 && par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) ? true
-						: (par5 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1) ? true
-								: (par5 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1) ? true
-										: (par5 == 4 && par1World.isBlockNormalCube(par2 + 1, par3, par4) ? true : par5 == 5 && par1World.isBlockNormalCube(par2 - 1, par3, par4)))));
+		return par5 == 0 && par1World.isBlockNormalCube(par2, par3 + 1, par4) || (par5 == 1 && par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) || (par5 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1) || (par5 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1) || (par5 == 4 && par1World.isBlockNormalCube(par2 + 1, par3, par4) || par5 == 5 && par1World.isBlockNormalCube(par2 - 1, par3, par4)))));
 	}
 
 	/**
@@ -55,10 +51,7 @@ public class BlockLever extends Block {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.isBlockNormalCube(par2 - 1, par3, par4) ? true
-				: (par1World.isBlockNormalCube(par2 + 1, par3, par4) ? true
-						: (par1World.isBlockNormalCube(par2, par3, par4 - 1) ? true
-								: (par1World.isBlockNormalCube(par2, par3, par4 + 1) ? true : (par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) ? true : par1World.isBlockNormalCube(par2, par3 + 1, par4)))));
+		return par1World.isBlockNormalCube(par2 - 1, par3, par4) || (par1World.isBlockNormalCube(par2 + 1, par3, par4) || (par1World.isBlockNormalCube(par2, par3, par4 - 1) || (par1World.isBlockNormalCube(par2, par3, par4 + 1) || (par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) || par1World.isBlockNormalCube(par2, par3 + 1, par4)))));
 	}
 
 	/**
@@ -156,13 +149,9 @@ public class BlockLever extends Block {
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		if (this.checkIfAttachedToBlock(par1World, par2, par3, par4)) {
 			int var6 = par1World.getBlockMetadata(par2, par3, par4) & 7;
-			boolean var7 = false;
+			boolean var7 = !par1World.isBlockNormalCube(par2 - 1, par3, par4) && var6 == 1;
 
-			if (!par1World.isBlockNormalCube(par2 - 1, par3, par4) && var6 == 1) {
-				var7 = true;
-			}
-
-			if (!par1World.isBlockNormalCube(par2 + 1, par3, par4) && var6 == 2) {
+            if (!par1World.isBlockNormalCube(par2 + 1, par3, par4) && var6 == 2) {
 				var7 = true;
 			}
 

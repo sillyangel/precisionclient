@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public class RenderFireball extends Render {
-	private float field_77002_a;
+	private final float field_77002_a;
 
 	public RenderFireball(float par1) {
 		this.field_77002_a = par1;
@@ -18,7 +18,7 @@ public class RenderFireball extends Render {
 		EaglerAdapter.glTranslatef((float) par2, (float) par4, (float) par6);
 		EaglerAdapter.glEnable(EaglerAdapter.GL_RESCALE_NORMAL);
 		float var10 = this.field_77002_a;
-		EaglerAdapter.glScalef(var10 / 1.0F, var10 / 1.0F, var10 / 1.0F);
+		EaglerAdapter.glScalef(var10, var10, var10);
 		Icon var11 = Item.fireballCharge.getIconFromDamage(0);
 		tex.bindTexture();
 		Tessellator var12 = Tessellator.instance;
@@ -33,10 +33,10 @@ public class RenderFireball extends Render {
 		EaglerAdapter.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
 		var12.startDrawingQuads();
 		var12.setNormal(0.0F, 1.0F, 0.0F);
-		var12.addVertexWithUV((double) (0.0F - var18), (double) (0.0F - var19), 0.0D, (double) var13, (double) var16);
-		var12.addVertexWithUV((double) (var17 - var18), (double) (0.0F - var19), 0.0D, (double) var14, (double) var16);
-		var12.addVertexWithUV((double) (var17 - var18), (double) (1.0F - var19), 0.0D, (double) var14, (double) var15);
-		var12.addVertexWithUV((double) (0.0F - var18), (double) (1.0F - var19), 0.0D, (double) var13, (double) var15);
+		var12.addVertexWithUV(0.0F - var18, 0.0F - var19, 0.0D, var13, var16);
+		var12.addVertexWithUV(var17 - var18, 0.0F - var19, 0.0D, var14, var16);
+		var12.addVertexWithUV(var17 - var18, 1.0F - var19, 0.0D, var14, var15);
+		var12.addVertexWithUV(0.0F - var18, 1.0F - var19, 0.0D, var13, var15);
 		var12.draw();
 		EaglerAdapter.glDisable(EaglerAdapter.GL_RESCALE_NORMAL);
 		EaglerAdapter.glPopMatrix();

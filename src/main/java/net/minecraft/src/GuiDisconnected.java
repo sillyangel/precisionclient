@@ -8,16 +8,16 @@ import java.util.List;
 
 public class GuiDisconnected extends GuiScreen {
 	/** The error message. */
-	private String errorMessage;
+	private final String errorMessage;
 
 	/** The details about the error. */
-	private String errorDetail;
+	private final String errorDetail;
 
-	private String errorDetail2;
-	private String errorDetailTryAgain;
-	private boolean kickForDoS;
+	private final String errorDetail2;
+	private final String errorDetailTryAgain;
+	private final boolean kickForDoS;
 	
-	private Object[] field_74247_c;
+	private final Object[] field_74247_c;
 	private List field_74245_d;
 	private final GuiScreen field_98095_n;
 

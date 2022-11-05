@@ -4,6 +4,7 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class ChatAllowedCharacters {
 	/**
@@ -25,7 +26,7 @@ public class ChatAllowedCharacters {
 		String var0 = "";
 
 		try {
-			BufferedReader var1 = new BufferedReader(new InputStreamReader(EaglerAdapter.loadResource("/font.txt"), "UTF-8"));
+			BufferedReader var1 = new BufferedReader(new InputStreamReader(EaglerAdapter.loadResource("/font.txt"), StandardCharsets.UTF_8));
 			String var2 = "";
 
 			while ((var2 = var1.readLine()) != null) {
@@ -36,8 +37,7 @@ public class ChatAllowedCharacters {
 
 			var1.close();
 		} catch (Exception var3) {
-			;
-		}
+        }
 
 		allowedCharacters = var0;
 	}

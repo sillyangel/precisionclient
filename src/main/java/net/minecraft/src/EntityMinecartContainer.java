@@ -38,9 +38,9 @@ public abstract class EntityMinecartContainer extends EntityMinecart implements 
 					var3.stackSize -= var7;
 					EntityItem var8 = new EntityItem(this.worldObj, this.posX + (double) var4, this.posY + (double) var5, this.posZ + (double) var6, new ItemStack(var3.itemID, var7, var3.getItemDamage()));
 					float var9 = 0.05F;
-					var8.motionX = (double) ((float) this.rand.nextGaussian() * var9);
-					var8.motionY = (double) ((float) this.rand.nextGaussian() * var9 + 0.2F);
-					var8.motionZ = (double) ((float) this.rand.nextGaussian() * var9);
+					var8.motionX = (float) this.rand.nextGaussian() * var9;
+					var8.motionY = (float) this.rand.nextGaussian() * var9 + 0.2F;
+					var8.motionZ = (float) this.rand.nextGaussian() * var9;
 					this.worldObj.spawnEntityInWorld(var8);
 				}
 			}
@@ -117,7 +117,7 @@ public abstract class EntityMinecartContainer extends EntityMinecart implements 
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.isDead ? false : par1EntityPlayer.getDistanceSqToEntity(this) <= 64.0D;
+		return !this.isDead && par1EntityPlayer.getDistanceSqToEntity(this) <= 64.0D;
 	}
 
 	public void openChest() {
@@ -186,9 +186,9 @@ public abstract class EntityMinecartContainer extends EntityMinecart implements 
 						}
 
 						float var8 = 0.05F;
-						var7.motionX = (double) ((float) this.rand.nextGaussian() * var8);
-						var7.motionY = (double) ((float) this.rand.nextGaussian() * var8 + 0.2F);
-						var7.motionZ = (double) ((float) this.rand.nextGaussian() * var8);
+						var7.motionX = (float) this.rand.nextGaussian() * var8;
+						var7.motionY = (float) this.rand.nextGaussian() * var8 + 0.2F;
+						var7.motionZ = (float) this.rand.nextGaussian() * var8;
 						this.worldObj.spawnEntityInWorld(var7);
 					}
 				}
@@ -246,8 +246,8 @@ public abstract class EntityMinecartContainer extends EntityMinecart implements 
 	protected void applyDrag() {
 		int var1 = 15 - Container.calcRedstoneFromInventory(this);
 		float var2 = 0.98F + (float) var1 * 0.001F;
-		this.motionX *= (double) var2;
+		this.motionX *= var2;
 		this.motionY *= 0.0D;
-		this.motionZ *= (double) var2;
+		this.motionZ *= var2;
 	}
 }

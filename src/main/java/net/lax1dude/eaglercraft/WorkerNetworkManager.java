@@ -9,7 +9,7 @@ import java.io.*;
 public class WorkerNetworkManager implements INetworkManager {
 	
 	private NetHandler theNetHandler;
-	private String ipcChannel;
+	private final String ipcChannel;
 	private boolean hasClosed;
 	
 	public WorkerNetworkManager(String ipcChannel, NetHandler netHandler) {
@@ -23,7 +23,7 @@ public class WorkerNetworkManager implements INetworkManager {
 		theNetHandler = var1;
 	}
 	
-	private ByteArrayOutputStream sendBuffer = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream sendBuffer = new ByteArrayOutputStream();
 
 	@Override
 	public void addToSendQueue(Packet var1) {
@@ -75,7 +75,7 @@ public class WorkerNetworkManager implements INetworkManager {
 				}
 				
 			}catch(IOException ex) {
-				System.err.println("Could not deserialize a " + bytes.length + " byte long minecraft packet of type '" + (bytes.length <= 0 ? -1 : (int)(bytes[0] & 0xFF)) + "' on channel 'NET|" + ipcChannel + "'");
+				System.err.println("Could not deserialize a " + bytes.length + " byte long minecraft packet of type '" + (bytes.length <= 0 ? -1 : (bytes[0] & 0xFF)) + "' on channel 'NET|" + ipcChannel + "'");
 			}
 		}
 		

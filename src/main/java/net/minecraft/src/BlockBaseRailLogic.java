@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockBaseRailLogic {
-	private World logicWorld;
-	private int railX;
-	private int railY;
-	private int railZ;
+	private final World logicWorld;
+	private final int railX;
+	private final int railY;
+	private final int railZ;
 	private final boolean isStraightRail;
 
 	/** The chunk position the rail is at. */
-	private List railChunkPosition;
+	private final List railChunkPosition;
 
 	final BlockRailBase theRail;
 
@@ -84,7 +84,7 @@ public class BlockBaseRailLogic {
 	}
 
 	private boolean isMinecartTrack(int par1, int par2, int par3) {
-		return BlockRailBase.isRailBlockAt(this.logicWorld, par1, par2, par3) ? true : (BlockRailBase.isRailBlockAt(this.logicWorld, par1, par2 + 1, par3) ? true : BlockRailBase.isRailBlockAt(this.logicWorld, par1, par2 - 1, par3));
+		return BlockRailBase.isRailBlockAt(this.logicWorld, par1, par2, par3) || (BlockRailBase.isRailBlockAt(this.logicWorld, par1, par2 + 1, par3) || BlockRailBase.isRailBlockAt(this.logicWorld, par1, par2 - 1, par3));
 	}
 
 	private BlockBaseRailLogic getRailLogic(ChunkPosition par1ChunkPosition) {
@@ -147,7 +147,7 @@ public class BlockBaseRailLogic {
 	}
 
 	private boolean canConnectTo(BlockBaseRailLogic par1BlockBaseRailLogic) {
-		return this.isRailChunkPositionCorrect(par1BlockBaseRailLogic) ? true : (this.railChunkPosition.size() == 2 ? false : (this.railChunkPosition.isEmpty() ? true : true));
+		return this.isRailChunkPositionCorrect(par1BlockBaseRailLogic) || (this.railChunkPosition.size() != 2);
 	}
 
 	private void connectToNeighbor(BlockBaseRailLogic par1BlockBaseRailLogic) {

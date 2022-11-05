@@ -341,9 +341,7 @@ public class Vector4f extends Vector implements Serializable, ReadableVector4f, 
 		if (obj == null) return false;
 		if (getClass() != obj.getClass()) return false;
 		Vector4f other = (Vector4f)obj;
-		
-		if (x == other.x && y == other.y && z == other.z && w == other.w) return true;
-		
-		return false;
-	}
+
+        return x == other.x && y == other.y && z == other.z && w == other.w;
+    }
 }

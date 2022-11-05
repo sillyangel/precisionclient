@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public class EntityFireworkSparkFX extends EntityFX {
-	private int field_92049_a = 160;
+	private final int field_92049_a = 160;
 	private boolean field_92054_ax;
 	private boolean field_92048_ay;
 	private final EffectRenderer field_92047_az;

@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class TileEntitySignRenderer extends TileEntitySpecialRenderer {
 	/** The ModelSign instance used by the TileEntitySignRenderer */
-	private ModelSign modelSign = new ModelSign();
+	private final ModelSign modelSign = new ModelSign();
 	private static final TextureLocation tex_sign = new TextureLocation("/item/sign.png");
 
 	public void renderTileEntitySignAt(TileEntitySign par1TileEntitySign, double par2, double par4, double par6, float par8) {

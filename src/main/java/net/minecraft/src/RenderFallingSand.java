@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public class RenderFallingSand extends Render {
-	private RenderBlocks sandRenderBlocks = new RenderBlocks();
+	private final RenderBlocks sandRenderBlocks = new RenderBlocks();
 
 	public RenderFallingSand() {
 		this.shadowSize = 0.5F;
@@ -33,8 +33,8 @@ public class RenderFallingSand extends Render {
 				this.sandRenderBlocks.blockAccess = var10;
 				var12 = Tessellator.instance;
 				var12.startDrawingQuads();
-				var12.setTranslation((double) ((float) (-MathHelper.floor_double(par1EntityFallingSand.posX)) - 0.5F), (double) ((float) (-MathHelper.floor_double(par1EntityFallingSand.posY)) - 0.5F),
-						(double) ((float) (-MathHelper.floor_double(par1EntityFallingSand.posZ)) - 0.5F));
+				var12.setTranslation((float) (-MathHelper.floor_double(par1EntityFallingSand.posX)) - 0.5F, (float) (-MathHelper.floor_double(par1EntityFallingSand.posY)) - 0.5F,
+                        (float) (-MathHelper.floor_double(par1EntityFallingSand.posZ)) - 0.5F);
 				this.sandRenderBlocks.renderBlockAnvilMetadata((BlockAnvil) var11, MathHelper.floor_double(par1EntityFallingSand.posX), MathHelper.floor_double(par1EntityFallingSand.posY),
 						MathHelper.floor_double(par1EntityFallingSand.posZ), par1EntityFallingSand.metadata);
 				var12.setTranslation(0.0D, 0.0D, 0.0D);
@@ -43,8 +43,8 @@ public class RenderFallingSand extends Render {
 				this.sandRenderBlocks.blockAccess = var10;
 				var12 = Tessellator.instance;
 				var12.startDrawingQuads();
-				var12.setTranslation((double) ((float) (-MathHelper.floor_double(par1EntityFallingSand.posX)) - 0.5F), (double) ((float) (-MathHelper.floor_double(par1EntityFallingSand.posY)) - 0.5F),
-						(double) ((float) (-MathHelper.floor_double(par1EntityFallingSand.posZ)) - 0.5F));
+				var12.setTranslation((float) (-MathHelper.floor_double(par1EntityFallingSand.posX)) - 0.5F, (float) (-MathHelper.floor_double(par1EntityFallingSand.posY)) - 0.5F,
+                        (float) (-MathHelper.floor_double(par1EntityFallingSand.posZ)) - 0.5F);
 				this.sandRenderBlocks.renderBlockDragonEgg((BlockDragonEgg) var11, MathHelper.floor_double(par1EntityFallingSand.posX), MathHelper.floor_double(par1EntityFallingSand.posY),
 						MathHelper.floor_double(par1EntityFallingSand.posZ));
 				var12.setTranslation(0.0D, 0.0D, 0.0D);

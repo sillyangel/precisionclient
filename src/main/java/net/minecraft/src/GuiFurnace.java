@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiFurnace extends GuiContainer {
-	private TileEntityFurnace furnaceInventory;
+	private final TileEntityFurnace furnaceInventory;
 
 	public GuiFurnace(InventoryPlayer par1InventoryPlayer, TileEntityFurnace par2TileEntityFurnace) {
 		super(new ContainerFurnace(par1InventoryPlayer, par2TileEntityFurnace));

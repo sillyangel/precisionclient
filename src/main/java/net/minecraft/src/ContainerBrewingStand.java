@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class ContainerBrewingStand extends Container {
-	private TileEntityBrewingStand tileBrewingStand;
+	private final TileEntityBrewingStand tileBrewingStand;
 
 	/** Instance of Slot. */
 	private final Slot theSlot;
@@ -99,7 +99,7 @@ public class ContainerBrewingStand extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

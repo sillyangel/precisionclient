@@ -11,12 +11,12 @@ public class LANServerList {
 	private final Map<String,RelayWorldsQuery> lanServersQueryList = new LinkedHashMap();
 	private final Set<String> deadURIs = new HashSet();
 	
-	private long lastRefresh = 0l;
+	private long lastRefresh = 0L;
 	private int refreshCounter = 0;
 	
 	public void update() {
 		long millis = System.currentTimeMillis();
-		if(millis - lastRefresh > 10000l) {
+		if(millis - lastRefresh > 10000L) {
 			if(++refreshCounter < 10) {
 				refresh();
 			}else {
@@ -105,8 +105,8 @@ public class LANServerList {
 	public class LanServer {
 		
 		private String lanServerMotd;
-		private RelayServer lanServerRelay;
-		private String lanServerCode;
+		private final RelayServer lanServerRelay;
+		private final String lanServerCode;
 		
 		protected boolean flagged = true;
 		

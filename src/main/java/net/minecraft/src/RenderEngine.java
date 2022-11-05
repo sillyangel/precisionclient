@@ -13,28 +13,28 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class RenderEngine {
-	private HashMap textureMap = new HashMap();
+	private final HashMap textureMap = new HashMap();
 
 	/** Texture contents map (key: texture name, value: int[] contents) */
-	private HashMap textureContentsMap = new HashMap();
+	private final HashMap textureContentsMap = new HashMap();
 
 	/** A mapping from GL texture names (integers) to BufferedImage instances */
-	private IntHashMap textureNameToImageMap = new IntHashMap();
+	private final IntHashMap textureNameToImageMap = new IntHashMap();
 
 	/** Stores the image data for the texture. */
-	private IntBuffer imageData;
+	private final IntBuffer imageData;
 
 	/** A mapping from image URLs to ThreadDownloadImageData instances */
-	private Map urlToImageDataMap = new HashMap();
+	private final Map urlToImageDataMap = new HashMap();
 
 	/** Reference to the GameSettings object */
-	private GameSettings options;
+	private final GameSettings options;
 
 	/** Texture pack */
-	private TexturePackList texturePack;
+	private final TexturePackList texturePack;
 
 	/** Missing texture image */
-	private EaglerImage missingTextureImage;
+	private final EaglerImage missingTextureImage;
 	private final TextureTerrainMap textureMapBlocks;
 	private final TextureMap textureMapItems;
 	private int boundTexture;
@@ -323,7 +323,7 @@ public class RenderEngine {
 				if(var4 == null) {
 					throw new IOException("Could not load PNG");
 				}
-				System.arraycopy(var4.data, 0, (int[]) this.textureContentsMap.get(var11), 0, var4.data.length);
+				System.arraycopy(var4.data, 0, this.textureContentsMap.get(var11), 0, var4.data.length);
 			} catch (IOException var8) {
 				var8.printStackTrace();
 			}

@@ -12,7 +12,7 @@ public class WorldRenderer {
 	/** Reference to the World object. */
 	public World worldObj;
 	private int glRenderList = -1;
-	private static Tessellator tessellator = Tessellator.instance;
+	private static final Tessellator tessellator = Tessellator.instance;
 	public static int chunksUpdated = 0;
 	public static int chunksGeometryUpdated = 0;
 	public int posX;
@@ -77,7 +77,7 @@ public class WorldRenderer {
 
 	/** All the tile entities that have special rendering code for this chunk */
 	public List tileEntityRenderers = new ArrayList();
-	private List tileEntities;
+	private final List tileEntities;
 
 	/** Bytes sent to the GPU */
 	private int bytesDrawn;
@@ -115,8 +115,8 @@ public class WorldRenderer {
 			this.posYMinus = par2 - this.posYClip;
 			this.posZMinus = par3 - this.posZClip;
 			float var4 = 0.0F;
-			this.rendererBoundingBox = AxisAlignedBB.getBoundingBox((double) ((float) par1 - var4), (double) ((float) par2 - var4), (double) ((float) par3 - var4), (double) ((float) (par1 + 16) + var4),
-					(double) ((float) (par2 + 16) + var4), (double) ((float) (par3 + 16) + var4));
+			this.rendererBoundingBox = AxisAlignedBB.getBoundingBox((float) par1 - var4, (float) par2 - var4, (float) par3 - var4, (float) (par1 + 16) + var4,
+                    (float) (par2 + 16) + var4, (float) (par3 + 16) + var4);
 			//EaglerAdapter.glNewList(this.glRenderList + 2, EaglerAdapter.GL_COMPILE);
 			//RenderItem.renderAABB(AxisAlignedBB.getAABBPool().getAABB((double) ((float) this.posXClip - var4), (double) ((float) this.posYClip - var4), (double) ((float) this.posZClip - var4), (double) ((float) (this.posXClip + 16) + var4),
 			//		(double) ((float) (this.posYClip + 16) + var4), (double) ((float) (this.posZClip + 16) + var4)));
@@ -181,7 +181,7 @@ public class WorldRenderer {
 										//EaglerAdapter.glScalef(var19, var19, var19);
 										//EaglerAdapter.glTranslatef(8.0F, 8.0F, 8.0F);
 										tessellator.startDrawingQuads();
-										tessellator.setTranslation((double) (this.posXClip-this.posX), (double) (this.posYClip-this.posY), (double) (this.posZClip-this.posZ));
+										tessellator.setTranslation(this.posXClip-this.posX, this.posYClip-this.posY, this.posZClip-this.posZ);
 									}
 
 									Block var23 = Block.blocksList[var18];
@@ -302,7 +302,7 @@ public class WorldRenderer {
 	}
 	
 	public boolean shouldTryOcclusionQuery() {
-		return !this.isInitialized ? true : !this.skipRenderPass[0] || !this.skipRenderPass[1];
+		return !this.isInitialized || !this.skipRenderPass[0] || !this.skipRenderPass[1];
 	}
 
 	/**
@@ -310,7 +310,7 @@ public class WorldRenderer {
 	 * is not initialized
 	 */
 	public boolean skipAllRenderPasses() {
-		return !this.isInitialized ? false : this.skipRenderPass[0] && this.skipRenderPass[1];
+		return this.isInitialized && this.skipRenderPass[0] && this.skipRenderPass[1];
 	}
 
 	/**

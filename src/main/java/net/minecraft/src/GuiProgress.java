@@ -56,7 +56,7 @@ public class GuiProgress extends GuiScreen implements IProgressUpdate {
 	 */
 	public void drawScreen(int par1, int par2, float par3) {
 		if (this.noMoreProgress) {
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 		} else {
 			this.drawDefaultBackground();
 			this.drawCenteredString(this.fontRenderer, this.progressMessage, this.width / 2, 70, 16777215);

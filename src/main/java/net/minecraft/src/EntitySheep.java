@@ -235,7 +235,7 @@ public class EntitySheep extends EntityAnimal {
 		int var4 = this.func_90013_b(par2EntityAnimal);
 		this.field_90016_e.getStackInSlot(0).setItemDamage(var3);
 		this.field_90016_e.getStackInSlot(1).setItemDamage(var4);
-		ItemStack var5 = CraftingManager.getInstance().findMatchingRecipe(this.field_90016_e, ((EntitySheep) par1EntityAnimal).worldObj);
+		ItemStack var5 = CraftingManager.getInstance().findMatchingRecipe(this.field_90016_e, par1EntityAnimal.worldObj);
 		int var6;
 
 		if (var5 != null && var5.getItem().itemID == Item.dyePowder.itemID) {

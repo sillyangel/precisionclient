@@ -5,8 +5,8 @@ import net.minecraft.src.GuiScreen;
 
 public class GuiScreenSingleplayerNotImplemented extends GuiScreen {
 
-	private GuiScreen mainmenu;
-	private String featureName;
+	private final GuiScreen mainmenu;
+	private final String featureName;
 	
 	public GuiScreenSingleplayerNotImplemented(GuiScreen mainmenu, String featureName) {
 		this.mainmenu = mainmenu;

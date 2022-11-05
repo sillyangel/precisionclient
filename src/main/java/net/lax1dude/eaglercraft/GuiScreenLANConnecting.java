@@ -81,8 +81,7 @@ public class GuiScreenLANConnecting extends GuiScreen {
 				} catch (IOException e) {
 					this.mc.displayGuiScreen(new GuiDisconnected(parent, "connect.failed", "disconnect.genericReason", "could not create nethandler", ""));
 					e.printStackTrace();
-					return;
-				}
+                }
 			}
 		}
 	}

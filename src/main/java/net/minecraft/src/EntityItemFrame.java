@@ -47,7 +47,7 @@ public class EntityItemFrame extends EntityHanging {
 
 		if (var1 != null && this.rand.nextFloat() < this.itemDropChance) {
 			var1 = var1.copy();
-			var1.setItemFrame((EntityItemFrame) null);
+			var1.setItemFrame(null);
 			this.entityDropItem(var1, 0.0F);
 		}
 	}

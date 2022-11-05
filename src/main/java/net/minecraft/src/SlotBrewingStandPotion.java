@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 class SlotBrewingStandPotion extends Slot {
 	/** The player that has this container open. */
-	private EntityPlayer player;
+	private final EntityPlayer player;
 
 	public SlotBrewingStandPotion(EntityPlayer par1EntityPlayer, IInventory par2IInventory, int par3, int par4, int par5) {
 		super(par2IInventory, par3, par4, par5);

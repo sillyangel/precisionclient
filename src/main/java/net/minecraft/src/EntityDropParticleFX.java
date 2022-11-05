@@ -4,7 +4,7 @@ package net.minecraft.src;
 
 public class EntityDropParticleFX extends EntityFX {
 	/** the material type for dropped items/blocks */
-	private Material materialType;
+	private final Material materialType;
 
 	/** The height of the current bob */
 	private int bobTimer;
@@ -62,7 +62,7 @@ public class EntityDropParticleFX extends EntityFX {
 			this.particleBlue = 4.0F / (float) (40 - this.bobTimer + 8);
 		}
 
-		this.motionY -= (double) this.particleGravity;
+		this.motionY -= this.particleGravity;
 
 		if (this.bobTimer-- > 0) {
 			this.motionX *= 0.02D;
@@ -97,8 +97,8 @@ public class EntityDropParticleFX extends EntityFX {
 		Material var1 = this.worldObj.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ));
 
 		if (var1.isLiquid() || var1.isSolid()) {
-			double var2 = (double) ((float) (MathHelper.floor_double(this.posY) + 1)
-					- BlockFluid.getFluidHeightPercent(this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ))));
+			double var2 = (float) (MathHelper.floor_double(this.posY) + 1)
+					- BlockFluid.getFluidHeightPercent(this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)));
 
 			if (this.posY < var2) {
 				this.setDead();

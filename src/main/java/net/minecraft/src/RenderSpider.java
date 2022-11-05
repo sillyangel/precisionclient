@@ -28,16 +28,12 @@ public class RenderSpider extends RenderLiving {
 			EaglerAdapter.glDisable(EaglerAdapter.GL_ALPHA_TEST);
 			EaglerAdapter.glBlendFunc(EaglerAdapter.GL_ONE, EaglerAdapter.GL_ONE);
 
-			if (par1EntitySpider.isInvisible()) {
-				EaglerAdapter.glDepthMask(false);
-			} else {
-				EaglerAdapter.glDepthMask(true);
-			}
+            EaglerAdapter.glDepthMask(!par1EntitySpider.isInvisible());
 
 			char var5 = 61680;
 			int var6 = var5 % 65536;
 			int var7 = var5 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6, (float) var7);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, var4);
 			return 1;

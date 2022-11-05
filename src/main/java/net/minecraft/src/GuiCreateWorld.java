@@ -7,7 +7,7 @@ import net.lax1dude.eaglercraft.IntegratedServer;
 import java.util.List;
 
 public class GuiCreateWorld extends GuiScreen {
-	private GuiScreen parentGuiScreen;
+	private final GuiScreen parentGuiScreen;
 	private GuiTextField textboxWorldName;
 	private GuiTextField textboxSeed;
 	private String folderName;
@@ -238,7 +238,7 @@ public class GuiCreateWorld extends GuiScreen {
 			if (par1GuiButton.id == 1) {
 				this.mc.displayGuiScreen(this.parentGuiScreen);
 			} else if (par1GuiButton.id == 0) {
-				this.mc.displayGuiScreen((GuiScreen) null);
+				this.mc.displayGuiScreen(null);
 
 				if (this.createClicked) {
 					return;
@@ -256,7 +256,7 @@ public class GuiCreateWorld extends GuiScreen {
 							var2 = var5;
 						}
 					} catch (NumberFormatException var7) {
-						var2 = (long) var4.hashCode();
+						var2 = var4.hashCode();
 					}
 				}
 
@@ -438,7 +438,7 @@ public class GuiCreateWorld extends GuiScreen {
 
 	public void func_82286_a(WorldInfo par1WorldInfo) {
 		this.localizedNewWorldText = StatCollector.translateToLocalFormatted("selectWorld.newWorld.copyOf",
-				new Object[] { par1WorldInfo.getWorldName() });
+                par1WorldInfo.getWorldName());
 		this.seed = par1WorldInfo.getSeed() + "";
 		this.worldTypeId = par1WorldInfo.getTerrainType().getWorldTypeID();
 		this.generatorOptionsToUse = par1WorldInfo.getGeneratorOptions();

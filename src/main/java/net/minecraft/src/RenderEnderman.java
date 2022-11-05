@@ -6,8 +6,8 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderEnderman extends RenderLiving {
 	/** The model of the enderman */
-	private ModelEnderman endermanModel;
-	private EaglercraftRandom rnd = new EaglercraftRandom();
+	private final ModelEnderman endermanModel;
+	private final EaglercraftRandom rnd = new EaglercraftRandom();
 
 	public RenderEnderman() {
 		super(new ModelEnderman(), 0.5F);
@@ -51,7 +51,7 @@ public class RenderEnderman extends RenderLiving {
 			int var4 = par1EntityEnderman.getBrightnessForRender(par2);
 			int var5 = var4 % 65536;
 			int var6 = var4 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5 / 1.0F, (float) var6 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5, (float) var6);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			terrain.bindTexture();
@@ -79,16 +79,12 @@ public class RenderEnderman extends RenderLiving {
 			EaglerAdapter.glBlendFunc(EaglerAdapter.GL_ONE, EaglerAdapter.GL_ONE);
 			EaglerAdapter.glDisable(EaglerAdapter.GL_LIGHTING);
 
-			if (par1EntityEnderman.isInvisible()) {
-				EaglerAdapter.glDepthMask(false);
-			} else {
-				EaglerAdapter.glDepthMask(true);
-			}
+            EaglerAdapter.glDepthMask(!par1EntityEnderman.isInvisible());
 
 			char var5 = 61680;
 			int var6 = var5 % 65536;
 			int var7 = var5 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6, (float) var7);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			EaglerAdapter.glEnable(EaglerAdapter.GL_LIGHTING);
 			EaglerAdapter.glColor4f(2.3F, 2.3F, 2.3F, var4);

@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderCreeper extends RenderLiving {
 	/** The creeper model. */
-	private ModelBase creeperModel = new ModelCreeper(2.0F);
+	private final ModelBase creeperModel = new ModelCreeper(2.0F);
 
 	public RenderCreeper() {
 		super(new ModelCreeper(), 0.5F);
@@ -66,11 +66,7 @@ public class RenderCreeper extends RenderLiving {
 	 */
 	protected int renderCreeperPassModel(EntityCreeper par1EntityCreeper, int par2, float par3) {
 		if (par1EntityCreeper.getPowered()) {
-			if (par1EntityCreeper.isInvisible()) {
-				EaglerAdapter.glDepthMask(false);
-			} else {
-				EaglerAdapter.glDepthMask(true);
-			}
+            EaglerAdapter.glDepthMask(!par1EntityCreeper.isInvisible());
 
 			if (par2 == 1) {
 				float var4 = (float) par1EntityCreeper.ticksExisted + par3;

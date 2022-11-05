@@ -7,10 +7,10 @@ import net.lax1dude.eaglercraft.adapter.Tessellator;
 import net.minecraft.client.Minecraft;
 
 public class RenderItem extends Render {
-	private RenderBlocks itemRenderBlocks = new RenderBlocks();
+	private final RenderBlocks itemRenderBlocks = new RenderBlocks();
 
 	/** The RNG used in RenderItem (for bobbing itemstacks on the ground) */
-	private EaglercraftRandom random = new EaglercraftRandom();
+	private final EaglercraftRandom random = new EaglercraftRandom();
 	public boolean renderWithColor = true;
 
 	/** Defines the zLevel of rendering of item on GUI. */
@@ -279,10 +279,10 @@ public class RenderItem extends Render {
 				EaglerAdapter.glColor4f(par5, par6, par7, 1.0F);
 				var8.startDrawingQuads();
 				var8.setNormal(0.0F, 1.0F, 0.0F);
-				var8.addVertexWithUV((double) (0.0F - var14), (double) (0.0F - var15), 0.0D, (double) var9, (double) var12);
-				var8.addVertexWithUV((double) (var13 - var14), (double) (0.0F - var15), 0.0D, (double) var10, (double) var12);
-				var8.addVertexWithUV((double) (var13 - var14), (double) (1.0F - var15), 0.0D, (double) var10, (double) var11);
-				var8.addVertexWithUV((double) (0.0F - var14), (double) (1.0F - var15), 0.0D, (double) var9, (double) var11);
+				var8.addVertexWithUV(0.0F - var14, 0.0F - var15, 0.0D, var9, var12);
+				var8.addVertexWithUV(var13 - var14, 0.0F - var15, 0.0D, var10, var12);
+				var8.addVertexWithUV(var13 - var14, 1.0F - var15, 0.0D, var10, var11);
+				var8.addVertexWithUV(0.0F - var14, 1.0F - var15, 0.0D, var9, var11);
 				var8.draw();
 				if (!renderInFrame) EaglerAdapter.flipLightMatrix();
 				EaglerAdapter.glPopMatrix();
@@ -430,10 +430,10 @@ public class RenderItem extends Render {
 			}
 
 			var11.startDrawingQuads();
-			var11.addVertexWithUV((double) (par2 + 0), (double) (par3 + par5), (double) this.zLevel, (double) ((var9 + (float) par5 * var12) * var7), (double) ((var10 + (float) par5) * var8));
-			var11.addVertexWithUV((double) (par2 + par4), (double) (par3 + par5), (double) this.zLevel, (double) ((var9 + (float) par4 + (float) par5 * var12) * var7), (double) ((var10 + (float) par5) * var8));
-			var11.addVertexWithUV((double) (par2 + par4), (double) (par3 + 0), (double) this.zLevel, (double) ((var9 + (float) par4) * var7), (double) ((var10 + 0.0F) * var8));
-			var11.addVertexWithUV((double) (par2 + 0), (double) (par3 + 0), (double) this.zLevel, (double) ((var9 + 0.0F) * var7), (double) ((var10 + 0.0F) * var8));
+			var11.addVertexWithUV(par2, par3 + par5, this.zLevel, (var9 + (float) par5 * var12) * var7, (var10 + (float) par5) * var8);
+			var11.addVertexWithUV(par2 + par4, par3 + par5, this.zLevel, (var9 + (float) par4 + (float) par5 * var12) * var7, (var10 + (float) par5) * var8);
+			var11.addVertexWithUV(par2 + par4, par3, this.zLevel, (var9 + (float) par4) * var7, (var10 + 0.0F) * var8);
+			var11.addVertexWithUV(par2, par3, this.zLevel, (var9 + 0.0F) * var7, (var10 + 0.0F) * var8);
 			var11.draw();
 			EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_COLOR, EaglerAdapter.GL_ONE_MINUS_SRC_COLOR);
 		}
@@ -444,7 +444,7 @@ public class RenderItem extends Render {
 	 * on top of the item's image at the specified position.
 	 */
 	public void renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, RenderEngine par2RenderEngine, ItemStack par3ItemStack, int par4, int par5) {
-		this.renderItemOverlayIntoGUI(par1FontRenderer, par2RenderEngine, par3ItemStack, par4, par5, (String) null);
+		this.renderItemOverlayIntoGUI(par1FontRenderer, par2RenderEngine, par3ItemStack, par4, par5, null);
 	}
 
 	public void renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, RenderEngine par2RenderEngine, ItemStack par3ItemStack, int par4, int par5, String par6Str) {
@@ -485,20 +485,20 @@ public class RenderItem extends Render {
 	private void renderQuad(Tessellator par1Tessellator, int par2, int par3, int par4, int par5, int par6) {
 		par1Tessellator.startDrawingQuads();
 		par1Tessellator.setColorOpaque_I(par6);
-		par1Tessellator.addVertex((double) (par2 + 0), (double) (par3 + 0), 0.0D);
-		par1Tessellator.addVertex((double) (par2 + 0), (double) (par3 + par5), 0.0D);
-		par1Tessellator.addVertex((double) (par2 + par4), (double) (par3 + par5), 0.0D);
-		par1Tessellator.addVertex((double) (par2 + par4), (double) (par3 + 0), 0.0D);
+		par1Tessellator.addVertex(par2, par3, 0.0D);
+		par1Tessellator.addVertex(par2, par3 + par5, 0.0D);
+		par1Tessellator.addVertex(par2 + par4, par3 + par5, 0.0D);
+		par1Tessellator.addVertex(par2 + par4, par3, 0.0D);
 		par1Tessellator.draw();
 	}
 
 	public void renderIcon(int par1, int par2, Icon par3Icon, int par4, int par5) {
 		Tessellator var6 = Tessellator.instance;
 		var6.startDrawingQuads();
-		var6.addVertexWithUV((double) (par1 + 0), (double) (par2 + par5), (double) this.zLevel, (double) par3Icon.getMinU(), (double) par3Icon.getMaxV());
-		var6.addVertexWithUV((double) (par1 + par4), (double) (par2 + par5), (double) this.zLevel, (double) par3Icon.getMaxU(), (double) par3Icon.getMaxV());
-		var6.addVertexWithUV((double) (par1 + par4), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMaxU(), (double) par3Icon.getMinV());
-		var6.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMinU(), (double) par3Icon.getMinV());
+		var6.addVertexWithUV(par1, par2 + par5, this.zLevel, par3Icon.getMinU(), par3Icon.getMaxV());
+		var6.addVertexWithUV(par1 + par4, par2 + par5, this.zLevel, par3Icon.getMaxU(), par3Icon.getMaxV());
+		var6.addVertexWithUV(par1 + par4, par2, this.zLevel, par3Icon.getMaxU(), par3Icon.getMinV());
+		var6.addVertexWithUV(par1, par2, this.zLevel, par3Icon.getMinU(), par3Icon.getMinV());
 		var6.draw();
 	}
 

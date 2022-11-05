@@ -43,7 +43,7 @@ public class RenderItemFrame extends Render {
 		float var5 = var4 / 2.0F;
 		EaglerAdapter.glPushMatrix();
 		EaglerAdapter.flipLightMatrix();
-		this.renderBlocksInstance.overrideBlockBounds(0.0D, (double) (0.5F - var5 + 0.0625F), (double) (0.5F - var5 + 0.0625F), (double) (var3 * 0.5F), (double) (0.5F + var5 - 0.0625F), (double) (0.5F + var5 - 0.0625F));
+		this.renderBlocksInstance.overrideBlockBounds(0.0D, 0.5F - var5 + 0.0625F, 0.5F - var5 + 0.0625F, var3 * 0.5F, 0.5F + var5 - 0.0625F, 0.5F + var5 - 0.0625F);
 		this.renderBlocksInstance.setOverrideBlockTexture(this.field_94147_f);
 		//RenderHelper.enableStandardItemLighting2();
 		this.renderBlocksInstance.renderBlockAsItem(var2, 0, 1.0F);
@@ -53,19 +53,19 @@ public class RenderItemFrame extends Render {
 		EaglerAdapter.glPopMatrix();
 		this.renderBlocksInstance.setOverrideBlockTexture(Block.planks.getIcon(1, 2));
 		EaglerAdapter.glPushMatrix();
-		this.renderBlocksInstance.overrideBlockBounds(0.0D, (double) (0.5F - var5), (double) (0.5F - var5), (double) (var3 + 1.0E-4F), (double) (var3 + 0.5F - var5), (double) (0.5F + var5));
+		this.renderBlocksInstance.overrideBlockBounds(0.0D, 0.5F - var5, 0.5F - var5, var3 + 1.0E-4F, var3 + 0.5F - var5, 0.5F + var5);
 		this.renderBlocksInstance.renderBlockAsItem(var2, 0, 1.0F);
 		EaglerAdapter.glPopMatrix();
 		EaglerAdapter.glPushMatrix();
-		this.renderBlocksInstance.overrideBlockBounds(0.0D, (double) (0.5F + var5 - var3), (double) (0.5F - var5), (double) (var3 + 1.0E-4F), (double) (0.5F + var5), (double) (0.5F + var5));
+		this.renderBlocksInstance.overrideBlockBounds(0.0D, 0.5F + var5 - var3, 0.5F - var5, var3 + 1.0E-4F, 0.5F + var5, 0.5F + var5);
 		this.renderBlocksInstance.renderBlockAsItem(var2, 0, 1.0F);
 		EaglerAdapter.glPopMatrix();
 		EaglerAdapter.glPushMatrix();
-		this.renderBlocksInstance.overrideBlockBounds(0.0D, (double) (0.5F - var5), (double) (0.5F - var5), (double) var3, (double) (0.5F + var5), (double) (var3 + 0.5F - var5));
+		this.renderBlocksInstance.overrideBlockBounds(0.0D, 0.5F - var5, 0.5F - var5, var3, 0.5F + var5, var3 + 0.5F - var5);
 		this.renderBlocksInstance.renderBlockAsItem(var2, 0, 1.0F);
 		EaglerAdapter.glPopMatrix();
 		EaglerAdapter.glPushMatrix();
-		this.renderBlocksInstance.overrideBlockBounds(0.0D, (double) (0.5F - var5), (double) (0.5F + var5 - var3), (double) var3, (double) (0.5F + var5), (double) (0.5F + var5));
+		this.renderBlocksInstance.overrideBlockBounds(0.0D, 0.5F - var5, 0.5F + var5 - var3, var3, 0.5F + var5, 0.5F + var5);
 		this.renderBlocksInstance.renderBlockAsItem(var2, 0, 1.0F);
 		EaglerAdapter.glPopMatrix();
 		this.renderBlocksInstance.unlockBlockBounds();
@@ -114,10 +114,10 @@ public class RenderItemFrame extends Render {
 				var4.startDrawingQuads();
 				byte var5 = 7;
 				double d = 0.001d;
-				var4.addVertexWithUV((double) (0 - var5), (double) (128 + var5), 0.0D, 0.0D + d, 1.0D - d);
-				var4.addVertexWithUV((double) (128 + var5), (double) (128 + var5), 0.0D, 1.0D - d, 1.0D - d);
-				var4.addVertexWithUV((double) (128 + var5), (double) (0 - var5), 0.0D, 1.0D - d, 0.0D + d);
-				var4.addVertexWithUV((double) (0 - var5), (double) (0 - var5), 0.0D, 0.0D + d, 0.0D + d);
+				var4.addVertexWithUV(-var5, 128 + var5, 0.0D, 0.0D + d, 1.0D - d);
+				var4.addVertexWithUV(128 + var5, 128 + var5, 0.0D, 1.0D - d, 1.0D - d);
+				var4.addVertexWithUV(128 + var5, -var5, 0.0D, 1.0D - d, 0.0D + d);
+				var4.addVertexWithUV(-var5, -var5, 0.0D, 0.0D + d, 0.0D + d);
 				var4.draw();
 				EaglerAdapter.glEnable(EaglerAdapter.GL_CULL_FACE);
 				EaglerAdapter.glTranslatef(0.0F, 0.0F, -2.0F);
@@ -125,7 +125,7 @@ public class RenderItemFrame extends Render {
 				EaglerAdapter.glTranslatef(0.0F, 0.0F, -1.0F);
 
 				if (var6 != null) {
-					this.renderManager.itemRenderer.mapItemRenderer.renderMap((EntityPlayer) null, this.renderManager.renderEngine, var6);
+					this.renderManager.itemRenderer.mapItemRenderer.renderMap(null, this.renderManager.renderEngine, var6);
 				}
 			} else {
 				TextureCompass var9;
@@ -136,7 +136,7 @@ public class RenderItemFrame extends Render {
 					double var7 = var9.angleDelta;
 					var9.currentAngle = 0.0D;
 					var9.angleDelta = 0.0D;
-					var9.updateCompass(par1EntityItemFrame.worldObj, par1EntityItemFrame.posX, par1EntityItemFrame.posZ, (double) MathHelper.wrapAngleTo180_float((float) (180 + par1EntityItemFrame.hangingDirection * 90)), false, true);
+					var9.updateCompass(par1EntityItemFrame.worldObj, par1EntityItemFrame.posX, par1EntityItemFrame.posZ, MathHelper.wrapAngleTo180_float((float) (180 + par1EntityItemFrame.hangingDirection * 90)), false, true);
 					var9.currentAngle = var10;
 					var9.angleDelta = var7;
 				}

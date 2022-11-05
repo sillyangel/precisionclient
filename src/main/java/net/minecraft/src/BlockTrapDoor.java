@@ -123,7 +123,7 @@ public class BlockTrapDoor extends Block {
 
 		if (var7 != par5) {
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 ^ 4, 2);
-			par1World.playAuxSFXAtEntity((EntityPlayer) null, 1003, par2, par3, par4, 0);
+			par1World.playAuxSFXAtEntity(null, 1003, par2, par3, par4, 0);
 		}
 	}
 

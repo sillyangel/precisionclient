@@ -8,7 +8,7 @@ public class BlockLeaves extends BlockLeavesBase {
 	public static final String[] LEAF_TYPES = new String[] { "oak", "spruce", "birch", "jungle" };
 	public static final String[][] field_94396_b = new String[][] { { "leaves", "leaves_spruce", "leaves", "leaves_jungle" }, { "leaves_opaque", "leaves_spruce_opaque", "leaves_opaque", "leaves_jungle_opaque" } };
 	private int field_94394_cP;
-	private Icon[][] iconArray = new Icon[2][];
+	private final Icon[][] iconArray = new Icon[2][];
 	int[] adjacentTreeBlocks;
 
 	protected BlockLeaves(int par1) {
@@ -97,9 +97,9 @@ public class BlockLeaves extends BlockLeavesBase {
 	 */
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, EaglercraftRandom par5Random) {
 		if (par1World.canLightningStrikeAt(par2, par3 + 1, par4) && !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && par5Random.nextInt(15) == 1) {
-			double var6 = (double) ((float) par2 + par5Random.nextFloat());
+			double var6 = (float) par2 + par5Random.nextFloat();
 			double var8 = (double) par3 - 0.05D;
-			double var10 = (double) ((float) par4 + par5Random.nextFloat());
+			double var10 = (float) par4 + par5Random.nextFloat();
 			par1World.spawnParticle("dripWater", var6, var8, var10, 0.0D, 0.0D, 0.0D);
 		}
 	}

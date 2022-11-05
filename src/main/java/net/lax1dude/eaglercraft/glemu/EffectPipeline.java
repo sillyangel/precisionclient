@@ -90,7 +90,7 @@ public class EffectPipeline {
 				_wglTexParameteri(_wGL_TEXTURE_2D, _wGL_TEXTURE_WRAP_S, _wGL_REPEAT);
 				_wglTexParameteri(_wGL_TEXTURE_2D, _wGL_TEXTURE_WRAP_T, _wGL_REPEAT);
 
-				EaglercraftRandom noiseRandom = new EaglercraftRandom(696969696969l);
+				EaglercraftRandom noiseRandom = new EaglercraftRandom(696969696969L);
 				
 				byte[] b = new byte[NOISE_WIDTH * NOISE_HEIGHT];
 				noiseRandom.nextBytes(b);
@@ -123,7 +123,7 @@ public class EffectPipeline {
 			_wglUseProgram(noiseProgram);
 			
 			long l = System.currentTimeMillis();
-			if(timer > 0l && l - timer < 20000l) {
+			if(timer > 0L && l - timer < 20000L) {
 				counter += (float)((l - timer) * 0.0007) * intensity;
 				if(counter > 10000.0f) {
 					counter = 0.0f;
@@ -153,7 +153,7 @@ public class EffectPipeline {
 	}
 
 	private static float counter = 0.0f;
-	private static long timer = 0l;
+	private static long timer = 0L;
 	
 	public static void drawNoise(int viewportW, int viewportH, float intensity) {
 		if(noiseProgram == null) {

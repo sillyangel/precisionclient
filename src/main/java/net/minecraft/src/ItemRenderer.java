@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 
 public class ItemRenderer {
 	/** A reference to the Minecraft object. */
-	private Minecraft mc;
+	private final Minecraft mc;
 	private ItemStack itemToRender = null;
 
 	/**
@@ -17,7 +17,7 @@ public class ItemRenderer {
 	private float prevEquippedProgress = 0.0F;
 
 	/** Instance of RenderBlocks. */
-	private RenderBlocks renderBlocksInstance = new RenderBlocks();
+	private final RenderBlocks renderBlocksInstance = new RenderBlocks();
 	public final MapItemRenderer mapItemRenderer;
 
 	/** The index of the currently held item (0-8, or -1 if not yet updated) */
@@ -120,17 +120,17 @@ public class ItemRenderer {
 	public static void renderItemIn2D(Tessellator par0Tessellator, float par1, float par2, float par3, float par4, int par5, int par6, float par7) {
 		par0Tessellator.startDrawingQuads();
 		par0Tessellator.setNormal(0.0F, 0.0F, 1.0F);
-		par0Tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D, (double) par1, (double) par4);
-		par0Tessellator.addVertexWithUV(1.0D, 0.0D, 0.0D, (double) par3, (double) par4);
-		par0Tessellator.addVertexWithUV(1.0D, 1.0D, 0.0D, (double) par3, (double) par2);
-		par0Tessellator.addVertexWithUV(0.0D, 1.0D, 0.0D, (double) par1, (double) par2);
+		par0Tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D, par1, par4);
+		par0Tessellator.addVertexWithUV(1.0D, 0.0D, 0.0D, par3, par4);
+		par0Tessellator.addVertexWithUV(1.0D, 1.0D, 0.0D, par3, par2);
+		par0Tessellator.addVertexWithUV(0.0D, 1.0D, 0.0D, par1, par2);
 		par0Tessellator.draw();
 		par0Tessellator.startDrawingQuads();
 		par0Tessellator.setNormal(0.0F, 0.0F, -1.0F);
-		par0Tessellator.addVertexWithUV(0.0D, 1.0D, (double) (0.0F - par7), (double) par1, (double) par2);
-		par0Tessellator.addVertexWithUV(1.0D, 1.0D, (double) (0.0F - par7), (double) par3, (double) par2);
-		par0Tessellator.addVertexWithUV(1.0D, 0.0D, (double) (0.0F - par7), (double) par3, (double) par4);
-		par0Tessellator.addVertexWithUV(0.0D, 0.0D, (double) (0.0F - par7), (double) par1, (double) par4);
+		par0Tessellator.addVertexWithUV(0.0D, 1.0D, 0.0F - par7, par1, par2);
+		par0Tessellator.addVertexWithUV(1.0D, 1.0D, 0.0F - par7, par3, par2);
+		par0Tessellator.addVertexWithUV(1.0D, 0.0D, 0.0F - par7, par3, par4);
+		par0Tessellator.addVertexWithUV(0.0D, 0.0D, 0.0F - par7, par1, par4);
 		par0Tessellator.draw();
 		float var8 = (float) par5 * (par1 - par3);
 		float var9 = (float) par6 * (par4 - par2);
@@ -143,10 +143,10 @@ public class ItemRenderer {
 		for (var10 = 0; (float) var10 < var8; ++var10) {
 			var11 = (float) var10 / var8;
 			var12 = par1 + (par3 - par1) * var11 - 0.5F / (float) par5;
-			par0Tessellator.addVertexWithUV((double) var11, 0.0D, (double) (0.0F - par7), (double) var12, (double) par4);
-			par0Tessellator.addVertexWithUV((double) var11, 0.0D, 0.0D, (double) var12, (double) par4);
-			par0Tessellator.addVertexWithUV((double) var11, 1.0D, 0.0D, (double) var12, (double) par2);
-			par0Tessellator.addVertexWithUV((double) var11, 1.0D, (double) (0.0F - par7), (double) var12, (double) par2);
+			par0Tessellator.addVertexWithUV(var11, 0.0D, 0.0F - par7, var12, par4);
+			par0Tessellator.addVertexWithUV(var11, 0.0D, 0.0D, var12, par4);
+			par0Tessellator.addVertexWithUV(var11, 1.0D, 0.0D, var12, par2);
+			par0Tessellator.addVertexWithUV(var11, 1.0D, 0.0F - par7, var12, par2);
 		}
 
 		par0Tessellator.draw();
@@ -158,10 +158,10 @@ public class ItemRenderer {
 			var11 = (float) var10 / var8;
 			var12 = par1 + (par3 - par1) * var11 - 0.5F / (float) par5;
 			var13 = var11 + 1.0F / var8;
-			par0Tessellator.addVertexWithUV((double) var13, 1.0D, (double) (0.0F - par7), (double) var12, (double) par2);
-			par0Tessellator.addVertexWithUV((double) var13, 1.0D, 0.0D, (double) var12, (double) par2);
-			par0Tessellator.addVertexWithUV((double) var13, 0.0D, 0.0D, (double) var12, (double) par4);
-			par0Tessellator.addVertexWithUV((double) var13, 0.0D, (double) (0.0F - par7), (double) var12, (double) par4);
+			par0Tessellator.addVertexWithUV(var13, 1.0D, 0.0F - par7, var12, par2);
+			par0Tessellator.addVertexWithUV(var13, 1.0D, 0.0D, var12, par2);
+			par0Tessellator.addVertexWithUV(var13, 0.0D, 0.0D, var12, par4);
+			par0Tessellator.addVertexWithUV(var13, 0.0D, 0.0F - par7, var12, par4);
 		}
 
 		par0Tessellator.draw();
@@ -172,10 +172,10 @@ public class ItemRenderer {
 			var11 = (float) var10 / var9;
 			var12 = par4 + (par2 - par4) * var11 - 0.5F / (float) par6;
 			var13 = var11 + 1.0F / var9;
-			par0Tessellator.addVertexWithUV(0.0D, (double) var13, 0.0D, (double) par1, (double) var12);
-			par0Tessellator.addVertexWithUV(1.0D, (double) var13, 0.0D, (double) par3, (double) var12);
-			par0Tessellator.addVertexWithUV(1.0D, (double) var13, (double) (0.0F - par7), (double) par3, (double) var12);
-			par0Tessellator.addVertexWithUV(0.0D, (double) var13, (double) (0.0F - par7), (double) par1, (double) var12);
+			par0Tessellator.addVertexWithUV(0.0D, var13, 0.0D, par1, var12);
+			par0Tessellator.addVertexWithUV(1.0D, var13, 0.0D, par3, var12);
+			par0Tessellator.addVertexWithUV(1.0D, var13, 0.0F - par7, par3, var12);
+			par0Tessellator.addVertexWithUV(0.0D, var13, 0.0F - par7, par1, var12);
 		}
 
 		par0Tessellator.draw();
@@ -185,10 +185,10 @@ public class ItemRenderer {
 		for (var10 = 0; (float) var10 < var9; ++var10) {
 			var11 = (float) var10 / var9;
 			var12 = par4 + (par2 - par4) * var11 - 0.5F / (float) par6;
-			par0Tessellator.addVertexWithUV(1.0D, (double) var11, 0.0D, (double) par3, (double) var12);
-			par0Tessellator.addVertexWithUV(0.0D, (double) var11, 0.0D, (double) par1, (double) var12);
-			par0Tessellator.addVertexWithUV(0.0D, (double) var11, (double) (0.0F - par7), (double) par1, (double) var12);
-			par0Tessellator.addVertexWithUV(1.0D, (double) var11, (double) (0.0F - par7), (double) par3, (double) var12);
+			par0Tessellator.addVertexWithUV(1.0D, var11, 0.0D, par3, var12);
+			par0Tessellator.addVertexWithUV(0.0D, var11, 0.0D, par1, var12);
+			par0Tessellator.addVertexWithUV(0.0D, var11, 0.0F - par7, par1, var12);
+			par0Tessellator.addVertexWithUV(1.0D, var11, 0.0F - par7, par3, var12);
 		}
 
 		par0Tessellator.draw();
@@ -213,7 +213,7 @@ public class ItemRenderer {
 		float var7;
 
 		if (var3 instanceof EntityPlayerSP) {
-			EntityPlayerSP var5 = (EntityPlayerSP) var3;
+			EntityPlayerSP var5 = var3;
 			var6 = var5.prevRenderArmPitch + (var5.renderArmPitch - var5.prevRenderArmPitch) * par1;
 			var7 = var5.prevRenderArmYaw + (var5.renderArmYaw - var5.prevRenderArmYaw) * par1;
 			EaglerAdapter.glRotatef((var3.rotationPitch - var6) * 0.1F, 1.0F, 0.0F, 0.0F);
@@ -226,7 +226,7 @@ public class ItemRenderer {
 		int var18 = this.mc.theWorld.getLightBrightnessForSkyBlocks(MathHelper.floor_double(var3.posX), MathHelper.floor_double(var3.posY), MathHelper.floor_double(var3.posZ), 0);
 		int var8 = var18 % 65536;
 		int var9 = var18 / 65536;
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var8 / 1.0F, (float) var9 / 1.0F);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var8, (float) var9);
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		float var10;
 		float var19;
@@ -306,10 +306,10 @@ public class ItemRenderer {
 			EaglerAdapter.glNormal3f(0.0F, 0.0F, -1.0F);
 			var27.startDrawingQuads();
 			byte var28 = 7;
-			var27.addVertexWithUV((double) (0 - var28), (double) (128 + var28), 0.0D, 0.0D, 1.0D);
-			var27.addVertexWithUV((double) (128 + var28), (double) (128 + var28), 0.0D, 1.0D, 1.0D);
-			var27.addVertexWithUV((double) (128 + var28), (double) (0 - var28), 0.0D, 1.0D, 0.0D);
-			var27.addVertexWithUV((double) (0 - var28), (double) (0 - var28), 0.0D, 0.0D, 0.0D);
+			var27.addVertexWithUV(-var28, 128 + var28, 0.0D, 0.0D, 1.0D);
+			var27.addVertexWithUV(128 + var28, 128 + var28, 0.0D, 1.0D, 1.0D);
+			var27.addVertexWithUV(128 + var28, -var28, 0.0D, 1.0D, 0.0D);
+			var27.addVertexWithUV(-var28, -var28, 0.0D, 0.0D, 0.0D);
 			var27.draw();
 			MapData var16 = Item.map.getMapData(var17, this.mc.theWorld);
 
@@ -523,10 +523,10 @@ public class ItemRenderer {
 		float var12 = par2Icon.getMinV();
 		float var13 = par2Icon.getMaxV();
 		var3.startDrawingQuads();
-		var3.addVertexWithUV((double) var5, (double) var7, (double) var9, (double) var11, (double) var13);
-		var3.addVertexWithUV((double) var6, (double) var7, (double) var9, (double) var10, (double) var13);
-		var3.addVertexWithUV((double) var6, (double) var8, (double) var9, (double) var10, (double) var12);
-		var3.addVertexWithUV((double) var5, (double) var8, (double) var9, (double) var11, (double) var12);
+		var3.addVertexWithUV(var5, var7, var9, var11, var13);
+		var3.addVertexWithUV(var6, var7, var9, var10, var13);
+		var3.addVertexWithUV(var6, var8, var9, var10, var12);
+		var3.addVertexWithUV(var5, var8, var9, var11, var12);
 		var3.draw();
 		EaglerAdapter.glPopMatrix();
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -553,10 +553,10 @@ public class ItemRenderer {
 		float var10 = -this.mc.thePlayer.rotationYaw / 64.0F;
 		float var11 = this.mc.thePlayer.rotationPitch / 64.0F;
 		var2.startDrawingQuads();
-		var2.addVertexWithUV((double) var5, (double) var7, (double) var9, (double) (var4 + var10), (double) (var4 + var11));
-		var2.addVertexWithUV((double) var6, (double) var7, (double) var9, (double) (0.0F + var10), (double) (var4 + var11));
-		var2.addVertexWithUV((double) var6, (double) var8, (double) var9, (double) (0.0F + var10), (double) (0.0F + var11));
-		var2.addVertexWithUV((double) var5, (double) var8, (double) var9, (double) (var4 + var10), (double) (0.0F + var11));
+		var2.addVertexWithUV(var5, var7, var9, var4 + var10, var4 + var11);
+		var2.addVertexWithUV(var6, var7, var9, 0.0F + var10, var4 + var11);
+		var2.addVertexWithUV(var6, var8, var9, 0.0F + var10, 0.0F + var11);
+		var2.addVertexWithUV(var5, var8, var9, var4 + var10, 0.0F + var11);
 		var2.draw();
 		EaglerAdapter.glPopMatrix();
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -588,10 +588,10 @@ public class ItemRenderer {
 			EaglerAdapter.glTranslatef((float) (-(var4 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
 			EaglerAdapter.glRotatef((float) (var4 * 2 - 1) * 10.0F, 0.0F, 1.0F, 0.0F);
 			var2.startDrawingQuads();
-			var2.addVertexWithUV((double) var10, (double) var12, (double) var14, (double) var7, (double) var9);
-			var2.addVertexWithUV((double) var11, (double) var12, (double) var14, (double) var6, (double) var9);
-			var2.addVertexWithUV((double) var11, (double) var13, (double) var14, (double) var6, (double) var8);
-			var2.addVertexWithUV((double) var10, (double) var13, (double) var14, (double) var7, (double) var8);
+			var2.addVertexWithUV(var10, var12, var14, var7, var9);
+			var2.addVertexWithUV(var11, var12, var14, var6, var9);
+			var2.addVertexWithUV(var11, var13, var14, var6, var8);
+			var2.addVertexWithUV(var10, var13, var14, var7, var8);
 			var2.draw();
 			EaglerAdapter.glPopMatrix();
 		}

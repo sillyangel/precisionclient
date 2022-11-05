@@ -4,8 +4,8 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class GuiChest extends GuiContainer {
-	private IInventory upperChestInventory;
-	private IInventory lowerChestInventory;
+	private final IInventory upperChestInventory;
+	private final IInventory lowerChestInventory;
 
 	/**
 	 * window height is calculated with this values, the more rows, the heigher

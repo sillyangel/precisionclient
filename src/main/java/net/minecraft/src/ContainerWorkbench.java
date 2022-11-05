@@ -4,10 +4,10 @@ public class ContainerWorkbench extends Container {
 	/** The crafting matrix inventory (3x3). */
 	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
 	public IInventory craftResult = new InventoryCraftResult();
-	private World worldObj;
-	private int posX;
-	private int posY;
-	private int posZ;
+	private final World worldObj;
+	private final int posX;
+	private final int posY;
+	private final int posZ;
 
 	public ContainerWorkbench(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
 		this.worldObj = par2World;
@@ -45,7 +45,7 @@ public class ContainerWorkbench extends Container {
 	}
 
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) != Block.workbench.blockID ? false : par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockId(this.posX, this.posY, this.posZ) == Block.workbench.blockID && par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class ContainerWorkbench extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

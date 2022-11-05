@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class GuiScreenSingleplayerConnecting extends GuiScreen {
 
-	private GuiScreen menu;
-	private String message;
+	private final GuiScreen menu;
+	private final String message;
 	private GuiButton killTask;
 	private NetClientHandler netHandler = null;
 	
@@ -32,10 +32,10 @@ public class GuiScreenSingleplayerConnecting extends GuiScreen {
 		
 		long millis = System.currentTimeMillis();
 		
-		long dots = (millis / 500l) % 4l;
+		long dots = (millis / 500L) % 4L;
 		this.drawString(fontRenderer, message + (dots > 0 ? "." : "") + (dots > 1 ? "." : "") + (dots > 2 ? "." : ""), (this.width - this.fontRenderer.getStringWidth(message)) / 2, top + 10, 0xFFFFFF);
 		
-		long elapsed = (millis - startStartTime) / 1000l;
+		long elapsed = (millis - startStartTime) / 1000L;
 		if(elapsed > 3) {
 			this.drawCenteredString(fontRenderer, "(" + elapsed + "s)", this.width / 2, top + 25, 0xFFFFFF);
 		}
@@ -63,7 +63,7 @@ public class GuiScreenSingleplayerConnecting extends GuiScreen {
 		}
 		
 		long millis = System.currentTimeMillis();
-		if(millis - startStartTime > 6000l) {
+		if(millis - startStartTime > 6000L) {
 			killTask.enabled = true;
 		}
 	}
@@ -71,7 +71,7 @@ public class GuiScreenSingleplayerConnecting extends GuiScreen {
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if(par1GuiButton.id == 0) {
 			IntegratedServer.killWorker();
-			this.mc.loadWorld((WorldClient)null);
+			this.mc.loadWorld(null);
 			this.mc.displayGuiScreen(menu);
 			if(netHandler != null) {
 				netHandler.getNetManager().closeConnections();

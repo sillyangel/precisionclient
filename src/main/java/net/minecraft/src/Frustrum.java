@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class Frustrum implements ICamera {
-	private ClippingHelper clippingHelper = ClippingHelperImpl.getInstance();
+	private final ClippingHelper clippingHelper = ClippingHelperImpl.getInstance();
 	private double xPosition;
 	private double yPosition;
 	private double zPosition;

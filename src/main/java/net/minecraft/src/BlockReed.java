@@ -18,8 +18,7 @@ public class BlockReed extends Block {
 			int var6;
 
 			for (var6 = 1; par1World.getBlockId(par2, par3 - var6, par4) == this.blockID; ++var6) {
-				;
-			}
+            }
 
 			if (var6 < 3) {
 				int var7 = par1World.getBlockMetadata(par2, par3, par4);
@@ -40,11 +39,7 @@ public class BlockReed extends Block {
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
 		int var5 = par1World.getBlockId(par2, par3 - 1, par4);
-		return var5 == this.blockID ? true
-				: (var5 != Block.grass.blockID && var5 != Block.dirt.blockID && var5 != Block.sand.blockID ? false
-						: (par1World.getBlockMaterial(par2 - 1, par3 - 1, par4) == Material.water ? true
-								: (par1World.getBlockMaterial(par2 + 1, par3 - 1, par4) == Material.water ? true
-										: (par1World.getBlockMaterial(par2, par3 - 1, par4 - 1) == Material.water ? true : par1World.getBlockMaterial(par2, par3 - 1, par4 + 1) == Material.water))));
+		return var5 == this.blockID || ((var5 == Block.grass.blockID || var5 == Block.dirt.blockID || var5 == Block.sand.blockID) && (par1World.getBlockMaterial(par2 - 1, par3 - 1, par4) == Material.water || (par1World.getBlockMaterial(par2 + 1, par3 - 1, par4) == Material.water || (par1World.getBlockMaterial(par2, par3 - 1, par4 - 1) == Material.water || par1World.getBlockMaterial(par2, par3 - 1, par4 + 1) == Material.water))));
 	}
 
 	/**

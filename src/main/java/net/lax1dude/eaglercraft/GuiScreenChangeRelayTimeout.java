@@ -8,7 +8,7 @@ import net.minecraft.src.StringTranslate;
 
 public class GuiScreenChangeRelayTimeout extends GuiScreen {
 	
-	private GuiScreen parent;
+	private final GuiScreen parent;
 	private GuiSlider2 slider;
 	private String title;
 	

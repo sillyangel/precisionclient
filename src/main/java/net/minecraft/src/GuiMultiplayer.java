@@ -8,13 +8,13 @@ public class GuiMultiplayer extends GuiScreen {
 	private static int threadsPending = 0;
 
 	/** Lock object for use with synchronized() */
-	private static Object lock = new Object();
+	private static final Object lock = new Object();
 
 	/**
 	 * A reference to the screen object that created this. Used for navigating
 	 * between screens.
 	 */
-	private GuiScreen parentScreen;
+	private final GuiScreen parentScreen;
 
 	/** Slot container for the server list */
 	private GuiSlotServer serverSlotContainer;
@@ -54,8 +54,8 @@ public class GuiMultiplayer extends GuiScreen {
 	private int ticksOpened;
 	private static LANServerList lanServerList = null;
 
-	private static long lastCooldown = 0l;
-	private static long lastRefresh = 0l;
+	private static long lastCooldown = 0L;
+	private static long lastRefresh = 0L;
 	private static int cooldownTimer = 0;
 	private static boolean isLockedOut = false;
 
@@ -73,7 +73,7 @@ public class GuiMultiplayer extends GuiScreen {
 	public static void tickRefreshCooldown() {
 		if(cooldownTimer > 0) {
 			long t = System.currentTimeMillis();
-			if(t - lastCooldown > 5000l) {
+			if(t - lastCooldown > 5000L) {
 				--cooldownTimer;
 				lastCooldown = t;
 			}
@@ -82,7 +82,7 @@ public class GuiMultiplayer extends GuiScreen {
 	
 	private static boolean testIfCanRefresh() {
 		long t = System.currentTimeMillis();
-		if(t - lastRefresh > 1000l) {
+		if(t - lastRefresh > 1000L) {
 			lastRefresh = t;
 			if(cooldownTimer < 8) {
 				++cooldownTimer;
@@ -174,13 +174,13 @@ public class GuiMultiplayer extends GuiScreen {
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if (par1GuiButton.enabled) {
 			if (par1GuiButton.id == 2) {
-				String var2 = this.internetServerList.getServerData(this.selectedServer).serverName;
+				String var2 = internetServerList.getServerData(this.selectedServer).serverName;
 
 				if (var2 != null) {
 					this.deleteClicked = true;
 					StringTranslate var3 = StringTranslate.getInstance();
 					String var4 = var3.translateKey("selectServer.deleteQuestion");
-					String var5 = "\'" + var2 + "\' " + var3.translateKey("selectServer.deleteWarning");
+					String var5 = "'" + var2 + "' " + var3.translateKey("selectServer.deleteWarning");
 					String var6 = var3.translateKey("selectServer.deleteButton");
 					String var7 = var3.translateKey("gui.cancel");
 					GuiYesNo var8 = new GuiYesNo(this, var4, var5, var6, var7, this.selectedServer);
@@ -196,7 +196,7 @@ public class GuiMultiplayer extends GuiScreen {
 				this.mc.displayGuiScreen(new GuiScreenAddServer(this, this.theServerData = new ServerData(StatCollector.translateToLocal("selectServer.defaultName"), "", false)));
 			} else if (par1GuiButton.id == 7) {
 				this.editClicked = true;
-				ServerData var9 = this.internetServerList.getServerData(this.selectedServer);
+				ServerData var9 = internetServerList.getServerData(this.selectedServer);
 				this.theServerData = new ServerData(var9.serverName, var9.serverIP, false);
 				this.theServerData.setHideAddress(var9.isHidingAddress());
 				this.mc.displayGuiScreen(new GuiScreenAddServer(this, this.theServerData));
@@ -247,12 +247,12 @@ public class GuiMultiplayer extends GuiScreen {
 			this.editClicked = false;
 
 			if (par1) {
-				ServerData var3 = this.internetServerList.getServerData(this.selectedServer);
+				ServerData var3 = internetServerList.getServerData(this.selectedServer);
 				var3.serverName = this.theServerData.serverName;
 				var3.serverIP = this.theServerData.serverIP;
 				var3.setHideAddress(this.theServerData.isHidingAddress());
-				var3.pingSentTime = -1l;
-				this.internetServerList.saveServerList();
+				var3.pingSentTime = -1L;
+				internetServerList.saveServerList();
 			}
 
 			this.mc.displayGuiScreen(this);
@@ -271,17 +271,17 @@ public class GuiMultiplayer extends GuiScreen {
 			this.mc.gameSettings.saveOptions();
 		} else {
 			if (isShiftKeyDown() && par2 == 200) {
-				if (var3 > ServerList.forcedServers.size() && var3 < this.internetServerList.countServers()) {
-					this.internetServerList.swapServers(var3, var3 - 1);
+				if (var3 > ServerList.forcedServers.size() && var3 < internetServerList.countServers()) {
+					internetServerList.swapServers(var3, var3 - 1);
 					--this.selectedServer;
 
-					if (var3 < this.internetServerList.countServers() - 1) {
+					if (var3 < internetServerList.countServers() - 1) {
 						this.serverSlotContainer.func_77208_b(-this.serverSlotContainer.slotHeight);
 					}
 				}
 			} else if (isShiftKeyDown() && par2 == 208) {
-				if (var3 < this.internetServerList.countServers() - 1) {
-					this.internetServerList.swapServers(var3, var3 + 1);
+				if (var3 < internetServerList.countServers() - 1) {
+					internetServerList.swapServers(var3, var3 + 1);
 					++this.selectedServer;
 
 					if (var3 > 0) {
@@ -358,7 +358,7 @@ public class GuiMultiplayer extends GuiScreen {
 	 */
 	private void joinServer(int par1) {
 		if (par1 < internetServerList.countServers()) {
-			this.connectToServer(this.internetServerList.getServerData(par1));
+			this.connectToServer(internetServerList.getServerData(par1));
 		} else {
 			par1 -= internetServerList.countServers();
 

@@ -55,7 +55,7 @@ public class GuiCommandBlock extends GuiScreen {
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if (par1GuiButton.enabled) {
 			if (par1GuiButton.id == 1) {
-				this.mc.displayGuiScreen((GuiScreen) null);
+				this.mc.displayGuiScreen(null);
 			} else if (par1GuiButton.id == 0) {
 				String var2 = "MC|AdvCdm";
 				ByteArrayOutputStream var3 = new ByteArrayOutputStream();
@@ -71,7 +71,7 @@ public class GuiCommandBlock extends GuiScreen {
 					var6.printStackTrace();
 				}
 
-				this.mc.displayGuiScreen((GuiScreen) null);
+				this.mc.displayGuiScreen(null);
 			}
 		}
 	}

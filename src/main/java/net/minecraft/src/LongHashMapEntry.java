@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import java.util.Objects;
+
 class LongHashMapEntry {
 	/**
 	 * the key as a long (for playerInstances it is the x in the most significant 32
@@ -37,13 +39,11 @@ class LongHashMapEntry {
 			Long var3 = Long.valueOf(this.getKey());
 			Long var4 = Long.valueOf(var2.getKey());
 
-			if (var3 == var4 || var3 != null && var3.equals(var4)) {
+			if (Objects.equals(var3, var4)) {
 				Object var5 = this.getValue();
 				Object var6 = var2.getValue();
 
-				if (var5 == var6 || var5 != null && var5.equals(var6)) {
-					return true;
-				}
+                return Objects.equals(var5, var6);
 			}
 
 			return false;

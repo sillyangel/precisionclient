@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class RenderSorter implements Comparator {
 	/** The entity (usually the player) that the camera is inside. */
-	private EntityLiving baseEntity;
+	private final EntityLiving baseEntity;
 
 	public RenderSorter(EntityLiving par1EntityLiving) {
 		this.baseEntity = par1EntityLiving;
@@ -16,8 +16,8 @@ public class RenderSorter implements Comparator {
 		} else if (par2WorldRenderer.isInFrustum && !par1WorldRenderer.isInFrustum) {
 			return -1;
 		} else {
-			double var3 = (double) par1WorldRenderer.distanceToEntitySquared(this.baseEntity);
-			double var5 = (double) par2WorldRenderer.distanceToEntitySquared(this.baseEntity);
+			double var3 = par1WorldRenderer.distanceToEntitySquared(this.baseEntity);
+			double var5 = par2WorldRenderer.distanceToEntitySquared(this.baseEntity);
 			return var3 < var5 ? 1 : (var3 > var5 ? -1 : (par1WorldRenderer.chunkIndex < par2WorldRenderer.chunkIndex ? 1 : -1));
 		}
 	}

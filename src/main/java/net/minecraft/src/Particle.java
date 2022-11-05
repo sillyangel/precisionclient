@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class Particle {
-	private static EaglercraftRandom rand = new EaglercraftRandom();
+	private static final EaglercraftRandom rand = new EaglercraftRandom();
 	public double posX;
 	public double posY;
 	public double prevPosX;

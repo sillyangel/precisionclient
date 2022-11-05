@@ -8,7 +8,7 @@ import java.io.DataOutputStream;
 import java.util.Iterator;
 
 public class GuiBeacon extends GuiContainer {
-	private TileEntityBeacon beacon;
+	private final TileEntityBeacon beacon;
 	private GuiBeaconButtonConfirm beaconConfirmButton;
 	private boolean buttonsNotDrawn;
 
@@ -98,7 +98,7 @@ public class GuiBeacon extends GuiContainer {
 	 */
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		if (par1GuiButton.id == -2) {
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 		} else if (par1GuiButton.id == -1) {
 			String var2 = "MC|Beacon";
 			ByteArrayOutputStream var3 = new ByteArrayOutputStream();
@@ -112,7 +112,7 @@ public class GuiBeacon extends GuiContainer {
 				var6.printStackTrace();
 			}
 
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 		} else if (par1GuiButton instanceof GuiBeaconButtonPower) {
 			if (((GuiBeaconButtonPower) par1GuiButton).func_82255_b()) {
 				return;

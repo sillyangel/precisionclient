@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderSnowMan extends RenderLiving {
 	/** A reference to the Snowman model in RenderSnowMan. */
-	private ModelSnowMan snowmanModel;
+	private final ModelSnowMan snowmanModel;
 
 	public RenderSnowMan() {
 		super(new ModelSnowMan(), 0.5F);

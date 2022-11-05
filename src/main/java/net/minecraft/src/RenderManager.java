@@ -7,7 +7,7 @@ import java.util.*;
 
 public class RenderManager {
 	/** A map of entity classes and the associated renderer. */
-	private Map entityRenderMap = new HashMap();
+	private final Map entityRenderMap = new HashMap();
 
 	/** The static instance of RenderManager. */
 	public static RenderManager instance;
@@ -173,7 +173,7 @@ public class RenderManager {
 
 		int var11 = var10 % 65536;
 		int var12 = var10 / 65536;
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var11 / 1.0F, (float) var12 / 1.0F);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var11, (float) var12);
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.renderEntityWithPosYaw(par1Entity, var3 - renderPosX, var5 - renderPosY, var7 - renderPosZ, var9, par2);
 	}
@@ -207,15 +207,15 @@ public class RenderManager {
 		Tessellator var10 = Tessellator.instance;
 		var10.startDrawingQuads();
 		var10.setColorRGBA(255, 255, 255, 32);
-		double var11 = (double) (-par1Entity.width / 2.0F);
-		double var13 = (double) (-par1Entity.width / 2.0F);
-		double var15 = (double) (par1Entity.width / 2.0F);
-		double var17 = (double) (-par1Entity.width / 2.0F);
-		double var19 = (double) (-par1Entity.width / 2.0F);
-		double var21 = (double) (par1Entity.width / 2.0F);
-		double var23 = (double) (par1Entity.width / 2.0F);
-		double var25 = (double) (par1Entity.width / 2.0F);
-		double var27 = (double) par1Entity.height;
+		double var11 = -par1Entity.width / 2.0F;
+		double var13 = -par1Entity.width / 2.0F;
+		double var15 = par1Entity.width / 2.0F;
+		double var17 = -par1Entity.width / 2.0F;
+		double var19 = -par1Entity.width / 2.0F;
+		double var21 = par1Entity.width / 2.0F;
+		double var23 = par1Entity.width / 2.0F;
+		double var25 = par1Entity.width / 2.0F;
+		double var27 = par1Entity.height;
 		var10.addVertex(par2 + var11, par4 + var27, par6 + var13);
 		var10.addVertex(par2 + var11, par4, par6 + var13);
 		var10.addVertex(par2 + var15, par4, par6 + var17);

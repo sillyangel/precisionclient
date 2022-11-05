@@ -24,7 +24,7 @@ public class EntityHugeExplodeFX extends EntityFX {
 			double var2 = this.posX + (this.rand.nextDouble() - this.rand.nextDouble()) * 4.0D;
 			double var4 = this.posY + (this.rand.nextDouble() - this.rand.nextDouble()) * 4.0D;
 			double var6 = this.posZ + (this.rand.nextDouble() - this.rand.nextDouble()) * 4.0D;
-			this.worldObj.spawnParticle("largeexplode", var2, var4, var6, (double) ((float) this.timeSinceStart / (float) this.maximumTime), 0.0D, 0.0D);
+			this.worldObj.spawnParticle("largeexplode", var2, var4, var6, (float) this.timeSinceStart / (float) this.maximumTime, 0.0D, 0.0D);
 		}
 
 		++this.timeSinceStart;

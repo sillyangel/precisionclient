@@ -256,7 +256,7 @@ public class BiomeGenBase {
 	 * bolts enabled and have rain enabled.
 	 */
 	public boolean canSpawnLightningBolt() {
-		return this.enableSnow ? false : this.enableRain;
+		return !this.enableSnow && this.enableRain;
 	}
 
 	/**
@@ -306,8 +306,8 @@ public class BiomeGenBase {
 	 */
 	public int getBiomeGrassColor() {
 		if(biomeID == 6) return 6975545;
-		double var1 = (double) MathHelper.clamp_float(this.getFloatTemperature(), 0.0F, 1.0F);
-		double var3 = (double) MathHelper.clamp_float(this.getFloatRainfall(), 0.0F, 1.0F);
+		double var1 = MathHelper.clamp_float(this.getFloatTemperature(), 0.0F, 1.0F);
+		double var3 = MathHelper.clamp_float(this.getFloatRainfall(), 0.0F, 1.0F);
 		return ColorizerGrass.getGrassColor(var1, var3);
 	}
 
@@ -316,8 +316,8 @@ public class BiomeGenBase {
 	 */
 	public int getBiomeFoliageColor() {
 		if(biomeID == 6) return 6975545;
-		double var1 = (double) MathHelper.clamp_float(this.getFloatTemperature(), 0.0F, 1.0F);
-		double var3 = (double) MathHelper.clamp_float(this.getFloatRainfall(), 0.0F, 1.0F);
+		double var1 = MathHelper.clamp_float(this.getFloatTemperature(), 0.0F, 1.0F);
+		double var3 = MathHelper.clamp_float(this.getFloatRainfall(), 0.0F, 1.0F);
 		return ColorizerFoliage.getFoliageColor(var1, var3);
 	}
 }

@@ -37,7 +37,7 @@ public class BlockEndPortal extends BlockContainer {
 	 * adjacent block is at the given coordinates. Args: blockAccess, x, y, z, side
 	 */
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return par5 != 0 ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
+		return par5 == 0 && super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
 	}
 
 	/**
@@ -77,9 +77,9 @@ public class BlockEndPortal extends BlockContainer {
 	 * for display
 	 */
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, EaglercraftRandom par5Random) {
-		double var6 = (double) ((float) par2 + par5Random.nextFloat());
-		double var8 = (double) ((float) par3 + 0.8F);
-		double var10 = (double) ((float) par4 + par5Random.nextFloat());
+		double var6 = (float) par2 + par5Random.nextFloat();
+		double var8 = (float) par3 + 0.8F;
+		double var10 = (float) par4 + par5Random.nextFloat();
 		double var12 = 0.0D;
 		double var14 = 0.0D;
 		double var16 = 0.0D;

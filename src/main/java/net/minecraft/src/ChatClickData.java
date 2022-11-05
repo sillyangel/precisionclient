@@ -52,7 +52,7 @@ public class ChatClickData {
 	}
 
 	private String findClickedUrl() {
-		int var1 = this.field_78310_f.lastIndexOf(" ", this.field_78310_f.length()) + 1;
+		int var1 = this.field_78310_f.lastIndexOf(" ") + 1;
 
 		if (var1 < 0) {
 			var1 = 0;

@@ -36,7 +36,7 @@ public class ModelRenderer {
 	public List cubeList;
 	public List childModels;
 	public final String boxName;
-	private ModelBase baseModel;
+	private final ModelBase baseModel;
 	public float field_82906_o;
 	public float field_82908_p;
 	public float field_82907_q;
@@ -57,7 +57,7 @@ public class ModelRenderer {
 	}
 
 	public ModelRenderer(ModelBase par1ModelBase) {
-		this(par1ModelBase, (String) null);
+		this(par1ModelBase, null);
 	}
 
 	public ModelRenderer(ModelBase par1ModelBase, int par2, int par3) {

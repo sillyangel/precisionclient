@@ -3,10 +3,10 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.EaglercraftRandom;
 
 public class BlockSign extends BlockContainer {
-	private Class signEntityClass;
+	private final Class signEntityClass;
 
 	/** Whether this is a freestanding sign or a wall-mounted sign */
-	private boolean isFreestanding;
+	private final boolean isFreestanding;
 
 	protected BlockSign(int par1, Class par2Class, boolean par3) {
 		super(par1, Material.wood);
@@ -133,11 +133,8 @@ public class BlockSign extends BlockContainer {
 			}
 		} else {
 			int var7 = par1World.getBlockMetadata(par2, par3, par4);
-			var6 = true;
 
-			if (var7 == 2 && par1World.getBlockMaterial(par2, par3, par4 + 1).isSolid()) {
-				var6 = false;
-			}
+            var6 = var7 != 2 || !par1World.getBlockMaterial(par2, par3, par4 + 1).isSolid();
 
 			if (var7 == 3 && par1World.getBlockMaterial(par2, par3, par4 - 1).isSolid()) {
 				var6 = false;

@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class StatCollector {
-	private static StringTranslate localizedName = StringTranslate.getInstance();
+	private static final StringTranslate localizedName = StringTranslate.getInstance();
 
 	/**
 	 * Translates a Stat name

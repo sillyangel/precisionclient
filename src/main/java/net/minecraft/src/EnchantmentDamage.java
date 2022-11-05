@@ -81,6 +81,6 @@ public class EnchantmentDamage extends Enchantment {
 	}
 
 	public boolean canApply(ItemStack par1ItemStack) {
-		return par1ItemStack.getItem() instanceof ItemAxe ? true : super.canApply(par1ItemStack);
+		return par1ItemStack.getItem() instanceof ItemAxe || super.canApply(par1ItemStack);
 	}
 }

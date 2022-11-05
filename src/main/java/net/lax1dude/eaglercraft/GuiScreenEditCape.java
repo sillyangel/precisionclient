@@ -43,8 +43,8 @@ public class GuiScreenEditCape extends GuiScreen {
 	
 	protected String screenTitle = "Select Cape";
 	
-	private GuiScreen parent;
-	private int skinToShow;
+	private final GuiScreen parent;
+	private final int skinToShow;
 	
 	public GuiScreenEditCape(GuiScreen parent, int skinToShow) {
 		this.parent = parent;

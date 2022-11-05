@@ -8,10 +8,10 @@ import net.lax1dude.eaglercraft.adapter.Tessellator;
 import java.util.Iterator;
 
 public class MapItemRenderer {
-	private int[] intArray = new int[16384];
-	private int bufferedImage;
-	private GameSettings gameSettings;
-	private FontRenderer fontRenderer;
+	private final int[] intArray = new int[16384];
+	private final int bufferedImage;
+	private final GameSettings gameSettings;
+	private final FontRenderer fontRenderer;
 
 	public MapItemRenderer(FontRenderer par1FontRenderer, GameSettings par2GameSettings, RenderEngine par3RenderEngine) {
 		this.gameSettings = par2GameSettings;
@@ -99,10 +99,10 @@ public class MapItemRenderer {
 		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_ONE, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_ALPHA_TEST);
 		var17.startDrawingQuads();
-		var17.addVertexWithUV((double) ((float) (var15 + 0) + var18), (double) ((float) (var16 + 128) - var18), -0.009999999776482582D, texX1, texY2);
-		var17.addVertexWithUV((double) ((float) (var15 + 128) - var18), (double) ((float) (var16 + 128) - var18), -0.009999999776482582D, texX2, texY2);
-		var17.addVertexWithUV((double) ((float) (var15 + 128) - var18), (double) ((float) (var16 + 0) + var18), -0.009999999776482582D, texX2, texY1);
-		var17.addVertexWithUV((double) ((float) (var15 + 0) + var18), (double) ((float) (var16 + 0) + var18), -0.009999999776482582D, texX1, texY1);
+		var17.addVertexWithUV((float) (var15) + var18, (float) (var16 + 128) - var18, -0.009999999776482582D, texX1, texY2);
+		var17.addVertexWithUV((float) (var15 + 128) - var18, (float) (var16 + 128) - var18, -0.009999999776482582D, texX2, texY2);
+		var17.addVertexWithUV((float) (var15 + 128) - var18, (float) (var16) + var18, -0.009999999776482582D, texX2, texY1);
+		var17.addVertexWithUV((float) (var15) + var18, (float) (var16) + var18, -0.009999999776482582D, texX1, texY1);
 		var17.draw();
 		EaglerAdapter.glEnable(EaglerAdapter.GL_ALPHA_TEST);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
@@ -123,15 +123,15 @@ public class MapItemRenderer {
 				EaglerAdapter.glRotatef((float) (var21.iconRotation * 360) / 16.0F, 0.0F, 0.0F, 1.0F);
 				EaglerAdapter.glScalef(4.0F, 4.0F, 3.0F);
 				EaglerAdapter.glTranslatef(-0.125F, 0.125F, 0.0F);
-				float var22 = (float) (var21.iconSize % 4 + 0) / 4.0F;
-				float var23 = (float) (var21.iconSize / 4 + 0) / 4.0F;
+				float var22 = (float) (var21.iconSize % 4) / 4.0F;
+				float var23 = (float) (var21.iconSize / 4) / 4.0F;
 				float var24 = (float) (var21.iconSize % 4 + 1) / 4.0F;
 				float var25 = (float) (var21.iconSize / 4 + 1) / 4.0F;
 				var17.startDrawingQuads();
-				var17.addVertexWithUV(-1.0D, 1.0D, (double) ((float) var19 * 0.001F), (double) var22, (double) var23);
-				var17.addVertexWithUV(1.0D, 1.0D, (double) ((float) var19 * 0.001F), (double) var24, (double) var23);
-				var17.addVertexWithUV(1.0D, -1.0D, (double) ((float) var19 * 0.001F), (double) var24, (double) var25);
-				var17.addVertexWithUV(-1.0D, -1.0D, (double) ((float) var19 * 0.001F), (double) var22, (double) var25);
+				var17.addVertexWithUV(-1.0D, 1.0D, (float) var19 * 0.001F, var22, var23);
+				var17.addVertexWithUV(1.0D, 1.0D, (float) var19 * 0.001F, var24, var23);
+				var17.addVertexWithUV(1.0D, -1.0D, (float) var19 * 0.001F, var24, var25);
+				var17.addVertexWithUV(-1.0D, -1.0D, (float) var19 * 0.001F, var22, var25);
 				var17.draw();
 				EaglerAdapter.glPopMatrix();
 			}

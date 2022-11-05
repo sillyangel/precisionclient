@@ -20,12 +20,12 @@ public class Minecraft implements Runnable {
 	private static Minecraft theMinecraft;
 	public PlayerControllerMP playerController;
 	private boolean fullscreen = false;
-	private boolean hasCrashed = false;
+	private final boolean hasCrashed = false;
 	private boolean isGonnaTakeDatScreenShot = false;
 	
 	public int displayWidth;
 	public int displayHeight;
-	private Timer timer = new Timer(20.0F);
+	private final Timer timer = new Timer(20.0F);
 	
 	public WorldClient theWorld;
 	public RenderGlobal renderGlobal;
@@ -66,7 +66,7 @@ public class Minecraft implements Runnable {
 	private int tempDisplayWidth;
 
 	/** Display height */
-	private int tempDisplayHeight;
+	private final int tempDisplayHeight;
 
 	/** Gui achievement */
 	public GuiAchievement guiAchievement;
@@ -152,9 +152,9 @@ public class Minecraft implements Runnable {
 	int fpsCounter = 0;
 	long prevFrameTime = -1L;
 	
-	long secondTimer = 0l;
+	long secondTimer = 0L;
 	
-	private HashSet<String> shownPlayerMessages = new HashSet();
+	private final HashSet<String> shownPlayerMessages = new HashSet();
 
 	/** Profiler currently displayed in the debug screen pie chart */
 	private String debugProfilerName = "root";
@@ -372,7 +372,7 @@ public class Minecraft implements Runnable {
 		}
 		
 		try {
-			Thread.sleep(1600l);
+			Thread.sleep(1600L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -415,7 +415,7 @@ public class Minecraft implements Runnable {
 		EaglerAdapter.updateDisplay();
 		
 		try {
-			Thread.sleep(100l);
+			Thread.sleep(100L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -471,10 +471,10 @@ public class Minecraft implements Runnable {
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
 		var9.setColorOpaque(255, 255, 255);
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + par6), 0.0D, (double) ((float) (par3 + 0) * var7), (double) ((float) (par4 + par6) * var8));
-		var9.addVertexWithUV((double) (par1 + par5), (double) (par2 + par6), 0.0D, (double) ((float) (par3 + par5) * var7), (double) ((float) (par4 + par6) * var8));
-		var9.addVertexWithUV((double) (par1 + par5), (double) (par2 + 0), 0.0D, (double) ((float) (par3 + par5) * var7), (double) ((float) (par4 + 0) * var8));
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), 0.0D, (double) ((float) (par3 + 0) * var7), (double) ((float) (par4 + 0) * var8));
+		var9.addVertexWithUV(par1, par2 + par6, 0.0D, (float) (par3) * var7, (float) (par4 + par6) * var8);
+		var9.addVertexWithUV(par1 + par5, par2 + par6, 0.0D, (float) (par3 + par5) * var7, (float) (par4 + par6) * var8);
+		var9.addVertexWithUV(par1 + par5, par2, 0.0D, (float) (par3 + par5) * var7, (float) (par4) * var8);
+		var9.addVertexWithUV(par1, par2, 0.0D, (float) (par3) * var7, (float) (par4) * var8);
 		var9.draw();
 	}
 
@@ -513,14 +513,14 @@ public class Minecraft implements Runnable {
 			this.ingameGUI.getChatGUI().clearChatMessages();
 		}
 
-		this.currentScreen = (GuiScreen) par1GuiScreen;
+		this.currentScreen = par1GuiScreen;
 
 		if (par1GuiScreen != null) {
 			this.setIngameNotInFocus();
 			ScaledResolution var2 = new ScaledResolution(this.gameSettings, this.displayWidth, this.displayHeight);
 			int var3 = var2.getScaledWidth();
 			int var4 = var2.getScaledHeight();
-			((GuiScreen) par1GuiScreen).setWorldAndResolution(this, var3, var4);
+			par1GuiScreen.setWorldAndResolution(this, var3, var4);
 			this.skipRenderWorld = false;
 		} else {
 			if(!this.inGameHasFocus) this.setIngameFocus();
@@ -561,16 +561,14 @@ public class Minecraft implements Runnable {
 			System.err.println("Stopping!");
 
 			try {
-				this.loadWorld((WorldClient) null);
+				this.loadWorld(null);
 			} catch (Throwable var8) {
-				;
-			}
+            }
 
 			try {
 				GLAllocation.deleteTexturesAndDisplayLists();
 			} catch (Throwable var7) {
-				;
-			}
+            }
 
 			this.sndManager.closeMinecraft();
 		} finally {
@@ -708,7 +706,7 @@ public class Minecraft implements Runnable {
 		//boolean var5 = this.isGamePaused;
 		//this.isGamePaused = false;
 		
-		if(System.currentTimeMillis() - secondTimer > 1000l) {
+		if(System.currentTimeMillis() - secondTimer > 1000L) {
 			debugFPS = fpsCounter;
 			fpsCounter = 0;
 			debugChunkUpdates = chunkUpdates;
@@ -792,10 +790,10 @@ public class Minecraft implements Runnable {
 			EaglerAdapter.glEnable(EaglerAdapter.GL_BLEND);
 			var5.startDrawingQuads();
 			var5.setColorRGBA_I(0, 200);
-			var5.addVertex((double) ((float) var7 - (float) var6 * 1.1F), (double) ((float) var8 - (float) var6 * 0.6F - 16.0F), 0.0D);
-			var5.addVertex((double) ((float) var7 - (float) var6 * 1.1F), (double) (var8 + var6 * 2), 0.0D);
-			var5.addVertex((double) ((float) var7 + (float) var6 * 1.1F), (double) (var8 + var6 * 2), 0.0D);
-			var5.addVertex((double) ((float) var7 + (float) var6 * 1.1F), (double) ((float) var8 - (float) var6 * 0.6F - 16.0F), 0.0D);
+			var5.addVertex((float) var7 - (float) var6 * 1.1F, (float) var8 - (float) var6 * 0.6F - 16.0F, 0.0D);
+			var5.addVertex((float) var7 - (float) var6 * 1.1F, var8 + var6 * 2, 0.0D);
+			var5.addVertex((float) var7 + (float) var6 * 1.1F, var8 + var6 * 2, 0.0D);
+			var5.addVertex((float) var7 + (float) var6 * 1.1F, (float) var8 - (float) var6 * 0.6F - 16.0F, 0.0D);
 			var5.draw();
 			EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
 			double var9 = 0.0D;
@@ -808,7 +806,7 @@ public class Minecraft implements Runnable {
 				var13 = MathHelper.floor_double(var12.field_76332_a / 4.0D) + 1;
 				var5.startDrawing(EaglerAdapter.GL_TRIANGLE_FAN);
 				var5.setColorOpaque_I(var12.func_76329_a());
-				var5.addVertex((double) var7, (double) var8, 0.0D);
+				var5.addVertex(var7, var8, 0.0D);
 				int var14;
 				float var15;
 				float var16;
@@ -818,7 +816,7 @@ public class Minecraft implements Runnable {
 					var15 = (float) ((var9 + var12.field_76332_a * (double) var14 / (double) var13) * Math.PI * 2.0D / 100.0D);
 					var16 = MathHelper.sin(var15) * (float) var6;
 					var17 = MathHelper.cos(var15) * (float) var6 * 0.5F;
-					var5.addVertex((double) ((float) var7 + var16), (double) ((float) var8 - var17), 0.0D);
+					var5.addVertex((float) var7 + var16, (float) var8 - var17, 0.0D);
 				}
 
 				var5.draw();
@@ -829,8 +827,8 @@ public class Minecraft implements Runnable {
 					var15 = (float) ((var9 + var12.field_76332_a * (double) var14 / (double) var13) * Math.PI * 2.0D / 100.0D);
 					var16 = MathHelper.sin(var15) * (float) var6;
 					var17 = MathHelper.cos(var15) * (float) var6 * 0.5F;
-					var5.addVertex((double) ((float) var7 + var16), (double) ((float) var8 - var17), 0.0D);
-					var5.addVertex((double) ((float) var7 + var16), (double) ((float) var8 - var17 + 10.0F), 0.0D);
+					var5.addVertex((float) var7 + var16, (float) var8 - var17, 0.0D);
+					var5.addVertex((float) var7 + var16, (float) var8 - var17 + 10.0F, 0.0D);
 				}
 
 				var5.draw();
@@ -890,7 +888,7 @@ public class Minecraft implements Runnable {
 			//if (!this.inGameHasFocus) {
 				this.inGameHasFocus = true;
 				this.mouseHelper.grabMouseCursor();
-				this.displayGuiScreen((GuiScreen) null);
+				this.displayGuiScreen(null);
 				this.leftClickCounter = 10000;
 			//}
 		//}
@@ -1090,12 +1088,12 @@ public class Minecraft implements Runnable {
 
 		if (this.currentScreen == null && this.thePlayer != null) {
 			if (this.thePlayer.getHealth() <= 0) {
-				this.displayGuiScreen((GuiScreen) null);
+				this.displayGuiScreen(null);
 			} else if (this.thePlayer.isPlayerSleeping() && this.theWorld != null) {
 				this.displayGuiScreen(new GuiSleepMP());
 			}
 		} else if (this.currentScreen != null && this.currentScreen instanceof GuiSleepMP && !this.thePlayer.isPlayerSleeping()) {
-			this.displayGuiScreen((GuiScreen) null);
+			this.displayGuiScreen(null);
 		}
 
 		if (this.currentScreen != null) {
@@ -1330,8 +1328,7 @@ public class Minecraft implements Runnable {
 				while (true) {
 					if (!this.gameSettings.keyBindAttack.isPressed()) {
 						while (this.gameSettings.keyBindUseItem.isPressed()) {
-							;
-						}
+                        }
 
 						while (true) {
 							if (this.gameSettings.keyBindPickBlock.isPressed()) {
@@ -1448,7 +1445,7 @@ public class Minecraft implements Runnable {
 			if(theWorld != null) {
 				System.out.println("Redirecting to: " + reconnectAddress);
 				theWorld.sendQuittingDisconnectingPacket();
-				loadWorld((WorldClient) null);
+				loadWorld(null);
 				stopServerAndDisplayGuiScreen(new GuiConnecting(new GuiMultiplayer(new GuiMainMenu()), this,
 						new ServerData("reconnect", reconnectAddress, true)));
 			}
@@ -1459,7 +1456,7 @@ public class Minecraft implements Runnable {
 		this.systemTime = getSystemTime();
 	}
 	
-	private int titleMusicObj = -1;
+	private final int titleMusicObj = -1;
 
 	public String reconnectAddress = null;
 
@@ -1521,11 +1518,11 @@ public class Minecraft implements Runnable {
 			}
 			this.lanState = false;
 			IntegratedServer.unloadWorld();
-			this.setServerData((ServerData) null);
+			this.setServerData(null);
 			this.integratedServerIsRunning = false;
 		}
 
-		this.sndManager.playStreaming((String) null, 0.0F, 0.0F, 0.0F);
+		this.sndManager.playStreaming(null, 0.0F, 0.0F, 0.0F);
 		this.sndManager.stopAllSounds();
 		if(EaglerAdapter.isVideoSupported()) {
 			EaglerAdapter.unloadVideo();
@@ -1632,7 +1629,7 @@ public class Minecraft implements Runnable {
 		this.playerController.setPlayerCapabilities(this.thePlayer);
 
 		if (this.currentScreen instanceof GuiGameOver) {
-			this.displayGuiScreen((GuiScreen) null);
+			this.displayGuiScreen(null);
 		}
 	}
 
@@ -1677,7 +1674,7 @@ public class Minecraft implements Runnable {
 	 * server. However there are no such commands at this point in time.
 	 */
 	public boolean handleClientCommand(String par1Str) {
-		return !par1Str.startsWith("/") ? false : false;
+		return false;
 	}
 
 	/**
@@ -1823,7 +1820,7 @@ public class Minecraft implements Runnable {
 	}
 
 	public void launchIntegratedServer(String folderName, String trim, WorldSettings var6) {
-		this.loadWorld((WorldClient)null);
+		this.loadWorld(null);
 		
 		IntegratedServer.loadWorld(folderName, gameSettings.difficulty, var6);
 		

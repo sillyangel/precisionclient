@@ -3,10 +3,10 @@ package net.minecraft.src;
 
 
 public class EntityEnchantmentTableParticleFX extends EntityFX {
-	private float field_70565_a;
-	private double field_70568_aq;
-	private double field_70567_ar;
-	private double field_70566_as;
+	private final float field_70565_a;
+	private final double field_70568_aq;
+	private final double field_70567_ar;
+	private final double field_70566_as;
 
 	public EntityEnchantmentTableParticleFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12) {
 		super(par1World, par2, par4, par6, par8, par10, par12);
@@ -18,7 +18,7 @@ public class EntityEnchantmentTableParticleFX extends EntityFX {
 		this.field_70566_as = this.posZ = par6;
 		float var14 = this.rand.nextFloat() * 0.6F + 0.4F;
 		this.field_70565_a = this.particleScale = this.rand.nextFloat() * 0.5F + 0.2F;
-		this.particleRed = this.particleGreen = this.particleBlue = 1.0F * var14;
+		this.particleRed = this.particleGreen = this.particleBlue = var14;
 		this.particleGreen *= 0.9F;
 		this.particleRed *= 0.9F;
 		this.particleMaxAge = (int) (Math.random() * 10.0D) + 30;

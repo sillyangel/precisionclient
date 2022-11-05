@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 public class TexturePackDefault extends TexturePackImplementation {
 	public TexturePackDefault() {
-		super("default", "Default", (ITexturePack) null);
+		super("default", "Default", null);
 	}
 
 	/**

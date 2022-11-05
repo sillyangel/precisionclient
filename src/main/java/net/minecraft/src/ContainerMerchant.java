@@ -2,8 +2,8 @@ package net.minecraft.src;
 
 public class ContainerMerchant extends Container {
 	/** Instance of Merchant. */
-	private IMerchant theMerchant;
-	private InventoryMerchant merchantInventory;
+	private final IMerchant theMerchant;
+	private final InventoryMerchant merchantInventory;
 
 	/** Instance of World. */
 	private final World theWorld;
@@ -93,7 +93,7 @@ public class ContainerMerchant extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}
@@ -113,7 +113,7 @@ public class ContainerMerchant extends Container {
 	 */
 	public void onCraftGuiClosed(EntityPlayer par1EntityPlayer) {
 		super.onCraftGuiClosed(par1EntityPlayer);
-		this.theMerchant.setCustomer((EntityPlayer) null);
+		this.theMerchant.setCustomer(null);
 		super.onCraftGuiClosed(par1EntityPlayer);
 	}
 }

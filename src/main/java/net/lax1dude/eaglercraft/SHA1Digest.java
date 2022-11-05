@@ -14,7 +14,7 @@ public class SHA1Digest
 
     private int     H1, H2, H3, H4, H5;
 
-    private int[]   X = new int[80];
+    private final int[]   X = new int[80];
     private int     xOff;
 
 	/**

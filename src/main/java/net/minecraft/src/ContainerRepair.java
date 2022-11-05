@@ -7,16 +7,16 @@ import java.util.Map;
 
 public class ContainerRepair extends Container {
 	/** Here comes out item you merged and/or renamed. */
-	private IInventory outputSlot = new InventoryCraftResult();
+	private final IInventory outputSlot = new InventoryCraftResult();
 
 	/**
 	 * The 2slots where you put your items in that you want to merge and/or rename.
 	 */
-	private IInventory inputSlots = new InventoryRepair(this, "Repair", true, 2);
-	private World theWorld;
-	private int field_82861_i;
-	private int field_82858_j;
-	private int field_82859_k;
+	private final IInventory inputSlots = new InventoryRepair(this, "Repair", true, 2);
+	private final World theWorld;
+	private final int field_82861_i;
+	private final int field_82858_j;
+	private final int field_82859_k;
 
 	/** The maximum cost of repairing/renaming in the anvil. */
 	public int maximumCost = 0;
@@ -73,7 +73,7 @@ public class ContainerRepair extends Container {
 		int var4 = 0;
 
 		if (var1 == null) {
-			this.outputSlot.setInventorySlotContents(0, (ItemStack) null);
+			this.outputSlot.setInventorySlotContents(0, null);
 			this.maximumCost = 0;
 		} else {
 			ItemStack var5 = var1.copy();
@@ -97,7 +97,7 @@ public class ContainerRepair extends Container {
 					var9 = Math.min(var5.getItemDamageForDisplay(), var5.getMaxDamage() / 4);
 
 					if (var9 <= 0) {
-						this.outputSlot.setInventorySlotContents(0, (ItemStack) null);
+						this.outputSlot.setInventorySlotContents(0, null);
 						this.maximumCost = 0;
 						return;
 					}
@@ -112,7 +112,7 @@ public class ContainerRepair extends Container {
 					this.stackSizeToBeUsedInRepair = var10;
 				} else {
 					if (!var8 && (var5.itemID != var6.itemID || !var5.isItemStackDamageable())) {
-						this.outputSlot.setInventorySlotContents(0, (ItemStack) null);
+						this.outputSlot.setInventorySlotContents(0, null);
 						this.maximumCost = 0;
 						return;
 					}
@@ -320,8 +320,7 @@ public class ContainerRepair extends Container {
 	}
 
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		return this.theWorld.getBlockId(this.field_82861_i, this.field_82858_j, this.field_82859_k) != Block.anvil.blockID ? false
-				: par1EntityPlayer.getDistanceSq((double) this.field_82861_i + 0.5D, (double) this.field_82858_j + 0.5D, (double) this.field_82859_k + 0.5D) <= 64.0D;
+		return this.theWorld.getBlockId(this.field_82861_i, this.field_82858_j, this.field_82859_k) == Block.anvil.blockID && par1EntityPlayer.getDistanceSq((double) this.field_82861_i + 0.5D, (double) this.field_82858_j + 0.5D, (double) this.field_82859_k + 0.5D) <= 64.0D;
 	}
 
 	/**
@@ -351,7 +350,7 @@ public class ContainerRepair extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

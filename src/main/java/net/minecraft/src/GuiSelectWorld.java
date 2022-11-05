@@ -39,7 +39,7 @@ public class GuiSelectWorld extends GuiScreen {
 	 * The game mode text that is displayed with each world on the world selection
 	 * list.
 	 */
-	private String[] localizedGameModeText = new String[3];
+	private final String[] localizedGameModeText = new String[3];
 
 	/** set to true if you arein the process of deleteing a world/save */
 	private boolean deleting;
@@ -118,14 +118,14 @@ public class GuiSelectWorld extends GuiScreen {
 	 * returns the file name of the specified save number
 	 */
 	protected String getSaveFileName(int par1) {
-		return ((SaveFormatComparator) this.saveList.get(par1)).getFileName();
+		return this.saveList.get(par1).getFileName();
 	}
 
 	/**
 	 * returns the name of the saved game
 	 */
 	protected String getSaveName(int par1) {
-		String var2 = ((SaveFormatComparator) this.saveList.get(par1)).getDisplayName();
+		String var2 = this.saveList.get(par1).getDisplayName();
 
 		if (var2 == null || MathHelper.stringNullOrLengthZero(var2)) {
 			StringTranslate var3 = StringTranslate.getInstance();
@@ -191,7 +191,7 @@ public class GuiSelectWorld extends GuiScreen {
 	 * Gets the selected world.
 	 */
 	public void selectWorld(int par1) {
-		this.mc.displayGuiScreen((GuiScreen) null);
+		this.mc.displayGuiScreen(null);
 
 		if (!this.selected) {
 			this.selected = true;
@@ -207,7 +207,7 @@ public class GuiSelectWorld extends GuiScreen {
 				var3 = "World" + par1;
 			}
 
-			this.mc.launchIntegratedServer(var2, var3, (WorldSettings) null);
+			this.mc.launchIntegratedServer(var2, var3, null);
 			
 		}
 	}
@@ -267,7 +267,7 @@ public class GuiSelectWorld extends GuiScreen {
 	public static GuiYesNo getDeleteWorldScreen(GuiScreen par0GuiScreen, String par1Str, int par2) {
 		StringTranslate var3 = StringTranslate.getInstance();
 		String var4 = var3.translateKey("selectWorld.deleteQuestion");
-		String var5 = "\'" + par1Str + "\' " + var3.translateKey("selectWorld.deleteWarning");
+		String var5 = "'" + par1Str + "' " + var3.translateKey("selectWorld.deleteWarning");
 		String var6 = var3.translateKey("selectWorld.deleteButton");
 		String var7 = var3.translateKey("gui.cancel");
 		GuiYesNo var8 = new GuiYesNo(par0GuiScreen, var4, var5, var6, var7, par2);

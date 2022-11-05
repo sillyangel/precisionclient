@@ -80,10 +80,10 @@ public class LANClientNetworkManager implements INetworkManager {
 								continue mainLoop;
 							}
 							try {
-								Thread.sleep(20l);
+								Thread.sleep(20L);
 							} catch (InterruptedException e) {
 							}
-						}while(System.currentTimeMillis() - lm < 5000l);
+						}while(System.currentTimeMillis() - lm < 5000L);
 
 						// no description was sent
 						sock.close();
@@ -120,10 +120,10 @@ public class LANClientNetworkManager implements INetworkManager {
 
 							}
 							try {
-								Thread.sleep(20l);
+								Thread.sleep(20L);
 							} catch (InterruptedException e) {
 							}
-						}while(System.currentTimeMillis() - lm < 5000l);
+						}while(System.currentTimeMillis() - lm < 5000L);
 
 						// no channel was opened
 						sock.writePacket(new IPacket06ClientFailure(ipkt.peerId));
@@ -162,10 +162,10 @@ public class LANClientNetworkManager implements INetworkManager {
 								continue mainLoop;
 							}
 							try {
-								Thread.sleep(20l);
+								Thread.sleep(20L);
 							} catch (InterruptedException e) {
 							}
-						}while(System.currentTimeMillis() - lm < 5000l);
+						}while(System.currentTimeMillis() - lm < 5000L);
 
 						// no ice candidates were sent
 						sock.close();
@@ -202,7 +202,7 @@ public class LANClientNetworkManager implements INetworkManager {
 				}
 			}
 			try {
-				Thread.sleep(20l);
+				Thread.sleep(20L);
 			} catch (InterruptedException e) {
 			}
 		}
@@ -214,7 +214,7 @@ public class LANClientNetworkManager implements INetworkManager {
 		theNetHandler = var1;
 	}
 	
-	private ByteArrayOutputStream sendBuffer = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream sendBuffer = new ByteArrayOutputStream();
 
 	@Override
 	public void addToSendQueue(Packet var1) {
@@ -288,7 +288,7 @@ public class LANClientNetworkManager implements INetworkManager {
 					pkt.readPacketData(new DataInputStream(bai));
 					pkt.processPacket(theNetHandler);
 				}catch(IOException ex) {
-					System.err.println("Could not deserialize a " + data.length + " byte long minecraft packet of type '" + (data.length <= 0 ? -1 : (int)(data[0] & 0xFF)) + "' from remote LAN world");
+					System.err.println("Could not deserialize a " + data.length + " byte long minecraft packet of type '" + (data.length <= 0 ? -1 : (data[0] & 0xFF)) + "' from remote LAN world");
 				}catch(Throwable t) {
 					System.err.println("Could not process minecraft packet 0x" + Integer.toHexString(pkt.getPacketId()) + " class '" + pkt.getClass().getSimpleName() + "' from remote LAN world");
 					t.printStackTrace();

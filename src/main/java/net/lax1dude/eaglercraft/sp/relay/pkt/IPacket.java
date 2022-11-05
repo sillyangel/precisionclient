@@ -87,7 +87,7 @@ public class IPacket {
 	
 	public static void writeASCII(OutputStream is, String txt) throws IOException {
 		for(int i = 0, l = txt.length(); i < l; ++i) {
-			is.write((int)txt.charAt(i));
+			is.write(txt.charAt(i));
 		}
 	}
 	
@@ -107,7 +107,7 @@ public class IPacket {
 			int l = txt.length();
 			is.write(l);
 			for(int i = 0; i < l; ++i) {
-				is.write((int)txt.charAt(i));
+				is.write(txt.charAt(i));
 			}
 		}
 	}
@@ -131,7 +131,7 @@ public class IPacket {
 			is.write((l >> 8) & 0xFF);
 			is.write(l & 0xFF);
 			for(int i = 0; i < l; ++i) {
-				is.write((int)txt.charAt(i));
+				is.write(txt.charAt(i));
 			}
 		}
 	}

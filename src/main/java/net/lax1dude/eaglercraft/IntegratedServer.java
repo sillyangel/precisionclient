@@ -27,7 +27,7 @@ public class IntegratedServer {
 	private static String[] loadLocale = null;
 	private static String[] loadStats = null;
 	private static boolean isPaused = false;
-	private static List<String> integratedServerTPS = new LinkedList();
+	private static final List<String> integratedServerTPS = new LinkedList();
 	
 	public static final int preferredRelayVersion = 1;
 	

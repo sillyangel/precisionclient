@@ -8,23 +8,23 @@ public class ChunkProviderClient implements IChunkProvider {
 	 * The completely empty chunk used by ChunkProviderClient when chunkMapping
 	 * doesn't contain the requested coordinates.
 	 */
-	private Chunk blankChunk;
+	private final Chunk blankChunk;
 
 	/**
 	 * The mapping between ChunkCoordinates and Chunks that ChunkProviderClient
 	 * maintains.
 	 */
-	private LongHashMap chunkMapping = new LongHashMap();
+	private final LongHashMap chunkMapping = new LongHashMap();
 
 	/**
 	 * This may have been intended to be an iterable version of all currently loaded
 	 * chunks (MultiplayerChunkCache), with identical contents to chunkMapping's
 	 * values. However it is never actually added to.
 	 */
-	private List chunkListing = new ArrayList();
+	private final List chunkListing = new ArrayList();
 
 	/** Reference to the World object. */
-	private World worldObj;
+	private final World worldObj;
 
 	public ChunkProviderClient(World par1World) {
 		this.blankChunk = new EmptyChunk(par1World, 0, 0);

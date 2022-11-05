@@ -20,8 +20,7 @@ public class BlockPortal extends BlockBreakable {
 			int var6;
 
 			for (var6 = par3; !par1World.doesBlockHaveSolidTopSurface(par2, var6, par4) && var6 > 0; --var6) {
-				;
-			}
+            }
 
 			if (var6 > 0 && !par1World.isBlockNormalCube(par2, var6 + 1, par4)) {
 				Entity var7 = ItemMonsterPlacer.spawnCreature(par1World, 57, (double) par2 + 0.5D, (double) var6 + 1.1D, (double) par4 + 0.5D);
@@ -148,8 +147,7 @@ public class BlockPortal extends BlockBreakable {
 		int var8;
 
 		for (var8 = par3; par1World.getBlockId(par2, var8 - 1, par4) == this.blockID; --var8) {
-			;
-		}
+        }
 
 		if (par1World.getBlockId(par2, var8 - 1, par4) != Block.obsidian.blockID) {
 			par1World.setBlockToAir(par2, par3, par4);
@@ -157,8 +155,7 @@ public class BlockPortal extends BlockBreakable {
 			int var9;
 
 			for (var9 = 1; var9 < 4 && par1World.getBlockId(par2, var8 + var9, par4) == this.blockID; ++var9) {
-				;
-			}
+            }
 
 			if (var9 == 3 && par1World.getBlockId(par2, var8 + var9, par4) == Block.obsidian.blockID) {
 				boolean var10 = par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID;
@@ -192,7 +189,7 @@ public class BlockPortal extends BlockBreakable {
 			boolean var9 = par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == this.blockID && par1IBlockAccess.getBlockId(par2, par3, par4 + 2) != this.blockID;
 			boolean var10 = var6 || var7;
 			boolean var11 = var8 || var9;
-			return var10 && par5 == 4 ? true : (var10 && par5 == 5 ? true : (var11 && par5 == 2 ? true : var11 && par5 == 3));
+			return var10 && par5 == 4 || (var10 && par5 == 5 || (var11 && par5 == 2 || var11 && par5 == 3));
 		}
 	}
 
@@ -253,9 +250,9 @@ public class BlockPortal extends BlockBreakable {
 		}
 
 		for (int var6 = 0; var6 < 4; ++var6) {
-			double var7 = (double) ((float) par2 + par5Random.nextFloat());
-			double var9 = (double) ((float) par3 + par5Random.nextFloat());
-			double var11 = (double) ((float) par4 + par5Random.nextFloat());
+			double var7 = (float) par2 + par5Random.nextFloat();
+			double var9 = (float) par3 + par5Random.nextFloat();
+			double var11 = (float) par4 + par5Random.nextFloat();
 			double var13 = 0.0D;
 			double var15 = 0.0D;
 			double var17 = 0.0D;
@@ -266,10 +263,10 @@ public class BlockPortal extends BlockBreakable {
 
 			if (par1World.getBlockId(par2 - 1, par3, par4) != this.blockID && par1World.getBlockId(par2 + 1, par3, par4) != this.blockID) {
 				var7 = (double) par2 + 0.5D + 0.25D * (double) var19;
-				var13 = (double) (par5Random.nextFloat() * 2.0F * (float) var19);
+				var13 = par5Random.nextFloat() * 2.0F * (float) var19;
 			} else {
 				var11 = (double) par4 + 0.5D + 0.25D * (double) var19;
-				var17 = (double) (par5Random.nextFloat() * 2.0F * (float) var19);
+				var17 = par5Random.nextFloat() * 2.0F * (float) var19;
 			}
 
 			par1World.spawnParticle("portal", var7, var9, var11, var13, var15, var17);

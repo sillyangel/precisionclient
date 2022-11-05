@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderIronGolem extends RenderLiving {
 	/** Iron Golem's Model. */
-	private ModelIronGolem ironGolemModel;
+	private final ModelIronGolem ironGolemModel;
 
 	public RenderIronGolem() {
 		super(new ModelIronGolem(), 0.5F);
@@ -52,7 +52,7 @@ public class RenderIronGolem extends RenderLiving {
 			int var4 = par1EntityIronGolem.getBrightnessForRender(par2);
 			int var5 = var4 % 65536;
 			int var6 = var4 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5 / 1.0F, (float) var6 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var5, (float) var6);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			terrain.bindTexture();

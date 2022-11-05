@@ -27,7 +27,7 @@ public abstract class WorldProvider {
 	public int dimensionId = 0;
 
 	/** Array for sunrise/sunset colors (RGBA) */
-	private float[] colorsSunriseSunset = new float[4];
+	private final float[] colorsSunriseSunset = new float[4];
 
 	/**
 	 * associate an existing world with a World provider, and setup its
@@ -145,7 +145,7 @@ public abstract class WorldProvider {
 		var4 *= var3 * 0.94F + 0.06F;
 		var5 *= var3 * 0.94F + 0.06F;
 		var6 *= var3 * 0.91F + 0.09F;
-		return this.worldObj.getWorldVec3Pool().getVecFromPool((double) var4, (double) var5, (double) var6);
+		return this.worldObj.getWorldVec3Pool().getVecFromPool(var4, var5, var6);
 	}
 
 	/**
@@ -157,7 +157,7 @@ public abstract class WorldProvider {
 	}
 
 	public static WorldProvider getProviderForDimension(int par0) {
-		return (WorldProvider) (par0 == -1 ? new WorldProviderHell() : (par0 == 0 ? new WorldProviderSurface() : (par0 == 1 ? new WorldProviderEnd() : null)));
+		return par0 == -1 ? new WorldProviderHell() : (par0 == 0 ? new WorldProviderSurface() : (par0 == 1 ? new WorldProviderEnd() : null));
 	}
 
 	/**

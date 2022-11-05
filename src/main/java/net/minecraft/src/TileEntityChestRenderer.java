@@ -7,10 +7,10 @@ import java.util.Calendar;
 
 public class TileEntityChestRenderer extends TileEntitySpecialRenderer {
 	/** The normal small chest model. */
-	private ModelChest chestModel = new ModelChest();
+	private final ModelChest chestModel = new ModelChest();
 
 	/** The large double chest model. */
-	private ModelChest largeChestModel = new ModelLargeChest();
+	private final ModelChest largeChestModel = new ModelLargeChest();
 
 	/** If true, chests will be rendered with the Christmas present textures. */
 	private boolean isChristmas;
@@ -108,7 +108,7 @@ public class TileEntityChestRenderer extends TileEntitySpecialRenderer {
 				EaglerAdapter.glTranslatef(0.0F, 0.0F, -1.0F);
 			}
 
-			EaglerAdapter.glRotatef((float) var11, 0.0F, 1.0F, 0.0F);
+			EaglerAdapter.glRotatef(var11, 0.0F, 1.0F, 0.0F);
 			EaglerAdapter.glTranslatef(-0.5F, -0.5F, -0.5F);
 			float var12 = par1TileEntityChest.prevLidAngle + (par1TileEntityChest.lidAngle - par1TileEntityChest.prevLidAngle) * par8;
 			float var13;

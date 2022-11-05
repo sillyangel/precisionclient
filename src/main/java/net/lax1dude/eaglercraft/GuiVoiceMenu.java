@@ -122,7 +122,7 @@ public class GuiVoiceMenu extends GuiScreen  {
 			if(showSliderBlocks) {
 				
 				drawRect(width / 2 - 86, height / 4 - 1, this.width / 2 + 86, height / 3 + 64 + height / 16, 0xFFDDDDDD);
-				drawRect(width / 2 - 85, height / 4 + 0, this.width / 2 + 85, height / 3 + 63 + height / 16, 0xFF333333);
+				drawRect(width / 2 - 85, height / 4, this.width / 2 + 85, height / 3 + 63 + height / 16, 0xFF333333);
 				
 				drawCenteredString(this.fontRenderer, ts.translateKey("voice.radiusTitle"), this.width / 2, height / 4 + 9, 16777215);
 				drawString(this.fontRenderer, ts.translateKey("voice.radiusLabel"), (this.width - 150) / 2 + 3, height / 3 + 6, 0xCCCCCC);
@@ -308,10 +308,10 @@ public class GuiVoiceMenu extends GuiScreen  {
 						EaglerAdapter.glScalef(0.78f, 0.78f, 0.78f);
 						
 						if(muted) {
-							EaglerAdapter.glColor4f(1.0f * cm, 0.2f * cm, 0.2f * cm, 1.0f);
+							EaglerAdapter.glColor4f(cm, 0.2f * cm, 0.2f * cm, 1.0f);
 							drawTexturedModalRect(0, 0, 64, 176, 16, 16);
 						}else if(speaking) {
-							EaglerAdapter.glColor4f(1.0f * cm, 1.0f * cm, 1.0f * cm, 1.0f);
+							EaglerAdapter.glColor4f(cm, cm, cm, 1.0f);
 							drawTexturedModalRect(0, 0, 64, 144, 16, 16);
 						}else {
 							EaglerAdapter.glColor4f(0.65f * cm, 0.65f * cm, 0.65f * cm, 1.0f);
@@ -335,7 +335,7 @@ public class GuiVoiceMenu extends GuiScreen  {
 				}
 				
 			}else if(status == Voice.VoiceStatus.CONNECTING) {
-				float fadeTimer = MathHelper.sin((float)((System.currentTimeMillis() % 700l) * 0.0014d) * 3.14159f) * 0.35f + 0.3f;
+				float fadeTimer = MathHelper.sin((float)((System.currentTimeMillis() % 700L) * 0.0014d) * 3.14159f) * 0.35f + 0.3f;
 				txt = ts.translateKey("voice.connecting");
 				EaglerAdapter.glEnable(EaglerAdapter.GL_BLEND);
 				EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
@@ -362,7 +362,7 @@ public class GuiVoiceMenu extends GuiScreen  {
 		int RADIUSwidth = fontRenderer.getStringWidth(RADIUSstring);
 		int GLOBALwidth = fontRenderer.getStringWidth(GLOBALstring);
 		
-		voiceButtonOFFposX = 0 - OFFwidth - 8 - RADIUSwidth - 8 - GLOBALwidth;
+		voiceButtonOFFposX = -OFFwidth - 8 - RADIUSwidth - 8 - GLOBALwidth;
 		voiceButtonOFFposY = 20;
 		voiceButtonOFFposW = OFFwidth + 5;
 		voiceButtonOFFposH = 15;
@@ -372,7 +372,7 @@ public class GuiVoiceMenu extends GuiScreen  {
 		voiceScreenButtonOFFposW = voiceButtonOFFposW * 3 / 4;
 		voiceScreenButtonOFFposH = voiceButtonOFFposH * 3 / 4;
 
-		voiceButtonRADIUSposX = 0 - RADIUSwidth - 8 - GLOBALwidth;
+		voiceButtonRADIUSposX = -RADIUSwidth - 8 - GLOBALwidth;
 		voiceButtonRADIUSposY = 20;
 		voiceButtonRADIUSposW = RADIUSwidth + 5;
 		voiceButtonRADIUSposH = 15;
@@ -382,7 +382,7 @@ public class GuiVoiceMenu extends GuiScreen  {
 		voiceScreenButtonRADIUSposW = voiceButtonRADIUSposW * 3 / 4;
 		voiceScreenButtonRADIUSposH = voiceButtonRADIUSposH * 3 / 4;
 
-		voiceButtonGLOBALposX = 0 - GLOBALwidth;
+		voiceButtonGLOBALposX = -GLOBALwidth;
 		voiceButtonGLOBALposY = 20;
 		voiceButtonGLOBALposW = GLOBALwidth + 5;
 		voiceButtonGLOBALposH = 15;

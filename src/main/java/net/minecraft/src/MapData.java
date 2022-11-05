@@ -27,7 +27,7 @@ public class MapData extends WorldSavedData {
 	 * Holds a reference to the players who own a copy of the map and a reference to
 	 * their MapInfo
 	 */
-	private Map playersHashMap = new HashMap();
+	private final Map playersHashMap = new HashMap();
 	public Map playersVisibleOnMap = new LinkedHashMap();
 
 	public MapData(String par1Str) {
@@ -112,7 +112,7 @@ public class MapData extends WorldSavedData {
 
 			if (!var4.entityplayerObj.isDead && (var4.entityplayerObj.inventory.hasItemStack(par2ItemStack) || par2ItemStack.isOnItemFrame())) {
 				if (!par2ItemStack.isOnItemFrame() && var4.entityplayerObj.dimension == this.dimension) {
-					this.func_82567_a(0, var4.entityplayerObj.worldObj, var4.entityplayerObj.getCommandSenderName(), var4.entityplayerObj.posX, var4.entityplayerObj.posZ, (double) var4.entityplayerObj.rotationYaw);
+					this.func_82567_a(0, var4.entityplayerObj.worldObj, var4.entityplayerObj.getCommandSenderName(), var4.entityplayerObj.posX, var4.entityplayerObj.posZ, var4.entityplayerObj.rotationYaw);
 				}
 			} else {
 				this.playersHashMap.remove(var4.entityplayerObj);
@@ -121,8 +121,8 @@ public class MapData extends WorldSavedData {
 		}
 
 		if (par2ItemStack.isOnItemFrame()) {
-			this.func_82567_a(1, par1EntityPlayer.worldObj, "frame-" + par2ItemStack.getItemFrame().entityId, (double) par2ItemStack.getItemFrame().xPosition, (double) par2ItemStack.getItemFrame().zPosition,
-					(double) (par2ItemStack.getItemFrame().hangingDirection * 90));
+			this.func_82567_a(1, par1EntityPlayer.worldObj, "frame-" + par2ItemStack.getItemFrame().entityId, par2ItemStack.getItemFrame().xPosition, par2ItemStack.getItemFrame().zPosition,
+                    par2ItemStack.getItemFrame().hangingDirection * 90);
 		}
 	}
 

@@ -180,7 +180,7 @@ public class TileEntityChest extends TileEntity implements IInventory {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) == this && par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	/**
@@ -274,7 +274,7 @@ public class TileEntityChest extends TileEntity implements IInventory {
 
 	private boolean func_94044_a(int par1, int par2, int par3) {
 		Block var4 = Block.blocksList[this.worldObj.getBlockId(par1, par2, par3)];
-		return var4 != null && var4 instanceof BlockChest ? ((BlockChest) var4).isTrapped == this.func_98041_l() : false;
+		return var4 != null && var4 instanceof BlockChest && ((BlockChest) var4).isTrapped == this.func_98041_l();
 	}
 
 	/**

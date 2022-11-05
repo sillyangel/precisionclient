@@ -8,7 +8,7 @@ import net.minecraft.src.StringTranslate;
 public class GuiScreenAddRelay extends GuiScreen {
 	
 	/** This GUI's parent GUI. */
-	private GuiScreenRelay parentGui;
+	private final GuiScreenRelay parentGui;
 	private GuiTextField serverAddress;
 	private GuiTextField serverName;
 

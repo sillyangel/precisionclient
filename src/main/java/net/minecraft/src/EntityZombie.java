@@ -247,7 +247,7 @@ public class EntityZombie extends EntityMob {
 			}
 
 			this.worldObj.spawnEntityInWorld(var2);
-			this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1016, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+			this.worldObj.playAuxSFXAtEntity(null, 1016, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
 		}
 	}
 
@@ -287,7 +287,7 @@ public class EntityZombie extends EntityMob {
 			}
 
 			if (var2.stackSize <= 0) {
-				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack) null);
+				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, null);
 			}
 
 			return true;
@@ -340,7 +340,7 @@ public class EntityZombie extends EntityMob {
 		this.worldObj.removeEntity(this);
 		this.worldObj.spawnEntityInWorld(var1);
 		var1.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
-		this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1017, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+		this.worldObj.playAuxSFXAtEntity(null, 1017, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
 	}
 
 	/**

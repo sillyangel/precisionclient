@@ -12,7 +12,7 @@ public enum EnumRarity {
 	/** Rarity name. */
 	public final String rarityName;
 
-	private EnumRarity(int par3, String par4Str) {
+	EnumRarity(int par3, String par4Str) {
 		this.rarityColor = par3;
 		this.rarityName = par4Str;
 	}

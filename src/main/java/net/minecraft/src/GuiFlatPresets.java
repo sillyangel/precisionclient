@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GuiFlatPresets extends GuiScreen {
 	/** RenderItem instance used to render preset icons. */
-	private static RenderItem presetIconRenderer = new RenderItem();
+	private static final RenderItem presetIconRenderer = new RenderItem();
 
 	/** List of defined flat world presets. */
 	private static final List presets = new ArrayList();
@@ -117,7 +117,7 @@ public class GuiFlatPresets extends GuiScreen {
 	 */
 	private static void addPresetNoFeatures(String par0Str, int par1, BiomeGenBase par2BiomeGenBase,
 			FlatLayerInfo... par3ArrayOfFlatLayerInfo) {
-		addPreset(par0Str, par1, par2BiomeGenBase, (List) null, par3ArrayOfFlatLayerInfo);
+		addPreset(par0Str, par1, par2BiomeGenBase, null, par3ArrayOfFlatLayerInfo);
 	}
 
 	/**
@@ -169,42 +169,42 @@ public class GuiFlatPresets extends GuiScreen {
 	}
 
 	static {
-		addPreset("Classic Flat", Block.grass.blockID, BiomeGenBase.plains, Arrays.asList(new String[] { "village" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(1, Block.grass.blockID),
-						new FlatLayerInfo(2, Block.dirt.blockID), new FlatLayerInfo(1, Block.bedrock.blockID) });
-		addPreset("Tunnelers\' Dream", Block.stone.blockID, BiomeGenBase.extremeHills,
-				Arrays.asList(new String[] { "biome_1", "dungeon", "decoration", "stronghold", "mineshaft" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(1, Block.grass.blockID),
-						new FlatLayerInfo(5, Block.dirt.blockID), new FlatLayerInfo(230, Block.stone.blockID),
-						new FlatLayerInfo(1, Block.bedrock.blockID) });
+		addPreset("Classic Flat", Block.grass.blockID, BiomeGenBase.plains, Arrays.asList("village"),
+                new FlatLayerInfo(1, Block.grass.blockID),
+                new FlatLayerInfo(2, Block.dirt.blockID), new FlatLayerInfo(1, Block.bedrock.blockID));
+		addPreset("Tunnelers' Dream", Block.stone.blockID, BiomeGenBase.extremeHills,
+				Arrays.asList("biome_1", "dungeon", "decoration", "stronghold", "mineshaft"),
+                new FlatLayerInfo(1, Block.grass.blockID),
+                new FlatLayerInfo(5, Block.dirt.blockID), new FlatLayerInfo(230, Block.stone.blockID),
+                new FlatLayerInfo(1, Block.bedrock.blockID));
 		addPreset("Water World", Block.waterMoving.blockID, BiomeGenBase.plains,
-				Arrays.asList(new String[] { "village", "biome_1" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(90, Block.waterStill.blockID),
-						new FlatLayerInfo(5, Block.sand.blockID), new FlatLayerInfo(5, Block.dirt.blockID),
-						new FlatLayerInfo(5, Block.stone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID) });
+				Arrays.asList("village", "biome_1"),
+                new FlatLayerInfo(90, Block.waterStill.blockID),
+                new FlatLayerInfo(5, Block.sand.blockID), new FlatLayerInfo(5, Block.dirt.blockID),
+                new FlatLayerInfo(5, Block.stone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID));
 		addPreset("Overworld", Block.tallGrass.blockID, BiomeGenBase.plains,
-				Arrays.asList(new String[] { "village", "biome_1", "decoration", "stronghold", "mineshaft", "dungeon",
-						"lake", "lava_lake" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(1, Block.grass.blockID),
-						new FlatLayerInfo(3, Block.dirt.blockID), new FlatLayerInfo(59, Block.stone.blockID),
-						new FlatLayerInfo(1, Block.bedrock.blockID) });
+				Arrays.asList("village", "biome_1", "decoration", "stronghold", "mineshaft", "dungeon",
+                        "lake", "lava_lake"),
+                new FlatLayerInfo(1, Block.grass.blockID),
+                new FlatLayerInfo(3, Block.dirt.blockID), new FlatLayerInfo(59, Block.stone.blockID),
+                new FlatLayerInfo(1, Block.bedrock.blockID));
 		addPreset("Snowy Kingdom", Block.snow.blockID, BiomeGenBase.icePlains,
-				Arrays.asList(new String[] { "village", "biome_1" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(1, Block.snow.blockID),
-						new FlatLayerInfo(1, Block.grass.blockID), new FlatLayerInfo(3, Block.dirt.blockID),
-						new FlatLayerInfo(59, Block.stone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID) });
+				Arrays.asList("village", "biome_1"),
+                new FlatLayerInfo(1, Block.snow.blockID),
+                new FlatLayerInfo(1, Block.grass.blockID), new FlatLayerInfo(3, Block.dirt.blockID),
+                new FlatLayerInfo(59, Block.stone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID));
 		addPreset("Bottomless Pit", Item.feather.itemID, BiomeGenBase.plains,
-				Arrays.asList(new String[] { "village", "biome_1" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(1, Block.grass.blockID),
-						new FlatLayerInfo(3, Block.dirt.blockID), new FlatLayerInfo(2, Block.cobblestone.blockID) });
+				Arrays.asList("village", "biome_1"),
+                new FlatLayerInfo(1, Block.grass.blockID),
+                new FlatLayerInfo(3, Block.dirt.blockID), new FlatLayerInfo(2, Block.cobblestone.blockID));
 		addPreset("Desert", Block.sand.blockID, BiomeGenBase.desert,
 				Arrays.asList(
-						new String[] { "village", "biome_1", "decoration", "stronghold", "mineshaft", "dungeon" }),
-				new FlatLayerInfo[] { new FlatLayerInfo(8, Block.sand.blockID),
-						new FlatLayerInfo(52, Block.sandStone.blockID), new FlatLayerInfo(3, Block.stone.blockID),
-						new FlatLayerInfo(1, Block.bedrock.blockID) });
+                        "village", "biome_1", "decoration", "stronghold", "mineshaft", "dungeon"),
+                new FlatLayerInfo(8, Block.sand.blockID),
+                new FlatLayerInfo(52, Block.sandStone.blockID), new FlatLayerInfo(3, Block.stone.blockID),
+                new FlatLayerInfo(1, Block.bedrock.blockID));
 		addPresetNoFeatures("Redstone Ready", Item.redstone.itemID, BiomeGenBase.desert,
-				new FlatLayerInfo[] { new FlatLayerInfo(52, Block.sandStone.blockID),
-						new FlatLayerInfo(3, Block.stone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID) });
+                new FlatLayerInfo(52, Block.sandStone.blockID),
+                new FlatLayerInfo(3, Block.stone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID));
 	}
 }

@@ -55,10 +55,10 @@ public class Gui {
 		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_SRC_ALPHA, EaglerAdapter.GL_ONE_MINUS_SRC_ALPHA);
 		EaglerAdapter.glColor4f(var6, var7, var8, var10);
 		var9.startDrawingQuads();
-		var9.addVertex((double) par0, (double) par3, 0.0D);
-		var9.addVertex((double) par2, (double) par3, 0.0D);
-		var9.addVertex((double) par2, (double) par1, 0.0D);
-		var9.addVertex((double) par0, (double) par1, 0.0D);
+		var9.addVertex(par0, par3, 0.0D);
+		var9.addVertex(par2, par3, 0.0D);
+		var9.addVertex(par2, par1, 0.0D);
+		var9.addVertex(par0, par1, 0.0D);
 		var9.draw();
 		EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
@@ -84,11 +84,11 @@ public class Gui {
 		Tessellator var15 = Tessellator.instance;
 		var15.startDrawingQuads();
 		var15.setColorRGBA_F(var8, var9, var10, var7);
-		var15.addVertex((double) par3, (double) par2, (double) this.zLevel);
-		var15.addVertex((double) par1, (double) par2, (double) this.zLevel);
+		var15.addVertex(par3, par2, this.zLevel);
+		var15.addVertex(par1, par2, this.zLevel);
 		var15.setColorRGBA_F(var12, var13, var14, var11);
-		var15.addVertex((double) par1, (double) par4, (double) this.zLevel);
-		var15.addVertex((double) par3, (double) par4, (double) this.zLevel);
+		var15.addVertex(par1, par4, this.zLevel);
+		var15.addVertex(par3, par4, this.zLevel);
 		var15.draw();
 		EaglerAdapter.glShadeModel(EaglerAdapter.GL_FLAT);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
@@ -119,10 +119,10 @@ public class Gui {
 		float var8 = 0.00390625F;
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + par6), (double) this.zLevel, (double) ((float) (par3 + 0) * var7), (double) ((float) (par4 + par6) * var8));
-		var9.addVertexWithUV((double) (par1 + par5), (double) (par2 + par6), (double) this.zLevel, (double) ((float) (par3 + par5) * var7), (double) ((float) (par4 + par6) * var8));
-		var9.addVertexWithUV((double) (par1 + par5), (double) (par2 + 0), (double) this.zLevel, (double) ((float) (par3 + par5) * var7), (double) ((float) (par4 + 0) * var8));
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), (double) this.zLevel, (double) ((float) (par3 + 0) * var7), (double) ((float) (par4 + 0) * var8));
+		var9.addVertexWithUV(par1, par2 + par6, this.zLevel, (float) (par3) * var7, (float) (par4 + par6) * var8);
+		var9.addVertexWithUV(par1 + par5, par2 + par6, this.zLevel, (float) (par3 + par5) * var7, (float) (par4 + par6) * var8);
+		var9.addVertexWithUV(par1 + par5, par2, this.zLevel, (float) (par3 + par5) * var7, (float) (par4) * var8);
+		var9.addVertexWithUV(par1, par2, this.zLevel, (float) (par3) * var7, (float) (par4) * var8);
 		var9.draw();
 	}
 	
@@ -131,20 +131,20 @@ public class Gui {
 		float var8 = 0.00390625F;
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + par6), 0.0D, (double) ((float) (par3 + 0) * var7), (double) ((float) (par4 + par6) * var8));
-		var9.addVertexWithUV((double) (par1 + par5), (double) (par2 + par6), 0.0D, (double) ((float) (par3 + par5) * var7), (double) ((float) (par4 + par6) * var8));
-		var9.addVertexWithUV((double) (par1 + par5), (double) (par2 + 0), 0.0D, (double) ((float) (par3 + par5) * var7), (double) ((float) (par4 + 0) * var8));
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), 0.0D, (double) ((float) (par3 + 0) * var7), (double) ((float) (par4 + 0) * var8));
+		var9.addVertexWithUV(par1, par2 + par6, 0.0D, (float) (par3) * var7, (float) (par4 + par6) * var8);
+		var9.addVertexWithUV(par1 + par5, par2 + par6, 0.0D, (float) (par3 + par5) * var7, (float) (par4 + par6) * var8);
+		var9.addVertexWithUV(par1 + par5, par2, 0.0D, (float) (par3 + par5) * var7, (float) (par4) * var8);
+		var9.addVertexWithUV(par1, par2, 0.0D, (float) (par3) * var7, (float) (par4) * var8);
 		var9.draw();
 	}
 
 	public void drawTexturedModelRectFromIcon(int par1, int par2, Icon par3Icon, int par4, int par5) {
 		Tessellator var6 = Tessellator.instance;
 		var6.startDrawingQuads();
-		var6.addVertexWithUV((double) (par1 + 0), (double) (par2 + par5), (double) this.zLevel, (double) par3Icon.getMinU(), (double) par3Icon.getMaxV());
-		var6.addVertexWithUV((double) (par1 + par4), (double) (par2 + par5), (double) this.zLevel, (double) par3Icon.getMaxU(), (double) par3Icon.getMaxV());
-		var6.addVertexWithUV((double) (par1 + par4), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMaxU(), (double) par3Icon.getMinV());
-		var6.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMinU(), (double) par3Icon.getMinV());
+		var6.addVertexWithUV(par1, par2 + par5, this.zLevel, par3Icon.getMinU(), par3Icon.getMaxV());
+		var6.addVertexWithUV(par1 + par4, par2 + par5, this.zLevel, par3Icon.getMaxU(), par3Icon.getMaxV());
+		var6.addVertexWithUV(par1 + par4, par2, this.zLevel, par3Icon.getMaxU(), par3Icon.getMinV());
+		var6.addVertexWithUV(par1, par2, this.zLevel, par3Icon.getMinU(), par3Icon.getMinV());
 		var6.draw();
 	}
 }

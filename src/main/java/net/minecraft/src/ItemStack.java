@@ -328,10 +328,7 @@ public final class ItemStack {
 	}
 
 	public static boolean areItemStackTagsEqual(ItemStack par0ItemStack, ItemStack par1ItemStack) {
-		return par0ItemStack == null && par1ItemStack == null ? true
-				: (par0ItemStack != null && par1ItemStack != null
-						? (par0ItemStack.stackTagCompound == null && par1ItemStack.stackTagCompound != null ? false : par0ItemStack.stackTagCompound == null || par0ItemStack.stackTagCompound.equals(par1ItemStack.stackTagCompound))
-						: false);
+		return par0ItemStack == null && par1ItemStack == null || (par0ItemStack != null && par1ItemStack != null && ((par0ItemStack.stackTagCompound != null || par1ItemStack.stackTagCompound == null) && (par0ItemStack.stackTagCompound == null || par0ItemStack.stackTagCompound.equals(par1ItemStack.stackTagCompound))));
 	}
 
 	/**
@@ -339,7 +336,7 @@ public final class ItemStack {
 	 * ItemStacks are equal
 	 */
 	public static boolean areItemStacksEqual(ItemStack par0ItemStack, ItemStack par1ItemStack) {
-		return par0ItemStack == null && par1ItemStack == null ? true : (par0ItemStack != null && par1ItemStack != null ? par0ItemStack.isItemStackEqual(par1ItemStack) : false);
+		return par0ItemStack == null && par1ItemStack == null || (par0ItemStack != null && par1ItemStack != null && par0ItemStack.isItemStackEqual(par1ItemStack));
 	}
 
 	/**
@@ -347,10 +344,7 @@ public final class ItemStack {
 	 * ItemStacks are equal
 	 */
 	private boolean isItemStackEqual(ItemStack par1ItemStack) {
-		return this.stackSize != par1ItemStack.stackSize ? false
-				: (this.itemID != par1ItemStack.itemID ? false
-						: (this.itemDamage != par1ItemStack.itemDamage ? false
-								: (this.stackTagCompound == null && par1ItemStack.stackTagCompound != null ? false : this.stackTagCompound == null || this.stackTagCompound.equals(par1ItemStack.stackTagCompound))));
+		return this.stackSize == par1ItemStack.stackSize && (this.itemID == par1ItemStack.itemID && (this.itemDamage == par1ItemStack.itemDamage && ((this.stackTagCompound != null || par1ItemStack.stackTagCompound == null) && (this.stackTagCompound == null || this.stackTagCompound.equals(par1ItemStack.stackTagCompound)))));
 	}
 
 	/**
@@ -471,7 +465,7 @@ public final class ItemStack {
 	 * Returns true if the itemstack has a display name
 	 */
 	public boolean hasDisplayName() {
-		return this.stackTagCompound == null ? false : (!this.stackTagCompound.hasKey("display") ? false : this.stackTagCompound.getCompoundTag("display").hasKey("Name"));
+		return this.stackTagCompound != null && (this.stackTagCompound.hasKey("display") && this.stackTagCompound.getCompoundTag("display").hasKey("Name"));
 	}
 
 	/**
@@ -495,9 +489,9 @@ public final class ItemStack {
 			}
 
 			if (this.getHasSubtypes()) {
-				var5 = var5 + String.format("#%04d/%d%s", new Object[] { Integer.valueOf(this.itemID), Integer.valueOf(this.itemDamage), var6 });
+				var5 = var5 + String.format("#%04d/%d%s", Integer.valueOf(this.itemID), Integer.valueOf(this.itemDamage), var6);
 			} else {
-				var5 = var5 + String.format("#%04d%s", new Object[] { Integer.valueOf(this.itemID), var6 });
+				var5 = var5 + String.format("#%04d%s", Integer.valueOf(this.itemID), var6);
 			}
 		} else if (!this.hasDisplayName() && this.itemID == Item.map.itemID) {
 			var5 = var5 + " #" + this.itemDamage;
@@ -562,7 +556,7 @@ public final class ItemStack {
 	 * True if it is a tool and has no enchantments to begin with
 	 */
 	public boolean isItemEnchantable() {
-		return !this.getItem().isItemTool(this) ? false : !this.isItemEnchanted();
+		return this.getItem().isItemTool(this) && !this.isItemEnchanted();
 	}
 
 	/**
@@ -580,7 +574,7 @@ public final class ItemStack {
 		NBTTagList var3 = (NBTTagList) this.stackTagCompound.getTag("ench");
 		NBTTagCompound var4 = new NBTTagCompound();
 		var4.setShort("id", (short) par1Enchantment.effectId);
-		var4.setShort("lvl", (short) ((byte) par2));
+		var4.setShort("lvl", (byte) par2);
 		var3.appendTag(var4);
 	}
 

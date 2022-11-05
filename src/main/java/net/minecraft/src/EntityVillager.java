@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class EntityVillager extends EntityAgeable implements INpc, IMerchant {
-	private int randomTickDivider;
+	private final int randomTickDivider;
 	private boolean isMating;
 	private boolean isPlaying;
 

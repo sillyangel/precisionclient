@@ -102,6 +102,6 @@ public class TextureManager {
 	}
 
 	public Texture createEmptyTexture(String par1Str, int par2, int par3, int par4, int par5) {
-		return this.makeTexture(par1Str, par2, par3, par4, EaglerAdapter.GL_CLAMP, par5, EaglerAdapter.GL_NEAREST, EaglerAdapter.GL_NEAREST, false, (EaglerImage) null);
+		return this.makeTexture(par1Str, par2, par3, par4, EaglerAdapter.GL_CLAMP, par5, EaglerAdapter.GL_NEAREST, EaglerAdapter.GL_NEAREST, false, null);
 	}
 }

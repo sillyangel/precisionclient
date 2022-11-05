@@ -1,13 +1,14 @@
 package net.lax1dude.eaglercraft;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public abstract class BaseNCodec {
 	
-    static enum CodecPolicy {
-    	STRICT,LENIANT;
-	}
+    enum CodecPolicy {
+    	STRICT,LENIANT
+    }
 
 	/**
      * Holds thread context so classes can be thread-safe.
@@ -423,7 +424,7 @@ public abstract class BaseNCodec {
      * @return a byte array containing binary data
      */
     public byte[] decode(final String pArray) {
-        return decode(pArray.getBytes(Charset.forName("UTF-8")));
+        return decode(pArray.getBytes(StandardCharsets.UTF_8));
     }
 
     /**
@@ -492,7 +493,7 @@ public abstract class BaseNCodec {
      * This is a duplicate of {@link #encodeToString(byte[])}; it was merged during refactoring.
     */
     public String encodeAsString(final byte[] pArray){
-        return new String(encode(pArray), Charset.forName("UTF-8"));
+        return new String(encode(pArray), StandardCharsets.UTF_8);
     }
 
     /**
@@ -504,7 +505,7 @@ public abstract class BaseNCodec {
      * @return A String containing only Base-N character data
      */
     public String encodeToString(final byte[] pArray) {
-        return new String(encode(pArray), Charset.forName("UTF-8"));
+        return new String(encode(pArray), StandardCharsets.UTF_8);
     }
 
     /**
@@ -622,7 +623,7 @@ public abstract class BaseNCodec {
      * @see #isInAlphabet(byte[], boolean)
      */
     public boolean isInAlphabet(final String basen) {
-        return isInAlphabet(basen.getBytes(Charset.forName("UTF-8")), true);
+        return isInAlphabet(basen.getBytes(StandardCharsets.UTF_8), true);
     }
 
     /**

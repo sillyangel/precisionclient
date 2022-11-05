@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class GuiCreateFlatWorld extends GuiScreen {
-	private static RenderItem theRenderItem = new RenderItem();
+	private static final RenderItem theRenderItem = new RenderItem();
 	private final GuiCreateWorld createWorldGui;
 	private FlatGeneratorInfo theFlatGeneratorInfo = FlatGeneratorInfo.getDefaultFlatGenerator();
 	private String customizationTitle;

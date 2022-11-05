@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class GuiScreenConfirmation extends GuiYesNo {
-	private String field_96288_n;
+	private final String field_96288_n;
 
 	public GuiScreenConfirmation(GuiScreen par1GuiScreen, String par2Str, String par3Str, String par4Str, int par5) {
 		super(par1GuiScreen, par2Str, par3Str, par5);

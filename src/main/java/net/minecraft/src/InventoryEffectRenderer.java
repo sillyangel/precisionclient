@@ -63,7 +63,7 @@ public abstract class InventoryEffectRenderer extends GuiContainer {
 
 				if (var8.hasStatusIcon()) {
 					int var9 = var8.getStatusIconIndex();
-					this.drawTexturedModalRect(var1 + 6, var2 + 7, 0 + var9 % 8 * 18, 198 + var9 / 8 * 18, 18, 18);
+					this.drawTexturedModalRect(var1 + 6, var2 + 7, var9 % 8 * 18, 198 + var9 / 8 * 18, 18, 18);
 				}
 
 				String var11 = StatCollector.translateToLocal(var8.getName());

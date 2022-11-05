@@ -172,7 +172,7 @@ public class EntityWolf extends EntityTameable {
 				for (int var3 = 0; var3 < var2; ++var3) {
 					float var4 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width * 0.5F;
 					float var5 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width * 0.5F;
-					this.worldObj.spawnParticle("splash", this.posX + (double) var4, (double) (var1 + 0.8F), this.posZ + (double) var5, this.motionX, this.motionY, this.motionZ);
+					this.worldObj.spawnParticle("splash", this.posX + (double) var4, var1 + 0.8F, this.posZ + (double) var5, this.motionX, this.motionY, this.motionZ);
 				}
 			}
 		}
@@ -243,7 +243,7 @@ public class EntityWolf extends EntityTameable {
 						this.heal(var3.getHealAmount());
 
 						if (var2.stackSize <= 0) {
-							par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack) null);
+							par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, null);
 						}
 
 						return true;
@@ -255,7 +255,7 @@ public class EntityWolf extends EntityTameable {
 						this.setCollarColor(var4);
 
 						if (!par1EntityPlayer.capabilities.isCreativeMode && --var2.stackSize <= 0) {
-							par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack) null);
+							par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, null);
 						}
 
 						return true;
@@ -268,7 +268,7 @@ public class EntityWolf extends EntityTameable {
 			}
 
 			if (var2.stackSize <= 0) {
-				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack) null);
+				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, null);
 			}
 
 			return true;
@@ -296,7 +296,7 @@ public class EntityWolf extends EntityTameable {
 	 * (wheat, carrots or seeds depending on the animal type)
 	 */
 	public boolean isBreedingItem(ItemStack par1ItemStack) {
-		return par1ItemStack == null ? false : (!(Item.itemsList[par1ItemStack.itemID] instanceof ItemFood) ? false : ((ItemFood) Item.itemsList[par1ItemStack.itemID]).isWolfsFavoriteMeat());
+		return par1ItemStack != null && (Item.itemsList[par1ItemStack.itemID] instanceof ItemFood && ((ItemFood) Item.itemsList[par1ItemStack.itemID]).isWolfsFavoriteMeat());
 	}
 
 	/**
@@ -379,7 +379,7 @@ public class EntityWolf extends EntityTameable {
 			return false;
 		} else {
 			EntityWolf var2 = (EntityWolf) par1EntityAnimal;
-			return !var2.isTamed() ? false : (var2.isSitting() ? false : this.isInLove() && var2.isInLove());
+			return var2.isTamed() && (!var2.isSitting() && this.isInLove() && var2.isInLove());
 		}
 	}
 

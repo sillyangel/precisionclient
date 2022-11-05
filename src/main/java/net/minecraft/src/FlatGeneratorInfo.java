@@ -60,7 +60,7 @@ public class FlatGeneratorInfo {
 				var1.append(",");
 			}
 
-			var1.append(((FlatLayerInfo) this.flatLayers.get(var2)).toString());
+			var1.append(this.flatLayers.get(var2).toString());
 		}
 
 		var1.append(";");

@@ -28,7 +28,7 @@ public class TexturePackList {
 	 * updateAvaliableTexturePacks() to avoid reloading texture packs that haven't
 	 * changed on disk.
 	 */
-	private Map texturePackCache = new HashMap();
+	private final Map texturePackCache = new HashMap();
 
 	/** The TexturePack that will be used. */
 	private ITexturePack selectedTexturePack;
@@ -181,7 +181,7 @@ public class TexturePackList {
 			return false;
 		} else {
 			ServerData var1 = this.mc.getServerData();
-			return var1 == null ? true : var1.func_78840_c();
+			return var1 == null || var1.func_78840_c();
 		}
 	}
 
@@ -190,7 +190,7 @@ public class TexturePackList {
 			return false;
 		} else {
 			ServerData var1 = this.mc.getServerData();
-			return var1 == null ? false : var1.getAcceptsTextures();
+			return var1 != null && var1.getAcceptsTextures();
 		}
 	}
 

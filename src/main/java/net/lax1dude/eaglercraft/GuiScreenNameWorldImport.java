@@ -3,11 +3,11 @@ package net.lax1dude.eaglercraft;
 import net.minecraft.src.*;
 
 public class GuiScreenNameWorldImport extends GuiScreen {
-	private GuiScreen parentGuiScreen;
+	private final GuiScreen parentGuiScreen;
 	private GuiTextField theGuiTextField;
-	private int importFormat;
-	private String name;
-	private String oldName;
+	private final int importFormat;
+	private final String name;
+	private final String oldName;
 	private boolean timeToImport = false;
 	private boolean definetlyTimeToImport = false;
 	private boolean isImporting = false;
@@ -110,7 +110,7 @@ public class GuiScreenNameWorldImport extends GuiScreen {
 			this.theGuiTextField.drawTextBox();
 		}else {
 			definetlyTimeToImport = true;
-			long dots = (System.currentTimeMillis() / 500l) % 4l;
+			long dots = (System.currentTimeMillis() / 500L) % 4L;
 			String str = "Reading: '" + oldName + "'";
 			this.drawString(fontRenderer, str + (dots > 0 ? "." : "") + (dots > 1 ? "." : "") + (dots > 2 ? "." : ""), (this.width - this.fontRenderer.getStringWidth(str)) / 2, this.height / 3 + 10, 0xFFFFFF);
 		}

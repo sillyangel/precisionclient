@@ -80,17 +80,17 @@ public class BlockFurnace extends BlockContainer {
 			float var11 = par5Random.nextFloat() * 0.6F - 0.3F;
 
 			if (var6 == 4) {
-				par1World.spawnParticle("smoke", (double) (var7 - var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", (double) (var7 - var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", var7 - var10, var8, var9 + var11, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("flame", var7 - var10, var8, var9 + var11, 0.0D, 0.0D, 0.0D);
 			} else if (var6 == 5) {
-				par1World.spawnParticle("smoke", (double) (var7 + var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", (double) (var7 + var10), (double) var8, (double) (var9 + var11), 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", var7 + var10, var8, var9 + var11, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("flame", var7 + var10, var8, var9 + var11, 0.0D, 0.0D, 0.0D);
 			} else if (var6 == 2) {
-				par1World.spawnParticle("smoke", (double) (var7 + var11), (double) var8, (double) (var9 - var10), 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", (double) (var7 + var11), (double) var8, (double) (var9 - var10), 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", var7 + var11, var8, var9 - var10, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("flame", var7 + var11, var8, var9 - var10, 0.0D, 0.0D, 0.0D);
 			} else if (var6 == 3) {
-				par1World.spawnParticle("smoke", (double) (var7 + var11), (double) var8, (double) (var9 + var10), 0.0D, 0.0D, 0.0D);
-				par1World.spawnParticle("flame", (double) (var7 + var11), (double) var8, (double) (var9 + var10), 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("smoke", var7 + var11, var8, var9 + var10, 0.0D, 0.0D, 0.0D);
+				par1World.spawnParticle("flame", var7 + var11, var8, var9 + var10, 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
@@ -186,16 +186,16 @@ public class BlockFurnace extends BlockContainer {
 							}
 
 							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(par1World, (double) ((float) par2 + var10), (double) ((float) par3 + var11), (double) ((float) par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+							EntityItem var14 = new EntityItem(par1World, (float) par2 + var10, (float) par3 + var11, (float) par4 + var12, new ItemStack(var9.itemID, var13, var9.getItemDamage()));
 
 							if (var9.hasTagCompound()) {
 								var14.getEntityItem().setTagCompound((NBTTagCompound) var9.getTagCompound().copy());
 							}
 
 							float var15 = 0.05F;
-							var14.motionX = (double) ((float) this.furnaceRand.nextGaussian() * var15);
-							var14.motionY = (double) ((float) this.furnaceRand.nextGaussian() * var15 + 0.2F);
-							var14.motionZ = (double) ((float) this.furnaceRand.nextGaussian() * var15);
+							var14.motionX = (float) this.furnaceRand.nextGaussian() * var15;
+							var14.motionY = (float) this.furnaceRand.nextGaussian() * var15 + 0.2F;
+							var14.motionZ = (float) this.furnaceRand.nextGaussian() * var15;
 							par1World.spawnEntityInWorld(var14);
 						}
 					}

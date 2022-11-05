@@ -20,7 +20,7 @@ public class NetClientHandler extends NetHandler {
 	public String field_72560_a;
 
 	/** Reference to the Minecraft object. */
-	private Minecraft mc;
+	private final Minecraft mc;
 	private WorldClient worldClient;
 
 	/**
@@ -31,7 +31,7 @@ public class NetClientHandler extends NetHandler {
 	public MapStorage mapStorage = new MapStorage();
 
 	/** A HashMap of all player names and their player information objects */
-	private Map playerInfoMap = new HashMap();
+	private final Map playerInfoMap = new HashMap();
 
 	/**
 	 * An ArrayList of GuiPlayerInfo (includes all the players' GuiPlayerInfo on the
@@ -39,7 +39,7 @@ public class NetClientHandler extends NetHandler {
 	 */
 	public List playerInfoList = new ArrayList();
 	public int currentServerMaxPlayers = 20;
-	private GuiScreen field_98183_l = null;
+	private final GuiScreen field_98183_l = null;
 
 	/** RNG. */
 	EaglercraftRandom rand = new EaglercraftRandom();
@@ -124,7 +124,7 @@ public class NetClientHandler extends NetHandler {
 					}
 				}
 				this.disconnected = true;
-				this.mc.loadWorld((WorldClient) null);
+				this.mc.loadWorld(null);
 			}
 		}else {
 			if(this.disconnected) {
@@ -183,7 +183,7 @@ public class NetClientHandler extends NetHandler {
 		} else if (par1Packet23VehicleSpawn.type == 72) {
 			var8 = new EntityEnderEye(this.worldClient, var2, var4, var6);
 		} else if (par1Packet23VehicleSpawn.type == 76) {
-			var8 = new EntityFireworkRocket(this.worldClient, var2, var4, var6, (ItemStack) null);
+			var8 = new EntityFireworkRocket(this.worldClient, var2, var4, var6, null);
 		} else if (par1Packet23VehicleSpawn.type == 63) {
 			var8 = new EntityLargeFireball(this.worldClient, var2, var4, var6, (double) par1Packet23VehicleSpawn.speedX / 8000.0D, (double) par1Packet23VehicleSpawn.speedY / 8000.0D, (double) par1Packet23VehicleSpawn.speedZ / 8000.0D);
 			par1Packet23VehicleSpawn.throwerEntityId = 0;
@@ -204,7 +204,7 @@ public class NetClientHandler extends NetHandler {
 		} else if (par1Packet23VehicleSpawn.type == 1) {
 			var8 = new EntityBoat(this.worldClient, var2, var4, var6);
 		} else if (par1Packet23VehicleSpawn.type == 50) {
-			var8 = new EntityTNTPrimed(this.worldClient, var2, var4, var6, (EntityLiving) null);
+			var8 = new EntityTNTPrimed(this.worldClient, var2, var4, var6, null);
 		} else if (par1Packet23VehicleSpawn.type == 51) {
 			var8 = new EntityEnderCrystal(this.worldClient, var2, var4, var6);
 		} else if (par1Packet23VehicleSpawn.type == 2) {
@@ -253,7 +253,7 @@ public class NetClientHandler extends NetHandler {
 	 * Handle a entity experience orb packet.
 	 */
 	public void handleEntityExpOrb(Packet26EntityExpOrb par1Packet26EntityExpOrb) {
-		EntityXPOrb var2 = new EntityXPOrb(this.worldClient, (double) par1Packet26EntityExpOrb.posX, (double) par1Packet26EntityExpOrb.posY, (double) par1Packet26EntityExpOrb.posZ, par1Packet26EntityExpOrb.xpValue);
+		EntityXPOrb var2 = new EntityXPOrb(this.worldClient, par1Packet26EntityExpOrb.posX, par1Packet26EntityExpOrb.posY, par1Packet26EntityExpOrb.posZ, par1Packet26EntityExpOrb.xpValue);
 		var2.serverPosX = par1Packet26EntityExpOrb.posX;
 		var2.serverPosY = par1Packet26EntityExpOrb.posY;
 		var2.serverPosZ = par1Packet26EntityExpOrb.posZ;
@@ -325,9 +325,9 @@ public class NetClientHandler extends NetHandler {
 		float var8 = (float) (par1Packet20NamedEntitySpawn.rotation * 360) / 256.0F;
 		float var9 = (float) (par1Packet20NamedEntitySpawn.pitch * 360) / 256.0F;
 		EntityOtherPlayerMP var10 = new EntityOtherPlayerMP(this.mc.theWorld, par1Packet20NamedEntitySpawn.name);
-		var10.prevPosX = var10.lastTickPosX = (double) (var10.serverPosX = par1Packet20NamedEntitySpawn.xPosition);
-		var10.prevPosY = var10.lastTickPosY = (double) (var10.serverPosY = par1Packet20NamedEntitySpawn.yPosition);
-		var10.prevPosZ = var10.lastTickPosZ = (double) (var10.serverPosZ = par1Packet20NamedEntitySpawn.zPosition);
+		var10.prevPosX = var10.lastTickPosX = var10.serverPosX = par1Packet20NamedEntitySpawn.xPosition;
+		var10.prevPosY = var10.lastTickPosY = var10.serverPosY = par1Packet20NamedEntitySpawn.yPosition;
+		var10.prevPosZ = var10.lastTickPosZ = var10.serverPosZ = par1Packet20NamedEntitySpawn.zPosition;
 		int var11 = par1Packet20NamedEntitySpawn.currentItem;
 
 		if (var11 == 0) {
@@ -431,7 +431,7 @@ public class NetClientHandler extends NetHandler {
 			this.mc.thePlayer.prevPosY = this.mc.thePlayer.posY;
 			this.mc.thePlayer.prevPosZ = this.mc.thePlayer.posZ;
 			this.doneLoadingTerrain = true;
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 		}
 	}
 
@@ -454,8 +454,7 @@ public class NetClientHandler extends NetHandler {
 					this.worldClient.setBlockAndMetadataAndInvalidate(var10 + var2, var12, var11 + var3, var8, var9);
 				}
 			} catch (IOException var13) {
-				;
-			}
+            }
 		}
 	}
 
@@ -496,9 +495,9 @@ public class NetClientHandler extends NetHandler {
 	}
 
 	public void handleKickDisconnect(Packet255KickDisconnect par1Packet255KickDisconnect) {
-		this.netManager.networkShutdown("disconnect.kicked", new Object[0]);
+		this.netManager.networkShutdown("disconnect.kicked");
 		this.disconnected = true;
-		this.mc.loadWorld((WorldClient) null);
+		this.mc.loadWorld(null);
 		if(par1Packet255KickDisconnect.reason.equalsIgnoreCase("BLOCKED")) {
 			EaglerAdapter.logRateLimit(netManager.getServerURI(), RateLimit.BLOCKED);
 			this.mc.displayGuiScreen(new GuiDisconnected(backToMenu(), "disconnect.ratelimit.kickBlocked", "disconnect.endOfStream", (Object[])null));
@@ -506,14 +505,14 @@ public class NetClientHandler extends NetHandler {
 			EaglerAdapter.logRateLimit(netManager.getServerURI(), RateLimit.LOCKED);
 			this.mc.displayGuiScreen(new GuiDisconnected(backToMenu(), "disconnect.ratelimit.kickLocked", "disconnect.endOfStream", (Object[])null));
 		}else {
-			this.mc.stopServerAndDisplayGuiScreen(new GuiDisconnected(backToMenu(), "disconnect.disconnected", "disconnect.genericReason", new Object[] { par1Packet255KickDisconnect.reason }));
+			this.mc.stopServerAndDisplayGuiScreen(new GuiDisconnected(backToMenu(), "disconnect.disconnected", "disconnect.genericReason", par1Packet255KickDisconnect.reason));
 		}
 	}
 
 	public void handleErrorMessage(String par1Str, Object[] par2ArrayOfObj) {
 		if (!this.disconnected) {
 			this.disconnected = true;
-			this.mc.loadWorld((WorldClient) null);
+			this.mc.loadWorld(null);
 			this.mc.stopServerAndDisplayGuiScreen(new GuiDisconnected(backToMenu(), "disconnect.lost", par1Str, par2ArrayOfObj));
 		}
 	}
@@ -536,7 +535,7 @@ public class NetClientHandler extends NetHandler {
 
 	public void handleCollect(Packet22Collect par1Packet22Collect) {
 		Entity var2 = this.getEntityByID(par1Packet22Collect.collectedEntityId);
-		Object var3 = (EntityLiving) this.getEntityByID(par1Packet22Collect.collectorEntityId);
+		Object var3 = this.getEntityByID(par1Packet22Collect.collectorEntityId);
 
 		if (var3 == null) {
 			var3 = this.mc.thePlayer;
@@ -577,8 +576,7 @@ public class NetClientHandler extends NetHandler {
 					EntityCrit2FX var5 = new EntityCrit2FX(this.mc.theWorld, var2, "magicCrit");
 					this.mc.effectRenderer.addEffect(var5);
 				} else if (par1Packet18Animation.animate == 5 && var2 instanceof EntityOtherPlayerMP) {
-					;
-				}
+                }
 			}
 		}
 	}
@@ -600,7 +598,7 @@ public class NetClientHandler extends NetHandler {
 	public void disconnect() {
 		this.disconnected = true;
 		this.netManager.wakeThreads();
-		this.netManager.networkShutdown("disconnect.closed", new Object[0]);
+		this.netManager.networkShutdown("disconnect.closed");
 	}
 
 	public void handleMobSpawn(Packet24MobSpawn par1Packet24MobSpawn) {
@@ -626,9 +624,9 @@ public class NetClientHandler extends NetHandler {
 
 		var10.entityId = par1Packet24MobSpawn.entityId;
 		var10.setPositionAndRotation(var2, var4, var6, var8, var9);
-		var10.motionX = (double) ((float) par1Packet24MobSpawn.velocityX / 8000.0F);
-		var10.motionY = (double) ((float) par1Packet24MobSpawn.velocityY / 8000.0F);
-		var10.motionZ = (double) ((float) par1Packet24MobSpawn.velocityZ / 8000.0F);
+		var10.motionX = (float) par1Packet24MobSpawn.velocityX / 8000.0F;
+		var10.motionY = (float) par1Packet24MobSpawn.velocityY / 8000.0F;
+		var10.motionZ = (float) par1Packet24MobSpawn.velocityZ / 8000.0F;
 		this.worldClient.addEntityToWorld(par1Packet24MobSpawn.entityId, var10);
 		List var14 = par1Packet24MobSpawn.getMetadata();
 
@@ -681,7 +679,7 @@ public class NetClientHandler extends NetHandler {
 	}
 
 	private Entity getEntityByID(int par1) {
-		return (Entity) (par1 == this.mc.thePlayer.entityId ? this.mc.thePlayer : this.worldClient.getEntityByID(par1));
+		return par1 == this.mc.thePlayer.entityId ? this.mc.thePlayer : this.worldClient.getEntityByID(par1);
 	}
 
 	/**
@@ -722,12 +720,12 @@ public class NetClientHandler extends NetHandler {
 	}
 
 	public void handleExplosion(Packet60Explosion par1Packet60Explosion) {
-		Explosion var2 = new Explosion(this.mc.theWorld, (Entity) null, par1Packet60Explosion.explosionX, par1Packet60Explosion.explosionY, par1Packet60Explosion.explosionZ, par1Packet60Explosion.explosionSize);
+		Explosion var2 = new Explosion(this.mc.theWorld, null, par1Packet60Explosion.explosionX, par1Packet60Explosion.explosionY, par1Packet60Explosion.explosionZ, par1Packet60Explosion.explosionSize);
 		var2.affectedBlockPositions = par1Packet60Explosion.chunkPositionRecords;
 		var2.doExplosionB(true);
-		this.mc.thePlayer.motionX += (double) par1Packet60Explosion.getPlayerVelocityX();
-		this.mc.thePlayer.motionY += (double) par1Packet60Explosion.getPlayerVelocityY();
-		this.mc.thePlayer.motionZ += (double) par1Packet60Explosion.getPlayerVelocityZ();
+		this.mc.thePlayer.motionX += par1Packet60Explosion.getPlayerVelocityX();
+		this.mc.thePlayer.motionY += par1Packet60Explosion.getPlayerVelocityY();
+		this.mc.thePlayer.motionZ += par1Packet60Explosion.getPlayerVelocityZ();
 	}
 
 	public void handleOpenWindow(Packet100OpenWindow par1Packet100OpenWindow) {
@@ -891,9 +889,7 @@ public class NetClientHandler extends NetHandler {
 				TileEntitySign var4 = (TileEntitySign) var3;
 
 				if (var4.isEditable()) {
-					for (int var5 = 0; var5 < 4; ++var5) {
-						var4.signText[var5] = par1Packet130UpdateSign.signLines[var5];
-					}
+                    System.arraycopy(par1Packet130UpdateSign.signLines, 0, var4.signText, 0, 4);
 
 					var4.onInventoryChanged();
 				}
@@ -1013,14 +1009,13 @@ public class NetClientHandler extends NetHandler {
 			GameSettings var5 = this.mc.gameSettings;
 
 			if (var4 == 0) {
-				return;
-			} else if (var4 == 101) {
+            } else if (var4 == 101) {
 				this.mc.ingameGUI.getChatGUI().addTranslatedMessage("demo.help.movement",
-						new Object[] { EaglerAdapter.getKeyName(var5.keyBindForward.keyCode), EaglerAdapter.getKeyName(var5.keyBindLeft.keyCode), EaglerAdapter.getKeyName(var5.keyBindBack.keyCode), EaglerAdapter.getKeyName(var5.keyBindRight.keyCode) });
+                        EaglerAdapter.getKeyName(var5.keyBindForward.keyCode), EaglerAdapter.getKeyName(var5.keyBindLeft.keyCode), EaglerAdapter.getKeyName(var5.keyBindBack.keyCode), EaglerAdapter.getKeyName(var5.keyBindRight.keyCode));
 			} else if (var4 == 102) {
-				this.mc.ingameGUI.getChatGUI().addTranslatedMessage("demo.help.jump", new Object[] { EaglerAdapter.getKeyName(var5.keyBindJump.keyCode) });
+				this.mc.ingameGUI.getChatGUI().addTranslatedMessage("demo.help.jump", EaglerAdapter.getKeyName(var5.keyBindJump.keyCode));
 			} else if (var4 == 103) {
-				this.mc.ingameGUI.getChatGUI().addTranslatedMessage("demo.help.inventory", new Object[] { EaglerAdapter.getKeyName(var5.keyBindInventory.keyCode) });
+				this.mc.ingameGUI.getChatGUI().addTranslatedMessage("demo.help.inventory", EaglerAdapter.getKeyName(var5.keyBindInventory.keyCode));
 			}
 		} else if (var3 == 6) {
 			this.worldClient.playSound(var2.posX, var2.posY + (double) var2.getEyeHeight(), var2.posZ, "random.successful_hit", 0.18F, 0.45F, false);
@@ -1257,7 +1252,7 @@ public class NetClientHandler extends NetHandler {
 		Scoreboard var2 = this.worldClient.getScoreboard();
 
 		if (par1Packet208SetDisplayObjective.scoreName.length() == 0) {
-			var2.func_96530_a(par1Packet208SetDisplayObjective.scoreboardPosition, (ScoreObjective) null);
+			var2.func_96530_a(par1Packet208SetDisplayObjective.scoreboardPosition, null);
 		} else {
 			ScoreObjective var3 = var2.getObjective(par1Packet208SetDisplayObjective.scoreName);
 			var2.func_96530_a(par1Packet208SetDisplayObjective.scoreboardPosition, var3);

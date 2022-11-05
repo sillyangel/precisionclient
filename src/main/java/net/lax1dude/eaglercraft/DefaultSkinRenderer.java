@@ -97,15 +97,15 @@ public class DefaultSkinRenderer {
 	private static final HashMap<EntityOtherPlayerMP,Integer> capeGLUnits = new HashMap();
 	private static final HashMap<EntityOtherPlayerMP,Long> skinGLTimeout = new HashMap();
 	
-	private static long lastClean = 0l;
+	private static long lastClean = 0L;
 	
 	public static void deleteOldSkins() {
-		if(System.currentTimeMillis() - lastClean > 60000l) {
+		if(System.currentTimeMillis() - lastClean > 60000L) {
 			lastClean = System.currentTimeMillis();
 			Iterator<Entry<EntityOtherPlayerMP,Long>> itr = skinGLTimeout.entrySet().iterator();
 			while(itr.hasNext()) {
 				Entry<EntityOtherPlayerMP,Long> ee = itr.next();
-				if(System.currentTimeMillis() - ee.getValue() > 80000l) {
+				if(System.currentTimeMillis() - ee.getValue() > 80000L) {
 					itr.remove();
 					if(skinGLUnits.containsKey(ee.getKey())) {
 						Minecraft.getMinecraft().renderEngine.deleteTexture(skinGLUnits.remove(ee.getKey()));
@@ -233,15 +233,10 @@ public class DefaultSkinRenderer {
 										byte[] dataToLoad = new byte[len];
 										System.arraycopy(pp.skinPacket, offset + 2, dataToLoad, 0, len);
 										int w, h;
-										switch(capeType) {
-										case 0:
-										default:
-											w = 32;
-											h = 32;
-											break;
-										}
-	
-										if(dataToLoad.length / 4 == w * h) {
+                                        w = 32;
+                                        h = 32;
+
+                                        if(dataToLoad.length / 4 == w * h) {
 											capeGLUnits.put(pp, Minecraft.getMinecraft().renderEngine.setupTextureRaw(dataToLoad, w, h));
 										}
 									}
@@ -353,7 +348,7 @@ public class DefaultSkinRenderer {
 	}
 	
 	public static boolean isHighPoly(int id) {
-		return !(defaultVanillaSkins.length > id && id >= 0) ? false : defaultHighPoly[id] != null;
+		return (defaultVanillaSkins.length > id && id >= 0) && defaultHighPoly[id] != null;
 	}
 	
 	public static boolean isPlayerNewSkin(EntityPlayer p) {

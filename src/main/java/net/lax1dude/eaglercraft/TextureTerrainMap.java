@@ -24,17 +24,17 @@ public class TextureTerrainMap implements IconRegister {
 
 		protected int originX;
 		protected int originY;
-		private float minU;
-		private float maxU;
-		private float minV;
-		private float maxV;
+		private final float minU;
+		private final float maxU;
+		private final float minV;
+		private final float maxV;
 		
 		protected int originX_center;
 		protected int originY_center;
-		private float minU_center;
-		private float maxU_center;
-		private float minV_center;
-		private float maxV_center;
+		private final float minU_center;
+		private final float maxU_center;
+		private final float minV_center;
+		private final float maxV_center;
 
 		protected int frameCounter = 0;
 		protected int frameCurrent = 0;
@@ -64,10 +64,10 @@ public class TextureTerrainMap implements IconRegister {
 			this.maxV = (float)(originY + tw) / (float)map.height;
 			this.originX_center = originX + 16;
 			this.originY_center = originY + 16;
-			this.minU_center = (float)(originX_center + 0.025f) / (float)map.width;
-			this.minV_center = (float)(originY_center + 0.025f) / (float)map.height;
-			this.maxU_center = (float)(originX_center + 16 - 0.025f) / (float)map.width;
-			this.maxV_center = (float)(originY_center + 16 - 0.025f) / (float)map.height;
+			this.minU_center = (originX_center + 0.025f) / (float)map.width;
+			this.minV_center = (originY_center + 0.025f) / (float)map.height;
+			this.maxU_center = (originX_center + 16 - 0.025f) / (float)map.width;
+			this.maxV_center = (originY_center + 16 - 0.025f) / (float)map.height;
 		}
 		
 		private void free() {
@@ -243,8 +243,8 @@ public class TextureTerrainMap implements IconRegister {
 	private final String basePath;
 	private final int width;
 	private final int height;
-	private TerrainIconV2 missingImage;
-	private ArrayList<TerrainIconV2> iconList;
+	private final TerrainIconV2 missingImage;
+	private final ArrayList<TerrainIconV2> iconList;
 	public final int texture;
 	private final EaglerImage[] missingData;
 	public final FramebufferGL copyFramebuffer;

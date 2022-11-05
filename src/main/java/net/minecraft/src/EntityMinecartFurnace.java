@@ -59,7 +59,7 @@ public class EntityMinecartFurnace extends EntityMinecart {
 		double var10 = this.pushX * this.pushX + this.pushZ * this.pushZ;
 
 		if (var10 > 1.0E-4D && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.001D) {
-			var10 = (double) MathHelper.sqrt_double(var10);
+			var10 = MathHelper.sqrt_double(var10);
 			this.pushX /= var10;
 			this.pushZ /= var10;
 
@@ -77,7 +77,7 @@ public class EntityMinecartFurnace extends EntityMinecart {
 		double var1 = this.pushX * this.pushX + this.pushZ * this.pushZ;
 
 		if (var1 > 1.0E-4D) {
-			var1 = (double) MathHelper.sqrt_double(var1);
+			var1 = MathHelper.sqrt_double(var1);
 			this.pushX /= var1;
 			this.pushZ /= var1;
 			double var3 = 0.05D;
@@ -104,7 +104,7 @@ public class EntityMinecartFurnace extends EntityMinecart {
 
 		if (var2 != null && var2.itemID == Item.coal.itemID) {
 			if (--var2.stackSize == 0) {
-				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, (ItemStack) null);
+				par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, null);
 			}
 
 			this.fuel += 3600;

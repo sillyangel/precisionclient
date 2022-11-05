@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class BlockPumpkin extends BlockDirectional {
 	/** Boolean used to seperate different states of blocks */
-	private boolean blockType;
+	private final boolean blockType;
 	private Icon field_94474_b;
 	private Icon field_94475_c;
 

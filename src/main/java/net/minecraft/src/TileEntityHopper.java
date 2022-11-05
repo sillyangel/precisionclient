@@ -165,7 +165,7 @@ public class TileEntityHopper extends TileEntity implements Hopper {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) == this && par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	public void openChest() {
@@ -327,7 +327,7 @@ public class TileEntityHopper extends TileEntity implements Hopper {
 	}
 
 	private static boolean func_102015_a(IInventory par0IInventory, ItemStack par1ItemStack, int par2, int par3) {
-		return !par0IInventory.isStackValidForSlot(par2, par1ItemStack) ? false : !(par0IInventory instanceof ISidedInventory) || ((ISidedInventory) par0IInventory).canInsertItem(par2, par1ItemStack, par3);
+		return par0IInventory.isStackValidForSlot(par2, par1ItemStack) && (!(par0IInventory instanceof ISidedInventory) || ((ISidedInventory) par0IInventory).canInsertItem(par2, par1ItemStack, par3));
 	}
 
 	private static boolean canExtractItemFromInventory(IInventory par0IInventory, ItemStack par1ItemStack, int par2, int par3) {
@@ -369,7 +369,7 @@ public class TileEntityHopper extends TileEntity implements Hopper {
 	 */
 	private IInventory getOutputInventory() {
 		int var1 = BlockHopper.getDirectionFromMetadata(this.getBlockMetadata());
-		return getInventoryAtLocation(this.getWorldObj(), (double) (this.xCoord + Facing.offsetsXForSide[var1]), (double) (this.yCoord + Facing.offsetsYForSide[var1]), (double) (this.zCoord + Facing.offsetsZForSide[var1]));
+		return getInventoryAtLocation(this.getWorldObj(), this.xCoord + Facing.offsetsXForSide[var1], this.yCoord + Facing.offsetsYForSide[var1], this.zCoord + Facing.offsetsZForSide[var1]);
 	}
 
 	/**
@@ -411,7 +411,7 @@ public class TileEntityHopper extends TileEntity implements Hopper {
 		}
 
 		if (var7 == null) {
-			List var14 = par0World.getEntitiesWithinAABBExcludingEntity((Entity) null, AxisAlignedBB.getAABBPool().getAABB(par1, par3, par5, par1 + 1.0D, par3 + 1.0D, par5 + 1.0D), IEntitySelector.selectInventories);
+			List var14 = par0World.getEntitiesWithinAABBExcludingEntity(null, AxisAlignedBB.getAABBPool().getAABB(par1, par3, par5, par1 + 1.0D, par3 + 1.0D, par5 + 1.0D), IEntitySelector.selectInventories);
 
 			if (var14 != null && var14.size() > 0) {
 				var7 = (IInventory) var14.get(par0World.rand.nextInt(var14.size()));
@@ -422,29 +422,28 @@ public class TileEntityHopper extends TileEntity implements Hopper {
 	}
 
 	private static boolean areItemStacksEqualItem(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return par1ItemStack.itemID != par2ItemStack.itemID ? false
-				: (par1ItemStack.getItemDamage() != par2ItemStack.getItemDamage() ? false : (par1ItemStack.stackSize > par1ItemStack.getMaxStackSize() ? false : ItemStack.areItemStackTagsEqual(par1ItemStack, par2ItemStack)));
+		return par1ItemStack.itemID == par2ItemStack.itemID && (par1ItemStack.getItemDamage() == par2ItemStack.getItemDamage() && (par1ItemStack.stackSize <= par1ItemStack.getMaxStackSize() && ItemStack.areItemStackTagsEqual(par1ItemStack, par2ItemStack)));
 	}
 
 	/**
 	 * Gets the world X position for this hopper entity.
 	 */
 	public double getXPos() {
-		return (double) this.xCoord;
+		return this.xCoord;
 	}
 
 	/**
 	 * Gets the world Y position for this hopper entity.
 	 */
 	public double getYPos() {
-		return (double) this.yCoord;
+		return this.yCoord;
 	}
 
 	/**
 	 * Gets the world Z position for this hopper entity.
 	 */
 	public double getZPos() {
-		return (double) this.zCoord;
+		return this.zCoord;
 	}
 
 	public void setTransferCooldown(int par1) {

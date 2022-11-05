@@ -138,8 +138,7 @@ public class InventoryPlayer implements IInventory {
 		}
 
 		for (this.currentItem -= par1; this.currentItem < 0; this.currentItem += 9) {
-			;
-		}
+        }
 
 		while (this.currentItem >= 9) {
 			this.currentItem -= 9;
@@ -530,7 +529,7 @@ public class InventoryPlayer implements IInventory {
 			return true;
 		} else {
 			ItemStack var2 = this.getStackInSlot(this.currentItem);
-			return var2 != null ? var2.canHarvestBlock(par1Block) : false;
+			return var2 != null && var2.canHarvestBlock(par1Block);
 		}
 	}
 
@@ -620,7 +619,7 @@ public class InventoryPlayer implements IInventory {
 	 * Container
 	 */
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return this.player.isDead ? false : par1EntityPlayer.getDistanceSqToEntity(this.player) <= 64.0D;
+		return !this.player.isDead && par1EntityPlayer.getDistanceSqToEntity(this.player) <= 64.0D;
 	}
 
 	/**

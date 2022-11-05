@@ -31,8 +31,8 @@ public class TileEntityRendererPiston extends TileEntitySpecialRenderer {
 			}
 
 			var10.startDrawingQuads();
-			var10.setTranslation((double) ((float) par2 - (float) par1TileEntityPiston.xCoord + par1TileEntityPiston.getOffsetX(par8)), (double) ((float) par4 - (float) par1TileEntityPiston.yCoord + par1TileEntityPiston.getOffsetY(par8)),
-					(double) ((float) par6 - (float) par1TileEntityPiston.zCoord + par1TileEntityPiston.getOffsetZ(par8)));
+			var10.setTranslation((float) par2 - (float) par1TileEntityPiston.xCoord + par1TileEntityPiston.getOffsetX(par8), (float) par4 - (float) par1TileEntityPiston.yCoord + par1TileEntityPiston.getOffsetY(par8),
+                    (float) par6 - (float) par1TileEntityPiston.zCoord + par1TileEntityPiston.getOffsetZ(par8));
 			var10.setColorOpaque(1, 1, 1);
 
 			if (var9 == Block.pistonExtension && par1TileEntityPiston.getProgress(par8) < 0.5F) {
@@ -41,7 +41,7 @@ public class TileEntityRendererPiston extends TileEntitySpecialRenderer {
 				Block.pistonExtension.setHeadTexture(((BlockPistonBase) var9).getPistonExtensionTexture());
 				this.blockRenderer.renderPistonExtensionAllFaces(Block.pistonExtension, par1TileEntityPiston.xCoord, par1TileEntityPiston.yCoord, par1TileEntityPiston.zCoord, par1TileEntityPiston.getProgress(par8) < 0.5F);
 				Block.pistonExtension.clearHeadTexture();
-				var10.setTranslation((double) ((float) par2 - (float) par1TileEntityPiston.xCoord), (double) ((float) par4 - (float) par1TileEntityPiston.yCoord), (double) ((float) par6 - (float) par1TileEntityPiston.zCoord));
+				var10.setTranslation((float) par2 - (float) par1TileEntityPiston.xCoord, (float) par4 - (float) par1TileEntityPiston.yCoord, (float) par6 - (float) par1TileEntityPiston.zCoord);
 				this.blockRenderer.renderPistonBaseAllFaces(var9, par1TileEntityPiston.xCoord, par1TileEntityPiston.yCoord, par1TileEntityPiston.zCoord);
 			} else {
 				this.blockRenderer.renderBlockAllFaces(var9, par1TileEntityPiston.xCoord, par1TileEntityPiston.yCoord, par1TileEntityPiston.zCoord);

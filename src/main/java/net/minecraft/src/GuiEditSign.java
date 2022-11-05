@@ -13,7 +13,7 @@ public class GuiEditSign extends GuiScreen {
 	protected String screenTitle = "Edit sign message:";
 
 	/** Reference to the sign object. */
-	private TileEntitySign entitySign;
+	private final TileEntitySign entitySign;
 
 	/** Counts the number of screen updates. */
 	private int updateCounter;
@@ -67,7 +67,7 @@ public class GuiEditSign extends GuiScreen {
 		if (par1GuiButton.enabled) {
 			if (par1GuiButton.id == 0) {
 				this.entitySign.onInventoryChanged();
-				this.mc.displayGuiScreen((GuiScreen) null);
+				this.mc.displayGuiScreen(null);
 			}
 		}
 	}

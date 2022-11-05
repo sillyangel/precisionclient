@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 public class RelayManager {
 	
 	private final List<RelayServer> relays = new ArrayList();
-	private long lastPingThrough = 0l;
+	private long lastPingThrough = 0L;
 	
 	public void load(NBTTagList relayConfig) {
 		relays.clear();
@@ -78,7 +78,7 @@ public class RelayManager {
 			boolean found = false;
 			for(int i = 0, l = relays.size(); i < l; ++i) {
 				RelayServer srv = relays.get(i);
-				if(srv.getPing() > 0l) {
+				if(srv.getPing() > 0L) {
 					found = true;
 					srv.setPrimary(true);
 					break;
@@ -121,7 +121,7 @@ public class RelayManager {
 	}
 	
 	public void add(String addr, String comment, boolean primary) {
-		lastPingThrough = 0l;
+		lastPingThrough = 0L;
 		int i = relays.size();
 		relays.add(new RelayServer(addr, comment, false));
 		if(primary) {
@@ -131,7 +131,7 @@ public class RelayManager {
 	}
 	
 	public void addNew(String addr, String comment, boolean primary) {
-		lastPingThrough = 0l;
+		lastPingThrough = 0L;
 		int i = relays.size();
 		int j = primary || i == 0 ? 0 : 1;
 		RelayServer newServer = new RelayServer(addr, comment, false);
@@ -212,13 +212,13 @@ public class RelayManager {
 						}
 					}
 					try {
-						Thread.sleep(20l);
+						Thread.sleep(20L);
 					} catch (InterruptedException e) {
 					}
 				}
 			}
 			try {
-				Thread.sleep(20l);
+				Thread.sleep(20L);
 			} catch (InterruptedException e) {
 			}
 		}
@@ -236,9 +236,9 @@ public class RelayManager {
 		brokenServers.clear();
 		if(relays.size() > 0) {
 			long millis = System.currentTimeMillis();
-			if(millis - lastPingThrough < 10000l) {
+			if(millis - lastPingThrough < 10000L) {
 				RelayServer relay = getPrimary();
-				if(relay.getPing() > 0l && relay.getPingCompatible().isCompatible()) {
+				if(relay.getPing() > 0L && relay.getPingCompatible().isCompatible()) {
 					progressCallback.accept(relay.address);
 					RelayServerSocket sock = connectHandshake(relay, type, code);
 					if(sock != null) {
@@ -252,7 +252,7 @@ public class RelayManager {
 				for(int i = 0, l = relays.size(); i < l; ++i) {
 					RelayServer relayEtr = relays.get(i);
 					if(relayEtr != relay) {
-						if(relayEtr.getPing() > 0l && relayEtr.getPingCompatible().isCompatible()) {
+						if(relayEtr.getPing() > 0L && relayEtr.getPingCompatible().isCompatible()) {
 							progressCallback.accept(relayEtr.address);
 							RelayServerSocket sock = connectHandshake(relayEtr, type, code);
 							if(sock != null) {

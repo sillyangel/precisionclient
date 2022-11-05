@@ -199,7 +199,7 @@ public class GuiNewChat extends Gui {
 	 * arrow keys
 	 */
 	public void addToSentMessages(String par1Str) {
-		if (this.sentMessages.isEmpty() || !((String) this.sentMessages.get(this.sentMessages.size() - 1)).equals(par1Str)) {
+		if (this.sentMessages.isEmpty() || !this.sentMessages.get(this.sentMessages.size() - 1).equals(par1Str)) {
 			this.sentMessages.add(par1Str);
 		}
 	}

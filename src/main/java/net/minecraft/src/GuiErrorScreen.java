@@ -4,12 +4,12 @@ public class GuiErrorScreen extends GuiScreen {
 	/**
 	 * Unused class. Would contain a message drawn to the center of the screen.
 	 */
-	private String message1;
+	private final String message1;
 
 	/**
 	 * Unused class. Would contain a message drawn to the center of the screen.
 	 */
-	private String message2;
+	private final String message2;
 
 	public GuiErrorScreen(String par1Str, String par2Str) {
 		this.message1 = par1Str;
@@ -46,6 +46,6 @@ public class GuiErrorScreen extends GuiScreen {
 	 * ActionListener.actionPerformed(ActionEvent e).
 	 */
 	protected void actionPerformed(GuiButton par1GuiButton) {
-		this.mc.displayGuiScreen((GuiScreen) null);
+		this.mc.displayGuiScreen(null);
 	}
 }

@@ -4,7 +4,7 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderSlime extends RenderLiving {
-	private ModelBase scaleAmount;
+	private final ModelBase scaleAmount;
 
 	public RenderSlime(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3) {
 		super(par1ModelBase, par3);

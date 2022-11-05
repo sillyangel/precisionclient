@@ -42,7 +42,7 @@ public class BlockEnchantmentTable extends BlockContainer {
 							}
 
 							par1World.spawnParticle("enchantmenttable", (double) par2 + 0.5D, (double) par3 + 2.0D, (double) par4 + 0.5D, (double) ((float) (var6 - par2) + par5Random.nextFloat()) - 0.5D,
-									(double) ((float) (var8 - par3) - par5Random.nextFloat() - 1.0F), (double) ((float) (var7 - par4) + par5Random.nextFloat()) - 0.5D);
+                                    (float) (var8 - par3) - par5Random.nextFloat() - 1.0F, (double) ((float) (var7 - par4) + par5Random.nextFloat()) - 0.5D);
 						}
 					}
 				}

@@ -19,6 +19,7 @@ package net.lax1dude.eaglercraft;
 
 import java.math.BigInteger;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Provides Base64 encoding and decoding as defined by <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045</a>.
@@ -274,7 +275,7 @@ public class Base64 extends BaseNCodec {
      * @since 1.4 (NOTE:  1.4 chunked the output, whereas 1.5 does not).
      */
     public static String encodeBase64String(final byte[] binaryData) {
-        return new String(encodeBase64(binaryData, false), Charset.forName("UTF-8"));
+        return new String(encodeBase64(binaryData, false), StandardCharsets.UTF_8);
     }
 
     /**
@@ -300,7 +301,7 @@ public class Base64 extends BaseNCodec {
      * @since 1.4
      */
     public static String encodeBase64URLSafeString(final byte[] binaryData) {
-        return new String(encodeBase64(binaryData, false, true), Charset.forName("UTF-8"));
+        return new String(encodeBase64(binaryData, false, true), StandardCharsets.UTF_8);
     }
 
     /**
@@ -374,7 +375,7 @@ public class Base64 extends BaseNCodec {
      *  @since 1.5
      */
     public static boolean isBase64(final String base64) {
-        return isBase64(base64.getBytes(Charset.forName("UTF-8")));
+        return isBase64(base64.getBytes(StandardCharsets.UTF_8));
     }
 
     /**
@@ -587,7 +588,7 @@ public class Base64 extends BaseNCodec {
         // @see test case Base64Test.testConstructors()
         if (lineSeparator != null) {
             if (containsAlphabetOrPad(lineSeparator)) {
-                final String sep = new String(lineSeparator, Charset.forName("UTF-8"));
+                final String sep = new String(lineSeparator, StandardCharsets.UTF_8);
                 throw new IllegalArgumentException("lineSeparator must not contain base64 characters: [" + sep + "]");
             }
             if (lineLength > 0){ // null line-sep forces no chunking rather than throwing IAE

@@ -4,13 +4,13 @@ import net.lax1dude.eaglercraft.EaglerAdapter;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public class EntityPickupFX extends EntityFX {
-	private Entity entityToPickUp;
-	private Entity entityPickingUp;
+	private final Entity entityToPickUp;
+	private final Entity entityPickingUp;
 	private int age = 0;
 	private int maxAge = 0;
 
 	/** renamed from yOffset to fix shadowing Entity.yOffset */
-	private float yOffs;
+	private final float yOffs;
 
 	public EntityPickupFX(World par1World, Entity par2Entity, Entity par3Entity, float par4) {
 		super(par1World, par2Entity.posX, par2Entity.posY, par2Entity.posZ, par2Entity.motionX, par2Entity.motionY, par2Entity.motionZ);
@@ -38,12 +38,12 @@ public class EntityPickupFX extends EntityFX {
 		int var30 = this.getBrightnessForRender(par2);
 		int var31 = var30 % 65536;
 		int var32 = var30 / 65536;
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var31 / 1.0F, (float) var32 / 1.0F);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var31, (float) var32);
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		var21 -= interpPosX;
 		var23 -= interpPosY;
 		var25 -= interpPosZ;
-		RenderManager.instance.renderEntityWithPosYaw(this.entityToPickUp, (double) ((float) var21), (double) ((float) var23), (double) ((float) var25), this.entityToPickUp.rotationYaw, par2);
+		RenderManager.instance.renderEntityWithPosYaw(this.entityToPickUp, (float) var21, (float) var23, (float) var25, this.entityToPickUp.rotationYaw, par2);
 	}
 
 	/**

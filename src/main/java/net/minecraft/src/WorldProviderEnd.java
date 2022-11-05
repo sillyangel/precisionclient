@@ -54,7 +54,7 @@ public class WorldProviderEnd extends WorldProvider {
 		var5 *= var4 * 0.0F + 0.15F;
 		var6 *= var4 * 0.0F + 0.15F;
 		var7 *= var4 * 0.0F + 0.15F;
-		return this.worldObj.getWorldVec3Pool().getVecFromPool((double) var5, (double) var6, (double) var7);
+		return this.worldObj.getWorldVec3Pool().getVecFromPool(var5, var6, var7);
 	}
 
 	public boolean isSkyColored() {
@@ -90,7 +90,7 @@ public class WorldProviderEnd extends WorldProvider {
 	 */
 	public boolean canCoordinateBeSpawn(int par1, int par2) {
 		int var3 = this.worldObj.getFirstUncoveredBlock(par1, par2);
-		return var3 == 0 ? false : Block.blocksList[var3].blockMaterial.blocksMovement();
+		return var3 != 0 && Block.blocksList[var3].blockMaterial.blocksMovement();
 	}
 
 	/**

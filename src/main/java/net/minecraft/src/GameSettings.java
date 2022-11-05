@@ -195,7 +195,7 @@ public class GameSettings {
 	 * Represents a key or mouse button as a string. Args: key
 	 */
 	public static String getKeyDisplayString(int par0) {
-		return par0 < 0 ? StatCollector.translateToLocalFormatted("key.mouseButton", new Object[] { Integer.valueOf(par0 + 101) }) : EaglerAdapter.getKeyName(par0);
+		return par0 < 0 ? StatCollector.translateToLocalFormatted("key.mouseButton", Integer.valueOf(par0 + 101)) : EaglerAdapter.getKeyName(par0);
 	}
 
 	/**

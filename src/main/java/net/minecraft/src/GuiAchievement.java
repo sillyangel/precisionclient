@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 
 public class GuiAchievement extends Gui {
 	/** Holds the instance of the game (Minecraft) */
-	private Minecraft theGame;
+	private final Minecraft theGame;
 
 	/** Holds the latest width scaled to fit the game window. */
 	private int achievementWindowWidth;
@@ -24,7 +24,7 @@ public class GuiAchievement extends Gui {
 	 * Holds a instance of RenderItem, used to draw the achievement icons on screen
 	 * (is based on ItemStack)
 	 */
-	private RenderItem itemRender;
+	private final RenderItem itemRender;
 	private boolean haveAchiement;
 
 	public GuiAchievement(Minecraft par1Minecraft) {
@@ -109,7 +109,7 @@ public class GuiAchievement extends Gui {
 				var3 *= var3;
 				var3 *= var3;
 				int var5 = this.achievementWindowWidth - 160;
-				int var6 = 0 - (int) (var3 * 36.0D);
+				int var6 = -(int) (var3 * 36.0D);
 				EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
 				bg.bindTexture();

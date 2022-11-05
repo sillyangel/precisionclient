@@ -4,8 +4,8 @@ package net.minecraft.src;
 
 public class ModelBlaze extends ModelBase {
 	/** The sticks that fly around the Blaze. */
-	private ModelRenderer[] blazeSticks = new ModelRenderer[12];
-	private ModelRenderer blazeHead;
+	private final ModelRenderer[] blazeSticks = new ModelRenderer[12];
+	private final ModelRenderer blazeHead;
 
 	public ModelBlaze() {
 		for (int var1 = 0; var1 < this.blazeSticks.length; ++var1) {

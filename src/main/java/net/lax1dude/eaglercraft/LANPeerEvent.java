@@ -4,7 +4,7 @@ public interface LANPeerEvent {
 
 	String getPeerId();
 	
-	public static class LANPeerICECandidateEvent implements LANPeerEvent {
+	class LANPeerICECandidateEvent implements LANPeerEvent {
 		
 		public final String clientId;
 		public final String candidates;
@@ -21,7 +21,7 @@ public interface LANPeerEvent {
 		
 	}
 	
-	public static class LANPeerDescriptionEvent implements LANPeerEvent {
+	class LANPeerDescriptionEvent implements LANPeerEvent {
 		
 		public final String clientId;
 		public final String description;
@@ -38,7 +38,7 @@ public interface LANPeerEvent {
 		
 	}
 	
-	public static class LANPeerDataChannelEvent implements LANPeerEvent {
+	class LANPeerDataChannelEvent implements LANPeerEvent {
 		
 		public final String clientId;
 		
@@ -53,7 +53,7 @@ public interface LANPeerEvent {
 		
 	}
 	
-	public static class LANPeerPacketEvent implements LANPeerEvent {
+	class LANPeerPacketEvent implements LANPeerEvent {
 		
 		public final String clientId;
 		public final byte[] payload;
@@ -70,7 +70,7 @@ public interface LANPeerEvent {
 		
 	}
 	
-	public static class LANPeerDisconnectEvent implements LANPeerEvent {
+	class LANPeerDisconnectEvent implements LANPeerEvent {
 		
 		public final String clientId;
 		

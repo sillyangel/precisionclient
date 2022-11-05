@@ -10,7 +10,7 @@ import java.io.IOException;
 public class GuiConnecting extends GuiScreen {
 	/** A reference to the NetClientHandler. */
 	private NetClientHandler clientHandler;
-	private INetworkManager networkConnection;
+	private final INetworkManager networkConnection;
 	private String uri;
 
 	/** True if the connection attempt has been cancelled. */
@@ -24,7 +24,7 @@ public class GuiConnecting extends GuiScreen {
 		this.networkConnection = null;
 		this.uri = par3ServerData.serverIP;
 		//ServerAddress var4 = ServerAddress.func_78860_a(par3ServerData.serverIP);
-		par2Minecraft.loadWorld((WorldClient) null);
+		par2Minecraft.loadWorld(null);
 		par2Minecraft.setServerData(par3ServerData);
 		//this.spawnNewServerThread(var4.getIP(), var4.getPort());
 	}

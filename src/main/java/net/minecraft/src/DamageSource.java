@@ -159,8 +159,8 @@ public class DamageSource {
 		EntityLiving var2 = par1EntityLiving.func_94060_bK();
 		String var3 = "death.attack." + this.damageType;
 		String var4 = var3 + ".player";
-		return var2 != null && StatCollector.func_94522_b(var4) ? StatCollector.translateToLocalFormatted(var4, new Object[] { par1EntityLiving.getTranslatedEntityName(), var2.getTranslatedEntityName() })
-				: StatCollector.translateToLocalFormatted(var3, new Object[] { par1EntityLiving.getTranslatedEntityName() });
+		return var2 != null && StatCollector.func_94522_b(var4) ? StatCollector.translateToLocalFormatted(var4, par1EntityLiving.getTranslatedEntityName(), var2.getTranslatedEntityName())
+				: StatCollector.translateToLocalFormatted(var3, par1EntityLiving.getTranslatedEntityName());
 	}
 
 	/**

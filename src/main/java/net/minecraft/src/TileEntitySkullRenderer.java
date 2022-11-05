@@ -5,8 +5,8 @@ import net.lax1dude.eaglercraft.TextureLocation;
 
 public class TileEntitySkullRenderer extends TileEntitySpecialRenderer {
 	public static TileEntitySkullRenderer skullRenderer;
-	private ModelSkeletonHead field_82396_c = new ModelSkeletonHead(0, 0, 64, 32);
-	private ModelSkeletonHead field_82395_d = new ModelSkeletonHead(0, 0, 64, 64);
+	private final ModelSkeletonHead field_82396_c = new ModelSkeletonHead(0, 0, 64, 32);
+	private final ModelSkeletonHead field_82395_d = new ModelSkeletonHead(0, 0, 64, 64);
 
 	/**
 	 * Render a skull tile entity.
@@ -85,7 +85,7 @@ public class TileEntitySkullRenderer extends TileEntitySpecialRenderer {
 		EaglerAdapter.glEnable(EaglerAdapter.GL_RESCALE_NORMAL);
 		EaglerAdapter.glScalef(-1.0F, -1.0F, 1.0F);
 		EaglerAdapter.glEnable(EaglerAdapter.GL_ALPHA_TEST);
-		var8.render((Entity) null, 0.0F, 0.0F, 0.0F, par5, 0.0F, var10);
+		var8.render(null, 0.0F, 0.0F, 0.0F, par5, 0.0F, var10);
 		EaglerAdapter.glPopMatrix();
 	}
 

@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class EntityIronGolem extends EntityGolem {
 	/** deincrements, and a distance-to-home check is done at 0 */
-	private int homeCheckTimer = 0;
+	private final int homeCheckTimer = 0;
 	private int attackTimer;
 	private int holdRoseTick;
 
@@ -83,7 +83,7 @@ public class EntityIronGolem extends EntityGolem {
 	 * Returns true if this entity can attack entities of the specified class.
 	 */
 	public boolean canAttackClass(Class par1Class) {
-		return this.isPlayerCreated() && EntityPlayer.class.isAssignableFrom(par1Class) ? false : super.canAttackClass(par1Class);
+		return (!this.isPlayerCreated() || !EntityPlayer.class.isAssignableFrom(par1Class)) && super.canAttackClass(par1Class);
 	}
 
 	/**

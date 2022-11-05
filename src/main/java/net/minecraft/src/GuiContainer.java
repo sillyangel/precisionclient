@@ -96,7 +96,7 @@ public abstract class GuiContainer extends GuiScreen {
 		this.theSlot = null;
 		short var6 = 240;
 		short var7 = 240;
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6, (float) var7);
 		EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int var9;
 
@@ -152,7 +152,7 @@ public abstract class GuiContainer extends GuiScreen {
 			int var20 = this.returningStackDestSlot.yDisplayPosition - this.field_85048_s;
 			int var11 = this.field_85049_r + (int) ((float) var9 * var18);
 			int var12 = this.field_85048_s + (int) ((float) var20 * var18);
-			this.drawItemStack(this.returningStack, var11, var12, (String) null);
+			this.drawItemStack(this.returningStack, var11, var12, null);
 		}
 
 		EaglerAdapter.glPopMatrix();
@@ -183,7 +183,7 @@ public abstract class GuiContainer extends GuiScreen {
 
 		for (int var5 = 0; var5 < var4.size(); ++var5) {
 			if (var5 == 0) {
-				var4.set(var5, "\u00a7" + Integer.toHexString(par1ItemStack.getRarity().rarityColor) + (String) var4.get(var5));
+				var4.set(var5, "\u00a7" + Integer.toHexString(par1ItemStack.getRarity().rarityColor) + var4.get(var5));
 			} else {
 				var4.set(var5, EnumChatFormatting.GRAY + (String) var4.get(var5));
 			}
@@ -198,7 +198,7 @@ public abstract class GuiContainer extends GuiScreen {
 	 * position.
 	 */
 	protected void drawCreativeTabHoveringText(String par1Str, int par2, int par3) {
-		this.func_102021_a(Arrays.asList(new String[] { par1Str }), par2, par3);
+		this.func_102021_a(Arrays.asList(par1Str), par2, par3);
 	}
 
 	protected void func_102021_a(List par1List, int par2, int par3) {
@@ -419,7 +419,7 @@ public abstract class GuiContainer extends GuiScreen {
 			}
 
 			if (this.mc.gameSettings.touchscreen && var10 && this.mc.thePlayer.inventory.getItemStack() == null) {
-				this.mc.displayGuiScreen((GuiScreen) null);
+				this.mc.displayGuiScreen(null);
 				return;
 			}
 
@@ -527,7 +527,7 @@ public abstract class GuiContainer extends GuiScreen {
 		Slot var10;
 		Iterator var11;
 
-		if (this.field_94074_J && var4 != null && par3 == 0 && this.inventorySlots.func_94530_a((ItemStack) null, var4)) {
+		if (this.field_94074_J && var4 != null && par3 == 0 && this.inventorySlots.func_94530_a(null, var4)) {
 			if (isShiftKeyDown()) {
 				if (var4 != null && var4.inventory != null && this.field_94075_K != null) {
 					var11 = this.inventorySlots.inventorySlots.iterator();
@@ -595,7 +595,7 @@ public abstract class GuiContainer extends GuiScreen {
 					this.clickedSlot = null;
 				}
 			} else if (this.field_94076_q && !this.field_94077_p.isEmpty()) {
-				this.handleMouseClick((Slot) null, -999, Container.func_94534_d(0, this.field_94071_C), 5);
+				this.handleMouseClick(null, -999, Container.func_94534_d(0, this.field_94071_C), 5);
 				var11 = this.field_94077_p.iterator();
 
 				while (var11.hasNext()) {
@@ -603,7 +603,7 @@ public abstract class GuiContainer extends GuiScreen {
 					this.handleMouseClick(var10, var10.slotNumber, Container.func_94534_d(1, this.field_94071_C), 5);
 				}
 
-				this.handleMouseClick((Slot) null, -999, Container.func_94534_d(2, this.field_94071_C), 5);
+				this.handleMouseClick(null, -999, Container.func_94534_d(2, this.field_94071_C), 5);
 			} else if (this.mc.thePlayer.inventory.getItemStack() != null) {
 				if (par3 == this.mc.gameSettings.keyBindPickBlock.keyCode + 100) {
 					this.handleMouseClick(var4, var8, par3, 3);

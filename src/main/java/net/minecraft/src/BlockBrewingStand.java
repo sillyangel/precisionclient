@@ -5,7 +5,7 @@ import net.lax1dude.eaglercraft.EaglercraftRandom;
 import java.util.List;
 
 public class BlockBrewingStand extends BlockContainer {
-	private EaglercraftRandom rand = new EaglercraftRandom();
+	private final EaglercraftRandom rand = new EaglercraftRandom();
 	private Icon theIcon;
 
 	public BlockBrewingStand(int par1) {
@@ -84,9 +84,9 @@ public class BlockBrewingStand extends BlockContainer {
 	 * for display
 	 */
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, EaglercraftRandom par5Random) {
-		double var6 = (double) ((float) par2 + 0.4F + par5Random.nextFloat() * 0.2F);
-		double var8 = (double) ((float) par3 + 0.7F + par5Random.nextFloat() * 0.3F);
-		double var10 = (double) ((float) par4 + 0.4F + par5Random.nextFloat() * 0.2F);
+		double var6 = (float) par2 + 0.4F + par5Random.nextFloat() * 0.2F;
+		double var8 = (float) par3 + 0.7F + par5Random.nextFloat() * 0.3F;
+		double var10 = (float) par4 + 0.4F + par5Random.nextFloat() * 0.2F;
 		par1World.spawnParticle("smoke", var6, var8, var10, 0.0D, 0.0D, 0.0D);
 	}
 
@@ -116,11 +116,11 @@ public class BlockBrewingStand extends BlockContainer {
 						}
 
 						var10.stackSize -= var14;
-						EntityItem var15 = new EntityItem(par1World, (double) ((float) par2 + var11), (double) ((float) par3 + var12), (double) ((float) par4 + var13), new ItemStack(var10.itemID, var14, var10.getItemDamage()));
+						EntityItem var15 = new EntityItem(par1World, (float) par2 + var11, (float) par3 + var12, (float) par4 + var13, new ItemStack(var10.itemID, var14, var10.getItemDamage()));
 						float var16 = 0.05F;
-						var15.motionX = (double) ((float) this.rand.nextGaussian() * var16);
-						var15.motionY = (double) ((float) this.rand.nextGaussian() * var16 + 0.2F);
-						var15.motionZ = (double) ((float) this.rand.nextGaussian() * var16);
+						var15.motionX = (float) this.rand.nextGaussian() * var16;
+						var15.motionY = (float) this.rand.nextGaussian() * var16 + 0.2F;
+						var15.motionZ = (float) this.rand.nextGaussian() * var16;
 						par1World.spawnEntityInWorld(var15);
 					}
 				}

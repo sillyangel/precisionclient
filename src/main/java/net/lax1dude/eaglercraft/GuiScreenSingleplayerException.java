@@ -7,10 +7,10 @@ import net.minecraft.src.StringTranslate;
 
 public class GuiScreenSingleplayerException extends GuiScreen {
 
-	private GuiScreen mainmenu;
-	private IPCPacket15ThrowException exception;
+	private final GuiScreen mainmenu;
+	private final IPCPacket15ThrowException exception;
 	private GuiButton returnToMenu;
-	private String action;
+	private final String action;
 	
 	public GuiScreenSingleplayerException(GuiScreen mainmenu, String action, IPCPacket15ThrowException exception) {
 		this.mainmenu = mainmenu;

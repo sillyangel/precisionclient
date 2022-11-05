@@ -110,8 +110,8 @@ public class RenderDragon extends RenderLiving {
 			float var16 = MathHelper.sqrt_float(var12 * var12 + var13 * var13 + var14 * var14);
 			EaglerAdapter.glPushMatrix();
 			EaglerAdapter.glTranslatef((float) par2, (float) par4 + 2.0F, (float) par6);
-			EaglerAdapter.glRotatef((float) (-Math.atan2((double) var14, (double) var12)) * 180.0F / (float) Math.PI - 90.0F, 0.0F, 1.0F, 0.0F);
-			EaglerAdapter.glRotatef((float) (-Math.atan2((double) var15, (double) var13)) * 180.0F / (float) Math.PI - 90.0F, 1.0F, 0.0F, 0.0F);
+			EaglerAdapter.glRotatef((float) (-Math.atan2(var14, var12)) * 180.0F / (float) Math.PI - 90.0F, 0.0F, 1.0F, 0.0F);
+			EaglerAdapter.glRotatef((float) (-Math.atan2(var15, var13)) * 180.0F / (float) Math.PI - 90.0F, 1.0F, 0.0F, 0.0F);
 			Tessellator var17 = Tessellator.instance;
 			RenderHelper.disableStandardItemLighting();
 			EaglerAdapter.glDisable(EaglerAdapter.GL_CULL_FACE);
@@ -125,11 +125,11 @@ public class RenderDragon extends RenderLiving {
 			for (int var21 = 0; var21 <= var20; ++var21) {
 				float var22 = MathHelper.sin((float) (var21 % var20) * (float) Math.PI * 2.0F / (float) var20) * 0.75F;
 				float var23 = MathHelper.cos((float) (var21 % var20) * (float) Math.PI * 2.0F / (float) var20) * 0.75F;
-				float var24 = (float) (var21 % var20) * 1.0F / (float) var20;
+				float var24 = (float) (var21 % var20) / (float) var20;
 				var17.setColorOpaque_I(0);
-				var17.addVertexWithUV((double) (var22 * 0.2F), (double) (var23 * 0.2F), 0.0D, (double) var24, (double) var19);
+				var17.addVertexWithUV(var22 * 0.2F, var23 * 0.2F, 0.0D, var24, var19);
 				var17.setColorOpaque_I(16777215);
-				var17.addVertexWithUV((double) var22, (double) var23, (double) var16, (double) var24, (double) var18);
+				var17.addVertexWithUV(var22, var23, var16, var24, var18);
 			}
 
 			var17.draw();
@@ -180,10 +180,10 @@ public class RenderDragon extends RenderLiving {
 				var3.setColorRGBA_I(16777215, (int) (255.0F * (1.0F - var5)));
 				var3.addVertex(0.0D, 0.0D, 0.0D);
 				var3.setColorRGBA_I(16711935, 0);
-				var3.addVertex(-0.866D * (double) var9, (double) var8, (double) (-0.5F * var9));
-				var3.addVertex(0.866D * (double) var9, (double) var8, (double) (-0.5F * var9));
-				var3.addVertex(0.0D, (double) var8, (double) (1.0F * var9));
-				var3.addVertex(-0.866D * (double) var9, (double) var8, (double) (-0.5F * var9));
+				var3.addVertex(-0.866D * (double) var9, var8, -0.5F * var9);
+				var3.addVertex(0.866D * (double) var9, var8, -0.5F * var9);
+				var3.addVertex(0.0D, var8, var9);
+				var3.addVertex(-0.866D * (double) var9, var8, -0.5F * var9);
 				var3.draw();
 			}
 
@@ -221,7 +221,7 @@ public class RenderDragon extends RenderLiving {
 			char var5 = 61680;
 			int var6 = var5 % 65536;
 			int var7 = var5 / 65536;
-			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6 / 1.0F, (float) var7 / 1.0F);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) var6, (float) var7);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			EaglerAdapter.glEnable(EaglerAdapter.GL_LIGHTING);
 			EaglerAdapter.glColor4f(1.0F, 1.0F, 1.0F, var4);

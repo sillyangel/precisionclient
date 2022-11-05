@@ -53,8 +53,7 @@ public class BlockTripWireSource extends Block {
 	 * block: BlockLever overrides
 	 */
 	public boolean canPlaceBlockOnSide(World par1World, int par2, int par3, int par4, int par5) {
-		return par5 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1) ? true
-				: (par5 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1) ? true : (par5 == 4 && par1World.isBlockNormalCube(par2 + 1, par3, par4) ? true : par5 == 5 && par1World.isBlockNormalCube(par2 - 1, par3, par4)));
+		return par5 == 2 && par1World.isBlockNormalCube(par2, par3, par4 + 1) || (par5 == 3 && par1World.isBlockNormalCube(par2, par3, par4 - 1) || (par5 == 4 && par1World.isBlockNormalCube(par2 + 1, par3, par4) || par5 == 5 && par1World.isBlockNormalCube(par2 - 1, par3, par4)));
 	}
 
 	/**
@@ -62,8 +61,7 @@ public class BlockTripWireSource extends Block {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.isBlockNormalCube(par2 - 1, par3, par4) ? true
-				: (par1World.isBlockNormalCube(par2 + 1, par3, par4) ? true : (par1World.isBlockNormalCube(par2, par3, par4 - 1) ? true : par1World.isBlockNormalCube(par2, par3, par4 + 1)));
+		return par1World.isBlockNormalCube(par2 - 1, par3, par4) || (par1World.isBlockNormalCube(par2 + 1, par3, par4) || (par1World.isBlockNormalCube(par2, par3, par4 - 1) || par1World.isBlockNormalCube(par2, par3, par4 + 1)));
 	}
 
 	/**
@@ -109,13 +107,9 @@ public class BlockTripWireSource extends Block {
 			if (this.func_72144_l(par1World, par2, par3, par4)) {
 				int var6 = par1World.getBlockMetadata(par2, par3, par4);
 				int var7 = var6 & 3;
-				boolean var8 = false;
+				boolean var8 = !par1World.isBlockNormalCube(par2 - 1, par3, par4) && var7 == 3;
 
-				if (!par1World.isBlockNormalCube(par2 - 1, par3, par4) && var7 == 3) {
-					var8 = true;
-				}
-
-				if (!par1World.isBlockNormalCube(par2 + 1, par3, par4) && var7 == 1) {
+                if (!par1World.isBlockNormalCube(par2 + 1, par3, par4) && var7 == 1) {
 					var8 = true;
 				}
 

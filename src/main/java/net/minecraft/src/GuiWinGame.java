@@ -16,7 +16,7 @@ public class GuiWinGame extends GuiScreen {
 	/** List of lines on the ending poem and credits. */
 	private List lines;
 	private int field_73989_c = 0;
-	private float field_73987_d = 0.5F;
+	private final float field_73987_d = 0.5F;
 
 	/**
 	 * Called from the main game loop to update the screen.
@@ -45,7 +45,7 @@ public class GuiWinGame extends GuiScreen {
 	 */
 	private void respawnPlayer() {
 		this.mc.thePlayer.sendQueue.addToSendQueue(new Packet205ClientCommand(1));
-		this.mc.displayGuiScreen((GuiScreen) null);
+		this.mc.displayGuiScreen(null);
 	}
 
 	/**
@@ -128,10 +128,10 @@ public class GuiWinGame extends GuiScreen {
 		var9 *= var9;
 		var9 = var9 * 96.0F / 255.0F;
 		var4.setColorOpaque_F(var9, var9, var9);
-		var4.addVertexWithUV(0.0D, (double) this.height, (double) this.zLevel, 0.0D, (double) (var6 * var8));
-		var4.addVertexWithUV((double) var5, (double) this.height, (double) this.zLevel, (double) ((float) var5 * var8), (double) (var6 * var8));
-		var4.addVertexWithUV((double) var5, 0.0D, (double) this.zLevel, (double) ((float) var5 * var8), (double) (var7 * var8));
-		var4.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, 0.0D, (double) (var7 * var8));
+		var4.addVertexWithUV(0.0D, this.height, this.zLevel, 0.0D, var6 * var8);
+		var4.addVertexWithUV(var5, this.height, this.zLevel, (float) var5 * var8, var6 * var8);
+		var4.addVertexWithUV(var5, 0.0D, this.zLevel, (float) var5 * var8, var7 * var8);
+		var4.addVertexWithUV(0.0D, 0.0D, this.zLevel, 0.0D, var7 * var8);
 		var4.draw();
 	}
 	
@@ -189,10 +189,10 @@ public class GuiWinGame extends GuiScreen {
 		var4.setColorRGBA_F(1.0F, 1.0F, 1.0F, 1.0F);
 		var10 = this.width;
 		int var13 = this.height;
-		var4.addVertexWithUV(0.0D, (double) var13, (double) this.zLevel, 0.0D, 1.0D);
-		var4.addVertexWithUV((double) var10, (double) var13, (double) this.zLevel, 1.0D, 1.0D);
-		var4.addVertexWithUV((double) var10, 0.0D, (double) this.zLevel, 1.0D, 0.0D);
-		var4.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, 0.0D, 0.0D);
+		var4.addVertexWithUV(0.0D, var13, this.zLevel, 0.0D, 1.0D);
+		var4.addVertexWithUV(var10, var13, this.zLevel, 1.0D, 1.0D);
+		var4.addVertexWithUV(var10, 0.0D, this.zLevel, 1.0D, 0.0D);
+		var4.addVertexWithUV(0.0D, 0.0D, this.zLevel, 0.0D, 0.0D);
 		var4.draw();
 		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);
 		super.drawScreen(par1, par2, par3);

@@ -126,9 +126,10 @@ public class CreativeTabs {
 				boolean var7 = false;
 
 				for (int var8 = 0; var8 < par2ArrayOfEnumEnchantmentType.length && !var7; ++var8) {
-					if (var6.type == par2ArrayOfEnumEnchantmentType[var8]) {
-						var7 = true;
-					}
+                    if (var6.type == par2ArrayOfEnumEnchantmentType[var8]) {
+                        var7 = true;
+                        break;
+                    }
 				}
 
 				if (var7) {

@@ -11,11 +11,11 @@ import java.util.List;
 public class EffectRenderer {
 	/** Reference to the World object. */
 	protected World worldObj;
-	private List[] fxLayers = new List[4];
-	private RenderEngine renderer;
+	private final List[] fxLayers = new List[4];
+	private final RenderEngine renderer;
 
 	/** RNG. */
-	private EaglercraftRandom rand = new EaglercraftRandom();
+	private final EaglercraftRandom rand = new EaglercraftRandom();
 
 	public EffectRenderer(World par1World, RenderEngine par2RenderEngine) {
 		if (par1World != null) {

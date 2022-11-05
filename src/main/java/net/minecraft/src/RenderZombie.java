@@ -4,7 +4,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.TextureLocation;
 
 public class RenderZombie extends RenderBiped {
-	private ModelBiped field_82434_o;
+	private final ModelBiped field_82434_o;
 	private ModelZombieVillager field_82432_p;
 	protected ModelBiped field_82437_k;
 	protected ModelBiped field_82435_l;

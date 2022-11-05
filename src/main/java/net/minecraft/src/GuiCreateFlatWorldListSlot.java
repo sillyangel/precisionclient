@@ -40,14 +40,14 @@ class GuiCreateFlatWorldListSlot extends GuiSlot {
 		this.createFlatWorldGui.mc.renderEngine.bindTexture("/gui/slot.png");
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 18), (double) this.createFlatWorldGui.zLevel,
-				(double) ((float) (par3 + 0) * 0.0078125F), (double) ((float) (par4 + 18) * 0.0078125F));
-		var9.addVertexWithUV((double) (par1 + 18), (double) (par2 + 18), (double) this.createFlatWorldGui.zLevel,
-				(double) ((float) (par3 + 18) * 0.0078125F), (double) ((float) (par4 + 18) * 0.0078125F));
-		var9.addVertexWithUV((double) (par1 + 18), (double) (par2 + 0), (double) this.createFlatWorldGui.zLevel,
-				(double) ((float) (par3 + 18) * 0.0078125F), (double) ((float) (par4 + 0) * 0.0078125F));
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), (double) this.createFlatWorldGui.zLevel,
-				(double) ((float) (par3 + 0) * 0.0078125F), (double) ((float) (par4 + 0) * 0.0078125F));
+		var9.addVertexWithUV(par1, par2 + 18, this.createFlatWorldGui.zLevel,
+                (float) (par3) * 0.0078125F, (float) (par4 + 18) * 0.0078125F);
+		var9.addVertexWithUV(par1 + 18, par2 + 18, this.createFlatWorldGui.zLevel,
+                (float) (par3 + 18) * 0.0078125F, (float) (par4 + 18) * 0.0078125F);
+		var9.addVertexWithUV(par1 + 18, par2, this.createFlatWorldGui.zLevel,
+                (float) (par3 + 18) * 0.0078125F, (float) (par4) * 0.0078125F);
+		var9.addVertexWithUV(par1, par2, this.createFlatWorldGui.zLevel,
+                (float) (par3) * 0.0078125F, (float) (par4) * 0.0078125F);
 		var9.draw();
 	}
 
@@ -89,13 +89,13 @@ class GuiCreateFlatWorldListSlot extends GuiSlot {
 
 		if (par1 == 0) {
 			var9 = StatCollector.translateToLocalFormatted("createWorld.customize.flat.layer.top",
-					new Object[] { Integer.valueOf(var6.getLayerCount()) });
+                    Integer.valueOf(var6.getLayerCount()));
 		} else if (par1 == GuiCreateFlatWorld.func_82271_a(this.createFlatWorldGui).getFlatLayers().size() - 1) {
 			var9 = StatCollector.translateToLocalFormatted("createWorld.customize.flat.layer.bottom",
-					new Object[] { Integer.valueOf(var6.getLayerCount()) });
+                    Integer.valueOf(var6.getLayerCount()));
 		} else {
 			var9 = StatCollector.translateToLocalFormatted("createWorld.customize.flat.layer",
-					new Object[] { Integer.valueOf(var6.getLayerCount()) });
+                    Integer.valueOf(var6.getLayerCount()));
 		}
 
 		this.createFlatWorldGui.fontRenderer.drawString(var9,

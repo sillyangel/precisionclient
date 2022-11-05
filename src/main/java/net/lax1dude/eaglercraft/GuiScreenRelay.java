@@ -17,7 +17,7 @@ public class GuiScreenRelay extends GuiScreen {
 	
 	private String tooltipString = null;
 	
-	private long lastRefresh = 0l;
+	private long lastRefresh = 0L;
 	
 	public GuiScreenRelay(GuiScreen screen) {
 		this.screen = screen;
@@ -73,19 +73,19 @@ public class GuiScreenRelay extends GuiScreen {
 			}
 		} else if(btn.id == 4) {
 			long millis = System.currentTimeMillis();
-			if(millis - lastRefresh > 700l) {
+			if(millis - lastRefresh > 700L) {
 				lastRefresh = millis;
 				slots.relayManager.ping();
 			}
-			lastRefresh += 60l;
+			lastRefresh += 60L;
 		} else if(btn.id == 5) {
 			slots.relayManager.loadDefaults();
 			long millis = System.currentTimeMillis();
-			if(millis - lastRefresh > 700l) {
+			if(millis - lastRefresh > 700L) {
 				lastRefresh = millis;
 				slots.relayManager.ping();
 			}
-			lastRefresh += 60l;
+			lastRefresh += 60L;
 		}
 	}
 	

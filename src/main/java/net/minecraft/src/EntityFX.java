@@ -69,9 +69,9 @@ public class EntityFX extends Entity {
 	}
 
 	public EntityFX multiplyVelocity(float par1) {
-		this.motionX *= (double) par1;
+		this.motionX *= par1;
 		this.motionY = (this.motionY - 0.10000000149011612D) * (double) par1 + 0.10000000149011612D;
-		this.motionZ *= (double) par1;
+		this.motionZ *= par1;
 		return this;
 	}
 
@@ -161,10 +161,10 @@ public class EntityFX extends Entity {
 		float var15 = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * (double) par2 - interpPosZ);
 		float var16 = 1.0F;
 		par1Tessellator.setColorRGBA_F(this.particleRed * var16, this.particleGreen * var16, this.particleBlue * var16, this.particleAlpha);
-		par1Tessellator.addVertexWithUV((double) (var13 - par3 * var12 - par6 * var12), (double) (var14 - par4 * var12), (double) (var15 - par5 * var12 - par7 * var12), (double) var9, (double) var11);
-		par1Tessellator.addVertexWithUV((double) (var13 - par3 * var12 + par6 * var12), (double) (var14 + par4 * var12), (double) (var15 - par5 * var12 + par7 * var12), (double) var9, (double) var10);
-		par1Tessellator.addVertexWithUV((double) (var13 + par3 * var12 + par6 * var12), (double) (var14 + par4 * var12), (double) (var15 + par5 * var12 + par7 * var12), (double) var8, (double) var10);
-		par1Tessellator.addVertexWithUV((double) (var13 + par3 * var12 - par6 * var12), (double) (var14 - par4 * var12), (double) (var15 + par5 * var12 - par7 * var12), (double) var8, (double) var11);
+		par1Tessellator.addVertexWithUV(var13 - par3 * var12 - par6 * var12, var14 - par4 * var12, var15 - par5 * var12 - par7 * var12, var9, var11);
+		par1Tessellator.addVertexWithUV(var13 - par3 * var12 + par6 * var12, var14 + par4 * var12, var15 - par5 * var12 + par7 * var12, var9, var10);
+		par1Tessellator.addVertexWithUV(var13 + par3 * var12 + par6 * var12, var14 + par4 * var12, var15 + par5 * var12 + par7 * var12, var8, var10);
+		par1Tessellator.addVertexWithUV(var13 + par3 * var12 - par6 * var12, var14 - par4 * var12, var15 + par5 * var12 - par7 * var12, var8, var11);
 	}
 
 	public int getFXLayer() {

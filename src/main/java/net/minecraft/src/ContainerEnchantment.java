@@ -7,11 +7,11 @@ public class ContainerEnchantment extends Container {
 	public IInventory tableInventory = new SlotEnchantmentTable(this, "Enchant", true, 1);
 
 	/** current world (for bookshelf counting) */
-	private World worldPointer;
-	private int posX;
-	private int posY;
-	private int posZ;
-	private EaglercraftRandom rand = new EaglercraftRandom();
+	private final World worldPointer;
+	private final int posX;
+	private final int posY;
+	private final int posZ;
+	private final EaglercraftRandom rand = new EaglercraftRandom();
 
 	/** used as seed for EnchantmentNameParts (see GuiEnchantment) */
 	public long nameSeed;
@@ -92,16 +92,11 @@ public class ContainerEnchantment extends Container {
 	public boolean enchantItem(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack var3 = this.tableInventory.getStackInSlot(0);
 
-		if (this.enchantLevels[par2] > 0 && var3 != null && (par1EntityPlayer.experienceLevel >= this.enchantLevels[par2] || par1EntityPlayer.capabilities.isCreativeMode)) {
-			return true;
-		} else {
-			return false;
-		}
+        return this.enchantLevels[par2] > 0 && var3 != null && (par1EntityPlayer.experienceLevel >= this.enchantLevels[par2] || par1EntityPlayer.capabilities.isCreativeMode);
 	}
 
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		return this.worldPointer.getBlockId(this.posX, this.posY, this.posZ) != Block.enchantmentTable.blockID ? false
-				: par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+		return this.worldPointer.getBlockId(this.posX, this.posY, this.posZ) == Block.enchantmentTable.blockID && par1EntityPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
 	}
 
 	/**
@@ -135,7 +130,7 @@ public class ContainerEnchantment extends Container {
 			}
 
 			if (var5.stackSize == 0) {
-				var4.putStack((ItemStack) null);
+				var4.putStack(null);
 			} else {
 				var4.onSlotChanged();
 			}

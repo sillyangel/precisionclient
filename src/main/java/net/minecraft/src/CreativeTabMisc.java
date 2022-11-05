@@ -19,6 +19,6 @@ final class CreativeTabMisc extends CreativeTabs {
 	 */
 	public void displayAllReleventItems(List par1List) {
 		super.displayAllReleventItems(par1List);
-		this.func_92116_a(par1List, new EnumEnchantmentType[] { EnumEnchantmentType.all });
+		this.func_92116_a(par1List, EnumEnchantmentType.all);
 	}
 }

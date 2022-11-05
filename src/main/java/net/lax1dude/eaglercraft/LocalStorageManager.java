@@ -21,24 +21,21 @@ public class LocalStorageManager {
 			try {
 				achievementStorage = CompressedStreamTools.readUncompressed(a);
 			}catch(IOException e) {
-				;
-			}
+            }
 		}
 		
 		if(g != null) {
 			try {
 				gameSettingsStorage = CompressedStreamTools.readUncompressed(g);
 			}catch(IOException e) {
-				;
-			}
+            }
 		}
 		
 		if(p != null) {
 			try {
 				profileSettingsStorage = CompressedStreamTools.readUncompressed(p);
 			}catch(IOException e) {
-				;
-			}
+            }
 		}
 
 		if(achievementStorage == null) achievementStorage = new NBTTagCompound();
@@ -51,24 +48,21 @@ public class LocalStorageManager {
 		try {
 			EaglerAdapter.saveLocalStorage("a", CompressedStreamTools.writeUncompressed(achievementStorage));
 		} catch (IOException e) {
-			;
-		}
+        }
 	}
 	
 	public static void saveStorageG() {
 		try {
 			EaglerAdapter.saveLocalStorage("g", CompressedStreamTools.writeUncompressed(gameSettingsStorage));
 		} catch (IOException e) {
-			;
-		}
+        }
 	}
 	
 	public static void saveStorageP() {
 		try {
 			EaglerAdapter.saveLocalStorage("p", CompressedStreamTools.writeUncompressed(profileSettingsStorage));
 		} catch (IOException e) {
-			;
-		}
+        }
 	}
 	
 	public static String dumpConfiguration() {

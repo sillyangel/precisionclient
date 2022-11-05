@@ -502,10 +502,10 @@ public class GuiTextField extends Gui {
 		EaglerAdapter.glBlendFunc(EaglerAdapter.GL_ONE_MINUS_DST_COLOR, EaglerAdapter.GL_SRC_ALPHA);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_TEXTURE_2D);
 		var6.startDrawingQuads();
-		var6.addVertex((double) par1, (double) par4, 0.0D);
-		var6.addVertex((double) par3, (double) par4, 0.0D);
-		var6.addVertex((double) par3, (double) par2, 0.0D);
-		var6.addVertex((double) par1, (double) par2, 0.0D);
+		var6.addVertex(par1, par4, 0.0D);
+		var6.addVertex(par3, par4, 0.0D);
+		var6.addVertex(par3, par2, 0.0D);
+		var6.addVertex(par1, par2, 0.0D);
 		var6.draw();
 		EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
 		EaglerAdapter.glDisable(EaglerAdapter.GL_BLEND);

@@ -79,15 +79,15 @@ public class EntityFishHook extends Entity {
 		this.angler.fishEntity = this;
 		this.setSize(0.25F, 0.25F);
 		this.setLocationAndAngles(par2EntityPlayer.posX, par2EntityPlayer.posY + 1.62D - (double) par2EntityPlayer.yOffset, par2EntityPlayer.posZ, par2EntityPlayer.rotationYaw, par2EntityPlayer.rotationPitch);
-		this.posX -= (double) (MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F);
+		this.posX -= MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
 		this.posY -= 0.10000000149011612D;
-		this.posZ -= (double) (MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F);
+		this.posZ -= MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
 		this.setPosition(this.posX, this.posY, this.posZ);
 		this.yOffset = 0.0F;
 		float var3 = 0.4F;
-		this.motionX = (double) (-MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var3);
-		this.motionZ = (double) (MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var3);
-		this.motionY = (double) (-MathHelper.sin(this.rotationPitch / 180.0F * (float) Math.PI) * var3);
+		this.motionX = -MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var3;
+		this.motionZ = MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float) Math.PI) * var3;
+		this.motionY = -MathHelper.sin(this.rotationPitch / 180.0F * (float) Math.PI) * var3;
 		this.calculateVelocity(this.motionX, this.motionY, this.motionZ, 1.5F, 1.0F);
 	}
 
@@ -107,21 +107,21 @@ public class EntityFishHook extends Entity {
 
 	public void calculateVelocity(double par1, double par3, double par5, float par7, float par8) {
 		float var9 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
-		par1 /= (double) var9;
-		par3 /= (double) var9;
-		par5 /= (double) var9;
+		par1 /= var9;
+		par3 /= var9;
+		par5 /= var9;
 		par1 += this.rand.nextGaussian() * 0.007499999832361937D * (double) par8;
 		par3 += this.rand.nextGaussian() * 0.007499999832361937D * (double) par8;
 		par5 += this.rand.nextGaussian() * 0.007499999832361937D * (double) par8;
-		par1 *= (double) par7;
-		par3 *= (double) par7;
-		par5 *= (double) par7;
+		par1 *= par7;
+		par3 *= par7;
+		par5 *= par7;
 		this.motionX = par1;
 		this.motionY = par3;
 		this.motionZ = par5;
 		float var10 = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
 		this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(par1, par5) * 180.0D / Math.PI);
-		this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(par3, (double) var10) * 180.0D / Math.PI);
+		this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(par3, var10) * 180.0D / Math.PI);
 		this.ticksInGround = 0;
 	}
 
@@ -133,8 +133,8 @@ public class EntityFishHook extends Entity {
 		this.fishX = par1;
 		this.fishY = par3;
 		this.fishZ = par5;
-		this.fishYaw = (double) par7;
-		this.fishPitch = (double) par8;
+		this.fishYaw = par7;
+		this.fishPitch = par8;
 		this.fishPosRotationIncrements = par9;
 		this.motionX = this.velocityX;
 		this.motionY = this.velocityY;
@@ -186,9 +186,9 @@ public class EntityFishHook extends Entity {
 				}
 
 				this.inGround = false;
-				this.motionX *= (double) (this.rand.nextFloat() * 0.2F);
-				this.motionY *= (double) (this.rand.nextFloat() * 0.2F);
-				this.motionZ *= (double) (this.rand.nextFloat() * 0.2F);
+				this.motionX *= this.rand.nextFloat() * 0.2F;
+				this.motionY *= this.rand.nextFloat() * 0.2F;
+				this.motionZ *= this.rand.nextFloat() * 0.2F;
 				this.ticksInGround = 0;
 				this.ticksInAir = 0;
 			} else {
@@ -215,7 +215,7 @@ public class EntityFishHook extends Entity {
 
 				if (var9.canBeCollidedWith() && (var9 != this.angler || this.ticksInAir >= 5)) {
 					float var10 = 0.3F;
-					AxisAlignedBB var11 = var9.boundingBox.expand((double) var10, (double) var10, (double) var10);
+					AxisAlignedBB var11 = var9.boundingBox.expand(var10, var10, var10);
 					MovingObjectPosition var12 = var11.calculateIntercept(var20, var2);
 
 					if (var12 != null) {
@@ -248,9 +248,8 @@ public class EntityFishHook extends Entity {
 				float var24 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 				this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-				for (this.rotationPitch = (float) (Math.atan2(this.motionY, (double) var24) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
-					;
-				}
+				for (this.rotationPitch = (float) (Math.atan2(this.motionY, var24) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
+                }
 
 				while (this.rotationPitch - this.prevRotationPitch >= 180.0F) {
 					this.prevRotationPitch += 360.0F;
@@ -276,7 +275,7 @@ public class EntityFishHook extends Entity {
 				double var27 = 0.0D;
 
 				for (int var28 = 0; var28 < var26; ++var28) {
-					double var14 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double) (var28 + 0) / (double) var26 - 0.125D + 0.125D;
+					double var14 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double) (var28) / (double) var26 - 0.125D + 0.125D;
 					double var16 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double) (var28 + 1) / (double) var26 - 0.125D + 0.125D;
 					AxisAlignedBB var18 = AxisAlignedBB.getAABBPool().getAABB(this.boundingBox.minX, var14, this.boundingBox.minZ, this.boundingBox.maxX, var16, this.boundingBox.maxZ);
 
@@ -307,13 +306,13 @@ public class EntityFishHook extends Entity {
 							for (var15 = 0; (float) var15 < 1.0F + this.width * 20.0F; ++var15) {
 								var31 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
 								var17 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-								this.worldObj.spawnParticle("bubble", this.posX + (double) var31, (double) (var30 + 1.0F), this.posZ + (double) var17, this.motionX, this.motionY - (double) (this.rand.nextFloat() * 0.2F), this.motionZ);
+								this.worldObj.spawnParticle("bubble", this.posX + (double) var31, var30 + 1.0F, this.posZ + (double) var17, this.motionX, this.motionY - (double) (this.rand.nextFloat() * 0.2F), this.motionZ);
 							}
 
 							for (var15 = 0; (float) var15 < 1.0F + this.width * 20.0F; ++var15) {
 								var31 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
 								var17 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-								this.worldObj.spawnParticle("splash", this.posX + (double) var31, (double) (var30 + 1.0F), this.posZ + (double) var17, this.motionX, this.motionY, this.motionZ);
+								this.worldObj.spawnParticle("splash", this.posX + (double) var31, var30 + 1.0F, this.posZ + (double) var17, this.motionX, this.motionY, this.motionZ);
 							}
 						}
 					}
@@ -331,9 +330,9 @@ public class EntityFishHook extends Entity {
 					this.motionY *= 0.8D;
 				}
 
-				this.motionX *= (double) var25;
-				this.motionY *= (double) var25;
-				this.motionZ *= (double) var25;
+				this.motionX *= var25;
+				this.motionY *= var25;
+				this.motionZ *= var25;
 				this.setPosition(this.posX, this.posY, this.posZ);
 			}
 		}

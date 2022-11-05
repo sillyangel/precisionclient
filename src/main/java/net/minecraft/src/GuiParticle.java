@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GuiParticle extends Gui {
-	private List particles = new ArrayList();
-	private Minecraft mc;
+	private final List particles = new ArrayList();
+	private final Minecraft mc;
 
 	public GuiParticle(Minecraft par1Minecraft) {
 		this.mc = par1Minecraft;

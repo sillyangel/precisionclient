@@ -497,8 +497,7 @@ public class BlockStairs extends Block {
 				var16 = var13[var15];
 
 				if (var16 == var12) {
-					;
-				}
+                }
 			}
 
 			var7[var12] = super.collisionRayTrace(par1World, par2, par3, par4, par5Vec3, par6Vec3);

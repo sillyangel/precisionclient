@@ -5,9 +5,9 @@ import org.json.JSONObject;
 
 public interface ServerQuery {
 	
-	public static final long defaultTimeout = 10000l;
+	long defaultTimeout = 10000L;
 	
-	public static class QueryResponse {
+	class QueryResponse {
 		public final String responseType;
 		private final Object responseData;
 		public final String serverVersion;
@@ -27,7 +27,7 @@ public interface ServerQuery {
 				this.serverVersion = "Unknown";
 				this.serverBrand = "Unknown";
 				this.serverName = "Unknown";
-				this.serverTime = 0l;
+				this.serverTime = 0L;
 				this.clientTime = System.currentTimeMillis();
 				this.serverCracked = false;
 				this.rateLimitStatus = this.responseType.equals("locked") ? RateLimit.LOCKED : RateLimit.BLOCKED;
@@ -51,7 +51,7 @@ public interface ServerQuery {
 			this.serverVersion = "Unknown";
 			this.serverBrand = "Unknown";
 			this.serverName = "Unknown";
-			this.serverTime = 0l;
+			this.serverTime = 0L;
 			this.clientTime = System.currentTimeMillis();
 			this.serverCracked = false;
 			this.rateLimitStatus = lockedNotBlocked ? RateLimit.LOCKED : RateLimit.BLOCKED;
@@ -71,66 +71,66 @@ public interface ServerQuery {
 		}
 	}
 
-	public boolean isQueryOpen();
-	public void close();
+	boolean isQueryOpen();
+	void close();
 	
-	public void send(String str);
+	void send(String str);
 	
-	public default void send(JSONObject obj) {
+	default void send(JSONObject obj) {
 		send(obj.toString());
 	}
 	
-	public int responseAvailable();
-	public int responseBinaryAvailable();
-	public QueryResponse getResponse();
-	public byte[] getBinaryResponse();
+	int responseAvailable();
+	int responseBinaryAvailable();
+	QueryResponse getResponse();
+	byte[] getBinaryResponse();
 	
 	// normally I wouldn't resort to race conditions but TeaVM has no
 	// java.util.concurrent classes for semaphore-like behavior
 
-	public default boolean awaitResponseAvailable(long timeout) {
+	default boolean awaitResponseAvailable(long timeout) {
 		long start = System.currentTimeMillis();
-		while(isQueryOpen() && responseAvailable() <= 0 && (timeout <= 0l || System.currentTimeMillis() - start < timeout)) {
+		while(isQueryOpen() && responseAvailable() <= 0 && (timeout <= 0L || System.currentTimeMillis() - start < timeout)) {
 			try {
-				Thread.sleep(0l, 250000);
+				Thread.sleep(0L, 250000);
 			} catch (InterruptedException e) {
 			}
 		}
 		return responseAvailable() > 0;
 	}
 	
-	public default boolean awaitResponseAvailable() {
+	default boolean awaitResponseAvailable() {
 		return awaitResponseAvailable(defaultTimeout);
 	}
 	
-	public default boolean awaitResponseBinaryAvailable(long timeout) {
+	default boolean awaitResponseBinaryAvailable(long timeout) {
 		long start = System.currentTimeMillis();
-		while(isQueryOpen() && responseBinaryAvailable() <= 0 && (timeout <= 0l || System.currentTimeMillis() - start < timeout)) {
+		while(isQueryOpen() && responseBinaryAvailable() <= 0 && (timeout <= 0L || System.currentTimeMillis() - start < timeout)) {
 			try {
-				Thread.sleep(0l, 250000);
+				Thread.sleep(0L, 250000);
 			} catch (InterruptedException e) {
 			}
 		}
 		return responseBinaryAvailable() > 0;
 	}
 
-	public default boolean awaitResponseBinaryAvailable() {
+	default boolean awaitResponseBinaryAvailable() {
 		return awaitResponseBinaryAvailable(defaultTimeout);
 	}
 
-	public default QueryResponse awaitResponse(long timeout) {
+	default QueryResponse awaitResponse(long timeout) {
 		return awaitResponseAvailable(timeout) ? getResponse() : null;
 	}
 	
-	public default QueryResponse awaitResponse() {
+	default QueryResponse awaitResponse() {
 		return awaitResponseAvailable() ? getResponse() : null;
 	}
 	
-	public default byte[] awaitResponseBinary(long timeout) {
+	default byte[] awaitResponseBinary(long timeout) {
 		return awaitResponseBinaryAvailable(timeout) ? getBinaryResponse() : null;
 	}
 
-	public default byte[] awaitResponseBinary() {
+	default byte[] awaitResponseBinary() {
 		return awaitResponseBinaryAvailable() ? getBinaryResponse() : null;
 	}
 

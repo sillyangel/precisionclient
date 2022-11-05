@@ -7,18 +7,18 @@ public enum EnumArmorMaterial {
 	 * Holds the maximum damage factor (each piece multiply this by it's own value)
 	 * of the material, this is the item damage (how much can absorb before breaks)
 	 */
-	private int maxDamageFactor;
+	private final int maxDamageFactor;
 
 	/**
 	 * Holds the damage reduction (each 1 points is half a shield on gui) of each
 	 * piece of armor (helmet, plate, legs and boots)
 	 */
-	private int[] damageReductionAmountArray;
+	private final int[] damageReductionAmountArray;
 
 	/** Return the enchantability factor of the material */
-	private int enchantability;
+	private final int enchantability;
 
-	private EnumArmorMaterial(int par3, int[] par4ArrayOfInteger, int par5) {
+	EnumArmorMaterial(int par3, int[] par4ArrayOfInteger, int par5) {
 		this.maxDamageFactor = par3;
 		this.damageReductionAmountArray = par4ArrayOfInteger;
 		this.enchantability = par5;

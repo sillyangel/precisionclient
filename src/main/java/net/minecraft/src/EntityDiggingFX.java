@@ -3,7 +3,7 @@ package net.minecraft.src;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public class EntityDiggingFX extends EntityFX {
-	private Block blockInstance;
+	private final Block blockInstance;
 
 	public EntityDiggingFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12, Block par14Block, int par15, int par16, RenderEngine par17RenderEngine) {
 		super(par1World, par2, par4, par6, par8, par10, par12);
@@ -54,10 +54,10 @@ public class EntityDiggingFX extends EntityFX {
 		float var12 = 0.1F * this.particleScale;
 
 		if (this.particleIcon != null) {
-			var8 = this.particleIcon.getInterpolatedU((double) (this.particleTextureJitterX / 4.0F * 16.0F));
-			var9 = this.particleIcon.getInterpolatedU((double) ((this.particleTextureJitterX + 1.0F) / 4.0F * 16.0F));
-			var10 = this.particleIcon.getInterpolatedV((double) (this.particleTextureJitterY / 4.0F * 16.0F));
-			var11 = this.particleIcon.getInterpolatedV((double) ((this.particleTextureJitterY + 1.0F) / 4.0F * 16.0F));
+			var8 = this.particleIcon.getInterpolatedU(this.particleTextureJitterX / 4.0F * 16.0F);
+			var9 = this.particleIcon.getInterpolatedU((this.particleTextureJitterX + 1.0F) / 4.0F * 16.0F);
+			var10 = this.particleIcon.getInterpolatedV(this.particleTextureJitterY / 4.0F * 16.0F);
+			var11 = this.particleIcon.getInterpolatedV((this.particleTextureJitterY + 1.0F) / 4.0F * 16.0F);
 		}
 
 		float var13 = (float) (this.prevPosX + (this.posX - this.prevPosX) * (double) par2 - interpPosX);
@@ -65,9 +65,9 @@ public class EntityDiggingFX extends EntityFX {
 		float var15 = (float) (this.prevPosZ + (this.posZ - this.prevPosZ) * (double) par2 - interpPosZ);
 		float var16 = 1.0F;
 		par1Tessellator.setColorOpaque_F(var16 * this.particleRed, var16 * this.particleGreen, var16 * this.particleBlue);
-		par1Tessellator.addVertexWithUV((double) (var13 - par3 * var12 - par6 * var12), (double) (var14 - par4 * var12), (double) (var15 - par5 * var12 - par7 * var12), (double) var8, (double) var11);
-		par1Tessellator.addVertexWithUV((double) (var13 - par3 * var12 + par6 * var12), (double) (var14 + par4 * var12), (double) (var15 - par5 * var12 + par7 * var12), (double) var8, (double) var10);
-		par1Tessellator.addVertexWithUV((double) (var13 + par3 * var12 + par6 * var12), (double) (var14 + par4 * var12), (double) (var15 + par5 * var12 + par7 * var12), (double) var9, (double) var10);
-		par1Tessellator.addVertexWithUV((double) (var13 + par3 * var12 - par6 * var12), (double) (var14 - par4 * var12), (double) (var15 + par5 * var12 - par7 * var12), (double) var9, (double) var11);
+		par1Tessellator.addVertexWithUV(var13 - par3 * var12 - par6 * var12, var14 - par4 * var12, var15 - par5 * var12 - par7 * var12, var8, var11);
+		par1Tessellator.addVertexWithUV(var13 - par3 * var12 + par6 * var12, var14 + par4 * var12, var15 - par5 * var12 + par7 * var12, var8, var10);
+		par1Tessellator.addVertexWithUV(var13 + par3 * var12 + par6 * var12, var14 + par4 * var12, var15 + par5 * var12 + par7 * var12, var9, var10);
+		par1Tessellator.addVertexWithUV(var13 + par3 * var12 - par6 * var12, var14 - par4 * var12, var15 + par5 * var12 - par7 * var12, var9, var11);
 	}
 }

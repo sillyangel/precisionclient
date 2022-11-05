@@ -24,8 +24,8 @@ public class RenderLightningBolt extends Render {
 		for (int var18 = 7; var18 >= 0; --var18) {
 			var11[var18] = var13;
 			var12[var18] = var15;
-			var13 += (double) (var17.nextInt(11) - 5);
-			var15 += (double) (var17.nextInt(11) - 5);
+			var13 += var17.nextInt(11) - 5;
+			var15 += var17.nextInt(11) - 5;
 		}
 
 		for (int var45 = 0; var45 < 4; ++var45) {
@@ -51,16 +51,16 @@ public class RenderLightningBolt extends Render {
 					double var29 = var24;
 
 					if (var19 == 0) {
-						var22 += (double) (var46.nextInt(11) - 5);
-						var24 += (double) (var46.nextInt(11) - 5);
+						var22 += var46.nextInt(11) - 5;
+						var24 += var46.nextInt(11) - 5;
 					} else {
-						var22 += (double) (var46.nextInt(31) - 15);
-						var24 += (double) (var46.nextInt(31) - 15);
+						var22 += var46.nextInt(31) - 15;
+						var24 += var46.nextInt(31) - 15;
 					}
 
 					var10.startDrawing(EaglerAdapter.GL_TRIANGLE_STRIP);
 					float var31 = 0.5F;
-					var10.setColorRGBA_F(0.9F * var31, 0.9F * var31, 1.0F * var31, 0.3F);
+					var10.setColorRGBA_F(0.9F * var31, 0.9F * var31, var31, 0.3F);
 					double var32 = 0.1D + (double) var45 * 0.2D;
 
 					if (var19 == 0) {

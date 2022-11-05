@@ -21,10 +21,10 @@ public class RenderFish extends Render {
 		byte var11 = 2;
 		tex.bindTexture();
 		Tessellator var12 = Tessellator.instance;
-		float var13 = (float) (var10 * 8 + 0 + 0.15f) / 128.0F;
-		float var14 = (float) (var10 * 8 + 8 - 0.15f) / 128.0F;
-		float var15 = (float) (var11 * 8 + 0 + 0.15f) / 128.0F;
-		float var16 = (float) (var11 * 8 + 8 - 0.15f) / 128.0F;
+		float var13 = (var10 * 8 + 0 + 0.15f) / 128.0F;
+		float var14 = (var10 * 8 + 8 - 0.15f) / 128.0F;
+		float var15 = (var11 * 8 + 0 + 0.15f) / 128.0F;
+		float var16 = (var11 * 8 + 8 - 0.15f) / 128.0F;
 		float var17 = 1.0F;
 		float var18 = 0.5F;
 		float var19 = 0.5F;
@@ -32,10 +32,10 @@ public class RenderFish extends Render {
 		EaglerAdapter.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
 		var12.startDrawingQuads();
 		var12.setNormal(0.0F, -1.0F, 0.0F);
-		var12.addVertexWithUV((double) (0.0F - var18), (double) (0.0F - var19), 0.0D, (double) var13, (double) var16);
-		var12.addVertexWithUV((double) (var17 - var18), (double) (0.0F - var19), 0.0D, (double) var14, (double) var16);
-		var12.addVertexWithUV((double) (var17 - var18), (double) (1.0F - var19), 0.0D, (double) var14, (double) var15);
-		var12.addVertexWithUV((double) (0.0F - var18), (double) (1.0F - var19), 0.0D, (double) var13, (double) var15);
+		var12.addVertexWithUV(0.0F - var18, 0.0F - var19, 0.0D, var13, var16);
+		var12.addVertexWithUV(var17 - var18, 0.0F - var19, 0.0D, var14, var16);
+		var12.addVertexWithUV(var17 - var18, 1.0F - var19, 0.0D, var14, var15);
+		var12.addVertexWithUV(0.0F - var18, 1.0F - var19, 0.0D, var13, var15);
 		var12.draw();
 		EaglerAdapter.glDisable(EaglerAdapter.GL_RESCALE_NORMAL);
 		EaglerAdapter.glPopMatrix();
@@ -55,8 +55,8 @@ public class RenderFish extends Render {
 
 			if (this.renderManager.options.thirdPersonView > 0 || par1EntityFishHook.angler != Minecraft.getMinecraft().thePlayer) {
 				float var31 = (par1EntityFishHook.angler.prevRenderYawOffset + (par1EntityFishHook.angler.renderYawOffset - par1EntityFishHook.angler.prevRenderYawOffset) * par9) * (float) Math.PI / 180.0F;
-				double var32 = (double) MathHelper.sin(var31);
-				double var34 = (double) MathHelper.cos(var31);
+				double var32 = MathHelper.sin(var31);
+				double var34 = MathHelper.cos(var31);
 				var23 = par1EntityFishHook.angler.prevPosX + (par1EntityFishHook.angler.posX - par1EntityFishHook.angler.prevPosX) * (double) par9 - var34 * 0.35D - var32 * 0.85D;
 				var25 = par1EntityFishHook.angler.prevPosY + var29 + (par1EntityFishHook.angler.posY - par1EntityFishHook.angler.prevPosY) * (double) par9 - 0.45D;
 				var27 = par1EntityFishHook.angler.prevPosZ + (par1EntityFishHook.angler.posZ - par1EntityFishHook.angler.prevPosZ) * (double) par9 - var32 * 0.35D + var34 * 0.85D;
@@ -65,9 +65,9 @@ public class RenderFish extends Render {
 			double var46 = par1EntityFishHook.prevPosX + (par1EntityFishHook.posX - par1EntityFishHook.prevPosX) * (double) par9;
 			double var33 = par1EntityFishHook.prevPosY + (par1EntityFishHook.posY - par1EntityFishHook.prevPosY) * (double) par9 + 0.25D;
 			double var35 = par1EntityFishHook.prevPosZ + (par1EntityFishHook.posZ - par1EntityFishHook.prevPosZ) * (double) par9;
-			double var37 = (double) ((float) (var23 - var46));
-			double var39 = (double) ((float) (var25 - var33));
-			double var41 = (double) ((float) (var27 - var35));
+			double var37 = (float) (var23 - var46);
+			double var39 = (float) (var25 - var33);
+			double var41 = (float) (var27 - var35);
 			EaglerAdapter.glDisable(EaglerAdapter.GL_TEXTURE_2D);
 			EaglerAdapter.glDisable(EaglerAdapter.GL_LIGHTING);
 			var12.startDrawing(EaglerAdapter.GL_LINE_STRIP);

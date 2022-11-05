@@ -7,8 +7,8 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 class GuiSlotLanguage extends GuiSlot {
-	private ArrayList field_77251_g;
-	private TreeMap field_77253_h;
+	private final ArrayList field_77251_g;
+	private final TreeMap field_77253_h;
 
 	final GuiLanguage languageGui;
 
@@ -49,7 +49,7 @@ class GuiSlotLanguage extends GuiSlot {
 	 * returns true if the element passed in is currently selected
 	 */
 	protected boolean isSelected(int par1) {
-		return ((String) this.field_77251_g.get(par1)).equals(StringTranslate.getInstance().getCurrentLanguage());
+		return this.field_77251_g.get(par1).equals(StringTranslate.getInstance().getCurrentLanguage());
 	}
 
 	/**

@@ -6,7 +6,7 @@ public enum EnumBrowser {
 
 	public final String name;
 	
-	private EnumBrowser(String string) {
+	EnumBrowser(String string) {
 		this.name = string;
 	} 
 	

@@ -57,22 +57,22 @@ public interface EaglercraftVoiceClient extends JSObject {
 	int signalICECandidate(String peerId, String candidate);
 	
 	@JSFunctor
-	public static interface ICECandidateHandler extends JSObject {
+    interface ICECandidateHandler extends JSObject {
 		void call(String peerId, String candidate);
 	}
 	
 	@JSFunctor
-	public static interface DescriptionHandler extends JSObject {
+    interface DescriptionHandler extends JSObject {
 		void call(String peerId, String candidate);
 	}
 	
 	@JSFunctor
-	public static interface PeerTrackHandler extends JSObject {
+    interface PeerTrackHandler extends JSObject {
 		void call(String peerId, MediaStream audioNode);
 	}
 	
 	@JSFunctor
-	public static interface PeerDisconnectHandler extends JSObject {
+    interface PeerDisconnectHandler extends JSObject {
 		void call(String peerId, boolean quiet);
 	}
 

@@ -79,10 +79,6 @@ public class EntityEnderCrystal extends Entity {
 	 * Called when the entity is attacked.
 	 */
 	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
-		if (this.isEntityInvulnerable()) {
-			return false;
-		} else {
-			return true;
-		}
+        return !this.isEntityInvulnerable();
 	}
 }

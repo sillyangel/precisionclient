@@ -7,7 +7,7 @@ import net.minecraft.src.StringTranslate;
 
 public class GuiScreenCreateWorldSelection extends GuiScreen {
 
-	private GuiScreen mainmenu;
+	private final GuiScreen mainmenu;
 	private GuiButton worldCreate = null;
 	private GuiButton worldImport = null;
 	private GuiButton worldVanilla = null;

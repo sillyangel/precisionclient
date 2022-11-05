@@ -37,7 +37,7 @@ public class SoundUpdaterMinecart implements IUpdatePlayerListBox {
 		double var8 = this.minecartSpeed;
 		this.playerSPRidingMinecart = this.thePlayer != null && this.thePlayer.equals(this.theMinecart.riddenByEntity);
 		this.minecartIsDead = this.theMinecart.isDead;
-		this.minecartSpeed = (double) MathHelper.sqrt_double(this.theMinecart.motionX * this.theMinecart.motionX + this.theMinecart.motionZ * this.theMinecart.motionZ);
+		this.minecartSpeed = MathHelper.sqrt_double(this.theMinecart.motionX * this.theMinecart.motionX + this.theMinecart.motionZ * this.theMinecart.motionZ);
 		this.minecartIsMoving = this.minecartSpeed >= 0.01D;
 
 		if (var2 && !this.playerSPRidingMinecart) {

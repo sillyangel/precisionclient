@@ -158,7 +158,7 @@ public class BlockTripWire extends Block {
 		int var5 = par1World.getBlockMetadata(par2, par3, par4);
 		boolean var6 = (var5 & 1) == 1;
 		boolean var7 = false;
-		List var8 = par1World.getEntitiesWithinAABBExcludingEntity((Entity) null,
+		List var8 = par1World.getEntitiesWithinAABBExcludingEntity(null,
 				AxisAlignedBB.getAABBPool().getAABB((double) par2 + this.minX, (double) par3 + this.minY, (double) par4 + this.minZ, (double) par2 + this.maxX, (double) par3 + this.maxY, (double) par4 + this.maxZ));
 
 		if (!var8.isEmpty()) {

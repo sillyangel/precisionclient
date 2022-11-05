@@ -4,7 +4,7 @@ public class GuiSmallButton extends GuiButton {
 	private final EnumOptions enumOptions;
 
 	public GuiSmallButton(int par1, int par2, int par3, String par4Str) {
-		this(par1, par2, par3, (EnumOptions) null, par4Str);
+		this(par1, par2, par3, null, par4Str);
 	}
 
 	public GuiSmallButton(int par1, int par2, int par3, int par4, int par5, String par6Str) {

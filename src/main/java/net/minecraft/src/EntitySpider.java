@@ -140,7 +140,7 @@ public class EntitySpider extends EntityMob {
 	}
 
 	public boolean isPotionApplicable(PotionEffect par1PotionEffect) {
-		return par1PotionEffect.getPotionID() == Potion.poison.id ? false : super.isPotionApplicable(par1PotionEffect);
+		return par1PotionEffect.getPotionID() != Potion.poison.id && super.isPotionApplicable(par1PotionEffect);
 	}
 
 	/**

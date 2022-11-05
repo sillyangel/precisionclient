@@ -221,9 +221,7 @@ public class AxisAlignedBB {
 	 * axisAlignedBB
 	 */
 	public boolean intersectsWith(AxisAlignedBB par1AxisAlignedBB) {
-		return par1AxisAlignedBB.maxX > this.minX && par1AxisAlignedBB.minX < this.maxX
-				? (par1AxisAlignedBB.maxY > this.minY && par1AxisAlignedBB.minY < this.maxY ? par1AxisAlignedBB.maxZ > this.minZ && par1AxisAlignedBB.minZ < this.maxZ : false)
-				: false;
+		return par1AxisAlignedBB.maxX > this.minX && par1AxisAlignedBB.minX < this.maxX && (par1AxisAlignedBB.maxY > this.minY && par1AxisAlignedBB.minY < this.maxY && par1AxisAlignedBB.maxZ > this.minZ && par1AxisAlignedBB.minZ < this.maxZ);
 	}
 
 	/**
@@ -243,7 +241,7 @@ public class AxisAlignedBB {
 	 * Returns if the supplied Vec3D is completely inside the bounding box
 	 */
 	public boolean isVecInside(Vec3 par1Vec3) {
-		return par1Vec3.xCoord > this.minX && par1Vec3.xCoord < this.maxX ? (par1Vec3.yCoord > this.minY && par1Vec3.yCoord < this.maxY ? par1Vec3.zCoord > this.minZ && par1Vec3.zCoord < this.maxZ : false) : false;
+		return par1Vec3.xCoord > this.minX && par1Vec3.xCoord < this.maxX && (par1Vec3.yCoord > this.minY && par1Vec3.yCoord < this.maxY && par1Vec3.zCoord > this.minZ && par1Vec3.zCoord < this.maxZ);
 	}
 
 	/**
@@ -372,7 +370,7 @@ public class AxisAlignedBB {
 	 * box. Args: Vec3D
 	 */
 	private boolean isVecInYZ(Vec3 par1Vec3) {
-		return par1Vec3 == null ? false : par1Vec3.yCoord >= this.minY && par1Vec3.yCoord <= this.maxY && par1Vec3.zCoord >= this.minZ && par1Vec3.zCoord <= this.maxZ;
+		return par1Vec3 != null && par1Vec3.yCoord >= this.minY && par1Vec3.yCoord <= this.maxY && par1Vec3.zCoord >= this.minZ && par1Vec3.zCoord <= this.maxZ;
 	}
 
 	/**
@@ -380,7 +378,7 @@ public class AxisAlignedBB {
 	 * box. Args: Vec3D
 	 */
 	private boolean isVecInXZ(Vec3 par1Vec3) {
-		return par1Vec3 == null ? false : par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.zCoord >= this.minZ && par1Vec3.zCoord <= this.maxZ;
+		return par1Vec3 != null && par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.zCoord >= this.minZ && par1Vec3.zCoord <= this.maxZ;
 	}
 
 	/**
@@ -388,7 +386,7 @@ public class AxisAlignedBB {
 	 * box. Args: Vec3D
 	 */
 	private boolean isVecInXY(Vec3 par1Vec3) {
-		return par1Vec3 == null ? false : par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.yCoord >= this.minY && par1Vec3.yCoord <= this.maxY;
+		return par1Vec3 != null && par1Vec3.xCoord >= this.minX && par1Vec3.xCoord <= this.maxX && par1Vec3.yCoord >= this.minY && par1Vec3.yCoord <= this.maxY;
 	}
 
 	/**

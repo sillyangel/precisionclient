@@ -159,7 +159,7 @@ public class EntityOcelot extends EntityTameable {
 			return false;
 		} else {
 			EntityOcelot var2 = (EntityOcelot) par1EntityAnimal;
-			return !var2.isTamed() ? false : this.isInLove() && var2.isInLove();
+			return var2.isTamed() && this.isInLove() && var2.isInLove();
 		}
 	}
 
@@ -190,9 +190,7 @@ public class EntityOcelot extends EntityTameable {
 
 				int var4 = this.worldObj.getBlockId(var1, var2 - 1, var3);
 
-				if (var4 == Block.grass.blockID || var4 == Block.leaves.blockID) {
-					return true;
-				}
+                return var4 == Block.grass.blockID || var4 == Block.leaves.blockID;
 			}
 
 			return false;

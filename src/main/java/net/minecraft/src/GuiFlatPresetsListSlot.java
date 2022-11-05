@@ -35,14 +35,14 @@ class GuiFlatPresetsListSlot extends GuiSlot {
 		this.flatPresetsGui.mc.renderEngine.bindTexture("/gui/slot.png");
 		Tessellator var9 = Tessellator.instance;
 		var9.startDrawingQuads();
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 18), (double) this.flatPresetsGui.zLevel,
-				(double) ((float) (par3 + 0) * 0.0078125F), (double) ((float) (par4 + 18) * 0.0078125F));
-		var9.addVertexWithUV((double) (par1 + 18), (double) (par2 + 18), (double) this.flatPresetsGui.zLevel,
-				(double) ((float) (par3 + 18) * 0.0078125F), (double) ((float) (par4 + 18) * 0.0078125F));
-		var9.addVertexWithUV((double) (par1 + 18), (double) (par2 + 0), (double) this.flatPresetsGui.zLevel,
-				(double) ((float) (par3 + 18) * 0.0078125F), (double) ((float) (par4 + 0) * 0.0078125F));
-		var9.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), (double) this.flatPresetsGui.zLevel,
-				(double) ((float) (par3 + 0) * 0.0078125F), (double) ((float) (par4 + 0) * 0.0078125F));
+		var9.addVertexWithUV(par1, par2 + 18, this.flatPresetsGui.zLevel,
+                (float) (par3) * 0.0078125F, (float) (par4 + 18) * 0.0078125F);
+		var9.addVertexWithUV(par1 + 18, par2 + 18, this.flatPresetsGui.zLevel,
+                (float) (par3 + 18) * 0.0078125F, (float) (par4 + 18) * 0.0078125F);
+		var9.addVertexWithUV(par1 + 18, par2, this.flatPresetsGui.zLevel,
+                (float) (par3 + 18) * 0.0078125F, (float) (par4) * 0.0078125F);
+		var9.addVertexWithUV(par1, par2, this.flatPresetsGui.zLevel,
+                (float) (par3) * 0.0078125F, (float) (par4) * 0.0078125F);
 		var9.draw();
 	}
 

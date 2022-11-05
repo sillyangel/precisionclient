@@ -53,8 +53,8 @@ public class BlockDetectorRail extends BlockRailBase {
 		boolean var6 = (par5 & 8) != 0;
 		boolean var7 = false;
 		float var8 = 0.125F;
-		List var9 = par1World.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getAABBPool().getAABB((double) ((float) par2 + var8), (double) par3, (double) ((float) par4 + var8), (double) ((float) (par2 + 1) - var8),
-				(double) ((float) (par3 + 1) - var8), (double) ((float) (par4 + 1) - var8)));
+		List var9 = par1World.getEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getAABBPool().getAABB((float) par2 + var8, par3, (float) par4 + var8, (float) (par2 + 1) - var8,
+                (float) (par3 + 1) - var8, (float) (par4 + 1) - var8));
 
 		if (!var9.isEmpty()) {
 			var7 = true;
@@ -106,8 +106,8 @@ public class BlockDetectorRail extends BlockRailBase {
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5) {
 		if ((par1World.getBlockMetadata(par2, par3, par4) & 8) > 0) {
 			float var6 = 0.125F;
-			List var7 = par1World.selectEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getAABBPool().getAABB((double) ((float) par2 + var6), (double) par3, (double) ((float) par4 + var6), (double) ((float) (par2 + 1) - var6),
-					(double) ((float) (par3 + 1) - var6), (double) ((float) (par4 + 1) - var6)), IEntitySelector.selectInventories);
+			List var7 = par1World.selectEntitiesWithinAABB(EntityMinecart.class, AxisAlignedBB.getAABBPool().getAABB((float) par2 + var6, par3, (float) par4 + var6, (float) (par2 + 1) - var6,
+                    (float) (par3 + 1) - var6, (float) (par4 + 1) - var6), IEntitySelector.selectInventories);
 
 			if (var7.size() > 0) {
 				return Container.calcRedstoneFromInventory((IInventory) var7.get(0));

@@ -13,7 +13,7 @@ public class TextureMap implements IconRegister {
 	private final String basePath;
 	private final String textureExt;
 	private final HashMap mapTexturesStiched = new HashMap();
-	private EaglerImage missingImage;
+	private final EaglerImage missingImage;
 	private TextureStitched missingTextureStiched;
 	private Texture atlasTexture;
 	private final List listTextureStiched = new ArrayList();
@@ -66,7 +66,7 @@ public class TextureMap implements IconRegister {
 		Texture var22 = TextureManager.instance().makeTexture("missingno", 2, this.missingImage.w, this.missingImage.h, EaglerAdapter.GL_CLAMP, EaglerAdapter.GL_RGBA, EaglerAdapter.GL_NEAREST, EaglerAdapter.GL_NEAREST, false, this.missingImage);
 		StitchHolder var24 = new StitchHolder(var22);
 		var21.addStitchHolder(var24);
-		var20.put(var24, Arrays.asList(new Texture[] { var22 }));
+		var20.put(var24, Arrays.asList(var22));
 		Iterator var5 = this.textureStichedMap.keySet().iterator();
 
 		while (var5.hasNext()) {
@@ -104,7 +104,7 @@ public class TextureMap implements IconRegister {
 				var11 = TextureStitched.makeTextureStitched(var29);
 
 				if (!var29.equals("missingno")) {
-					System.out.println("Couldn\'t find premade icon for " + var29 + " doing " + this.textureName);
+					System.out.println("Couldn't find premade icon for " + var29 + " doing " + this.textureName);
 				}
 			}
 
@@ -159,7 +159,7 @@ public class TextureMap implements IconRegister {
 			return missingTextureStiched;
 		}else {
 			if (par1Str == null) {
-				(new RuntimeException("Don\'t register null!")).printStackTrace();
+				(new RuntimeException("Don't register null!")).printStackTrace();
 			}
 	
 			TextureStitched var2 = (TextureStitched) this.textureStichedMap.get(par1Str);

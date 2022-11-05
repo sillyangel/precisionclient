@@ -9,8 +9,8 @@ import org.teavm.jso.typedarrays.Int32Array;
 public class Tessellator {
 
 	/** The byte buffer used for GL allocation. */
-	private Int32Array intBuffer;
-	private Float32Array floatBuffer;
+	private final Int32Array intBuffer;
+	private final Float32Array floatBuffer;
 
 	/**
 	 * The number of vertices to be drawn in the next draw call. Reset to 0 between
@@ -85,10 +85,10 @@ public class Tessellator {
 	private boolean isDrawing = false;
 
 	/** Whether we are currently using VBO or not. */
-	private boolean useVBO = false;
+	private final boolean useVBO = false;
 
 	/** The size of the buffers used (in integers). */
-	private int bufferSize;
+	private final int bufferSize;
 
 	private Tessellator(int par1) {
 		this.bufferSize = par1;
@@ -289,7 +289,7 @@ public class Tessellator {
 		Int32Array intBuffer0 = intBuffer;
 		Float32Array floatBuffer0 = floatBuffer;
 
-		floatBuffer0.set(bufferIndex + 0, (float) (par1 + this.xOffset));
+		floatBuffer0.set(bufferIndex, (float) (par1 + this.xOffset));
 		floatBuffer0.set(bufferIndex + 1, (float) (par3 + this.yOffset));
 		floatBuffer0.set(bufferIndex + 2, (float) (par5 + this.zOffset));
 
@@ -367,8 +367,8 @@ public class Tessellator {
 	 * Offsets the translation for all vertices in the current draw call.
 	 */
 	public void addTranslation(float par1, float par2, float par3) {
-		this.xOffset += (float) par1;
-		this.yOffset += (float) par2;
-		this.zOffset += (float) par3;
+		this.xOffset += par1;
+		this.yOffset += par2;
+		this.zOffset += par3;
 	}
 }

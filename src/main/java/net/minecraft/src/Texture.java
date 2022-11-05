@@ -7,9 +7,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class Texture {
-	private int glTextureId;
-	private int textureId;
-	private int textureType;
+	private final int glTextureId;
+	private final int textureId;
+	private final int textureType;
 
 	/** Width of this texture in pixels. */
 	private final int width;
@@ -24,7 +24,7 @@ public class Texture {
 	private final int textureWrap;
 	private final boolean mipmapActive;
 	private final String textureName;
-	private Rect2i textureRect;
+	private final Rect2i textureRect;
 	private boolean transferred;
 
 	/**
@@ -121,7 +121,7 @@ public class Texture {
 				int var5 = var4 * this.width * 4;
 
 				for (int var6 = var3.getRectX(); var6 < var3.getRectX() + var3.getRectWidth(); ++var6) {
-					this.textureData.put(var5 + var6 * 4 + 0, (byte) (par2 >> 24 & 255));
+					this.textureData.put(var5 + var6 * 4, (byte) (par2 >> 24 & 255));
 					this.textureData.put(var5 + var6 * 4 + 1, (byte) (par2 >> 16 & 255));
 					this.textureData.put(var5 + var6 * 4 + 2, (byte) (par2 >> 8 & 255));
 					this.textureData.put(var5 + var6 * 4 + 3, (byte) (par2 >> 0 & 255));
@@ -190,7 +190,7 @@ public class Texture {
 						var11 = par1 + var10 * this.width * 4 + var7 * 4;
 					}
 
-					this.textureData.put(var11 + 0, var5.get(var12 + 0));
+					this.textureData.put(var11, var5.get(var12));
 					this.textureData.put(var11 + 1, var5.get(var12 + 1));
 					this.textureData.put(var11 + 2, var5.get(var12 + 2));
 					this.textureData.put(var11 + 3, var5.get(var12 + 3));

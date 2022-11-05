@@ -45,7 +45,7 @@ public class Packet253ServerAuthData extends Packet {
 	 * Abstract. Return the size of the packet (not counting the header).
 	 */
 	public int getPacketSize() {
-		return 2 + this.serverId.length() * 2 + 2 + 0 + 2 + this.verifyToken.length;
+		return 2 + this.serverId.length() * 2 + 2 + 2 + this.verifyToken.length;
 	}
 
 	public String getServerId() {

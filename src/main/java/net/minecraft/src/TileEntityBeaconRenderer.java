@@ -40,10 +40,10 @@ public class TileEntityBeaconRenderer extends TileEntitySpecialRenderer {
 			double var28 = 0.5D + Math.sin(var14 + 3.9269908169872414D) * var16;
 			double var30 = 0.5D + Math.cos(var14 + 5.497787143782138D) * var16;
 			double var32 = 0.5D + Math.sin(var14 + 5.497787143782138D) * var16;
-			double var34 = (double) (256.0F * var9);
+			double var34 = 256.0F * var9;
 			double var36 = 0.0D;
 			double var38 = 1.0D;
-			double var40 = (double) (-1.0F + var12);
+			double var40 = -1.0F + var12;
 			double var42 = (double) (256.0F * var9) * (0.5D / var16) + var40;
 			var10.addVertexWithUV(par2 + var18, par4 + var34, par6 + var20, var38, var42);
 			var10.addVertexWithUV(par2 + var18, par4, par6 + var20, var38, var40);
@@ -75,10 +75,10 @@ public class TileEntityBeaconRenderer extends TileEntitySpecialRenderer {
 			double var23 = 0.8D;
 			double var25 = 0.8D;
 			double var27 = 0.8D;
-			double var29 = (double) (256.0F * var9);
+			double var29 = 256.0F * var9;
 			double var31 = 0.0D;
 			double var33 = 1.0D;
-			double var35 = (double) (-1.0F + var12);
+			double var35 = -1.0F + var12;
 			double var37 = (double) (256.0F * var9) + var35;
 			var10.addVertexWithUV(par2 + var44, par4 + var29, par6 + var15, var33, var37);
 			var10.addVertexWithUV(par2 + var44, par4, par6 + var15, var33, var35);

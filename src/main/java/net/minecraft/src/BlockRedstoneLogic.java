@@ -25,7 +25,7 @@ public abstract class BlockRedstoneLogic extends BlockDirectional {
 	 * Args: world, x, y, z
 	 */
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) ? false : super.canPlaceBlockAt(par1World, par2, par3, par4);
+		return par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && super.canPlaceBlockAt(par1World, par2, par3, par4);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public abstract class BlockRedstoneLogic extends BlockDirectional {
 	 * checked often with plants.
 	 */
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
-		return !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) ? false : super.canBlockStay(par1World, par2, par3, par4);
+		return par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && super.canBlockStay(par1World, par2, par3, par4);
 	}
 
 	/**

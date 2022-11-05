@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FontRenderer {
 	/** Array of width of all the characters in default.png */
-	private int[] charWidth = new int[256];
+	private final int[] charWidth = new int[256];
 
 	/** the height in pixels of default text */
 	public int FONT_HEIGHT = 9;
@@ -28,7 +28,7 @@ public class FontRenderer {
 	 * Array of RGB triplets defining the 16 standard chat colors followed by 16
 	 * darker version of the same colors for drop shadows.
 	 */
-	private int[] colorCode = new int[32];
+	private final int[] colorCode = new int[32];
 	private final TextureLocation fontTexture;
 	private final String fontTextureName;
 
@@ -151,9 +151,10 @@ public class FontRenderer {
 						int var13 = (var8 * 8 + var12) * var3;
 						int var14 = var5[var10 + var13] & 255;
 
-						if (var14 > 0) {
-							var11 = false;
-						}
+                        if (var14 > 0) {
+                            var11 = false;
+                            break;
+                        }
 					}
 
 					if (var11) {
@@ -206,7 +207,7 @@ public class FontRenderer {
 	 * texture ID in glyphTextureName array.
 	 */
 	private void loadGlyphTexture(int par1) {
-		String var2 = String.format("/font/glyph_%02X.png", new Object[] { Integer.valueOf(par1) });
+		String var2 = String.format("/font/glyph_%02X.png", Integer.valueOf(par1));
 		this.renderEngine.bindTexture(var2);
 	}
 
@@ -299,7 +300,7 @@ public class FontRenderer {
 			int var6;
 
 			if (var4 == '\u00a7' && var3 + 1 < par1Str.length()) {
-				var5 = "0123456789abcdefklmnor".indexOf((char)Character.toLowerCase(par1Str.charAt(var3 + 1)));
+				var5 = "0123456789abcdefklmnor".indexOf(Character.toLowerCase(par1Str.charAt(var3 + 1)));
 
 				if (var5 < 16) {
 					this.randomStyle = false;
@@ -396,10 +397,10 @@ public class FontRenderer {
 					var9.draw();
 					EaglerAdapter.glDisable(EaglerAdapter.GL_TEXTURE_2D);
 					var9.startDrawingQuads();
-					var9.addVertex((double) this.posX, (double) (this.posY + (float) (this.FONT_HEIGHT / 2)), 0.0D);
-					var9.addVertex((double) (this.posX + var8), (double) (this.posY + (float) (this.FONT_HEIGHT / 2)), 0.0D);
-					var9.addVertex((double) (this.posX + var8), (double) (this.posY + (float) (this.FONT_HEIGHT / 2) - 1.0F), 0.0D);
-					var9.addVertex((double) this.posX, (double) (this.posY + (float) (this.FONT_HEIGHT / 2) - 1.0F), 0.0D);
+					var9.addVertex(this.posX, this.posY + (float) (this.FONT_HEIGHT / 2), 0.0D);
+					var9.addVertex(this.posX + var8, this.posY + (float) (this.FONT_HEIGHT / 2), 0.0D);
+					var9.addVertex(this.posX + var8, this.posY + (float) (this.FONT_HEIGHT / 2) - 1.0F, 0.0D);
+					var9.addVertex(this.posX, this.posY + (float) (this.FONT_HEIGHT / 2) - 1.0F, 0.0D);
 					var9.draw();
 					var9.startDrawingQuads();
 					EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);
@@ -411,10 +412,10 @@ public class FontRenderer {
 					EaglerAdapter.glDisable(EaglerAdapter.GL_TEXTURE_2D);
 					var9.startDrawingQuads();
 					int var10 = this.underlineStyle ? -1 : 0;
-					var9.addVertex((double) (this.posX + (float) var10), (double) (this.posY + (float) this.FONT_HEIGHT), 0.0D);
-					var9.addVertex((double) (this.posX + var8), (double) (this.posY + (float) this.FONT_HEIGHT), 0.0D);
-					var9.addVertex((double) (this.posX + var8), (double) (this.posY + (float) this.FONT_HEIGHT - 1.0F), 0.0D);
-					var9.addVertex((double) (this.posX + (float) var10), (double) (this.posY + (float) this.FONT_HEIGHT - 1.0F), 0.0D);
+					var9.addVertex(this.posX + (float) var10, this.posY + (float) this.FONT_HEIGHT, 0.0D);
+					var9.addVertex(this.posX + var8, this.posY + (float) this.FONT_HEIGHT, 0.0D);
+					var9.addVertex(this.posX + var8, this.posY + (float) this.FONT_HEIGHT - 1.0F, 0.0D);
+					var9.addVertex(this.posX + (float) var10, this.posY + (float) this.FONT_HEIGHT - 1.0F, 0.0D);
 					var9.draw();
 					var9.startDrawingQuads();
 					EaglerAdapter.glEnable(EaglerAdapter.GL_TEXTURE_2D);

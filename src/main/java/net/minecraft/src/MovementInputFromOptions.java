@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
 public class MovementInputFromOptions extends MovementInput {
-	private GameSettings gameSettings;
+	private final GameSettings gameSettings;
 
 	public MovementInputFromOptions(GameSettings par1GameSettings) {
 		this.gameSettings = par1GameSettings;

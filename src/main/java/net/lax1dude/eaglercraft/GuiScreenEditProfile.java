@@ -5,7 +5,7 @@ import net.minecraft.src.*;
 
 public class GuiScreenEditProfile extends GuiScreen {
 	
-	private GuiScreen parent;
+	private final GuiScreen parent;
 	private GuiTextField username;
 	
 	private boolean dropDownOpen = false;
@@ -348,7 +348,7 @@ public class GuiScreenEditProfile extends GuiScreen {
 		if(!dropDownOpen) {
 			if(par1GuiButton.id == 200) {
 				save();
-				this.mc.displayGuiScreen((GuiScreen) parent);
+				this.mc.displayGuiScreen(parent);
 			}else if(par1GuiButton.id == 2) {
 				EaglerAdapter.openFileChooser("png", "image/png");
 			}else if(par1GuiButton.id == 3) {

@@ -72,15 +72,15 @@ public class Packet62LevelSound extends Packet {
 	}
 
 	public double getEffectX() {
-		return (double) ((float) this.effectX / 8.0F);
+		return (float) this.effectX / 8.0F;
 	}
 
 	public double getEffectY() {
-		return (double) ((float) this.effectY / 8.0F);
+		return (float) this.effectY / 8.0F;
 	}
 
 	public double getEffectZ() {
-		return (double) ((float) this.effectZ / 8.0F);
+		return (float) this.effectZ / 8.0F;
 	}
 
 	public float getVolume() {

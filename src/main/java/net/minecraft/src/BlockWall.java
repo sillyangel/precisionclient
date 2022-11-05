@@ -111,7 +111,7 @@ public class BlockWall extends Block {
 
 		if (var5 != this.blockID && var5 != Block.fenceGate.blockID) {
 			Block var6 = Block.blocksList[var5];
-			return var6 != null && var6.blockMaterial.isOpaque() && var6.renderAsNormalBlock() ? var6.blockMaterial != Material.pumpkin : false;
+			return var6 != null && var6.blockMaterial.isOpaque() && var6.renderAsNormalBlock() && var6.blockMaterial != Material.pumpkin;
 		} else {
 			return true;
 		}
@@ -138,7 +138,7 @@ public class BlockWall extends Block {
 	 * adjacent block is at the given coordinates. Args: blockAccess, x, y, z, side
 	 */
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return par5 == 0 ? super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5) : true;
+		return par5 != 0 || super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
 	}
 
 	/**

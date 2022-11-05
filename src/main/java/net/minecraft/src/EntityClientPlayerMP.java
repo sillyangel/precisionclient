@@ -83,8 +83,8 @@ public class EntityClientPlayerMP extends EntityPlayerSP {
 		double var3 = this.posX - this.oldPosX;
 		double var5 = this.boundingBox.minY - this.oldMinY;
 		double var7 = this.posZ - this.oldPosZ;
-		double var9 = (double) (this.rotationYaw - this.oldRotationYaw);
-		double var11 = (double) (this.rotationPitch - this.oldRotationPitch);
+		double var9 = this.rotationYaw - this.oldRotationYaw;
+		double var11 = this.rotationPitch - this.oldRotationPitch;
 		boolean var13 = var3 * var3 + var5 * var5 + var7 * var7 > 9.0E-4D || this.field_71168_co >= 20;
 		boolean var14 = var9 != 0.0D || var11 != 0.0D;
 
@@ -172,7 +172,7 @@ public class EntityClientPlayerMP extends EntityPlayerSP {
 	}
 
 	public void func_92015_f() {
-		this.inventory.setItemStack((ItemStack) null);
+		this.inventory.setItemStack(null);
 		super.closeScreen();
 	}
 

@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class StringTranslate {
 	/** Is the private singleton instance of StringTranslate. */
-	private static StringTranslate instance = new StringTranslate("en_US");
+	private static final StringTranslate instance = new StringTranslate("en_US");
 
 	/**
 	 * Contains all key/value pairs to be translated - is loaded from
@@ -17,7 +17,7 @@ public class StringTranslate {
 	 */
 	private Properties translateTable = new Properties();
 	private TreeMap languageList;
-	private TreeMap field_94521_d = new TreeMap();
+	private final TreeMap field_94521_d = new TreeMap();
 	private String currentLanguage;
 	private boolean isUnicode;
 
@@ -65,8 +65,7 @@ public class StringTranslate {
 			try {
 				this.loadLanguage(var3, "en_US");
 			} catch (IOException var9) {
-				;
-			}
+            }
 
 			this.isUnicode = false;
 			/*

@@ -2,11 +2,11 @@ package net.minecraft.src;
 
 public class ItemTool extends Item {
 	/** Array of blocks the tool has extra effect against. */
-	private Block[] blocksEffectiveAgainst;
+	private final Block[] blocksEffectiveAgainst;
 	protected float efficiencyOnProperMaterial = 4.0F;
 
 	/** Damage versus entities. */
-	private int damageVsEntity;
+	private final int damageVsEntity;
 
 	/** The material this tool is made from. */
 	protected EnumToolMaterial toolMaterial;
@@ -86,6 +86,6 @@ public class ItemTool extends Item {
 	 * Return whether this item is repairable in an anvil.
 	 */
 	public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
-		return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+		return this.toolMaterial.getToolCraftingMaterial() == par2ItemStack.itemID || super.getIsRepairable(par1ItemStack, par2ItemStack);
 	}
 }

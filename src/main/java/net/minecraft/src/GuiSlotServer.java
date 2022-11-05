@@ -85,7 +85,7 @@ class GuiSlotServer extends GuiSlot {
 	}
 	
 	private void func_77248_b(int par1, int par2, int par3, int par4, Tessellator par5Tessellator) {
-		LanServer var6 = (LanServer) GuiMultiplayer.getListOfLanServers(this.parentGui)
+		LanServer var6 = GuiMultiplayer.getListOfLanServers(this.parentGui)
 				.getServer(par1 - GuiMultiplayer.getInternetServerList(this.parentGui).countServers());
 		this.parentGui.drawString(this.parentGui.fontRenderer, StatCollector.translateToLocal("lanServer.title"),
 				par2 + 2, par3 + 1, 16777215);
@@ -181,10 +181,10 @@ class GuiSlotServer extends GuiSlot {
 		
 		Tessellator var14 = Tessellator.instance;
 		var14.startDrawingQuads();
-		var14.addVertexWithUV((double) (iconX + 0), (double) (iconY + iconSize), 0.0d, 0.0d, 1.0d);
-		var14.addVertexWithUV((double) (iconX + iconSize), (double) (iconY + iconSize), 0.0d, 1.0d, 1.0d);
-		var14.addVertexWithUV((double) (iconX + iconSize), (double) (iconY + 0), 0.0d, 1.0d, 0.0d);
-		var14.addVertexWithUV((double) (iconX + 0), (double) (iconY + 0), 0.0d, 0.0d, 0.0d);
+		var14.addVertexWithUV(iconX, iconY + iconSize, 0.0d, 0.0d, 1.0d);
+		var14.addVertexWithUV(iconX + iconSize, iconY + iconSize, 0.0d, 1.0d, 1.0d);
+		var14.addVertexWithUV(iconX + iconSize, iconY, 0.0d, 1.0d, 0.0d);
+		var14.addVertexWithUV(iconX, iconY, 0.0d, 0.0d, 0.0d);
 		var14.draw();
 		
 		icons.bindTexture();
@@ -218,7 +218,7 @@ class GuiSlotServer extends GuiSlot {
 			}
 		} else {
 			var15 = 1;
-			var16 = (int) (Minecraft.getSystemTime() / 100L + (long) (par1 * 2) & 7L);
+			var16 = (int) (Minecraft.getSystemTime() / 100L + (long) (par1 * 2L) & 7L);
 
 			if (var16 > 4) {
 				var16 = 8 - var16;
@@ -227,7 +227,7 @@ class GuiSlotServer extends GuiSlot {
 			var12 = "Polling..";
 		}
 
-		this.parentGui.drawTexturedModalRect(par2 + 241, par3, 0 + var15 * 10, 176 + var16 * 8, 10, 8);
+		this.parentGui.drawTexturedModalRect(par2 + 241, par3, var15 * 10, 176 + var16 * 8, 10, 8);
 		byte var13 = 4;
 
 		if (this.mouseX >= par2 + 245 - var13 && this.mouseY >= par3 - var13 && this.mouseX <= par2 + 245 + 10 + var13 && this.mouseY <= par3 + 4 + var13) {

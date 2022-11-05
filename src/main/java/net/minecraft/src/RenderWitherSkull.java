@@ -11,8 +11,7 @@ public class RenderWitherSkull extends Render {
 		float var4;
 
 		for (var4 = par2 - par1; var4 < -180.0F; var4 += 360.0F) {
-			;
-		}
+        }
 
 		while (var4 >= 180.0F) {
 			var4 -= 360.0F;

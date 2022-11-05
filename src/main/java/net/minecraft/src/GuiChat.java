@@ -17,7 +17,7 @@ public class GuiChat extends GuiScreen {
 	private boolean field_73897_d = false;
 	private boolean field_73905_m = false;
 	private int field_73903_n = 0;
-	private List field_73904_o = new ArrayList();
+	private final List field_73904_o = new ArrayList();
 
 	/** used to pass around the URI to various dialogues and to the host os */
 	private String clickedURI = null;
@@ -88,7 +88,7 @@ public class GuiChat extends GuiScreen {
 		}
 
 		if (par2 == 1) {
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 		} else if (par2 == 28) {
 			String var3 = this.inputField.getText().trim();
 
@@ -100,7 +100,7 @@ public class GuiChat extends GuiScreen {
 				}
 			}
 
-			this.mc.displayGuiScreen((GuiScreen) null);
+			this.mc.displayGuiScreen(null);
 		} else if (par2 == 200) {
 			this.getSentHistory(-1);
 		} else if (par2 == 208) {

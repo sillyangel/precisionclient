@@ -5,8 +5,8 @@ import net.lax1dude.eaglercraft.TextureLocation;
 import net.lax1dude.eaglercraft.adapter.Tessellator;
 
 public class RenderSnowball extends Render {
-	private Item field_94151_a;
-	private int field_94150_f;
+	private final Item field_94151_a;
+	private final int field_94150_f;
 
 	public RenderSnowball(Item par1, int par2) {
 		this.field_94151_a = par1;
@@ -68,10 +68,10 @@ public class RenderSnowball extends Render {
 		EaglerAdapter.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
 		par1Tessellator.startDrawingQuads();
 		par1Tessellator.setNormal(0.0F, 1.0F, 0.0F);
-		par1Tessellator.addVertexWithUV((double) (0.0F - var8), (double) (0.0F - var9), 0.0D, (double) var3, (double) var6);
-		par1Tessellator.addVertexWithUV((double) (var7 - var8), (double) (0.0F - var9), 0.0D, (double) var4, (double) var6);
-		par1Tessellator.addVertexWithUV((double) (var7 - var8), (double) (var7 - var9), 0.0D, (double) var4, (double) var5);
-		par1Tessellator.addVertexWithUV((double) (0.0F - var8), (double) (var7 - var9), 0.0D, (double) var3, (double) var5);
+		par1Tessellator.addVertexWithUV(0.0F - var8, 0.0F - var9, 0.0D, var3, var6);
+		par1Tessellator.addVertexWithUV(var7 - var8, 0.0F - var9, 0.0D, var4, var6);
+		par1Tessellator.addVertexWithUV(var7 - var8, var7 - var9, 0.0D, var4, var5);
+		par1Tessellator.addVertexWithUV(0.0F - var8, var7 - var9, 0.0D, var3, var5);
 		par1Tessellator.draw();
 	}
 }

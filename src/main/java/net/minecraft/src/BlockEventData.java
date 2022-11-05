@@ -1,16 +1,16 @@
 package net.minecraft.src;
 
 public class BlockEventData {
-	private int coordX;
-	private int coordY;
-	private int coordZ;
-	private int blockID;
+	private final int coordX;
+	private final int coordY;
+	private final int coordZ;
+	private final int blockID;
 
 	/** Different for each blockID */
-	private int eventID;
+	private final int eventID;
 
 	/** Different for each blockID, eventID */
-	private int eventParameter;
+	private final int eventParameter;
 
 	public BlockEventData(int par1, int par2, int par3, int par4, int par5, int par6) {
 		this.coordX = par1;
