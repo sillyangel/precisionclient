@@ -2,7 +2,7 @@
 
 # Precision Client
 
-### A custom eaglercraft client with QOL features, custom texture packs, and more. 
+### A custom eaglercraft client with QOL features, custom texture packs, and more.
 
 </div>
 
