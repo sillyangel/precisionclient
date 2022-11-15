@@ -26,174 +26,143 @@
 
 package tritonus;
 
-public class TCircularBuffer
-{
-	private boolean m_bBlockingRead;
-	private boolean m_bBlockingWrite;
-	private byte[] m_abData;
-	private int m_nSize;
-	private long m_lReadPos;
-	private long m_lWritePos;
-	private Trigger m_trigger;
-	private boolean m_bOpen;
+public class TCircularBuffer {
+    private boolean m_bBlockingRead;
+    private boolean m_bBlockingWrite;
+    private byte[] m_abData;
+    private int m_nSize;
+    private long m_lReadPos;
+    private long m_lWritePos;
+    private Trigger m_trigger;
+    private boolean m_bOpen;
 
-	public TCircularBuffer(int nSize, boolean bBlockingRead, boolean bBlockingWrite, Trigger trigger)
-	{
-		m_bBlockingRead = bBlockingRead;
-		m_bBlockingWrite = bBlockingWrite;
-		m_nSize = nSize;
-		m_abData = new byte[m_nSize];
-		m_lReadPos = 0;
-		m_lWritePos = 0;
-		m_trigger = trigger;
-		m_bOpen = true;
-	}
+    public TCircularBuffer(int nSize, boolean bBlockingRead, boolean bBlockingWrite, Trigger trigger) {
+        m_bBlockingRead = bBlockingRead;
+        m_bBlockingWrite = bBlockingWrite;
+        m_nSize = nSize;
+        m_abData = new byte[m_nSize];
+        m_lReadPos = 0;
+        m_lWritePos = 0;
+        m_trigger = trigger;
+        m_bOpen = true;
+    }
 
-	public void close()
-	{
-		m_bOpen = false;
-		// TODO: call notify() ?
-	}
+    public void close() {
+        m_bOpen = false;
+        // TODO: call notify() ?
+    }
 
-	private boolean isOpen()
-	{
-		return m_bOpen;
-	}
+    private boolean isOpen() {
+        return m_bOpen;
+    }
 
-	public int availableRead()
-	{
-		return (int) (m_lWritePos - m_lReadPos);
-	}
+    public int availableRead() {
+        return (int) (m_lWritePos - m_lReadPos);
+    }
 
-	public int availableWrite()
-	{
-		return m_nSize - availableRead();
-	}
+    public int availableWrite() {
+        return m_nSize - availableRead();
+    }
 
-	private int getReadPos()
-	{
-		return (int) (m_lReadPos % m_nSize);
-	}
+    private int getReadPos() {
+        return (int) (m_lReadPos % m_nSize);
+    }
 
-	private int getWritePos()
-	{
-		return (int) (m_lWritePos % m_nSize);
-	}
+    private int getWritePos() {
+        return (int) (m_lWritePos % m_nSize);
+    }
 
-	public int read(byte[] abData)
-	{
-		return read(abData, 0, abData.length);
-	}
+    public int read(byte[] abData) {
+        return read(abData, 0, abData.length);
+    }
 
-	public int read(byte[] abData, int nOffset, int nLength)
-	{
+    public int read(byte[] abData, int nOffset, int nLength) {
 
-		if(!isOpen())
-		{
-			if(availableRead() > 0)
-			{
-				nLength = Math.min(nLength, availableRead());
+        if (!isOpen()) {
+            if (availableRead() > 0) {
+                nLength = Math.min(nLength, availableRead());
 
-			} else
-			{
+            } else {
 
-				return -1;
-			}
-		}
-		synchronized(this)
-		{
-			if(m_trigger != null && availableRead() < nLength)
-			{
+                return -1;
+            }
+        }
+        synchronized (this) {
+            if (m_trigger != null && availableRead() < nLength) {
 
-				m_trigger.execute();
-			}
-			if(!m_bBlockingRead)
-			{
-				nLength = Math.min(availableRead(), nLength);
-			}
-			int nRemainingBytes = nLength;
-			while(nRemainingBytes > 0)
-			{
-				while(availableRead() == 0)
-				{
-					try
-					{
-						wait();
-					} catch (InterruptedException e)
-					{
+                m_trigger.execute();
+            }
+            if (!m_bBlockingRead) {
+                nLength = Math.min(availableRead(), nLength);
+            }
+            int nRemainingBytes = nLength;
+            while (nRemainingBytes > 0) {
+                while (availableRead() == 0) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
 
-					}
-				}
-				int nAvailable = Math.min(availableRead(), nRemainingBytes);
-				while(nAvailable > 0)
-				{
-					int nToRead = Math.min(nAvailable, m_nSize - getReadPos());
-					System.arraycopy(m_abData, getReadPos(), abData, nOffset, nToRead);
-					m_lReadPos += nToRead;
-					nOffset += nToRead;
-					nAvailable -= nToRead;
-					nRemainingBytes -= nToRead;
-				}
-				notifyAll();
-			}
+                    }
+                }
+                int nAvailable = Math.min(availableRead(), nRemainingBytes);
+                while (nAvailable > 0) {
+                    int nToRead = Math.min(nAvailable, m_nSize - getReadPos());
+                    System.arraycopy(m_abData, getReadPos(), abData, nOffset, nToRead);
+                    m_lReadPos += nToRead;
+                    nOffset += nToRead;
+                    nAvailable -= nToRead;
+                    nRemainingBytes -= nToRead;
+                }
+                notifyAll();
+            }
 
-			return nLength;
-		}
-	}
+            return nLength;
+        }
+    }
 
-	public int write(byte[] abData)
-	{
-		return write(abData, 0, abData.length);
-	}
+    public int write(byte[] abData) {
+        return write(abData, 0, abData.length);
+    }
 
-	public int write(byte[] abData, int nOffset, int nLength)
-	{
+    public int write(byte[] abData, int nOffset, int nLength) {
 
-		synchronized(this)
-		{
+        synchronized (this) {
 
-			if(!m_bBlockingWrite)
-			{
-				nLength = Math.min(availableWrite(), nLength);
-			}
-			int nRemainingBytes = nLength;
-			while(nRemainingBytes > 0)
-			{
-				while(availableWrite() == 0)
-				{
-					try
-					{
-						wait();
-					} catch (InterruptedException e)
-					{
+            if (!m_bBlockingWrite) {
+                nLength = Math.min(availableWrite(), nLength);
+            }
+            int nRemainingBytes = nLength;
+            while (nRemainingBytes > 0) {
+                while (availableWrite() == 0) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
 
-					}
-				}
-				int nAvailable = Math.min(availableWrite(), nRemainingBytes);
-				while(nAvailable > 0)
-				{
-					int nToWrite = Math.min(nAvailable, m_nSize - getWritePos());
-					// TDebug.out("src buf size= " + abData.length +
-					// ", offset = " + nOffset + ", dst buf size=" +
-					// m_abData.length + " write pos=" + getWritePos() + " len="
-					// + nToWrite);
-					System.arraycopy(abData, nOffset, m_abData, getWritePos(), nToWrite);
-					m_lWritePos += nToWrite;
-					nOffset += nToWrite;
-					nAvailable -= nToWrite;
-					nRemainingBytes -= nToWrite;
-				}
-				notifyAll();
-			}
+                    }
+                }
+                int nAvailable = Math.min(availableWrite(), nRemainingBytes);
+                while (nAvailable > 0) {
+                    int nToWrite = Math.min(nAvailable, m_nSize - getWritePos());
+                    // TDebug.out("src buf size= " + abData.length +
+                    // ", offset = " + nOffset + ", dst buf size=" +
+                    // m_abData.length + " write pos=" + getWritePos() + " len="
+                    // + nToWrite);
+                    System.arraycopy(abData, nOffset, m_abData, getWritePos(), nToWrite);
+                    m_lWritePos += nToWrite;
+                    nOffset += nToWrite;
+                    nAvailable -= nToWrite;
+                    nRemainingBytes -= nToWrite;
+                }
+                notifyAll();
+            }
 
-			return nLength;
-		}
-	}
+            return nLength;
+        }
+    }
 
-	public static interface Trigger
-	{
-		public void execute();
-	}
+    public static interface Trigger {
+        public void execute();
+    }
 
 }
 

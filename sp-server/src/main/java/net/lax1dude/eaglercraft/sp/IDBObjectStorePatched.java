@@ -4,25 +4,16 @@ import org.teavm.jso.JSBody;
 import org.teavm.jso.JSObject;
 import org.teavm.jso.JSProperty;
 import org.teavm.jso.core.JSString;
-import org.teavm.jso.indexeddb.IDBCountRequest;
-import org.teavm.jso.indexeddb.IDBCursorRequest;
-import org.teavm.jso.indexeddb.IDBCursorSource;
-import org.teavm.jso.indexeddb.IDBDatabase;
-import org.teavm.jso.indexeddb.IDBGetRequest;
-import org.teavm.jso.indexeddb.IDBIndex;
-import org.teavm.jso.indexeddb.IDBKeyRange;
-import org.teavm.jso.indexeddb.IDBObjectStoreParameters;
-import org.teavm.jso.indexeddb.IDBRequest;
-import org.teavm.jso.indexeddb.IDBTransaction;
+import org.teavm.jso.indexeddb.*;
 
 public abstract class IDBObjectStorePatched implements JSObject, IDBCursorSource {
-	
-	@JSBody(params = { "db", "name", "optionalParameters" }, script = "return db.createObjectStore(name, optionalParameters);")
-	public static native IDBObjectStorePatched createObjectStorePatch(IDBDatabase db, String name, IDBObjectStoreParameters optionalParameters);
-	
-	@JSBody(params = { "tx", "name" }, script = "return tx.objectStore(name);")
-	public static native IDBObjectStorePatched objectStorePatch(IDBTransaction tx, String name);
-	
+
+    @JSBody(params = {"db", "name", "optionalParameters"}, script = "return db.createObjectStore(name, optionalParameters);")
+    public static native IDBObjectStorePatched createObjectStorePatch(IDBDatabase db, String name, IDBObjectStoreParameters optionalParameters);
+
+    @JSBody(params = {"tx", "name"}, script = "return tx.objectStore(name);")
+    public static native IDBObjectStorePatched objectStorePatch(IDBTransaction tx, String name);
+
     @JSProperty
     public abstract String getName();
 
@@ -32,13 +23,13 @@ public abstract class IDBObjectStorePatched implements JSObject, IDBCursorSource
     public final String[] getKeyPath() {
         JSObject result = getKeyPathImpl();
         if (JSString.isInstance(result)) {
-            return new String[] { result.<JSString>cast().stringValue() };
+            return new String[]{result.<JSString>cast().stringValue()};
         } else {
             return unwrapStringArray(result);
         }
     }
 
-    @JSBody(params = { "obj" }, script = "return this;")
+    @JSBody(params = {"obj"}, script = "return this;")
     private static native String[] unwrapStringArray(JSObject obj);
 
     @JSProperty

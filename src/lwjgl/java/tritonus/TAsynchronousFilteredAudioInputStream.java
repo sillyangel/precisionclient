@@ -36,165 +36,143 @@ import javax.sound.sampled.AudioFormat;
  * converters that do not have a fixed ratio between the size of a block of
  * input data and the size of a block of output data. These types of converters
  * therefore need an internal buffer, which is realized in this class.
- * 
+ *
  * @author Matthias Pfisterer
  */
 public abstract class TAsynchronousFilteredAudioInputStream extends TAudioInputStream implements
-		TCircularBuffer.Trigger
-{
-	private static final int DEFAULT_BUFFER_SIZE = 327670;
-	private static final int DEFAULT_MIN_AVAILABLE = 4096;
-	private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
+        TCircularBuffer.Trigger {
+    private static final int DEFAULT_BUFFER_SIZE = 327670;
+    private static final int DEFAULT_MIN_AVAILABLE = 4096;
+    private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
 
-	private TCircularBuffer m_circularBuffer;
-	private int m_nMinAvailable;
-	private byte[] m_abSingleByte;
+    private TCircularBuffer m_circularBuffer;
+    private int m_nMinAvailable;
+    private byte[] m_abSingleByte;
 
-	/**
-	 * Constructor. This constructor uses the default buffer size and the
-	 * default min available amount.
-	 * 
-	 * @param lLength
-	 *            length of this stream in frames. May be
-	 *            AudioSystem.NOT_SPECIFIED.
-	 */
-	public TAsynchronousFilteredAudioInputStream(AudioFormat outputFormat, long lLength)
-	{
-		this(outputFormat, lLength, DEFAULT_BUFFER_SIZE, DEFAULT_MIN_AVAILABLE);
-	}
+    /**
+     * Constructor. This constructor uses the default buffer size and the
+     * default min available amount.
+     *
+     * @param lLength length of this stream in frames. May be
+     *                AudioSystem.NOT_SPECIFIED.
+     */
+    public TAsynchronousFilteredAudioInputStream(AudioFormat outputFormat, long lLength) {
+        this(outputFormat, lLength, DEFAULT_BUFFER_SIZE, DEFAULT_MIN_AVAILABLE);
+    }
 
-	/**
-	 * Constructor. With this constructor, the buffer size and the minimum
-	 * available amount can be specified as parameters.
-	 * 
-	 * @param lLength
-	 *            length of this stream in frames. May be
-	 *            AudioSystem.NOT_SPECIFIED.
-	 * @param nBufferSize
-	 *            size of the circular buffer in bytes.
-	 */
-	public TAsynchronousFilteredAudioInputStream(AudioFormat outputFormat, long lLength,
-			int nBufferSize, int nMinAvailable)
-	{
-		/*
-		 * The usage of a ByteArrayInputStream is a hack. (the infamous
-		 * "JavaOne hack", because I did it on June 6th 2000 in San Francisco,
-		 * only hours before a JavaOne session where I wanted to show mp3
-		 * playback with Java Sound.) It is necessary because in the FCS version
-		 * of the Sun jdk1.3, the constructor of AudioInputStream throws an
-		 * exception if its first argument is null. So we have to pass a dummy
-		 * non-null value.
-		 */
-		super(new ByteArrayInputStream(EMPTY_BYTE_ARRAY), outputFormat, lLength);
+    /**
+     * Constructor. With this constructor, the buffer size and the minimum
+     * available amount can be specified as parameters.
+     *
+     * @param lLength     length of this stream in frames. May be
+     *                    AudioSystem.NOT_SPECIFIED.
+     * @param nBufferSize size of the circular buffer in bytes.
+     */
+    public TAsynchronousFilteredAudioInputStream(AudioFormat outputFormat, long lLength,
+                                                 int nBufferSize, int nMinAvailable) {
+        /*
+         * The usage of a ByteArrayInputStream is a hack. (the infamous
+         * "JavaOne hack", because I did it on June 6th 2000 in San Francisco,
+         * only hours before a JavaOne session where I wanted to show mp3
+         * playback with Java Sound.) It is necessary because in the FCS version
+         * of the Sun jdk1.3, the constructor of AudioInputStream throws an
+         * exception if its first argument is null. So we have to pass a dummy
+         * non-null value.
+         */
+        super(new ByteArrayInputStream(EMPTY_BYTE_ARRAY), outputFormat, lLength);
 
-		m_circularBuffer = new TCircularBuffer(nBufferSize, false, // blocking
-																	// read
-				true, // blocking write
-				this); // trigger
-		m_nMinAvailable = nMinAvailable;
+        m_circularBuffer = new TCircularBuffer(nBufferSize, false, // blocking
+                // read
+                true, // blocking write
+                this); // trigger
+        m_nMinAvailable = nMinAvailable;
 
-	}
+    }
 
-	/**
-	 * Returns the circular buffer.
-	 */
-	protected TCircularBuffer getCircularBuffer()
-	{
-		return m_circularBuffer;
-	}
+    /**
+     * Returns the circular buffer.
+     */
+    protected TCircularBuffer getCircularBuffer() {
+        return m_circularBuffer;
+    }
 
-	/**
-	 * Check if writing more data to the circular buffer is recommended. This
-	 * checks the available write space in the circular buffer against the
-	 * minimum available property. If the available write space is greater than
-	 * the minimum available property, more writing is encouraged, so this method
-	 * returns true. Note that this is only a hint to subclasses. However, it is
-	 * an important hint.
-	 * 
-	 * @return true if more writing to the circular buffer is recommended.
-	 *         Otherwise, false is returned.
-	 */
-	protected boolean writeMore()
-	{
-		return getCircularBuffer().availableWrite() > m_nMinAvailable;
-	}
+    /**
+     * Check if writing more data to the circular buffer is recommended. This
+     * checks the available write space in the circular buffer against the
+     * minimum available property. If the available write space is greater than
+     * the minimum available property, more writing is encouraged, so this method
+     * returns true. Note that this is only a hint to subclasses. However, it is
+     * an important hint.
+     *
+     * @return true if more writing to the circular buffer is recommended.
+     * Otherwise, false is returned.
+     */
+    protected boolean writeMore() {
+        return getCircularBuffer().availableWrite() > m_nMinAvailable;
+    }
 
-	public int read() throws IOException
-	{
-		// if (TDebug.TraceAudioConverter) {
-		// TDebug.out("TAsynchronousFilteredAudioInputStream.read(): begin"); }
-		int nByte = -1;
-		if(m_abSingleByte == null)
-		{
-			m_abSingleByte = new byte[1];
-		}
-		int nReturn = read(m_abSingleByte);
-		if(nReturn == -1)
-		{
-			nByte = -1;
-		} else
-		{
-			// $$fb 2001-04-14 nobody really knows that...
-			nByte = m_abSingleByte[0] & 0xFF;
-		}
-		// if (TDebug.TraceAudioConverter) {
-		// TDebug.out("TAsynchronousFilteredAudioInputStream.read(): end"); }
-		return nByte;
-	}
+    public int read() throws IOException {
+        // if (TDebug.TraceAudioConverter) {
+        // TDebug.out("TAsynchronousFilteredAudioInputStream.read(): begin"); }
+        int nByte = -1;
+        if (m_abSingleByte == null) {
+            m_abSingleByte = new byte[1];
+        }
+        int nReturn = read(m_abSingleByte);
+        if (nReturn == -1) {
+            nByte = -1;
+        } else {
+            // $$fb 2001-04-14 nobody really knows that...
+            nByte = m_abSingleByte[0] & 0xFF;
+        }
+        // if (TDebug.TraceAudioConverter) {
+        // TDebug.out("TAsynchronousFilteredAudioInputStream.read(): end"); }
+        return nByte;
+    }
 
-	public int read(byte[] abData) throws IOException
-	{
+    public int read(byte[] abData) throws IOException {
 
-		int nRead = read(abData, 0, abData.length);
+        int nRead = read(abData, 0, abData.length);
 
-		return nRead;
-	}
+        return nRead;
+    }
 
-	public int read(byte[] abData, int nOffset, int nLength) throws IOException
-	{
+    public int read(byte[] abData, int nOffset, int nLength) throws IOException {
 
-		int nRead = m_circularBuffer.read(abData, nOffset, nLength);
+        int nRead = m_circularBuffer.read(abData, nOffset, nLength);
 
-		return nRead;
-	}
+        return nRead;
+    }
 
-	public long skip(long lSkip) throws IOException
-	{
-		// TODO: this is quite inefficient
-		for(long lSkipped = 0; lSkipped < lSkip; lSkipped++)
-		{
-			int nReturn = read();
-			if(nReturn == -1)
-			{
-				return lSkipped;
-			}
-		}
-		return lSkip;
-	}
+    public long skip(long lSkip) throws IOException {
+        // TODO: this is quite inefficient
+        for (long lSkipped = 0; lSkipped < lSkip; lSkipped++) {
+            int nReturn = read();
+            if (nReturn == -1) {
+                return lSkipped;
+            }
+        }
+        return lSkip;
+    }
 
-	public int available() throws IOException
-	{
-		return m_circularBuffer.availableRead();
-	}
+    public int available() throws IOException {
+        return m_circularBuffer.availableRead();
+    }
 
-	public void close() throws IOException
-	{
-		m_circularBuffer.close();
-	}
+    public void close() throws IOException {
+        m_circularBuffer.close();
+    }
 
-	public boolean markSupported()
-	{
-		return false;
-	}
+    public boolean markSupported() {
+        return false;
+    }
 
-	public void mark(int nReadLimit)
-	{
-	}
+    public void mark(int nReadLimit) {
+    }
 
-	public void reset() throws IOException
-	{
-		throw new IOException("mark not supported");
-	}
+    public void reset() throws IOException {
+        throw new IOException("mark not supported");
+    }
 }
 
 /*** TAsynchronousFilteredAudioInputStream.java ***/

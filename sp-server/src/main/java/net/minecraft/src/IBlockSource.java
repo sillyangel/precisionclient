@@ -1,19 +1,19 @@
 package net.minecraft.src;
 
 public interface IBlockSource extends ILocatableSource {
-	double getX();
+    double getX();
 
-	double getY();
+    double getY();
 
-	double getZ();
+    double getZ();
 
-	int getXInt();
+    int getXInt();
 
-	int getYInt();
+    int getYInt();
 
-	int getZInt();
+    int getZInt();
 
-	int getBlockMetadata();
+    int getBlockMetadata();
 
-	TileEntity getBlockTileEntity();
+    TileEntity getBlockTileEntity();
 }

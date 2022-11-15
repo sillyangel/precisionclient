@@ -58,8 +58,9 @@ SOFTWARE.
  *      });
  * }
  * </pre>
- * @author kumar529
+ *
  * @param <T> return type of convert method
+ * @author kumar529
  */
 public interface XMLXsiTypeConverter<T> {
     T convert(String value);

@@ -3,10 +3,10 @@ package net.minecraft.src;
 import java.util.ArrayList;
 
 class ServerBlockEventList extends ArrayList {
-	private ServerBlockEventList() {
-	}
+    private ServerBlockEventList() {
+    }
 
-	ServerBlockEventList(ServerBlockEvent par1ServerBlockEvent) {
-		this();
-	}
+    ServerBlockEventList(ServerBlockEvent par1ServerBlockEvent) {
+        this();
+    }
 }

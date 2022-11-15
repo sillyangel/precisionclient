@@ -36,9 +36,9 @@ package net.lax1dude.eaglercraft.glemu.vector;
  */
 public interface ReadableVector4f extends ReadableVector3f {
 
-	/**
-	 * @return w
-	 */
-	float getW();
+    /**
+     * @return w
+     */
+    float getW();
 
 }

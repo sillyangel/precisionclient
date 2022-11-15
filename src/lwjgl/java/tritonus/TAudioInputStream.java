@@ -44,63 +44,57 @@ import javax.sound.sampled.AudioInputStream;
  * object, thereby maintaining the immutable character of these classes.
  */
 
-public class TAudioInputStream extends AudioInputStream
-{
-	private Map<String, Object> m_properties;
-	private Map<String, Object> m_unmodifiableProperties;
+public class TAudioInputStream extends AudioInputStream {
+    private Map<String, Object> m_properties;
+    private Map<String, Object> m_unmodifiableProperties;
 
-	/**
-	 * Constructor without properties. Creates an empty properties map.
-	 */
-	public TAudioInputStream(InputStream inputStream, AudioFormat audioFormat, long lLengthInFrames)
-	{
-		super(inputStream, audioFormat, lLengthInFrames);
-		initMaps(new HashMap<String, Object>());
-	}
+    /**
+     * Constructor without properties. Creates an empty properties map.
+     */
+    public TAudioInputStream(InputStream inputStream, AudioFormat audioFormat, long lLengthInFrames) {
+        super(inputStream, audioFormat, lLengthInFrames);
+        initMaps(new HashMap<String, Object>());
+    }
 
-	/**
-	 * Constructor with properties. The passed properties map is not copied.
-	 * This allows subclasses to change values in the map after creation, and
-	 * the changes are reflected in the map the application program can obtain.
-	 */
-	public TAudioInputStream(InputStream inputStream, AudioFormat audioFormat,
-			long lLengthInFrames, Map<String, Object> properties)
-	{
-		super(inputStream, audioFormat, lLengthInFrames);
-		initMaps(properties);
-	}
+    /**
+     * Constructor with properties. The passed properties map is not copied.
+     * This allows subclasses to change values in the map after creation, and
+     * the changes are reflected in the map the application program can obtain.
+     */
+    public TAudioInputStream(InputStream inputStream, AudioFormat audioFormat,
+                             long lLengthInFrames, Map<String, Object> properties) {
+        super(inputStream, audioFormat, lLengthInFrames);
+        initMaps(properties);
+    }
 
-	private void initMaps(Map<String, Object> properties)
-	{
-		/*
-		 * Here, we make a shallow copy of the map. It's unclear if this is
-		 * sufficient (of if a deep copy should be made).
-		 */
-		m_properties = properties;
-		m_unmodifiableProperties = Collections.unmodifiableMap(m_properties);
-	}
+    private void initMaps(Map<String, Object> properties) {
+        /*
+         * Here, we make a shallow copy of the map. It's unclear if this is
+         * sufficient (of if a deep copy should be made).
+         */
+        m_properties = properties;
+        m_unmodifiableProperties = Collections.unmodifiableMap(m_properties);
+    }
 
-	/**
-	 * Obtain a Map containing the properties. This method returns a Map that
-	 * cannot be modified by the application program, but reflects changes to
-	 * the map made by the implementation.
-	 * 
-	 * @return a map containing the properties.
-	 */
-	public Map<String, Object> properties()
-	{
-		return m_unmodifiableProperties;
-	}
+    /**
+     * Obtain a Map containing the properties. This method returns a Map that
+     * cannot be modified by the application program, but reflects changes to
+     * the map made by the implementation.
+     *
+     * @return a map containing the properties.
+     */
+    public Map<String, Object> properties() {
+        return m_unmodifiableProperties;
+    }
 
-	/**
-	 * Set a property. Unlike in AudioFormat and AudioFileFormat, this method
-	 * may be used anywhere by subclasses - it is not restricted to be used in
-	 * the constructor.
-	 */
-	protected void setProperty(String key, Object value)
-	{
-		m_properties.put(key, value);
-	}
+    /**
+     * Set a property. Unlike in AudioFormat and AudioFileFormat, this method
+     * may be used anywhere by subclasses - it is not restricted to be used in
+     * the constructor.
+     */
+    protected void setProperty(String key, Object value) {
+        m_properties.put(key, value);
+    }
 }
 
 /*** TAudioInputStream.java ***/

@@ -5,28 +5,28 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 public class IPCPacket01StopServer implements IPCPacketBase {
-	
-	public static final int ID = 0x01;
-	
-	public IPCPacket01StopServer() {
-	}
 
-	@Override
-	public void deserialize(DataInput bin) throws IOException {
-	}
+    public static final int ID = 0x01;
 
-	@Override
-	public void serialize(DataOutput bin) throws IOException {
-	}
+    public IPCPacket01StopServer() {
+    }
 
-	@Override
-	public int id() {
-		return ID;
-	}
+    @Override
+    public void deserialize(DataInput bin) throws IOException {
+    }
 
-	@Override
-	public int size() {
-		return 0;
-	}
+    @Override
+    public void serialize(DataOutput bin) throws IOException {
+    }
+
+    @Override
+    public int id() {
+        return ID;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
 
 }

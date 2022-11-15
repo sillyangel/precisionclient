@@ -1,8 +1,8 @@
 package net.lax1dude.eaglercraft.sp;
 
 public class VFSTestClass {
-	
-	public static void test(VirtualFilesystem vfs) {
+
+    public static void test(VirtualFilesystem vfs) {
 		/*
 		System.out.println("'test1' exists: " + vfs.getFile("test1").exists());
 		System.out.println("'test1' chars: " + vfs.getFile("test1").getAllChars());
@@ -58,60 +58,60 @@ public class VFSTestClass {
 		System.out.println("'test2' cache copy chars: " + VirtualFilesystem.utf8(vfs.getFile("test2").getAllBytes(true)));
 		System.out.println("'test3' cache copy chars: " + VirtualFilesystem.utf8(vfs.getFile("test3").getAllBytes(true)));
 		*/
-		
-		VFile f = new VFile("test1");
-		System.out.println(f);
-		
-		f = new VFile("/test1");
-		System.out.println(f);
-		
-		f = new VFile("/test2/");
-		System.out.println(f);
-		
-		f = new VFile("test2/");
-		System.out.println(f);
-		
-		f = new VFile("test2/teste");
-		System.out.println(f);
-		
-		f = new VFile("\\test2\\teste");
-		System.out.println(f);
-		
-		f = new VFile("\\test2\\teste\\..\\eag");
-		System.out.println(f);
-		
-		f = new VFile("test2", "teste", "eag");
-		System.out.println(f);
-		
-		f = new VFile(f, "../", "test2", "teste", "eag");
-		System.out.println(f);
-		
-		f = new VFile(f, "../../", "test2", ".", "eag");
-		System.out.println(f);
-		
-		f = new VFile("you/eag", f);
-		System.out.println(f);
-		
-		f = new VFile(" you/ eag ", f);
-		System.out.println(f);
-		
-		f = new VFile("\\yee\\", f);
-		System.out.println(f);
-		
-		f = new VFile("\\yee\\", "yeeler", f, new VFile("yee"));
-		System.out.println(f);
-		
-		f = new VFile(f, new VFile("yee2"));
-		System.out.println(f);
-		
-		f = new VFile("yee/deevler/", new VFile("yee2"));
-		System.out.println(f);
-		
-		f = new VFile("yee/../../../../", new VFile("yee2"));
-		System.out.println(f);
-		
-		f = new VFile("yee/../../deevler../../", new VFile("yee2"));
-		System.out.println(f);
-	}
-	
+
+        VFile f = new VFile("test1");
+        System.out.println(f);
+
+        f = new VFile("/test1");
+        System.out.println(f);
+
+        f = new VFile("/test2/");
+        System.out.println(f);
+
+        f = new VFile("test2/");
+        System.out.println(f);
+
+        f = new VFile("test2/teste");
+        System.out.println(f);
+
+        f = new VFile("\\test2\\teste");
+        System.out.println(f);
+
+        f = new VFile("\\test2\\teste\\..\\eag");
+        System.out.println(f);
+
+        f = new VFile("test2", "teste", "eag");
+        System.out.println(f);
+
+        f = new VFile(f, "../", "test2", "teste", "eag");
+        System.out.println(f);
+
+        f = new VFile(f, "../../", "test2", ".", "eag");
+        System.out.println(f);
+
+        f = new VFile("you/eag", f);
+        System.out.println(f);
+
+        f = new VFile(" you/ eag ", f);
+        System.out.println(f);
+
+        f = new VFile("\\yee\\", f);
+        System.out.println(f);
+
+        f = new VFile("\\yee\\", "yeeler", f, new VFile("yee"));
+        System.out.println(f);
+
+        f = new VFile(f, new VFile("yee2"));
+        System.out.println(f);
+
+        f = new VFile("yee/deevler/", new VFile("yee2"));
+        System.out.println(f);
+
+        f = new VFile("yee/../../../../", new VFile("yee2"));
+        System.out.println(f);
+
+        f = new VFile("yee/../../deevler../../", new VFile("yee2"));
+        System.out.println(f);
+    }
+
 }
